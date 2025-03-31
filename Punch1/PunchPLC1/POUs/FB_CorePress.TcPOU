@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.6">
+  <POU Name="FB_CorePress" Id="{953c7498-64a0-4914-9a7e-2c4fa8d12f1e}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK FB_CorePress
+VAR_INPUT
+    bEnable : BOOL; (* Enable the Core Press Sequence *)
+    bReset : BOOL;  (* Reset from HMI *)
+END_VAR
+
+VAR_OUTPUT
+    bFaulted : BOOL; (* Indicates failure alarm *)
+    iProductCount : INT; (* Counts total cycles completed *)
+END_VAR
+
+VAR
+    State : INT := 0;
+    DelayTimer : TON;
+    FaultTimer : TON;
+END_VAR]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[CASE State OF
+    0: (* Idle: Wait for safeties and enable switch *)
+        IF GVL_IO.DI_24VDC_CB_OK AND GVL_IO.DI_ECS THEN
+            State := 1;
+        END_IF
+
+    1: (* Start Oil Pump, Check Feedback *)
+        GVL_IO.DO_M1 := TRUE; (* Start Oil Pump *)
+        DelayTimer(IN := TRUE, PT := T#2S);
+        
+        IF DelayTimer.Q AND GVL_IO.DI_M1 THEN (* Feedback received *)
+            State := 2;
+        ELSE
+            FaultTimer(IN := TRUE, PT := T#3S); (* Wait 3s for feedback *)
+            IF FaultTimer.Q THEN
+                bFaulted := TRUE; (* Alarm if no feedback *)
+                State := 0;
+            END_IF
+        END_IF
+
+    2: (* Check PCYL2 Retracted, Energize DO6.7 if needed *)
+        IF NOT GVL_IO.DI_PCYL1_R THEN
+            GVL_IO.DO_PCYL1_R := TRUE; (* Retract PCYL2 *)
+        ELSE
+            GVL_IO.DO_PCYL1_R := FALSE;
+            State := 3;
+        END_IF
+
+    3: (* Count Casing/Core, Move to Next Step When Count Reached *)
+        IF (GVL_Var.CorePress_CoreCount >= 5) AND (GVL_Var.CorePress_CasingCount >= 5) THEN
+            State := 4;
+        END_IF
+
+    (* Continue adding logic for steps 4-11 as per your requirement *)
+
+    11: (* Increment product count and loop back to step 2 *)
+        iProductCount := iProductCount + 1;
+        State := 2;
+END_CASE
+
+(* Reset logic *)
+IF bReset THEN
+    State := 0;
+    bFaulted := FALSE;
+    iProductCount := 0;
+END_IF]]></ST>
+    </Implementation>
+    <LineIds Name="FB_CorePress">
+      <LineId Id="39" Count="44" />
+      <LineId Id="9" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

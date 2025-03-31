@@ -1,0 +1,146 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.6">
+  <POU Name="FB_CoreSwaging" Id="{32bb99d5-55a6-44d7-8d53-4198850662e4}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK FB_CoreSwaging
+VAR_INPUT
+	bEnable: BOOL;
+    bReset : BOOL;  (* Reset from HMI *)
+END_VAR
+VAR_OUTPUT
+	bFaulted: BOOL;
+END_VAR
+VAR
+    State : INT := 0;
+	FeedbackTimer : TON;
+    DelayTimer : TON;
+    AlarmTimer : TON;
+    ManualMode : BOOL := FALSE;
+    AlarmActive : BOOL := FALSE;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[bFaulted := FALSE;
+
+CASE State OF
+	0: (* Idle/Off, DI_ECS=FALSE *)
+		State := 10;
+		
+	10: (* check safety conditions *)
+		IF GVL_IO.DI_24VDC_CB_OK AND GVL_IO.DI_ECS THEN (* Safeties OK and Enable Switch On *)
+            GVL_IO.DO_M1 := TRUE; (* Start Oil Pump *)
+			IF NOT DelayTimer.IN THEN
+            	DelayTimer(IN := TRUE, PT := T#2S); (* 2 sec delay *)
+			ELSE
+				IF DelayTimer.Q AND GVL_IO.DI_M1 THEN
+                	State := State + 10;
+				END_IF
+            END_IF
+        END_IF
+		
+    20: (* Ensure CYL6 is Extended *)
+        IF NOT GVL_IO.DI_CYL6_E THEN
+            GVL_IO.DO_CYL6_E := TRUE;
+        ELSE
+            GVL_IO.DO_CYL6_E := FALSE;
+            DelayTimer(IN := TRUE, PT := T#50MS);
+            IF DelayTimer.Q THEN State := State + 1; END_IF
+        END_IF
+		
+	21: (* Ensure CYL6 is Extended *)
+    	IF NOT GVL_IO.DI_CYL5_R THEN
+			GVL_IO.DO_CYL5_R := TRUE;
+		ELSE
+			GVL_IO.DO_CYL5_R := FALSE;
+		END_IF
+		
+    30: (* Ensure CYL7 is Retracted *)
+        IF NOT GVL_IO.DI_CYL7_R THEN
+            GVL_IO.DO_CYL7_R := TRUE;
+        ELSE
+            GVL_IO.DO_CYL7_R := FALSE;
+            DelayTimer(IN := TRUE, PT := T#50MS);
+            IF DelayTimer.Q THEN State := State + 10; END_IF
+        END_IF
+    
+    40: (* Low Lead Spool Check *)
+        IF NOT GVL_IO.DI_PE5 THEN
+            AlarmActive := TRUE;
+            AlarmTimer(IN := TRUE, PT := T#3S);
+        ELSE
+            AlarmActive := FALSE;
+            DelayTimer(IN := TRUE, PT := T#50MS);
+            IF DelayTimer.Q THEN State := State + 10; END_IF
+        END_IF
+    
+    50: (* Extend CYL7 *)
+        IF NOT GVL_IO.DI_CYL7_E THEN
+            GVL_IO.DO_CYL7_E := TRUE;
+        ELSE
+            GVL_IO.DO_CYL7_E := FALSE;
+            DelayTimer(IN := TRUE, PT := T#50MS);
+            IF DelayTimer.Q THEN State := State + 10; END_IF
+        END_IF
+    
+    60: (* Retract CYL6 *)
+        IF NOT GVL_IO.DI_CYL6_R THEN
+            GVL_IO.DO_CYL6_R := TRUE;
+        ELSE
+            GVL_IO.DO_CYL6_R := FALSE;
+            DelayTimer(IN := TRUE, PT := T#50MS);
+            IF DelayTimer.Q THEN State := State + 10; END_IF
+        END_IF
+    
+    70: (* Extend CYL5 *)
+        IF NOT GVL_IO.DI_CYL5_E THEN
+            GVL_IO.DO_CYL5_E := TRUE;
+        ELSE
+            GVL_IO.DO_CYL5_E := FALSE;
+            DelayTimer(IN := TRUE, PT := T#250MS);
+            IF DelayTimer.Q THEN State := State + 10; END_IF
+        END_IF
+    
+    80: (* Retract CYL5 *)
+        IF NOT GVL_IO.DI_CYL5_R THEN
+            GVL_IO.DO_CYL5_R := TRUE;
+        ELSE
+            GVL_IO.DO_CYL5_R := FALSE;
+            DelayTimer(IN := TRUE, PT := T#50MS);
+            IF DelayTimer.Q THEN State := State + 10; END_IF
+        END_IF
+		
+	90: (* Future Step *)
+		State := 20;
+END_CASE
+
+(* Manual Mode Handling *)
+IF ManualMode THEN
+    State := 0; (* Hold state at 0 when in Manual Mode *)
+    IF GVL_IO.DI_JLU THEN (* Jog switch pressed *)
+        (* Motor M3 runs infinitely while switch is pressed *)
+    END_IF
+END_IF
+
+(* Alarm Handling for Timeout *)
+IF NOT AlarmActive AND (State > 0) THEN
+    AlarmTimer(IN := FALSE);
+ELSE
+    IF AlarmTimer.Q THEN
+        (* Trigger Alarm on HMI *)
+    END_IF
+END_IF]]></ST>
+    </Implementation>
+    <LineIds Name="FB_CoreSwaging">
+      <LineId Id="144" Count="1" />
+      <LineId Id="24" Count="6" />
+      <LineId Id="139" Count="0" />
+      <LineId Id="31" Count="0" />
+      <LineId Id="140" Count="1" />
+      <LineId Id="143" Count="0" />
+      <LineId Id="146" Count="0" />
+      <LineId Id="34" Count="10" />
+      <LineId Id="150" Count="1" />
+      <LineId Id="45" Count="79" />
+      <LineId Id="9" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

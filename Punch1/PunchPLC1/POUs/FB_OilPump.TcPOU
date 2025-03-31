@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.6">
+  <POU Name="FB_OilPump" Id="{eb1edbee-9a4b-4f1e-8695-a5d69ca2499b}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK FB_OilPump
+VAR_INPUT
+    bEnable : BOOL; (* Signal to enable the pump *)
+    bReset : BOOL;  (* Reset signal from HMI *)
+    bCallForCyl : BOOL; (* Any call for CYL1-CYL10 (DO5.6-DO6.3) *)
+END_VAR
+
+VAR_OUTPUT
+    bFaulted : BOOL; (* Indicates failure to start alarm *)
+END_VAR
+
+VAR
+    State : INT := 0; (* State machine variable *)
+    StartDelayTimer : TON; (* Timer for 10s delay before activating DO5.2 *)
+    FaultTimer : TON; (* Timer for 3s monitoring if DI1.3 feedback is missing *)
+END_VAR]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[(* Default Output States *)
+GVL_IO.DO_M1 := FALSE; (* Pump Primary Output *)
+GVL_IO.DO_M2 := FALSE; (* Pump Secondary Output *)
+GVL_IO.DO_SV1 := FALSE; (* Enable Pump if CYL is called *)
+bFaulted := FALSE;
+
+CASE State OF
+    0: (* Pump Off, Not Enabled *)
+        IF bEnable THEN
+            State := 1;
+        END_IF
+
+    1: (* Pump Enabled from Other Routine *)
+        GVL_IO.DO_M1 := TRUE; (* Start the pump *)
+        
+        (* Start the 10-second delay before DO5.2 activation *)
+        StartDelayTimer(IN := TRUE, PT := T#10S);
+
+        (* If delay timer completes, activate DO5.2 *)
+        IF StartDelayTimer.Q THEN
+            GVL_IO.DO_M2 := TRUE;
+        END_IF
+
+        (* Inhibit Pump if DI1.4 or DI1.5 goes Low *)
+        IF (NOT GVL_IO.DI_LS1) OR (NOT GVL_IO.DI_TS1) THEN
+            State := 2; (* Move to failure state *)
+        END_IF
+
+        (* If any CYL1-10 is called, Energise DO5.5 *)
+        IF bCallForCyl THEN
+            GVL_IO.DO_SV1 := TRUE;
+        ELSE
+            GVL_IO.DO_SV1 := FALSE;
+        END_IF
+
+    2: (* Fault Handling: Check DI1.3 Feedback *)
+        (* Start 3-second timer to check for DI1.3 feedback *)
+        FaultTimer(IN := TRUE, PT := T#3S);
+
+        IF GVL_IO.DI_M1 THEN
+            (* Reset fault condition if feedback is received in time *)
+            FaultTimer(IN := FALSE);
+            bFaulted := FALSE;
+        END_IF
+
+        IF FaultTimer.Q THEN
+            (* If DI1.3 feedback was not received, set fault state *)
+            bFaulted := TRUE;
+        END_IF
+
+        (* Reset Condition from HMI *)
+        IF bReset THEN
+            State := 0; (* Reset to the initial state *)
+            FaultTimer(IN := FALSE);
+            StartDelayTimer(IN := FALSE);
+            bFaulted := FALSE;
+        END_IF
+END_CASE]]></ST>
+    </Implementation>
+    <LineIds Name="FB_OilPump">
+      <LineId Id="40" Count="56" />
+      <LineId Id="9" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

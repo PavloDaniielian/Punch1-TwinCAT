@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.6">
+  <GVL Name="GVL_var" Id="{dba55c71-a8a8-4ae4-adce-873cc13bd22c}">
+    <Declaration><![CDATA[{attribute 'qualified_only'}
+VAR_GLOBAL
+	CorePress_CoreCount: INT := 0;
+	CorePress_CasingCount: INT := 0;
+	
+	sAlarmMessage: STRING := "";
+END_VAR]]></Declaration>
+  </GVL>
+</TcPlcObject>

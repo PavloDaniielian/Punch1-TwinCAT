@@ -1,0 +1,24 @@
+# https://confluence.slac.stanford.edu/display/PCDS/TwinCAT+3+Git+Setup+and+Best+Practices
+_Boot
+_Libraries
+_CompileInfo
+*.suo
+*~
+*.tpy
+*.bak
+*.~u
+*.csv
+*.svd
+*.dbg
+TrialLicense.tclrs
+*.library
+*.tmcRefac
+.pytmc_build
+
+# Ignore most tmc files, such as the one typically used to handle pytmc
+*.tmc
+# But include the one used to keep track of pinned global types
+!GlobalEvents.tmc
+
+# In case you vim for some reason
+*.swp

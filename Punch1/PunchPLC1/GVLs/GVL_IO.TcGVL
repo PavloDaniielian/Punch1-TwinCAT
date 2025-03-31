@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.6">
+  <GVL Name="GVL_IO" Id="{94fa442e-6485-4b26-9bf3-2f5b8b8194f6}">
+    <Declaration><![CDATA[{attribute 'qualified_only'}
+VAR_GLOBAL
+	DI_24VDC_CB_OK: BOOL := FALSE;
+	DI_ESR1: 		BOOL := FALSE;
+	DI_M1: 			BOOL := FALSE;
+	DI_LS1: 		BOOL := FALSE;
+	DI_TS1: 		BOOL := FALSE;
+	DI_CYL1_E: 		BOOL := FALSE;
+	DI_CYL1_R: 		BOOL := FALSE;
+	DI_CYL2_E: 		BOOL := FALSE;
+	DI_CYL2_R: 		BOOL := FALSE;
+	DI_CYL3_E: 		BOOL := FALSE;
+	DI_CYL3_R: 		BOOL := FALSE;
+	DI_CYL4_E: 		BOOL := FALSE;
+	DI_CYL4_R: 		BOOL := FALSE;
+	DI_CYL5_E: 		BOOL := FALSE;
+	DI_CYL5_R: 		BOOL := FALSE;
+	DI_CYL6_E: 		BOOL := FALSE;
+	DI_CYL6_R: 		BOOL := FALSE;
+	DI_CYL7_E: 		BOOL := FALSE;
+	DI_CYL7_R: 		BOOL := FALSE;
+	DI_PS1:			BOOL := FALSE;
+	DI_PCYL1_E:		BOOL := FALSE;
+	DI_PCYL1_R:		BOOL := FALSE;
+	DI_PCYL2_E:		BOOL := FALSE;
+	DI_PCYL2_R:		BOOL := FALSE;
+	DI_ECS:			BOOL := FALSE;
+	DI_EPD:			BOOL := FALSE;
+	DI_JLU:			BOOL := FALSE;
+
+	DI_PE1:			BOOL := FALSE;
+	DI_PE2:			BOOL := FALSE;
+	DI_PE3:			BOOL := FALSE;
+	DI_PE4:			BOOL := FALSE;
+	DI_PE5:			BOOL := FALSE;
+	DI_PE6:			BOOL := FALSE;
+	
+	AI_PT1:			REAL := 1.0;
+	AI_PT2:			REAL := 1.0;
+
+	DO_M1:			BOOL;
+	DO_M2:			BOOL;
+	DO_VB1:			BOOL;
+	DO_VB2:			BOOL;
+	DO_SV1:			BOOL;
+	DO_CYL1_E:		BOOL;
+	DO_CYL1_R:		BOOL;
+	DO_CYL2_E:		BOOL;
+	DO_CYL2_R:		BOOL;
+	DO_CYL3_E:		BOOL;
+	DO_CYL3_R:		BOOL;
+	DO_CYL4_E:		BOOL;
+	DO_CYL4_R:		BOOL;
+	DO_CYL5_E:		BOOL;
+	DO_CYL5_R:		BOOL;
+	DO_CYL6_E:		BOOL;
+	DO_CYL6_R:		BOOL;
+	DO_CYL7_E:		BOOL;
+	DO_CYL7_R:		BOOL;
+	DO_PCYL1_E:		BOOL;
+	DO_PCYL1_R:		BOOL;
+	DO_PCYL2_E:		BOOL;
+	DO_PCYL2_R:		BOOL;
+	DO_PCYL3_E:		BOOL;
+	DO_PCYL4_E:		BOOL;
+	DO_PCYL5_E:		BOOL;
+	DO_PCYL6_E:		BOOL;
+	DO_LGreen:		BOOL;
+	DO_LRed:		BOOL;
+END_VAR]]></Declaration>
+  </GVL>
+</TcPlcObject>

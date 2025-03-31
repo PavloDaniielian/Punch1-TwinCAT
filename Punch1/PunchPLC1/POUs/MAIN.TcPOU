@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.6">
+  <POU Name="MAIN" Id="{a9276fae-2b8f-4b86-a5ea-ccb7b5233763}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM Main
+VAR
+	CoreSwaging: FB_CoreSwaging;
+    OilPump: FB_OilPump;
+    CorePress: FB_CorePress;
+    CasingVibratoryBowl1: FB_CasingVibratoryBowl1;
+    CoreVibratoryBowl2: FB_CoreVibratoryBowl2;
+
+	bCoreSwagingFaulted: BOOL := FALSE;
+	bOilPumpFaulted: BOOL := FALSE;
+	bCorePressFaulted: BOOL := FALSE;
+	bCasingVibratoryBowl1Faulted: BOOL := FALSE;
+	bCoreVibratoryBowl2Faulted: BOOL := FALSE;
+    bAnyRoutineFaulted: BOOL := FALSE;
+END_VAR]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[IF NOT bAnyRoutineFaulted THEN
+	CoreSwaging(bEnable := TRUE);
+	OilPump(bEnable := TRUE);
+	CorePress(bEnable := TRUE);
+	CasingVibratoryBowl1(bEnable := TRUE);
+	CoreVibratoryBowl2(bEnable := TRUE);
+	
+	bCoreSwagingFaulted := CoreSwaging.bFaulted;
+	bOilPumpFaulted := OilPump.bFaulted;
+	bCorePressFaulted := CorePress.bFaulted;
+	bCasingVibratoryBowl1Faulted := CasingVibratoryBowl1.bFaulted;
+	bCoreVibratoryBowl2Faulted := CoreVibratoryBowl2.bFaulted;
+	bAnyRoutineFaulted := bCoreSwagingFaulted OR bOilPumpFaulted
+							OR bCorePressFaulted OR bCasingVibratoryBowl1Faulted OR bCoreVibratoryBowl2Faulted;
+END_IF
+
+GVL_IO.DO_LGreen := NOT bAnyRoutineFaulted;
+GVL_IO.DO_LRed := bAnyRoutineFaulted;
+
+]]></ST>
+    </Implementation>
+    <LineIds Name="MAIN">
+      <LineId Id="460" Count="2" />
+      <LineId Id="451" Count="0" />
+      <LineId Id="478" Count="1" />
+      <LineId Id="463" Count="0" />
+      <LineId Id="468" Count="2" />
+      <LineId Id="486" Count="1" />
+      <LineId Id="471" Count="0" />
+      <LineId Id="480" Count="0" />
+      <LineId Id="449" Count="0" />
+      <LineId Id="474" Count="0" />
+      <LineId Id="472" Count="0" />
+      <LineId Id="475" Count="0" />
+      <LineId Id="8" Count="0" />
+      <LineId Id="444" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>
