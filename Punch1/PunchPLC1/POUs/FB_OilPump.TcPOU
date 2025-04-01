@@ -3,31 +3,31 @@
   <POU Name="FB_OilPump" Id="{eb1edbee-9a4b-4f1e-8695-a5d69ca2499b}" SpecialFunc="None">
     <Declaration><![CDATA[FUNCTION_BLOCK FB_OilPump
 VAR_INPUT
-    bEnable : BOOL; (* Signal to enable the pump *)
-    bReset : BOOL;  (* Reset signal from HMI *)
+    i_bEnabled : BOOL; (* Signal to enable the pump *)
+    i_bReset : BOOL;  (* Reset signal from HMI *)
     bCallForCyl : BOOL; (* Any call for CYL1-CYL10 (DO5.6-DO6.3) *)
 END_VAR
 
 VAR_OUTPUT
-    bFaulted : BOOL; (* Indicates failure to start alarm *)
+    o_bFaulted : BOOL; (* Indicates failure to start alarm *)
 END_VAR
 
 VAR
-    State : INT := 0; (* State machine variable *)
+    iState : INT := 0; (* iState machine variable *)
     StartDelayTimer : TON; (* Timer for 10s delay before activating DO5.2 *)
     FaultTimer : TON; (* Timer for 3s monitoring if DI1.3 feedback is missing *)
 END_VAR]]></Declaration>
     <Implementation>
-      <ST><![CDATA[(* Default Output States *)
+      <ST><![CDATA[(* Default Output iStates *)
 GVL_IO.DO_M1 := FALSE; (* Pump Primary Output *)
 GVL_IO.DO_M2 := FALSE; (* Pump Secondary Output *)
 GVL_IO.DO_SV1 := FALSE; (* Enable Pump if CYL is called *)
-bFaulted := FALSE;
+o_bFaulted := FALSE;
 
-CASE State OF
+CASE iState OF
     0: (* Pump Off, Not Enabled *)
-        IF bEnable THEN
-            State := 1;
+        IF i_bEnabled THEN
+            iState := 1;
         END_IF
 
     1: (* Pump Enabled from Other Routine *)
@@ -43,7 +43,7 @@ CASE State OF
 
         (* Inhibit Pump if DI1.4 or DI1.5 goes Low *)
         IF (NOT GVL_IO.DI_LS1) OR (NOT GVL_IO.DI_TS1) THEN
-            State := 2; (* Move to failure state *)
+            iState := 2; (* Move to failure iState *)
         END_IF
 
         (* If any CYL1-10 is called, Energise DO5.5 *)
@@ -60,20 +60,20 @@ CASE State OF
         IF GVL_IO.DI_M1 THEN
             (* Reset fault condition if feedback is received in time *)
             FaultTimer(IN := FALSE);
-            bFaulted := FALSE;
+            o_bFaulted := FALSE;
         END_IF
 
         IF FaultTimer.Q THEN
-            (* If DI1.3 feedback was not received, set fault state *)
-            bFaulted := TRUE;
+            (* If DI1.3 feedback was not received, set fault iState *)
+            o_bFaulted := TRUE;
         END_IF
 
         (* Reset Condition from HMI *)
-        IF bReset THEN
-            State := 0; (* Reset to the initial state *)
+        IF i_bReset THEN
+            iState := 0; (* Reset to the initial iState *)
             FaultTimer(IN := FALSE);
             StartDelayTimer(IN := FALSE);
-            bFaulted := FALSE;
+            o_bFaulted := FALSE;
         END_IF
 END_CASE]]></ST>
     </Implementation>

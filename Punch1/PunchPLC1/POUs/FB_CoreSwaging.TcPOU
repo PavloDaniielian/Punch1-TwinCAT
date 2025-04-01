@@ -3,36 +3,48 @@
   <POU Name="FB_CoreSwaging" Id="{32bb99d5-55a6-44d7-8d53-4198850662e4}" SpecialFunc="None">
     <Declaration><![CDATA[FUNCTION_BLOCK FB_CoreSwaging
 VAR_INPUT
-	bEnable: BOOL;
-    bReset : BOOL;  (* Reset from HMI *)
+	i_bEnabled: BOOL;
+    i_bReset : BOOL;  (* Reset from HMI *)
 END_VAR
 VAR_OUTPUT
-	bFaulted: BOOL;
+	o_bFaulted: BOOL;
 END_VAR
 VAR
-    State : INT := 0;
+    iState : INT := 0;
+    bManualMode : BOOL := FALSE;
+    bAlarmActive : BOOL := FALSE;
 	FeedbackTimer : TON;
     DelayTimer : TON;
     AlarmTimer : TON;
-    ManualMode : BOOL := FALSE;
-    AlarmActive : BOOL := FALSE;
 END_VAR
+
+
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[bFaulted := FALSE;
+      <ST><![CDATA[o_bFaulted := FALSE;
 
-CASE State OF
+(* Manual Mode Handling *)
+IF GVL_HMI.bCoreSwagingManualMode THEN
+    iState := 0; (* Hold iState at 0 when in Manual Mode *)
+    IF GVL_IO.DI_JLU THEN (* Jog switch pressed *)
+        (* Motor M3 runs infinitely while switch is pressed *)
+    END_IF
+ELSE
+	
+CASE iState OF
 	0: (* Idle/Off, DI_ECS=FALSE *)
-		State := 10;
+		iState := 10;
 		
 	10: (* check safety conditions *)
 		IF GVL_IO.DI_24VDC_CB_OK AND GVL_IO.DI_ECS THEN (* Safeties OK and Enable Switch On *)
             GVL_IO.DO_M1 := TRUE; (* Start Oil Pump *)
+			CheckFeedback(GVL_IO.DI_M1);
 			IF NOT DelayTimer.IN THEN
             	DelayTimer(IN := TRUE, PT := T#2S); (* 2 sec delay *)
 			ELSE
 				IF DelayTimer.Q AND GVL_IO.DI_M1 THEN
-                	State := State + 10;
+                	iState := iState + 10;
+					FeedbackTimer(IN:=FALSE);
 				END_IF
             END_IF
         END_IF
@@ -40,107 +52,256 @@ CASE State OF
     20: (* Ensure CYL6 is Extended *)
         IF NOT GVL_IO.DI_CYL6_E THEN
             GVL_IO.DO_CYL6_E := TRUE;
+			CheckFeedback(GVL_IO.DI_CYL6_E);
         ELSE
-            GVL_IO.DO_CYL6_E := FALSE;
-            DelayTimer(IN := TRUE, PT := T#50MS);
-            IF DelayTimer.Q THEN State := State + 1; END_IF
+			FeedbackTimer(IN:=FALSE);
+            //GVL_IO.DO_CYL6_E := FALSE;
+			IF NOT DelayTimer.IN THEN
+            	DelayTimer(IN := TRUE, PT := T#50MS);
+			ELSE
+            	IF DelayTimer.Q THEN iState := iState + 1; END_IF
+			END_IF
         END_IF
 		
 	21: (* Ensure CYL6 is Extended *)
     	IF NOT GVL_IO.DI_CYL5_R THEN
 			GVL_IO.DO_CYL5_R := TRUE;
+			CheckFeedback(GVL_IO.DI_CYL5_R);
 		ELSE
-			GVL_IO.DO_CYL5_R := FALSE;
+			FeedbackTimer(IN:=FALSE);
+			//GVL_IO.DO_CYL5_R := FALSE;
+			iState := (iState + 10) / 10 * 10;
 		END_IF
 		
     30: (* Ensure CYL7 is Retracted *)
         IF NOT GVL_IO.DI_CYL7_R THEN
             GVL_IO.DO_CYL7_R := TRUE;
+			CheckFeedback(GVL_IO.DI_CYL7_R);
         ELSE
-            GVL_IO.DO_CYL7_R := FALSE;
-            DelayTimer(IN := TRUE, PT := T#50MS);
-            IF DelayTimer.Q THEN State := State + 10; END_IF
+			FeedbackTimer(IN:=FALSE);
+            //GVL_IO.DO_CYL7_R := FALSE;
+			IF NOT DelayTimer.IN THEN
+            	DelayTimer(IN := TRUE, PT := T#50MS);
+			ELSE
+            	IF DelayTimer.Q THEN iState := iState + 10; END_IF
+			END_IF
         END_IF
     
     40: (* Low Lead Spool Check *)
         IF NOT GVL_IO.DI_PE5 THEN
-            AlarmActive := TRUE;
+            bAlarmActive := TRUE;
             AlarmTimer(IN := TRUE, PT := T#3S);
         ELSE
-            AlarmActive := FALSE;
-            DelayTimer(IN := TRUE, PT := T#50MS);
-            IF DelayTimer.Q THEN State := State + 10; END_IF
+            bAlarmActive := FALSE;
+			IF GVL_IO.DI_CYL4_R THEN
+				IF NOT DelayTimer.IN THEN
+					DelayTimer(IN := TRUE, PT := T#50MS);
+				ELSE
+					IF DelayTimer.Q THEN iState := iState + 10; END_IF
+				END_IF
+			END_IF
         END_IF
     
     50: (* Extend CYL7 *)
         IF NOT GVL_IO.DI_CYL7_E THEN
             GVL_IO.DO_CYL7_E := TRUE;
+			CheckFeedback(GVL_IO.DI_CYL7_E);
         ELSE
-            GVL_IO.DO_CYL7_E := FALSE;
-            DelayTimer(IN := TRUE, PT := T#50MS);
-            IF DelayTimer.Q THEN State := State + 10; END_IF
+			FeedbackTimer(IN:=FALSE);
+            //GVL_IO.DO_CYL7_E := FALSE;
+            IF NOT DelayTimer.IN THEN
+				DelayTimer(IN := TRUE, PT := T#50MS);
+			ELSE
+				IF DelayTimer.Q THEN iState := iState + 10; END_IF
+			END_IF
         END_IF
     
     60: (* Retract CYL6 *)
         IF NOT GVL_IO.DI_CYL6_R THEN
             GVL_IO.DO_CYL6_R := TRUE;
+			CheckFeedback(GVL_IO.DI_CYL6_R);
         ELSE
-            GVL_IO.DO_CYL6_R := FALSE;
-            DelayTimer(IN := TRUE, PT := T#50MS);
-            IF DelayTimer.Q THEN State := State + 10; END_IF
+			FeedbackTimer(IN:=FALSE);
+            //GVL_IO.DO_CYL6_R := FALSE;
+            IF NOT DelayTimer.IN THEN
+				DelayTimer(IN := TRUE, PT := T#50MS);
+			ELSE
+				IF DelayTimer.Q THEN iState := iState + 10; END_IF
+			END_IF
         END_IF
     
     70: (* Extend CYL5 *)
         IF NOT GVL_IO.DI_CYL5_E THEN
             GVL_IO.DO_CYL5_E := TRUE;
+			CheckFeedback(GVL_IO.DI_CYL5_E);
         ELSE
-            GVL_IO.DO_CYL5_E := FALSE;
-            DelayTimer(IN := TRUE, PT := T#250MS);
-            IF DelayTimer.Q THEN State := State + 10; END_IF
+			FeedbackTimer(IN:=FALSE);
+            //GVL_IO.DO_CYL5_E := FALSE;
+            IF NOT DelayTimer.IN THEN
+				DelayTimer(IN := TRUE, PT := T#50MS);
+			ELSE
+				IF DelayTimer.Q THEN iState := iState + 10; END_IF
+			END_IF
         END_IF
     
     80: (* Retract CYL5 *)
         IF NOT GVL_IO.DI_CYL5_R THEN
             GVL_IO.DO_CYL5_R := TRUE;
+			CheckFeedback(GVL_IO.DI_CYL5_R);
         ELSE
-            GVL_IO.DO_CYL5_R := FALSE;
-            DelayTimer(IN := TRUE, PT := T#50MS);
-            IF DelayTimer.Q THEN State := State + 10; END_IF
+			FeedbackTimer(IN:=FALSE);
+            //GVL_IO.DO_CYL5_R := FALSE;
+            IF NOT DelayTimer.IN THEN
+				DelayTimer(IN := TRUE, PT := T#50MS);
+			ELSE
+				IF DelayTimer.Q THEN iState := iState + 10; END_IF
+			END_IF
         END_IF
 		
 	90: (* Future Step *)
-		State := 20;
+		iState := 20;
 END_CASE
 
-(* Manual Mode Handling *)
-IF ManualMode THEN
-    State := 0; (* Hold state at 0 when in Manual Mode *)
-    IF GVL_IO.DI_JLU THEN (* Jog switch pressed *)
-        (* Motor M3 runs infinitely while switch is pressed *)
-    END_IF
-END_IF
-
 (* Alarm Handling for Timeout *)
-IF NOT AlarmActive AND (State > 0) THEN
+IF NOT bAlarmActive AND (iState > 0) THEN
     AlarmTimer(IN := FALSE);
 ELSE
     IF AlarmTimer.Q THEN
         (* Trigger Alarm on HMI *)
     END_IF
+END_IF
+
 END_IF]]></ST>
     </Implementation>
+    <Method Name="CheckFeedback" Id="{ca45cbb6-be73-4478-acca-2fc864d4bbed}">
+      <Declaration><![CDATA[METHOD CheckFeedback : BOOL
+VAR_INPUT
+	i_bFeedback : BOOL;
+END_VAR
+VAR_OUTPUT
+	o_bNot : BOOL := FALSE;
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[IF NOT i_bFeedback AND NOT FeedbackTimer.IN THEN
+    FeedbackTimer(IN := TRUE, PT := T#3S);
+ELSE
+	IF i_bFeedback THEN
+		FeedbackTimer(IN := FALSE);
+    ELSIF FeedbackTimer.Q THEN
+		iState := 0;
+		bAlarmActive := TRUE;
+		AlarmTimer(IN := TRUE, PT := T#3S);
+        o_bNot := TRUE; 
+    END_IF
+END_IF]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="DelayAndAdvance" Id="{532274d9-37b2-4f3d-a542-0cdcb8beabdd}">
+      <Declaration><![CDATA[METHOD DelayAndAdvance : BOOL
+VAR_INPUT
+	i_nNextState: INT;
+    pt : TIME;
+END_VAR
+
+VAR
+END_VAR]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[IF NOT DelayTimer.IN THEN
+    DelayTimer(IN := TRUE, PT := pt);
+ELSE
+    IF DelayTimer.Q THEN 
+        iState := i_nNextState; 
+    END_IF
+END_IF]]></ST>
+      </Implementation>
+    </Method>
     <LineIds Name="FB_CoreSwaging">
-      <LineId Id="144" Count="1" />
+      <LineId Id="144" Count="0" />
+      <LineId Id="218" Count="5" />
+      <LineId Id="145" Count="0" />
+      <LineId Id="226" Count="0" />
+      <LineId Id="229" Count="0" />
       <LineId Id="24" Count="6" />
+      <LineId Id="251" Count="0" />
       <LineId Id="139" Count="0" />
       <LineId Id="31" Count="0" />
       <LineId Id="140" Count="1" />
       <LineId Id="143" Count="0" />
+      <LineId Id="253" Count="0" />
       <LineId Id="146" Count="0" />
-      <LineId Id="34" Count="10" />
+      <LineId Id="34" Count="5" />
+      <LineId Id="254" Count="0" />
+      <LineId Id="40" Count="0" />
+      <LineId Id="255" Count="0" />
+      <LineId Id="41" Count="0" />
+      <LineId Id="153" Count="0" />
+      <LineId Id="42" Count="0" />
+      <LineId Id="154" Count="0" />
+      <LineId Id="43" Count="0" />
+      <LineId Id="155" Count="0" />
+      <LineId Id="44" Count="0" />
       <LineId Id="150" Count="1" />
-      <LineId Id="45" Count="79" />
+      <LineId Id="45" Count="1" />
+      <LineId Id="256" Count="0" />
+      <LineId Id="47" Count="0" />
+      <LineId Id="257" Count="0" />
+      <LineId Id="48" Count="0" />
+      <LineId Id="156" Count="0" />
+      <LineId Id="49" Count="4" />
+      <LineId Id="259" Count="0" />
+      <LineId Id="54" Count="0" />
+      <LineId Id="258" Count="0" />
+      <LineId Id="55" Count="0" />
+      <LineId Id="159" Count="0" />
+      <LineId Id="56" Count="0" />
+      <LineId Id="160" Count="0" />
+      <LineId Id="57" Count="0" />
+      <LineId Id="161" Count="0" />
+      <LineId Id="58" Count="6" />
+      <LineId Id="171" Count="0" />
+      <LineId Id="165" Count="4" />
+      <LineId Id="162" Count="0" />
+      <LineId Id="67" Count="5" />
+      <LineId Id="260" Count="0" />
+      <LineId Id="73" Count="0" />
+      <LineId Id="261" Count="0" />
+      <LineId Id="74" Count="0" />
+      <LineId Id="172" Count="3" />
+      <LineId Id="75" Count="0" />
+      <LineId Id="77" Count="4" />
+      <LineId Id="263" Count="0" />
+      <LineId Id="82" Count="0" />
+      <LineId Id="262" Count="0" />
+      <LineId Id="176" Count="4" />
+      <LineId Id="85" Count="5" />
+      <LineId Id="264" Count="0" />
+      <LineId Id="91" Count="0" />
+      <LineId Id="265" Count="0" />
+      <LineId Id="181" Count="4" />
+      <LineId Id="94" Count="5" />
+      <LineId Id="267" Count="0" />
+      <LineId Id="100" Count="0" />
+      <LineId Id="266" Count="0" />
+      <LineId Id="186" Count="4" />
+      <LineId Id="103" Count="5" />
+      <LineId Id="117" Count="7" />
       <LineId Id="9" Count="0" />
+      <LineId Id="228" Count="0" />
+      <LineId Id="227" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_CoreSwaging.CheckFeedback">
+      <LineId Id="6" Count="2" />
+      <LineId Id="19" Count="1" />
+      <LineId Id="9" Count="0" />
+      <LineId Id="22" Count="1" />
+      <LineId Id="21" Count="0" />
+      <LineId Id="10" Count="1" />
+      <LineId Id="5" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_CoreSwaging.DelayAndAdvance">
+      <LineId Id="8" Count="5" />
+      <LineId Id="5" Count="0" />
     </LineIds>
   </POU>
 </TcPlcObject>

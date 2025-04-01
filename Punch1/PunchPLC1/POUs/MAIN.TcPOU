@@ -18,17 +18,17 @@ VAR
 END_VAR]]></Declaration>
     <Implementation>
       <ST><![CDATA[IF NOT bAnyRoutineFaulted THEN
-	CoreSwaging(bEnable := TRUE);
-	OilPump(bEnable := TRUE);
-	CorePress(bEnable := TRUE);
-	CasingVibratoryBowl1(bEnable := TRUE);
-	CoreVibratoryBowl2(bEnable := TRUE);
+	CoreSwaging(i_bEnabled := TRUE);
+	OilPump(i_bEnabled := TRUE);
+	CorePress(i_bEnabled := TRUE);
+	CasingVibratoryBowl1(i_bEnabled := TRUE);
+	CoreVibratoryBowl2(i_bEnabled := TRUE);
 	
-	bCoreSwagingFaulted := CoreSwaging.bFaulted;
-	bOilPumpFaulted := OilPump.bFaulted;
-	bCorePressFaulted := CorePress.bFaulted;
-	bCasingVibratoryBowl1Faulted := CasingVibratoryBowl1.bFaulted;
-	bCoreVibratoryBowl2Faulted := CoreVibratoryBowl2.bFaulted;
+	bCoreSwagingFaulted := CoreSwaging.o_bFaulted;
+	bOilPumpFaulted := OilPump.o_bFaulted;
+	bCorePressFaulted := CorePress.o_bFaulted;
+	bCasingVibratoryBowl1Faulted := CasingVibratoryBowl1.o_bFaulted;
+	bCoreVibratoryBowl2Faulted := CoreVibratoryBowl2.o_bFaulted;
 	bAnyRoutineFaulted := bCoreSwagingFaulted OR bOilPumpFaulted
 							OR bCorePressFaulted OR bCasingVibratoryBowl1Faulted OR bCoreVibratoryBowl2Faulted;
 END_IF

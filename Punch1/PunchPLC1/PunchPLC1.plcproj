@@ -17,14 +17,22 @@
     <LibraryReferences>{10e046b2-5ba5-48fc-a3c4-48825ab9a56e}</LibraryReferences>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="GVLs\GVL_HMI.TcGVL">
+      <SubType>Code</SubType>
+      <LinkAlways>true</LinkAlways>
+    </Compile>
+    <Compile Include="GVLs\GVL_IO.TcGVL">
+      <SubType>Code</SubType>
+      <LinkAlways>true</LinkAlways>
+    </Compile>
     <Compile Include="GVLs\GVL_var.TcGVL">
       <SubType>Code</SubType>
       <LinkAlways>true</LinkAlways>
     </Compile>
-    <Compile Include="POUs\FB_VibrateBowl1.TcPOU">
+    <Compile Include="POUs\FB_CasingVibratoryBowl1.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="POUs\FB_VibrateBowl2.TcPOU">
+    <Compile Include="POUs\FB_CoreVibratoryBowl2.TcPOU">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="POUs\MAIN.TcPOU">

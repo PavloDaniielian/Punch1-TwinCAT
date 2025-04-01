@@ -15,21 +15,5 @@
 				</Instance>
 			</Project>
 		</Plc>
-		<Io>
-			<Device Id="1" DevType="111" DevFlags="#x0003" AmsPort="28673" AmsNetId="192.168.238.1.2.1" RemoteName="Device 1 (EtherCAT)">
-				<Name>Device 1 (EtherCAT)</Name>
-				<AddressInfo>
-					<Pnp>
-						<DeviceDesc></DeviceDesc>
-						<DeviceName></DeviceName>
-						<DeviceData>000000000000</DeviceData>
-					</Pnp>
-				</AddressInfo>
-				<Image Id="1" AddrType="9" ImageType="3">
-					<Name>Image</Name>
-				</Image>
-				<EtherCAT/>
-			</Device>
-		</Io>
 	</Project>
 </TcSmProject>
