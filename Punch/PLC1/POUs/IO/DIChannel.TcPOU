@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.6">
+  <POU Name="DIChannel" Id="{cf59d0d9-9926-4c93-8169-8f9a140478e6}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK DIChannel IMPLEMENTS I_DigitalInput
+VAR
+	input AT %I* : BOOL;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[]]></ST>
+    </Implementation>
+    <Property Name="bState" Id="{e7b38e79-1425-4a3b-a0f4-1203945e399b}">
+      <Declaration><![CDATA[PROPERTY PUBLIC bState : BOOL]]></Declaration>
+      <Get Name="Get" Id="{ad2e312a-5057-43f5-997a-c2b808464078}">
+        <Declaration><![CDATA[VAR
+END_VAR
+]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[bState := input;]]></ST>
+        </Implementation>
+      </Get>
+    </Property>
+    <LineIds Name="DIChannel">
+      <LineId Id="9" Count="0" />
+    </LineIds>
+    <LineIds Name="DIChannel.bState.Get">
+      <LineId Id="2" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>
