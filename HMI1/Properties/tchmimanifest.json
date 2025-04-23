@@ -42,7 +42,7 @@
   ],
   "theme_color": "#9E9E9E",
   "background_color": "#9E9E9E",
-  "start_url": "/Pages/LoginPage.html",
+  "start_url": "../Default.html",
   "display": "standalone",
   "orientation": "portrait"
 }

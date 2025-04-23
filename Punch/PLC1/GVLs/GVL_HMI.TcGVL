@@ -3,8 +3,10 @@
   <GVL Name="GVL_HMI" Id="{80a1a5a0-00a7-49c7-a368-c9a3531de34b}">
     <Declaration><![CDATA[{attribute 'qualified_only'}
 VAR_GLOBAL
-	bCoreSwagingManualMode: BOOL := FALSE;
-	sAlarmMessage: STRING(50) := '';
+	bInCoreSwagingManualMode: BOOL := FALSE;
+	sInAlarmMessage: STRING(50) := '';
+	
+	bOut_CYL1_E : BOOL := FALSE;
 END_VAR]]></Declaration>
   </GVL>
 </TcPlcObject>

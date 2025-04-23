@@ -21,8 +21,13 @@
     <TargetFrameworkMoniker>native,Version=v1.12.0,Profile=tchmi</TargetFrameworkMoniker>
     <TargetFramework>native1.12-tchmi</TargetFramework>
     <AzureFunctionsVersion>v2</AzureFunctionsVersion>
+    <HmiViewportInitialScale>1.0</HmiViewportInitialScale>
+    <HmiViewportMinimumScale />
+    <HmiViewportMaximumScale />
+    <HmiViewportUserScaleable>Default</HmiViewportUserScaleable>
+    <HmiPostProcessing>True</HmiPostProcessing>
     <Name>HMI1</Name>
-    <HmiCommunicationRouterPort>10100</HmiCommunicationRouterPort>
+    <HmiCommunicationRouterPort>10101</HmiCommunicationRouterPort>
     <HmiCommunicationServerAuthPort>13000</HmiCommunicationServerAuthPort>
     <HmiInitial>1.12.762.46</HmiInitial>
     <HmiRecent>1.12.762.46</HmiRecent>
@@ -36,7 +41,7 @@
   <Import Project="$(TwinCATHmi_Targets)" />
   <PropertyGroup>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>09ba773b-ab40-464c-bf70-5861d932e800</ProjectGuid>
+    <ProjectGuid>3a5c7565-ff86-4e85-98a3-72315fb6277b</ProjectGuid>
     <RootNamespace>TwinCAT3HmiProject</RootNamespace>
     <AssemblyName>TwinCAT3HmiProject</AssemblyName>
     <Configuration Condition=" '$(Configuration)' == '' ">Release</Configuration>
@@ -95,7 +100,7 @@
   </PropertyGroup>
   <Target Name="CoreBuild">
     <TcHmiMSBuild.Publish.TcHmiBuild TaskAction="Clean" ProjectDirectory="$(TcHmi_ProjectDirectory)" OutputPath="$(OutputPath)" />
-    <TcHmiMSBuild.Publish.TcHmiBuild TaskAction="Build" ProjectDirectory="$(TcHmi_ProjectDirectory)" OutputPath="$(OutputPath)" ProjectFiles="@(Content)" VirtualMappings="$(TcHmi_VirtualMappings)" />
+    <TcHmiMSBuild.Publish.TcHmiBuild TaskAction="Build" ProjectDirectory="$(TcHmi_ProjectDirectory)" OutputPath="$(OutputPath)" ProjectFiles="@(Content)" VirtualMappings="$(TcHmi_VirtualMappings)" PostProcessing="$(HmiPostProcessing)" />
     <TcHmiMSBuild.Publish.TcHmiGenerator TaskAction="EntryPage" ProjectDirectory="$(TcHmi_ProjectDirectory)" OutputPath="$(OutputPath)" TcHmiServerAddress="$(TcHmi_ServerAddress)" TcHmiServerPort="$(TcHmi_ServerPort)">
       <Output TaskParameter="Result" PropertyName="TaskResult0" />
     </TcHmiMSBuild.Publish.TcHmiGenerator>
@@ -106,25 +111,15 @@
   <Target Name="ReBuild" DependsOnTargets="Clean; Build" />
   <ItemGroup>
     <Folder Include="Fonts\" />
-    <Folder Include="Functions\" />
     <Folder Include="Images" />
     <Folder Include="Images\Manifest" />
-    <Folder Include="Images\PLC\" />
-    <Folder Include="Images\TwinCAT\" />
     <Folder Include="Imports" />
     <Folder Include="Imports\Images" />
     <Folder Include="Imports\Videos" />
     <Folder Include="KeyboardLayouts\" />
     <Folder Include="Localization" />
-    <Folder Include="Pages\" />
-    <Folder Include="Server\ADS\" />
-    <Folder Include="Server\TcHmiLua\" />
-    <Folder Include="Server\TcHmiSqliteLogger\" />
-    <Folder Include="Server\TcHmiSrv\" />
-    <Folder Include="Server\TcHmiUserManagement\" />
     <Folder Include="Themes" />
     <Folder Include="Themes\Base-Dark\Images\" />
-    <Folder Include="Themes\Base-Dark\Images\Flags\" />
     <Folder Include="Themes\Base\" />
     <Folder Include="Themes\Base-Dark\" />
     <Folder Include="Server">
@@ -134,26 +129,13 @@
     <Content Include=".eslintrc.json">
       <Visible>false</Visible>
     </Content>
-    <Content Include="Functions\UpdateLanguageIcon.function.json">
-      <SubType>Content</SubType>
-      <DependentUpon>Functions\UpdateLanguageIcon.js</DependentUpon>
-    </Content>
-    <Content Include="Functions\UpdateLanguageIcon.js">
+    <Content Include="Images\logo.png">
       <SubType>Content</SubType>
     </Content>
-    <Content Include="Pages\HostContent.content">
+    <Content Include="Images\machine.png">
       <SubType>Content</SubType>
     </Content>
-    <Content Include="Pages\Welcome.content">
-      <SubType>Content</SubType>
-    </Content>
-    <Content Include="Server\ADS\ADS.Config.default.json">
-      <SubType>Content</SubType>
-    </Content>
-    <Content Include="Server\ADS\ADS.Config.remote.json">
-      <SubType>Content</SubType>
-    </Content>
-    <Content Include="Server\ADS\ADS.Storage.json">
+    <Content Include="Overview.content">
       <SubType>Content</SubType>
     </Content>
     <Content Include="Server\TcHmiLua\TcHmiLua.Config.default.json">
@@ -174,15 +156,6 @@
     <Content Include="Server\TcHmiSqliteLogger\TcHmiSqliteLogger.Storage.json">
       <SubType>Content</SubType>
     </Content>
-    <Content Include="Server\TcHmiSrv\TcHmiSrv.Config.default.json">
-      <SubType>Content</SubType>
-    </Content>
-    <Content Include="Server\TcHmiSrv\TcHmiSrv.Config.remote.json">
-      <SubType>Content</SubType>
-    </Content>
-    <Content Include="Server\TcHmiSrv\TcHmiSrv.Storage.json">
-      <SubType>Content</SubType>
-    </Content>
     <Content Include="Server\TcHmiUserManagement\TcHmiUserManagement.Config.default.json">
       <SubType>Content</SubType>
     </Content>
@@ -190,102 +163,6 @@
       <SubType>Content</SubType>
     </Content>
     <Content Include="Server\TcHmiUserManagement\TcHmiUserManagement.Storage.json">
-      <SubType>Content</SubType>
-    </Content>
-    <Content Include="Themes\Base-Dark\Base-Dark.theme">
-      <SubType>Content</SubType>
-    </Content>
-    <Content Include="Themes\Base-Dark\Base-DarkStyle.css">
-      <SubType>Content</SubType>
-    </Content>
-    <Content Include="Themes\Base-Dark\Images\Beckhoff_white.png">
-      <SubType>Content</SubType>
-    </Content>
-    <Content Include="Themes\Base-Dark\Images\Flags\cn.png">
-      <SubType>Content</SubType>
-    </Content>
-    <Content Include="Themes\Base-Dark\Images\Flags\de.png">
-      <SubType>Content</SubType>
-    </Content>
-    <Content Include="Themes\Base-Dark\Images\Flags\en_gb.png">
-      <SubType>Content</SubType>
-    </Content>
-    <Content Include="Themes\Base-Dark\Images\Flags\en_us.png">
-      <SubType>Content</SubType>
-    </Content>
-    <Content Include="Themes\Base-Dark\Images\Flags\es.png">
-      <SubType>Content</SubType>
-    </Content>
-    <Content Include="Themes\Base-Dark\Images\Flags\fr.png">
-      <SubType>Content</SubType>
-    </Content>
-    <Content Include="Themes\Base-Dark\Images\Flags\it.png">
-      <SubType>Content</SubType>
-    </Content>
-    <Content Include="Themes\Base-Dark\Images\Flags\jp.png">
-      <SubType>Content</SubType>
-    </Content>
-    <Content Include="Themes\Base-Dark\Images\logout_pressed.svg">
-      <SubType>Content</SubType>
-    </Content>
-    <Content Include="Themes\Base-Dark\Images\Splash-320x534.png">
-      <SubType>Content</SubType>
-    </Content>
-    <Content Include="Themes\Base-Dark\Images\Splash-420x200.png">
-      <SubType>Content</SubType>
-    </Content>
-    <Content Include="Themes\Base-Dark\Images\Splash-800x600.png">
-      <SubType>Content</SubType>
-    </Content>
-    <Content Include="Themes\Base-Dark\Images\startpage_pressed.svg">
-      <SubType>Content</SubType>
-    </Content>
-    <Content Include="Themes\Base\Base.theme">
-      <SubType>Content</SubType>
-    </Content>
-    <Content Include="Themes\Base\BaseStyle.css">
-      <SubType>Content</SubType>
-    </Content>
-    <Content Include="Themes\Base\Images\Beckhoff_white.png">
-      <SubType>Content</SubType>
-    </Content>
-    <Content Include="Themes\Base\Images\Flags\cn.png">
-      <SubType>Content</SubType>
-    </Content>
-    <Content Include="Themes\Base\Images\Flags\de.png">
-      <SubType>Content</SubType>
-    </Content>
-    <Content Include="Themes\Base\Images\Flags\en_gb.png">
-      <SubType>Content</SubType>
-    </Content>
-    <Content Include="Themes\Base\Images\Flags\en_us.png">
-      <SubType>Content</SubType>
-    </Content>
-    <Content Include="Themes\Base\Images\Flags\es.png">
-      <SubType>Content</SubType>
-    </Content>
-    <Content Include="Themes\Base\Images\Flags\fr.png">
-      <SubType>Content</SubType>
-    </Content>
-    <Content Include="Themes\Base\Images\Flags\it.png">
-      <SubType>Content</SubType>
-    </Content>
-    <Content Include="Themes\Base\Images\Flags\jp.png">
-      <SubType>Content</SubType>
-    </Content>
-    <Content Include="Themes\Base\Images\logout_pressed.svg">
-      <SubType>Content</SubType>
-    </Content>
-    <Content Include="Themes\Base\Images\Splash-320x534.png">
-      <SubType>Content</SubType>
-    </Content>
-    <Content Include="Themes\Base\Images\Splash-420x200.png">
-      <SubType>Content</SubType>
-    </Content>
-    <Content Include="Themes\Base\Images\Splash-800x600.png">
-      <SubType>Content</SubType>
-    </Content>
-    <Content Include="Themes\Base\Images\startpage_pressed.svg">
       <SubType>Content</SubType>
     </Content>
     <Content Include="tsconfig.tpl.json">
@@ -355,6 +232,54 @@
       <SubType>Content</SubType>
       <Visible>true</Visible>
     </Content>
+    <Content Include="Themes\Base\Base.theme">
+      <SubType>Content</SubType>
+      <Visible>true</Visible>
+    </Content>
+    <Content Include="Themes\Base\BaseStyle.css">
+      <SubType>Content</SubType>
+      <Visible>true</Visible>
+    </Content>
+    <Content Include="Themes\Base\Images\Splash-320x534.png">
+      <SubType>Content</SubType>
+      <Visible>true</Visible>
+    </Content>
+    <Content Include="Themes\Base\Images\Splash-420x200.png">
+      <SubType>Content</SubType>
+      <Visible>true</Visible>
+    </Content>
+    <Content Include="Themes\Base\Images\Splash-800x600.png">
+      <SubType>Content</SubType>
+      <Visible>true</Visible>
+    </Content>
+    <Content Include="Themes\Base\Images\Background.png">
+      <SubType>Content</SubType>
+      <Visible>true</Visible>
+    </Content>
+    <Content Include="Themes\Base-Dark\Base-Dark.theme">
+      <SubType>Content</SubType>
+      <Visible>true</Visible>
+    </Content>
+    <Content Include="Themes\Base-Dark\Base-DarkStyle.css">
+      <SubType>Content</SubType>
+      <Visible>true</Visible>
+    </Content>
+    <Content Include="Themes\Base-Dark\Images\Splash-320x534.png">
+      <SubType>Content</SubType>
+      <Visible>true</Visible>
+    </Content>
+    <Content Include="Themes\Base-Dark\Images\Splash-420x200.png">
+      <SubType>Content</SubType>
+      <Visible>true</Visible>
+    </Content>
+    <Content Include="Themes\Base-Dark\Images\Splash-800x600.png">
+      <SubType>Content</SubType>
+      <Visible>true</Visible>
+    </Content>
+    <Content Include="Themes\Base-Dark\Images\Background.png">
+      <SubType>Content</SubType>
+      <Visible>true</Visible>
+    </Content>
     <Content Include="Localization\de.tpl.localization">
       <SubType>Content</SubType>
       <Visible>true</Visible>
@@ -389,10 +314,6 @@
       <SubType>Content</SubType>
       <Visible>true</Visible>
     </Content>
-    <Content Include="Images\Beckhoff_Logo.svg">
-      <SubType>Content</SubType>
-      <Visible>true</Visible>
-    </Content>
     <Content Include="Images\Manifest\launcher-icon-0-75x.png">
       <SubType>Content</SubType>
       <Visible>true</Visible>
@@ -417,55 +338,70 @@
       <SubType>Content</SubType>
       <Visible>true</Visible>
     </Content>
-    <Content Include="Images\PLC\plc-config.svg">
-      <SubType>Content</SubType>
-      <Visible>true</Visible>
-    </Content>
-    <Content Include="Images\PLC\plc-exeption.svg">
-      <SubType>Content</SubType>
-      <Visible>true</Visible>
-    </Content>
-    <Content Include="Images\PLC\plc-fallback.svg">
-      <SubType>Content</SubType>
-      <Visible>true</Visible>
-    </Content>
-    <Content Include="Images\PLC\plc-run.svg">
-      <SubType>Content</SubType>
-      <Visible>true</Visible>
-    </Content>
-    <Content Include="Images\PLC\plc-stop.svg">
-      <SubType>Content</SubType>
-      <Visible>true</Visible>
-    </Content>
-    <Content Include="Images\TwinCAT\twincat-config.svg">
-      <SubType>Content</SubType>
-      <Visible>true</Visible>
-    </Content>
-    <Content Include="Images\TwinCAT\twincat-exeption.svg">
-      <SubType>Content</SubType>
-      <Visible>true</Visible>
-    </Content>
-    <Content Include="Images\TwinCAT\twincat-fallback.svg">
-      <SubType>Content</SubType>
-      <Visible>true</Visible>
-    </Content>
-    <Content Include="Images\TwinCAT\twincat-run.svg">
-      <SubType>Content</SubType>
-      <Visible>true</Visible>
-    </Content>
-    <Content Include="Images\TwinCAT\twincat-stop.svg">
-      <SubType>Content</SubType>
-      <Visible>true</Visible>
-    </Content>
-    <Content Include="Pages\LoginPage.html">
-      <SubType>Content</SubType>
-    </Content>
     <Content Include="Desktop.view">
       <SubType>Content</SubType>
       <Visible>true</Visible>
     </Content>
+    <Folder Include="Server\ADS\" />
+    <Folder Include="Server\TcHmiLua\" />
+    <Folder Include="Server\TcHmiSqliteLogger\" />
+    <Folder Include="Server\TcHmiSrv\" />
+    <Folder Include="Server\TcHmiUserManagement\" />
+    <Content Include="Server\ADS\ADS.Config.default.json">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Server\ADS\ADS.Config.remote.json">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Server\ADS\ADS.Storage.json">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Server\TcHmiLua\TcHmiLua.Config.default.json">
+      <SubType>Content</SubType>
+      <Visible>false</Visible>
+    </Content>
+    <Content Include="Server\TcHmiLua\TcHmiLua.Config.remote.json">
+      <SubType>Content</SubType>
+      <Visible>false</Visible>
+    </Content>
+    <Content Include="Server\TcHmiLua\TcHmiLua.Storage.json">
+      <SubType>Content</SubType>
+      <Visible>false</Visible>
+    </Content>
+    <Content Include="Server\TcHmiSqliteLogger\TcHmiSqliteLogger.Config.default.json">
+      <SubType>Content</SubType>
+      <Visible>false</Visible>
+    </Content>
+    <Content Include="Server\TcHmiSqliteLogger\TcHmiSqliteLogger.Config.remote.json">
+      <SubType>Content</SubType>
+      <Visible>false</Visible>
+    </Content>
+    <Content Include="Server\TcHmiSqliteLogger\TcHmiSqliteLogger.Storage.json">
+      <SubType>Content</SubType>
+      <Visible>false</Visible>
+    </Content>
+    <Content Include="Server\TcHmiSrv\TcHmiSrv.Config.default.json">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Server\TcHmiSrv\TcHmiSrv.Config.remote.json">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Server\TcHmiSrv\TcHmiSrv.Storage.json">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Server\TcHmiUserManagement\TcHmiUserManagement.Config.default.json">
+      <SubType>Content</SubType>
+      <Visible>false</Visible>
+    </Content>
+    <Content Include="Server\TcHmiUserManagement\TcHmiUserManagement.Config.remote.json">
+      <SubType>Content</SubType>
+      <Visible>false</Visible>
+    </Content>
+    <Content Include="Server\TcHmiUserManagement\TcHmiUserManagement.Storage.json">
+      <SubType>Content</SubType>
+      <Visible>false</Visible>
+    </Content>
     <Folder Include="Themes\Base\Images\" />
-    <Folder Include="Themes\Base\Images\Flags\" />
   </ItemGroup>
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
