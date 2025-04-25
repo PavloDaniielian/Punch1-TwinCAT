@@ -5,8 +5,6 @@
 VAR_GLOBAL
 	
 
-	CorePress_CoreCount: INT := 0;
-	CorePress_CasingCount: INT := 0;
 	
 END_VAR]]></Declaration>
   </GVL>

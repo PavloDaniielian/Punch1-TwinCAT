@@ -1,63 +1,107 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.6">
   <POU Name="FB_CoreVibratoryBowl2" Id="{38cac3bb-8f58-4f28-bdcd-b1cc47d57b4f}" SpecialFunc="None">
-    <Declaration><![CDATA[FUNCTION_BLOCK FB_CoreVibratoryBowl2
+    <Declaration><![CDATA[FUNCTION_BLOCK FB_CasingVibratoryBowl1
 VAR_INPUT
-    i_bEnabled : BOOL;
-    i_bReset : BOOL;
 END_VAR
-
 VAR_OUTPUT
-	o_bFaulted: BOOL;
-    o_iCoreCount : INT; (* Counts number of cores processed *)
 END_VAR
-
 VAR
     iState : INT := 0;
+    iState2 : INT := 0;
+	FeedbackTimer : TON;
     DelayTimer : TON;
+	DelayTimer2 : TON;
 END_VAR]]></Declaration>
     <Implementation>
       <ST><![CDATA[CASE iState OF
     0: (* Idle/Off *)
-        IF GVL_IO.DI_24VDC_CB_OK AND GVL_IO.DI_ECS THEN
-            iState := 1;
+		iState := 10;
+	
+	10:
+        IF GVL_HMI.bSafeties AND GVL_IO.DI_ECS THEN
+            iState := iState + 10;
         END_IF
 
-    1: (* Wait for Product in Position *)
-        DelayTimer(IN := TRUE, PT := T#50MS);
-        IF DelayTimer.Q AND GVL_IO.DI_PE3 THEN
-            iState := 2;
+    20: (* Wait for Product in Position *)
+		DelayAndAdvance( GVL_InitialSetting.BOWL_RunningDelayTime, iState+1 );
+	21:
+	    IF GVL_IO.DI_PE3 THEN
+            iState := (iState + 10) / 10 * 10;
         END_IF
 
-    2: (* Energize Core Track Index Solenoid *)
+    30: (* Energize Track Index Solenoid *)
         GVL_IO.DO_PCYL6_E := TRUE;
-        DelayTimer(IN := TRUE, PT := T#250MS);
-        IF DelayTimer.Q THEN
-            GVL_IO.DO_PCYL6_E := FALSE;
-            iState := 3;
-        END_IF
-
-    3: (* Check High-Level Sensor *)
-        DelayTimer(IN := TRUE, PT := T#500MS);
-        IF DelayTimer.Q THEN
-            IF GVL_IO.DI_PE6 THEN
-                iState := 3; (* Pause and wait *)
-            ELSE
-                o_iCoreCount := o_iCoreCount + 1;
-                iState := 2;
-            END_IF
-        END_IF
+		DelayAndAdvance( GVL_HMI.i_nPCylinder6ExtendedRunningTime, iState+1 );
+	31:
+		GVL_IO.DO_PCYL3_E := FALSE;
+		iState2 := 0;
+		GVL_HMI.i_nCoreCountForStarting := GVL_HMI.i_nCoreCountForStarting + 1;
+        iState := (iState + 10) / 10 * 10;
+		
+	40: (* Check High-Level Sensor *)
+		IF GVL_IO.DI_PE6 THEN
+			DelayAndAdvance( GVL_HMI.i_nPE6MaintainTime, iState+10 );
+		ELSE
+			iState := 20;
+			DelayTimer.IN := FALSE;
+		END_IF
+	
+	80:
+		(* Pause and Wait *)
 END_CASE
 
-(* Reset logic *)
-IF i_bReset THEN
-    iState := 0;
-    o_iCoreCount := 0;
+IF iState >= 20 THEN
+	CASE iState2 OF
+		0:
+			GVL_IO.DO_VB2 := TRUE; 
+			IF NOT DelayTimer2.IN THEN
+				DelayTimer2(IN := TRUE, PT := INT_TO_TIME(GVL_InitialSetting.VB2_MaintainTime));
+			ELSE
+				IF DelayTimer2.Q THEN 
+					iState2 := iState2 + 10;
+				END_IF
+			END_IF
+		10:
+			IF GVL_IO.DI_PE3 THEN
+				iState2 := iState2 + 10;
+			END_IF
+		20:
+			(* Stop and Wait *)
+	END_CASE
+ELSE
+	iState2 := 0;
 END_IF]]></ST>
     </Implementation>
+    <Method Name="DelayAndAdvance" Id="{dbec43e2-aff0-447f-9917-a49205f9dcef}">
+      <Declaration><![CDATA[METHOD DelayAndAdvance : BOOL
+VAR_INPUT
+	i_nDelayTime: INT;	// ms
+	i_nNextState: INT;
+END_VAR
+
+VAR
+END_VAR]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[IF NOT DelayTimer.IN THEN
+    DelayTimer(IN := TRUE, PT := INT_TO_TIME(i_nDelayTime));
+ELSE
+    IF DelayTimer.Q THEN 
+        iState := i_nNextState; 
+    END_IF
+END_IF]]></ST>
+      </Implementation>
+    </Method>
     <LineIds Name="FB_CoreVibratoryBowl2">
-      <LineId Id="111" Count="35" />
+      <LineId Id="172" Count="21" />
+      <LineId Id="254" Count="0" />
+      <LineId Id="194" Count="0" />
+      <LineId Id="221" Count="32" />
       <LineId Id="9" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_CoreVibratoryBowl2.DelayAndAdvance">
+      <LineId Id="8" Count="5" />
+      <LineId Id="5" Count="0" />
     </LineIds>
   </POU>
 </TcPlcObject>

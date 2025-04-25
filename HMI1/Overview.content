@@ -1,7 +1,1037 @@
 <div id="Overview" data-tchmi-type="TcHmi.Controls.System.TcHmiContent" data-tchmi-top="0" data-tchmi-left="0" data-tchmi-width="1024" data-tchmi-height="450" data-tchmi-creator-viewport-width="1024" data-tchmi-creator-viewport-height="600">
 
-<div id="TcHmi_Controls_Beckhoff_TcHmiImage_1" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiImage" data-tchmi-height="446" data-tchmi-height-unit="px" data-tchmi-left="6" data-tchmi-left-unit="px" data-tchmi-src="Images/machine.png" data-tchmi-top="3" data-tchmi-top-unit="px" data-tchmi-width="1014" data-tchmi-width-unit="px" data-tchmi-zindex="0">
+    <div id="TcHmi_Controls_Beckhoff_TcHmiImage_1" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiImage" data-tchmi-height="446" data-tchmi-height-unit="px" data-tchmi-left="6" data-tchmi-left-unit="px" data-tchmi-src="Images/machine.png" data-tchmi-top="3" data-tchmi-top-unit="px" data-tchmi-width="1014" data-tchmi-width-unit="px" data-tchmi-zindex="0">
+
+
+    </div>
+
+    <script data-tchmi-target-attribute="data-tchmi-border-width" type="application/json">
+        {
+        "left": 0,
+        "right": 0,
+        "top": 0,
+        "bottom": 0,
+        "leftUnit": "px",
+        "rightUnit": "px",
+        "topUnit": "px",
+        "bottomUnit": "px"
+        }
+    </script>
+
+
+
+    <script data-tchmi-target-attribute="data-tchmi-border-radius" type="application/json">
+        {
+        "topLeft": 0.0,
+        "topRight": 0.0,
+        "bottomLeft": 0.0,
+        "bottomRight": 0.0,
+        "topLeftUnit": "px",
+        "topRightUnit": "px",
+        "bottomLeftUnit": "px",
+        "bottomRightUnit": "px"
+        }
+    </script>
+
+    <script data-tchmi-target-attribute="data-tchmi-border-style" type="application/json">
+        {
+        "left": "Solid",
+        "right": "Solid",
+        "top": "Solid",
+        "bottom": "Solid"
+        }
+    </script>
+
+
+
+    <script data-tchmi-target-attribute="data-tchmi-background-color" type="application/json">
+        {
+        "color": "None"
+        }
+    </script>
+
+    <div id="sttCyl2" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiEllipse" data-tchmi-height="12" data-tchmi-height-unit="px" data-tchmi-left="424" data-tchmi-left-unit="px" data-tchmi-top="251" data-tchmi-top-unit="px" data-tchmi-width="12" data-tchmi-width-unit="px" data-tchmi-stroke-thickness="0">
+
+        
+
+        <script data-tchmi-target-attribute="data-tchmi-border-radius" type="application/json">
+            {
+            "topLeft": 50.0,
+            "topRight": 50.0,
+            "bottomLeft": 50.0,
+            "bottomRight": 50.0,
+            "topLeftUnit": "%",
+            "topRightUnit": "%",
+            "bottomLeftUnit": "%",
+            "bottomRightUnit": "%"
+            }
+        </script>
+
+        <script data-tchmi-target-attribute="data-tchmi-border-style" type="application/json">
+            {
+            "left": "Solid",
+            "right": "Solid",
+            "top": "Solid",
+            "bottom": "Solid"
+            }
+        </script>
+
+        <script data-tchmi-target-attribute="data-tchmi-border-width" type="application/json">
+            {
+            "left": 2,
+            "right": 2,
+            "top": 2,
+            "bottom": 2,
+            "leftUnit": "px",
+            "rightUnit": "px",
+            "topUnit": "px",
+            "bottomUnit": "px"
+            }
+        </script>
+
+
+
+        <script data-tchmi-target-attribute="data-tchmi-fill-color" type="application/json">
+            {
+            "color": "None"
+            }
+        </script>
+
+
+
+        <script data-tchmi-target-attribute="data-tchmi-border-color" type="application/json">
+            {
+            "color": "rgba(255, 255, 255, 1)"
+            }
+        </script>
+
+
+    
+
+
+<script data-tchmi-target-attribute="data-tchmi-trigger" type="application/json">
+[
+  {
+    "event": "%s%PLC1.GVL_HMI.bOut_CYL2_Fault%/s%%s%PLC1.GVL_HMI.bOut_CYL2_E%/s%",
+    "actions": []
+  }
+]
+</script>
 </div>
-<div id="txtState1" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiTextblock" data-tchmi-height="26" data-tchmi-height-unit="px" data-tchmi-left="81" data-tchmi-left-unit="px" data-tchmi-text="Textblock" data-tchmi-top="18" data-tchmi-top-unit="px" data-tchmi-width="82" data-tchmi-width-unit="px" data-tchmi-word-wrap="true" data-tchmi-zindex="1">
+    <div id="sttCyl1" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiEllipse" data-tchmi-height="12" data-tchmi-height-unit="px" data-tchmi-left="424" data-tchmi-left-unit="px" data-tchmi-top="272" data-tchmi-top-unit="px" data-tchmi-width="12" data-tchmi-width-unit="px" data-tchmi-stroke-thickness="0" data-tchmi-is-enabled="true">
+
+
+        <script data-tchmi-target-attribute="data-tchmi-border-radius" type="application/json">
+            {
+            "topLeft": 50.0,
+            "topRight": 50.0,
+            "bottomLeft": 50.0,
+            "bottomRight": 50.0,
+            "topLeftUnit": "%",
+            "topRightUnit": "%",
+            "bottomLeftUnit": "%",
+            "bottomRightUnit": "%"
+            }
+        </script>
+
+        <script data-tchmi-target-attribute="data-tchmi-border-style" type="application/json">
+            {
+            "left": "Solid",
+            "right": "Solid",
+            "top": "Solid",
+            "bottom": "Solid"
+            }
+        </script>
+
+        <script data-tchmi-target-attribute="data-tchmi-border-width" type="application/json">
+            {
+            "left": 2,
+            "right": 2,
+            "top": 2,
+            "bottom": 2,
+            "leftUnit": "px",
+            "rightUnit": "px",
+            "topUnit": "px",
+            "bottomUnit": "px"
+            }
+        </script>
+
+
+
+        <script data-tchmi-target-attribute="data-tchmi-fill-color" type="application/json">
+            {
+            "color": "None"
+            }
+        </script>
+
+
+
+        <script data-tchmi-target-attribute="data-tchmi-border-color" type="application/json">
+            {
+            "color": "rgba(255, 255, 255, 1)"
+            }
+        </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script data-tchmi-target-attribute="data-tchmi-trigger" type="application/json">
+[
+  {
+    "event": "%s%PLC1.GVL_HMI.bOut_CYL1_Fault%/s%%s%PLC1.GVL_HMI.bOut_CYL1_E%/s%",
+    "actions": [
+      {
+        "objectType": "Condition",
+        "active": true,
+        "parts": [
+          {
+            "if": [
+              {
+                "compare1": {
+                  "objectType": "Symbol",
+                  "valueType": "tchmi:general#/definitions/BOOL",
+                  "symbolExpression": "%s%PLC1.GVL_HMI.bOut_CYL1_Fault%/s%"
+                },
+                "compare2": {
+                  "objectType": "StaticValue",
+                  "valueType": "tchmi:general#/definitions/BOOL",
+                  "value": true
+                },
+                "compareOperator": "==",
+                "logic": null
+              }
+            ],
+            "then": [
+              {
+                "objectType": "WriteToSymbol",
+                "active": true,
+                "symbolExpression": "%ctrl%sttCyl1::ClassNames%/ctrl%",
+                "value": {
+                  "objectType": "StaticValue",
+                  "valueType": "tchmi:framework#/definitions/ClassNameList",
+                  "value": [
+                    "CylinderFaulted"
+                  ]
+                },
+                "asyncWait": true
+              }
+            ]
+          },
+          {
+            "else": [
+              {
+                "objectType": "Condition",
+                "active": true,
+                "parts": [
+                  {
+                    "if": [
+                      {
+                        "compare1": {
+                          "objectType": "Symbol",
+                          "valueType": "tchmi:general#/definitions/BOOL",
+                          "symbolExpression": "%s%PLC1.GVL_HMI.bOut_CYL1_E%/s%"
+                        },
+                        "compare2": {
+                          "objectType": "StaticValue",
+                          "valueType": "tchmi:general#/definitions/BOOL",
+                          "value": true
+                        },
+                        "compareOperator": "==",
+                        "logic": null
+                      }
+                    ],
+                    "then": [
+                      {
+                        "objectType": "WriteToSymbol",
+                        "active": true,
+                        "symbolExpression": "%ctrl%sttCyl1::ClassNames%/ctrl%",
+                        "value": {
+                          "objectType": "StaticValue",
+                          "valueType": "tchmi:framework#/definitions/ClassNameList",
+                          "value": [
+                            "CylinderExtended"
+                          ]
+                        },
+                        "asyncWait": true
+                      }
+                    ]
+                  },
+                  {
+                    "else": [
+                      {
+                        "objectType": "WriteToSymbol",
+                        "active": true,
+                        "symbolExpression": "%ctrl%sttCyl1::ClassNames%/ctrl%",
+                        "value": {
+                          "objectType": "StaticValue",
+                          "valueType": "tchmi:framework#/definitions/ClassNameList",
+                          "value": [
+                            "CylinderRetracted"
+                          ]
+                        },
+                        "asyncWait": true
+                      }
+                    ]
+                  }
+                ],
+                "asyncWait": true
+              }
+            ]
+          }
+        ],
+        "asyncWait": true
+      },
+      {
+        "objectType": "ActionTemplate",
+        "active": true,
+        "templateName": "DisplayCylinderState",
+        "fnParams": [
+          {
+            "objectType": "StaticValue",
+            "valueType": "tchmi:framework#/definitions/TcHmiControl",
+            "value": null
+          },
+          {
+            "objectType": "StaticValue",
+            "valueType": "tchmi:general#/definitions/BOOL",
+            "value": false
+          },
+          {
+            "objectType": "StaticValue",
+            "valueType": "tchmi:general#/definitions/BOOL",
+            "value": false
+          }
+        ],
+        "asyncWait": true
+      }
+    ]
+  }
+]
+</script>
+
+
+
+
+
+
+
+
+</div>
+<div id="sttCyl3" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiEllipse" data-tchmi-height="12" data-tchmi-height-unit="px" data-tchmi-left="424" data-tchmi-left-unit="px" data-tchmi-top="229" data-tchmi-top-unit="px" data-tchmi-width="12" data-tchmi-width-unit="px" data-tchmi-stroke-thickness="0">
+<script data-tchmi-target-attribute="data-tchmi-background-color" type="application/json">
+{
+  "color": "rgba(0, 255, 0, 1)"
+}
+</script>
+
+        <script data-tchmi-target-attribute="data-tchmi-border-radius" type="application/json">
+            {
+            "topLeft": 50.0,
+            "topRight": 50.0,
+            "bottomLeft": 50.0,
+            "bottomRight": 50.0,
+            "topLeftUnit": "%",
+            "topRightUnit": "%",
+            "bottomLeftUnit": "%",
+            "bottomRightUnit": "%"
+            }
+        </script>
+
+        <script data-tchmi-target-attribute="data-tchmi-border-style" type="application/json">
+            {
+            "left": "Solid",
+            "right": "Solid",
+            "top": "Solid",
+            "bottom": "Solid"
+            }
+        </script>
+
+        <script data-tchmi-target-attribute="data-tchmi-border-width" type="application/json">
+            {
+            "left": 2,
+            "right": 2,
+            "top": 2,
+            "bottom": 2,
+            "leftUnit": "px",
+            "rightUnit": "px",
+            "topUnit": "px",
+            "bottomUnit": "px"
+            }
+        </script>
+
+
+
+        <script data-tchmi-target-attribute="data-tchmi-fill-color" type="application/json">
+            {
+            "color": "None"
+            }
+        </script>
+
+
+
+        <script data-tchmi-target-attribute="data-tchmi-border-color" type="application/json">
+            {
+            "color": "rgba(255, 255, 255, 1)"
+            }
+        </script>
+
+
+    
+
+</div>
+<div id="TcHmiToggleButton" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiToggleButton" data-tchmi-height="23" data-tchmi-height-unit="px" data-tchmi-left="371" data-tchmi-left-unit="px" data-tchmi-text="Cyl1 fault" data-tchmi-top="300" data-tchmi-top-unit="px" data-tchmi-width="51" data-tchmi-width-unit="px" data-tchmi-word-wrap="true">
+
+<script data-tchmi-target-attribute="data-tchmi-trigger" type="application/json">
+[
+  {
+    "event": "TcHmiToggleButton.onStateChanged",
+    "actions": [
+      {
+        "objectType": "Condition",
+        "active": true,
+        "parts": [
+          {
+            "if": [
+              {
+                "compare1": {
+                  "objectType": "Symbol",
+                  "valueType": "tchmi:general#/definitions/String",
+                  "symbolExpression": "%ctrl%TcHmiToggleButton::ToggleState%/ctrl%"
+                },
+                "compare2": {
+                  "objectType": "StaticValue",
+                  "valueType": "tchmi:framework#/definitions/ToggleState",
+                  "value": "Active"
+                },
+                "compareOperator": "==",
+                "logic": null
+              }
+            ],
+            "then": [
+              {
+                "objectType": "WriteToSymbol",
+                "active": true,
+                "symbolExpression": "%ctrl%sttCyl1::ClassNames%/ctrl%",
+                "value": {
+                  "objectType": "StaticValue",
+                  "valueType": "tchmi:framework#/definitions/ClassNameList",
+                  "value": [
+                    "CylinderFaulted"
+                  ]
+                },
+                "asyncWait": true
+              }
+            ]
+          },
+          {
+            "else": []
+          }
+        ],
+        "asyncWait": true
+      }
+    ]
+  }
+]
+</script>
+</div>
+<div id="TcHmiToggleButton_1" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiToggleButton" data-tchmi-height="23" data-tchmi-height-unit="px" data-tchmi-left="432" data-tchmi-left-unit="px" data-tchmi-text="Cyl1 E" data-tchmi-top="300" data-tchmi-top-unit="px" data-tchmi-width="57" data-tchmi-width-unit="px" data-tchmi-word-wrap="true">
+
+<script data-tchmi-target-attribute="data-tchmi-trigger" type="application/json">
+[
+  {
+    "event": "TcHmiToggleButton_1.onStateChanged",
+    "actions": [
+      {
+        "objectType": "Condition",
+        "active": true,
+        "parts": [
+          {
+            "if": [
+              {
+                "compare1": {
+                  "objectType": "Symbol",
+                  "valueType": "tchmi:general#/definitions/String",
+                  "symbolExpression": "%ctrl%TcHmiToggleButton_1::ToggleState%/ctrl%"
+                },
+                "compare2": {
+                  "objectType": "StaticValue",
+                  "valueType": "tchmi:framework#/definitions/ToggleState",
+                  "value": "Active"
+                },
+                "compareOperator": "==",
+                "logic": null
+              }
+            ],
+            "then": [
+              {
+                "objectType": "WriteToSymbol",
+                "active": true,
+                "symbolExpression": "%ctrl%sttCyl1::ClassNames%/ctrl%",
+                "value": {
+                  "objectType": "StaticValue",
+                  "valueType": "tchmi:framework#/definitions/ClassNameList",
+                  "value": [
+                    "CylinderExtended"
+                  ]
+                },
+                "asyncWait": true
+              }
+            ]
+          },
+          {
+            "else": [
+              {
+                "objectType": "WriteToSymbol",
+                "active": true,
+                "symbolExpression": "%ctrl%sttCyl1::ClassNames%/ctrl%",
+                "value": {
+                  "objectType": "StaticValue",
+                  "valueType": "tchmi:framework#/definitions/ClassNameList",
+                  "value": [
+                    "CylinderRetracted"
+                  ]
+                },
+                "asyncWait": true
+              }
+            ]
+          }
+        ],
+        "asyncWait": true
+      }
+    ]
+  }
+]
+</script>
+</div>
+<div id="TcHmiToggleButton_2" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiToggleButton" data-tchmi-height="23" data-tchmi-height-unit="px" data-tchmi-left="446" data-tchmi-left-unit="px" data-tchmi-text="Cyl2 E" data-tchmi-top="247" data-tchmi-top-unit="px" data-tchmi-width="57" data-tchmi-width-unit="px" data-tchmi-word-wrap="true">
+<script data-tchmi-target-attribute="data-tchmi-trigger" type="application/json">
+[
+  {
+    "event": "TcHmiToggleButton_2.onStateChanged",
+    "actions": []
+  }
+]
+</script>
+</div>
+<div id="TcHmiToggleButton_3" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiToggleButton" data-tchmi-height="23" data-tchmi-height-unit="px" data-tchmi-left="364" data-tchmi-left-unit="px" data-tchmi-text="Cyl2 fault" data-tchmi-top="247" data-tchmi-top-unit="px" data-tchmi-width="51" data-tchmi-width-unit="px" data-tchmi-word-wrap="true">
+<script data-tchmi-target-attribute="data-tchmi-trigger" type="application/json">
+[
+  {
+    "event": "TcHmiToggleButton_3.onStateChanged",
+    "actions": [
+      {
+        "objectType": "Condition",
+        "active": true,
+        "parts": [
+          {
+            "if": [
+              {
+                "compare1": {
+                  "objectType": "Symbol",
+                  "valueType": "tchmi:general#/definitions/String",
+                  "symbolExpression": "%ctrl%TcHmiToggleButton::ToggleState%/ctrl%"
+                },
+                "compare2": {
+                  "objectType": "StaticValue",
+                  "valueType": "tchmi:framework#/definitions/ToggleState",
+                  "value": "Active"
+                },
+                "compareOperator": "==",
+                "logic": null
+              }
+            ],
+            "then": [
+              {
+                "objectType": "WriteToSymbol",
+                "active": true,
+                "symbolExpression": "%ctrl%sttCyl1::ClassNames%/ctrl%",
+                "value": {
+                  "objectType": "StaticValue",
+                  "valueType": "tchmi:framework#/definitions/ClassNameList",
+                  "value": [
+                    "CylinderFaulted"
+                  ]
+                },
+                "asyncWait": true
+              }
+            ]
+          },
+          {
+            "else": []
+          }
+        ],
+        "asyncWait": true
+      }
+    ]
+  }
+]
+</script>
+</div>
+<div id="sttCyl4" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiEllipse" data-tchmi-height="12" data-tchmi-height-unit="px" data-tchmi-left="424" data-tchmi-left-unit="px" data-tchmi-top="207" data-tchmi-top-unit="px" data-tchmi-width="12" data-tchmi-width-unit="px" data-tchmi-stroke-thickness="0">
+<script data-tchmi-target-attribute="data-tchmi-background-color" type="application/json">
+{
+  "color": "rgba(0, 255, 0, 1)"
+}
+</script>
+
+        <script data-tchmi-target-attribute="data-tchmi-border-radius" type="application/json">
+            {
+            "topLeft": 50.0,
+            "topRight": 50.0,
+            "bottomLeft": 50.0,
+            "bottomRight": 50.0,
+            "topLeftUnit": "%",
+            "topRightUnit": "%",
+            "bottomLeftUnit": "%",
+            "bottomRightUnit": "%"
+            }
+        </script>
+
+        <script data-tchmi-target-attribute="data-tchmi-border-style" type="application/json">
+            {
+            "left": "Solid",
+            "right": "Solid",
+            "top": "Solid",
+            "bottom": "Solid"
+            }
+        </script>
+
+        <script data-tchmi-target-attribute="data-tchmi-border-width" type="application/json">
+            {
+            "left": 2,
+            "right": 2,
+            "top": 2,
+            "bottom": 2,
+            "leftUnit": "px",
+            "rightUnit": "px",
+            "topUnit": "px",
+            "bottomUnit": "px"
+            }
+        </script>
+
+
+
+        <script data-tchmi-target-attribute="data-tchmi-fill-color" type="application/json">
+            {
+            "color": "None"
+            }
+        </script>
+
+
+
+        <script data-tchmi-target-attribute="data-tchmi-border-color" type="application/json">
+            {
+            "color": "rgba(255, 255, 255, 1)"
+            }
+        </script>
+
+
+    
+
+</div>
+<div id="sttCyl7" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiEllipse" data-tchmi-height="12" data-tchmi-height-unit="px" data-tchmi-left="365" data-tchmi-left-unit="px" data-tchmi-top="127" data-tchmi-top-unit="px" data-tchmi-width="12" data-tchmi-width-unit="px" data-tchmi-stroke-thickness="0">
+<script data-tchmi-target-attribute="data-tchmi-background-color" type="application/json">
+{
+  "color": "rgba(0, 255, 0, 1)"
+}
+</script>
+
+        <script data-tchmi-target-attribute="data-tchmi-border-radius" type="application/json">
+            {
+            "topLeft": 50.0,
+            "topRight": 50.0,
+            "bottomLeft": 50.0,
+            "bottomRight": 50.0,
+            "topLeftUnit": "%",
+            "topRightUnit": "%",
+            "bottomLeftUnit": "%",
+            "bottomRightUnit": "%"
+            }
+        </script>
+
+        <script data-tchmi-target-attribute="data-tchmi-border-style" type="application/json">
+            {
+            "left": "Solid",
+            "right": "Solid",
+            "top": "Solid",
+            "bottom": "Solid"
+            }
+        </script>
+
+        <script data-tchmi-target-attribute="data-tchmi-border-width" type="application/json">
+            {
+            "left": 2,
+            "right": 2,
+            "top": 2,
+            "bottom": 2,
+            "leftUnit": "px",
+            "rightUnit": "px",
+            "topUnit": "px",
+            "bottomUnit": "px"
+            }
+        </script>
+
+
+
+        <script data-tchmi-target-attribute="data-tchmi-fill-color" type="application/json">
+            {
+            "color": "None"
+            }
+        </script>
+
+
+
+        <script data-tchmi-target-attribute="data-tchmi-border-color" type="application/json">
+            {
+            "color": "rgba(255, 255, 255, 1)"
+            }
+        </script>
+
+
+    
+
+</div>
+<div id="sttCyl8" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiEllipse" data-tchmi-height="12" data-tchmi-height-unit="px" data-tchmi-left="365" data-tchmi-left-unit="px" data-tchmi-top="105" data-tchmi-top-unit="px" data-tchmi-width="12" data-tchmi-width-unit="px" data-tchmi-stroke-thickness="0">
+<script data-tchmi-target-attribute="data-tchmi-background-color" type="application/json">
+{
+  "color": "rgba(0, 255, 0, 1)"
+}
+</script>
+
+        <script data-tchmi-target-attribute="data-tchmi-border-radius" type="application/json">
+            {
+            "topLeft": 50.0,
+            "topRight": 50.0,
+            "bottomLeft": 50.0,
+            "bottomRight": 50.0,
+            "topLeftUnit": "%",
+            "topRightUnit": "%",
+            "bottomLeftUnit": "%",
+            "bottomRightUnit": "%"
+            }
+        </script>
+
+        <script data-tchmi-target-attribute="data-tchmi-border-style" type="application/json">
+            {
+            "left": "Solid",
+            "right": "Solid",
+            "top": "Solid",
+            "bottom": "Solid"
+            }
+        </script>
+
+        <script data-tchmi-target-attribute="data-tchmi-border-width" type="application/json">
+            {
+            "left": 2,
+            "right": 2,
+            "top": 2,
+            "bottom": 2,
+            "leftUnit": "px",
+            "rightUnit": "px",
+            "topUnit": "px",
+            "bottomUnit": "px"
+            }
+        </script>
+
+
+
+        <script data-tchmi-target-attribute="data-tchmi-fill-color" type="application/json">
+            {
+            "color": "None"
+            }
+        </script>
+
+
+
+        <script data-tchmi-target-attribute="data-tchmi-border-color" type="application/json">
+            {
+            "color": "rgba(255, 255, 255, 1)"
+            }
+        </script>
+
+
+    
+
+</div>
+<div id="sttCyl6" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiEllipse" data-tchmi-height="12" data-tchmi-height-unit="px" data-tchmi-left="365" data-tchmi-left-unit="px" data-tchmi-top="149" data-tchmi-top-unit="px" data-tchmi-width="12" data-tchmi-width-unit="px" data-tchmi-stroke-thickness="0">
+<script data-tchmi-target-attribute="data-tchmi-border-radius" type="application/json">
+            {
+            "topLeft": 50.0,
+            "topRight": 50.0,
+            "bottomLeft": 50.0,
+            "bottomRight": 50.0,
+            "topLeftUnit": "%",
+            "topRightUnit": "%",
+            "bottomLeftUnit": "%",
+            "bottomRightUnit": "%"
+            }
+        </script>
+
+        <script data-tchmi-target-attribute="data-tchmi-border-style" type="application/json">
+            {
+            "left": "Solid",
+            "right": "Solid",
+            "top": "Solid",
+            "bottom": "Solid"
+            }
+        </script>
+
+        <script data-tchmi-target-attribute="data-tchmi-border-width" type="application/json">
+            {
+            "left": 2,
+            "right": 2,
+            "top": 2,
+            "bottom": 2,
+            "leftUnit": "px",
+            "rightUnit": "px",
+            "topUnit": "px",
+            "bottomUnit": "px"
+            }
+        </script>
+
+
+
+        <script data-tchmi-target-attribute="data-tchmi-fill-color" type="application/json">
+            {
+            "color": "None"
+            }
+        </script>
+
+
+
+        <script data-tchmi-target-attribute="data-tchmi-border-color" type="application/json">
+            {
+            "color": "rgba(255, 255, 255, 1)"
+            }
+        </script>
+
+
+    
+
+
+<script data-tchmi-target-attribute="data-tchmi-trigger" type="application/json">
+[
+  {
+    "event": "%s%PLC1.GVL_HMI.bOut_CYL2_Fault%/s%%s%PLC1.GVL_HMI.bOut_CYL2_E%/s%",
+    "actions": []
+  }
+]
+</script>
+</div>
+<div id="sttCyl5" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiEllipse" data-tchmi-height="12" data-tchmi-height-unit="px" data-tchmi-left="365" data-tchmi-left-unit="px" data-tchmi-top="170" data-tchmi-top-unit="px" data-tchmi-width="12" data-tchmi-width-unit="px" data-tchmi-stroke-thickness="0" data-tchmi-is-enabled="true">
+<script data-tchmi-target-attribute="data-tchmi-border-radius" type="application/json">
+            {
+            "topLeft": 50.0,
+            "topRight": 50.0,
+            "bottomLeft": 50.0,
+            "bottomRight": 50.0,
+            "topLeftUnit": "%",
+            "topRightUnit": "%",
+            "bottomLeftUnit": "%",
+            "bottomRightUnit": "%"
+            }
+        </script>
+
+        <script data-tchmi-target-attribute="data-tchmi-border-style" type="application/json">
+            {
+            "left": "Solid",
+            "right": "Solid",
+            "top": "Solid",
+            "bottom": "Solid"
+            }
+        </script>
+
+        <script data-tchmi-target-attribute="data-tchmi-border-width" type="application/json">
+            {
+            "left": 2,
+            "right": 2,
+            "top": 2,
+            "bottom": 2,
+            "leftUnit": "px",
+            "rightUnit": "px",
+            "topUnit": "px",
+            "bottomUnit": "px"
+            }
+        </script>
+
+
+
+        <script data-tchmi-target-attribute="data-tchmi-fill-color" type="application/json">
+            {
+            "color": "None"
+            }
+        </script>
+
+
+
+        <script data-tchmi-target-attribute="data-tchmi-border-color" type="application/json">
+            {
+            "color": "rgba(255, 255, 255, 1)"
+            }
+        </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script data-tchmi-target-attribute="data-tchmi-trigger" type="application/json">
+[
+  {
+    "event": "%s%PLC1.GVL_HMI.bOut_CYL1_Fault%/s%%s%PLC1.GVL_HMI.bOut_CYL1_E%/s%",
+    "actions": [
+      {
+        "objectType": "Condition",
+        "active": true,
+        "parts": [
+          {
+            "if": [
+              {
+                "compare1": {
+                  "objectType": "Symbol",
+                  "valueType": "tchmi:general#/definitions/BOOL",
+                  "symbolExpression": "%s%PLC1.GVL_HMI.bOut_CYL1_Fault%/s%"
+                },
+                "compare2": {
+                  "objectType": "StaticValue",
+                  "valueType": "tchmi:general#/definitions/BOOL",
+                  "value": true
+                },
+                "compareOperator": "==",
+                "logic": null
+              }
+            ],
+            "then": [
+              {
+                "objectType": "WriteToSymbol",
+                "active": true,
+                "symbolExpression": "%ctrl%sttCyl1::ClassNames%/ctrl%",
+                "value": {
+                  "objectType": "StaticValue",
+                  "valueType": "tchmi:framework#/definitions/ClassNameList",
+                  "value": [
+                    "CylinderFaulted"
+                  ]
+                },
+                "asyncWait": true
+              }
+            ]
+          },
+          {
+            "else": [
+              {
+                "objectType": "Condition",
+                "active": true,
+                "parts": [
+                  {
+                    "if": [
+                      {
+                        "compare1": {
+                          "objectType": "Symbol",
+                          "valueType": "tchmi:general#/definitions/BOOL",
+                          "symbolExpression": "%s%PLC1.GVL_HMI.bOut_CYL1_E%/s%"
+                        },
+                        "compare2": {
+                          "objectType": "StaticValue",
+                          "valueType": "tchmi:general#/definitions/BOOL",
+                          "value": true
+                        },
+                        "compareOperator": "==",
+                        "logic": null
+                      }
+                    ],
+                    "then": [
+                      {
+                        "objectType": "WriteToSymbol",
+                        "active": true,
+                        "symbolExpression": "%ctrl%sttCyl1::ClassNames%/ctrl%",
+                        "value": {
+                          "objectType": "StaticValue",
+                          "valueType": "tchmi:framework#/definitions/ClassNameList",
+                          "value": [
+                            "CylinderExtended"
+                          ]
+                        },
+                        "asyncWait": true
+                      }
+                    ]
+                  },
+                  {
+                    "else": [
+                      {
+                        "objectType": "WriteToSymbol",
+                        "active": true,
+                        "symbolExpression": "%ctrl%sttCyl1::ClassNames%/ctrl%",
+                        "value": {
+                          "objectType": "StaticValue",
+                          "valueType": "tchmi:framework#/definitions/ClassNameList",
+                          "value": [
+                            "CylinderRetracted"
+                          ]
+                        },
+                        "asyncWait": true
+                      }
+                    ]
+                  }
+                ],
+                "asyncWait": true
+              }
+            ]
+          }
+        ],
+        "asyncWait": true
+      },
+      {
+        "objectType": "ActionTemplate",
+        "active": true,
+        "templateName": "DisplayCylinderState",
+        "fnParams": [
+          {
+            "objectType": "StaticValue",
+            "valueType": "tchmi:framework#/definitions/TcHmiControl",
+            "value": null
+          },
+          {
+            "objectType": "StaticValue",
+            "valueType": "tchmi:general#/definitions/BOOL",
+            "value": false
+          },
+          {
+            "objectType": "StaticValue",
+            "valueType": "tchmi:general#/definitions/BOOL",
+            "value": false
+          }
+        ],
+        "asyncWait": true
+      }
+    ]
+  }
+]
+</script>
+
+
+
+
+
+
+
+
+</div>
 </div>
 </div>

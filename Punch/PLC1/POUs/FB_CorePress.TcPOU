@@ -3,71 +3,315 @@
   <POU Name="FB_CorePress" Id="{953c7498-64a0-4914-9a7e-2c4fa8d12f1e}" SpecialFunc="None">
     <Declaration><![CDATA[FUNCTION_BLOCK FB_CorePress
 VAR_INPUT
-    i_bEnabled : BOOL; (* Enable the Core Press Sequence *)
-    i_bReset : BOOL;  (* Reset from HMI *)
 END_VAR
-
 VAR_OUTPUT
-    o_bFaulted : BOOL; (* Indicates failure alarm *)
-    iProductCount : INT; (* Counts total cycles completed *)
 END_VAR
 
 VAR
     iState : INT := 0;
+	FeedbackTimer : TON;
+	FeedbackTimerForPCyl : TON;
     DelayTimer : TON;
-    FaultTimer : TON;
 END_VAR]]></Declaration>
     <Implementation>
       <ST><![CDATA[CASE iState OF
-    0: (* Idle: Wait for safeties and enable switch *)
-        IF GVL_IO.DI_24VDC_CB_OK AND GVL_IO.DI_ECS THEN
-            iState := 1;
+	0: (* Idle/Off, DI_ECS=FALSE *)
+		iState := 10;
+		
+	10: (* check safety conditions *)
+		IF GVL_HMI.bSafeties AND GVL_IO.DI_EPD THEN (* Safeties OK and Enable Switch On *)
+            GVL_IO.DO_M1 := TRUE; (* Start Oil Pump *)
+			CheckFeedback( E_FT.PUMP, TRUE );
+			IF GVL_IO.DI_M1 THEN
+				DelayAndAdvance(GVL_InitialSetting.PUMP_RunningDelayTime, iState+10);
+			END_IF
         END_IF
-
-    1: (* Start Oil Pump, Check Feedback *)
-        GVL_IO.DO_M1 := TRUE; (* Start Oil Pump *)
-        DelayTimer(IN := TRUE, PT := T#2S);
-        
-        IF DelayTimer.Q AND GVL_IO.DI_M1 THEN (* Feedback received *)
-            iState := 2;
-        ELSE
-            FaultTimer(IN := TRUE, PT := T#3S); (* Wait 3s for feedback *)
-            IF FaultTimer.Q THEN
-                o_bFaulted := TRUE; (* Alarm if no feedback *)
-                iState := 0;
-            END_IF
-        END_IF
-
-    2: (* Check PCYL2 Retracted, Energize DO6.7 if needed *)
+		
+    20: (* Check PCYL1 Retracted, Energize DO6.7 if needed *)
         IF NOT GVL_IO.DI_PCYL1_R THEN
-            GVL_IO.DO_PCYL1_R := TRUE; (* Retract PCYL2 *)
+            GVL_IO.DO_PCYL1_R := TRUE; (* Retract PCYL1 *)
+			CheckFeedbackForPCyl( E_FT.PCYL1_R, TRUE );
         ELSE
-            GVL_IO.DO_PCYL1_R := FALSE;
-            iState := 3;
+            iState := iState + 10;
         END_IF
 
-    3: (* Count Casing/Core, Move to Next Step When Count Reached *)
-        IF (GVL_Var.CorePress_CoreCount >= 5) AND (GVL_Var.CorePress_CasingCount >= 5) THEN
-            iState := 4;
+    30: (* Count Casing/Core, Move to Next Step When Count Reached *)
+        IF (GVL_HMI.nCasingCount >= GVL_HMI.i_nCasingCountForStarting) AND (GVL_HMI.nCoreCount >= GVL_HMI.i_nCoreCountForStarting) THEN
+            iState := iState + 10;
         END_IF
+		
+	40:
+        IF NOT GVL_IO.DI_PCYL1_E THEN
+            GVL_IO.DO_PCYL1_E := TRUE; (* Extend PCYL1 *)
+			CheckFeedback( E_FT.PCYL1_E, TRUE );
+        ELSE
+			DelayAndAdvance( GVL_HMI.i_nPCylinder1ExtendedRunningTime, iState+1);
+        END_IF
+	41:
+		IF GVL_IO.DI_PCYL1_E THEN
+			GVL_IO.DO_PCYL1_E := FALSE;
+			CheckFeedback( E_FT.PCYL1_E, FALSE );
+		ELSE
+			iState := iState + 1;
+		END_IF
+	42:
+        IF NOT GVL_IO.DI_CYL3_E THEN
+            GVL_IO.DO_CYL3_E := TRUE; (* Extend CYL3 *)
+			CheckFeedback( E_FT.CYL3_E, TRUE );
+        ELSE
+			DelayAndAdvance( GVL_HMI.i_nCylinder3ExtendedRunningTime, iState+1);
+        END_IF
+	43:
+		IF GVL_IO.DI_CYL3_E THEN
+			GVL_IO.DO_CYL3_E := FALSE;
+			CheckFeedback( E_FT.CYL3_E, FALSE );
+		ELSE
+			iState := iState + 1;
+		END_IF
+	44:
+        IF NOT GVL_IO.DI_CYL1_E THEN
+            GVL_IO.DO_CYL1_E := TRUE; (* Extend CYL3 *)
+			CheckFeedback( E_FT.CYL1_E, TRUE );
+        ELSE
+			DelayAndAdvance( GVL_HMI.i_nCylinder3ExtendedRunningTime, iState+1);
+        END_IF
+	45:
+		IF GVL_IO.DI_CYL1_E THEN
+			GVL_IO.DO_CYL1_E := FALSE;
+			CheckFeedback( E_FT.CYL1_E, FALSE );
+		ELSE
+			iState := (iState + 10) / 10 * 10;
+		END_IF
+	
+	50:
+        IF NOT GVL_IO.DI_PCYL1_R THEN
+            GVL_IO.DO_PCYL1_R := TRUE;
+			CheckFeedback( E_FT.PCYL1_R, TRUE );
+        ELSE
+			DelayAndAdvance( GVL_HMI.i_nPCylinder1RetractedRunningTime, iState+1);
+        END_IF
+	51:
+		IF GVL_IO.DI_PCYL1_R THEN
+			GVL_IO.DO_PCYL1_R := FALSE;
+			CheckFeedback( E_FT.PCYL1_R, FALSE );
+		ELSE
+			iState := iState + 1;
+		END_IF
+	52:
+        IF NOT GVL_IO.DI_CYL3_R THEN
+            GVL_IO.DO_CYL3_R := TRUE;
+			CheckFeedback( E_FT.CYL3_R, TRUE );
+        ELSE
+			DelayAndAdvance( GVL_HMI.i_nCylinder3RetractedRunningTime, iState+1);
+        END_IF
+	53:
+		IF GVL_IO.DI_CYL3_R THEN
+			GVL_IO.DO_CYL3_R := FALSE;
+			CheckFeedback( E_FT.CYL3_R, FALSE );
+		ELSE
+			iState := iState + 1;
+		END_IF
+	54:
+        IF NOT GVL_IO.DI_CYL1_R THEN
+            GVL_IO.DO_CYL1_R := TRUE;
+			CheckFeedback( E_FT.CYL1_R, TRUE );
+        ELSE
+			DelayAndAdvance( GVL_HMI.i_nCylinder1RetractedRunningTime, iState + 1);
+        END_IF
+	55:
+		IF GVL_IO.DI_CYL1_R THEN
+			GVL_IO.DO_CYL1_R := FALSE;
+			CheckFeedback( E_FT.CYL1_R, FALSE );
+		ELSE
+			iState := (iState + 10) / 10 * 10;
+		END_IF
 
-    (* Continue adding logic for steps 4-11 as per your requirement *)
+	60:
+        IF NOT GVL_IO.DI_PCYL2_E THEN
+            GVL_IO.DO_PCYL2_E := TRUE;
+			CheckFeedbackForPCyl( E_FT.PCYL2_E, TRUE );
+        ELSE
+			DelayAndAdvance( GVL_HMI.i_nPCylinder2ExtendedRunningTime, iState + 10);
+        END_IF
+		
+	70:
+        IF NOT GVL_IO.DI_CYL4_E THEN
+            GVL_IO.DO_CYL4_E := TRUE;
+			CheckFeedback( E_FT.CYL4_E, TRUE );
+        ELSE
+			DelayAndAdvance( GVL_HMI.i_nCylinder4ExtendedRunningTime, iState+1);
+        END_IF
+	71:
+		IF GVL_IO.DI_CYL4_E THEN
+			GVL_IO.DO_CYL4_E := FALSE;
+			CheckFeedback( E_FT.CYL4_E, FALSE );
+		ELSE
+			iState := iState + 1;
+		END_IF
+	72:
+        IF NOT GVL_IO.DI_CYL2_E THEN
+            GVL_IO.DO_CYL2_E := TRUE;
+			CheckFeedback( E_FT.CYL2_E, TRUE );
+        ELSE
+			DelayAndAdvance( GVL_HMI.i_nCylinder2ExtendedRunningTime, iState+1);
+        END_IF
+	73:
+		IF GVL_IO.DI_CYL2_E THEN
+			GVL_IO.DO_CYL2_E := FALSE;
+			CheckFeedback( E_FT.CYL2_E, FALSE );
+		ELSE
+			iState := (iState + 10) / 10 * 10;
+		END_IF
+		
+	80:
+        IF NOT GVL_IO.DI_CYL4_R THEN
+            GVL_IO.DO_CYL4_R := TRUE;
+			CheckFeedback( E_FT.CYL4_R, TRUE );
+        ELSE
+			DelayAndAdvance( GVL_HMI.i_nCylinder4RetractedRunningTime, iState+1);
+        END_IF
+	81:
+		IF GVL_IO.DI_CYL4_R THEN
+			GVL_IO.DO_CYL4_R := FALSE;
+			CheckFeedback( E_FT.CYL4_R, FALSE );
+		ELSE
+			iState := iState + 1;
+		END_IF
+	82:
+        IF NOT GVL_IO.DI_CYL2_R THEN
+            GVL_IO.DO_CYL2_R := TRUE;
+			CheckFeedback( E_FT.CYL2_R, TRUE );
+        ELSE
+			DelayAndAdvance( GVL_HMI.i_nCylinder2RetractedRunningTime, iState+1);
+        END_IF
+	83:
+		IF GVL_IO.DI_CYL2_R THEN
+			GVL_IO.DO_CYL2_R := FALSE;
+			CheckFeedback( E_FT.CYL2_R, FALSE );
+		ELSE
+			iState := (iState + 10) / 10 * 10;
+		END_IF
+	
+	90:
+		iState := iState + 10;
+		
+	100:
+		iState := iState + 10;
 
-    11: (* Increment product count and loop back to step 2 *)
-        iProductCount := iProductCount + 1;
-        iState := 2;
+    110: (* Increment product count and loop back to step 2 *)
+        GVL_HMI.nProductCount := GVL_HMI.nProductCount + 1;
+        iState := 20;
 END_CASE
 
-(* Reset logic *)
-IF i_bReset THEN
-    iState := 0;
-    o_bFaulted := FALSE;
-    iProductCount := 0;
-END_IF]]></ST>
+IF 30 < iState AND iState <= 49 THEN
+	IF NOT GVL_IO.DI_PCYL1_R THEN
+		GVL_IO.DO_PCYL1_R := TRUE; (* Retract PCYL1 *)
+		CheckFeedbackForPCyl( E_FT.PCYL1_R, TRUE );
+	END_IF
+ELSIF 60 < iState AND iState <= 89 THEN
+	IF NOT GVL_IO.DI_PCYL2_E THEN
+		GVL_IO.DO_PCYL2_E := TRUE;
+		CheckFeedbackForPCyl( E_FT.PCYL2_E, TRUE );
+	END_IF
+END_IF
+]]></ST>
     </Implementation>
+    <Method Name="CheckFeedback" Id="{d11e11c1-6951-4b65-a476-89e0978a2d73}">
+      <Declaration><![CDATA[METHOD CheckFeedback : BOOL
+VAR_INPUT
+	t : E_FT;
+	bRising : BOOL := TRUE;
+END_VAR
+VAR_OUTPUT
+	o_nResult : INT := 0;	// -1: fail, 0: checking, 1: success 
+END_VAR]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[FB_CheckFeedback(t:=t, bRising:=bRising, FeedbackTimer:=FeedbackTimer);
+o_nResult := FB_CheckFeedback.o_nResult;]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="CheckFeedbackForPCyl" Id="{e39e4f48-4afd-4050-8182-b086e5fc7626}">
+      <Declaration><![CDATA[METHOD CheckFeedbackForPCyl : BOOL
+VAR_INPUT
+	t : E_FT;
+	bRising : BOOL := TRUE;
+END_VAR
+VAR_OUTPUT
+	o_nResult : INT := 0;	// -1: fail, 0: checking, 1: success 
+END_VAR]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[FB_CheckFeedback(t:=t, bRising:=bRising, FeedbackTimer:=FeedbackTimerForPCyl);
+o_nResult := FB_CheckFeedback.o_nResult;]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="DelayAndAdvance" Id="{cf5452f4-ec01-4f88-b470-caf86aa38707}">
+      <Declaration><![CDATA[METHOD DelayAndAdvance : BOOL
+VAR_INPUT
+	i_nDelayTime: INT;	// ms
+	i_nNextState: INT;
+END_VAR
+
+VAR
+END_VAR]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[IF NOT DelayTimer.IN THEN
+    DelayTimer(IN := TRUE, PT := INT_TO_TIME(i_nDelayTime));
+ELSE
+    IF DelayTimer.Q THEN 
+        iState := i_nNextState; 
+    END_IF
+END_IF]]></ST>
+      </Implementation>
+    </Method>
     <LineIds Name="FB_CorePress">
-      <LineId Id="39" Count="44" />
+      <LineId Id="257" Count="31" />
+      <LineId Id="290" Count="0" />
+      <LineId Id="369" Count="0" />
+      <LineId Id="371" Count="1" />
+      <LineId Id="374" Count="2" />
+      <LineId Id="373" Count="0" />
+      <LineId Id="291" Count="5" />
+      <LineId Id="377" Count="6" />
+      <LineId Id="298" Count="6" />
+      <LineId Id="384" Count="6" />
+      <LineId Id="306" Count="7" />
+      <LineId Id="391" Count="6" />
+      <LineId Id="315" Count="6" />
+      <LineId Id="398" Count="6" />
+      <LineId Id="323" Count="6" />
+      <LineId Id="405" Count="5" />
+      <LineId Id="331" Count="0" />
+      <LineId Id="411" Count="0" />
+      <LineId Id="332" Count="6" />
+      <LineId Id="340" Count="0" />
+      <LineId Id="366" Count="0" />
+      <LineId Id="412" Count="55" />
+      <LineId Id="367" Count="0" />
+      <LineId Id="468" Count="1" />
+      <LineId Id="471" Count="0" />
+      <LineId Id="473" Count="0" />
+      <LineId Id="472" Count="0" />
+      <LineId Id="470" Count="0" />
+      <LineId Id="341" Count="6" />
+      <LineId Id="358" Count="0" />
+      <LineId Id="348" Count="1" />
+      <LineId Id="360" Count="0" />
+      <LineId Id="362" Count="3" />
+      <LineId Id="361" Count="0" />
+      <LineId Id="350" Count="0" />
       <LineId Id="9" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_CorePress.CheckFeedback">
+      <LineId Id="5" Count="0" />
+      <LineId Id="70" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_CorePress.CheckFeedbackForPCyl">
+      <LineId Id="5" Count="0" />
+      <LineId Id="70" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_CorePress.DelayAndAdvance">
+      <LineId Id="8" Count="5" />
+      <LineId Id="5" Count="0" />
     </LineIds>
   </POU>
 </TcPlcObject>

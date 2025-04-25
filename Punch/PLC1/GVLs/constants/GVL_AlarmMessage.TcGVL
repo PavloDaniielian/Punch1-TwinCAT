@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.6">
+  <GVL Name="GVL_AlarmMessage" Id="{9ff5443a-0921-4b08-99cf-31fb6578e32a}">
+    <Declaration><![CDATA[{attribute $27qualified_only$27}
+VAR_GLOBAL CONSTANT
+	PUMP : STRING := 'Pump isn$27t started to run!';
+	PUMP_OFF : STRING := 'Pump isn$27t stopped TO run!';
+	
+	CYL1_NOT_EXTENDED : STRING := 'Cylinder 1 isn$27t be extended!'; 
+	CYL1_NOT_EXTENDED_OFF : STRING := 'Cylinder 1 isn$27t be de-extended!'; 
+	CYL1_NOT_RETRACTED : STRING := 'Cylinder 1 isn$27t be retracted!'; 
+	CYL1_NOT_RETRACTED_OFF : STRING := 'Cylinder 1 isn$27t be de-retracted!'; 
+	CYL2_NOT_EXTENDED : STRING := 'Cylinder 2 isn$27t be extended!'; 
+	CYL2_NOT_EXTENDED_OFF : STRING := 'Cylinder 2 isn$27t be de-extended!'; 
+	CYL2_NOT_RETRACTED : STRING := 'Cylinder 2 isn$27t be retracted!';
+	CYL2_NOT_RETRACTED_OFF : STRING := 'Cylinder 2 isn$27t be de-retracted!'; 
+	CYL3_NOT_EXTENDED : STRING := 'Cylinder 3 isn$27t be extended!';  
+	CYL3_NOT_EXTENDED_OFF : STRING := 'Cylinder 3 isn$27t be de-extended!'; 
+	CYL3_NOT_RETRACTED : STRING := 'Cylinder 3 isn$27t be retracted!';
+	CYL3_NOT_RETRACTED_OFF : STRING := 'Cylinder 3 isn$27t be de-retracted!'; 
+	CYL4_NOT_EXTENDED : STRING := 'Cylinder 4 isn$27t be extended!';  
+	CYL4_NOT_EXTENDED_OFF : STRING := 'Cylinder 4 isn$27t be de-extended!'; 
+	CYL4_NOT_RETRACTED : STRING := 'Cylinder 4 isn$27t be retracted!';
+	CYL4_NOT_RETRACTED_OFF : STRING := 'Cylinder 4 isn$27t be de-retracted!'; 
+	CYL5_NOT_EXTENDED : STRING := 'Cylinder 5 isn$27t be extended!'; 
+	CYL5_NOT_EXTENDED_OFF : STRING := 'Cylinder 5 isn$27t be de-extended!'; 
+	CYL5_NOT_RETRACTED : STRING := 'Cylinder 5 isn$27t be retracted!'; 
+	CYL5_NOT_RETRACTED_OFF : STRING := 'Cylinder 5 isn$27t be de-retracted!'; 
+	CYL6_NOT_EXTENDED : STRING := 'Cylinder 6 isn$27t extended!'; 
+	CYL6_NOT_EXTENDED_OFF : STRING := 'Cylinder 6 isn$27t de-extended!';
+	CYL6_NOT_RETRACTED : STRING := 'Cylinder 6 isn$27t be retracted!';
+	CYL6_NOT_RETRACTED_OFF : STRING := 'Cylinder 6 isn$27t be de-retracted!'; 
+	CYL7_NOT_EXTENDED : STRING := 'Cylinder 7 isn$27t extended!'; 
+	CYL7_NOT_EXTENDED_OFF : STRING := 'Cylinder 7 isn$27t de-extended!';
+	CYL7_NOT_RETRACTED : STRING := 'Cylinder 7 isn$27t be retracted!';
+	CYL7_NOT_RETRACTED_OFF : STRING := 'Cylinder 7 isn$27t be de-retracted!'; 
+	
+	PCYL1_NOT_EXTENDED : STRING := 'Pneumatic Cylinder 1 isn$27t be extended!';
+	PCYL1_NOT_EXTENDED_OFF : STRING := 'Pneumatic Cylinder 1 isn$27t be de-extended!'; 
+	PCYL1_NOT_RETRACTED : STRING := 'Pneumatic Cylinder 1 isn$27t be retracted!'; 
+	PCYL1_NOT_RETRACTED_OFF : STRING := 'Pneumatic Cylinder 1 isn$27t be de-retracted!'; 
+	PCYL2_NOT_EXTENDED : STRING := 'Pneumatic Cylinder 2 isn$27t be extended!'; 
+	PCYL2_NOT_EXTENDED_OFF : STRING := 'Pneumatic Cylinder 2 isn$27t be de-extended!';
+	PCYL2_NOT_RETRACTED : STRING := 'Pneumatic Cylinder 2 isn$27t be retracted!';
+	PCYL2_NOT_RETRACTED_OFF : STRING := 'Pneumatic Cylinder 2 isn$27t be de-retracted!'; 
+	
+	LOW_LEAD_SPOOL : STRING := 'Low Lead Spool!';
+END_VAR]]></Declaration>
+  </GVL>
+</TcPlcObject>

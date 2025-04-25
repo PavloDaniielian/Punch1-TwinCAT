@@ -3,10 +3,73 @@
   <GVL Name="GVL_HMI" Id="{80a1a5a0-00a7-49c7-a368-c9a3531de34b}">
     <Declaration><![CDATA[{attribute 'qualified_only'}
 VAR_GLOBAL
-	bInCoreSwagingManualMode: BOOL := FALSE;
-	sInAlarmMessage: STRING(50) := '';
+	// safeties
+	i_b24VDC_CB_OK : BOOL := FALSE;
+	i_bESR1 : BOOL := FALSE;
+	i_bLS1 : BOOL := FALSE;
+	i_bTS1 : BOOL := FALSE;
+	i_bPS1 : BOOL := FALSE;
+	bSafeties :BOOL := TRUE;
 	
-	bOut_CYL1_E : BOOL := FALSE;
+	// enabling flag
+	i_bECS : BOOL := FALSE;
+	i_bCoreSwagingManualMode: BOOL := FALSE;
+	
+	// pump
+	i_nPumpState : INT := 0; // -1:Faulted, 0:Stop, 2:Running
+	// cylinders
+	i_nCylinder1State : INT := 0; // -1:Faulted, 0:Extended, 1:Retracting, 2: Retracted, 3:Extending
+	i_nCylinder2State : INT := 0; // -1:Faulted, 0:Extended, 1:Retracting, 2: Retracted, 3:Extending
+	i_nCylinder3State : INT := 0; // -1:Faulted, 0:Extended, 1:Retracting, 2: Retracted, 3:Extending
+	i_nCylinder4State : INT := 0; // -1:Faulted, 0:Extended, 1:Retracting, 2: Retracted, 3:Extending
+	i_nCylinder5State : INT := 0; // -1:Faulted, 0:Extended, 1:Retracting, 2: Retracted, 3:Extending
+	i_nCylinder6State : INT := 0; // -1:Faulted, 0:Extended, 1:Retracting, 2: Retracted, 3:Extending
+	i_nCylinder7State : INT := 0; // -1:Faulted, 0:Extended, 1:Retracting, 2: Retracted, 3:Extending
+	i_nCylinder8State : INT := 0; // -1:Faulted, 0:Extended, 1:Retracting, 2: Retracted, 3:Extending
+	i_nPCylinder1State : INT := 0; // -1:Faulted, 0:Extended, 1:Retracting, 2: Retracted, 3:Extending
+	i_nPCylinder2State : INT := 0; // -1:Faulted, 0:Extended, 1:Retracting, 2: Retracted, 3:Extending
+	
+	// settings
+	i_nPumpFeedbackCheckingTime : INT := GVL_InitialSetting.PUMP_FeedbackCheckingTime; // ms
+	i_nCylinderFeedbackCheckingTime : INT := GVL_InitialSetting.CYLINDER_FeedbackCheckingTime; // ms
+	i_nPCylinder1ExtendedRunningTime : INT := GVL_InitialSetting.PCYLINDER1EXTENDED_RunningTime; // ms
+	i_nCylinder3ExtendedRunningTime : INT := GVL_InitialSetting.CYLINDER3EXTENDED_RunningTime; // ms
+	i_nCylinder1ExtendedRunningTime : INT := GVL_InitialSetting.CYLINDER1EXTENDED_RunningTime; // ms
+	i_nPCylinder1RetractedRunningTime : INT := GVL_InitialSetting.PCYLINDER1RETRACTED_RunningTime; // ms
+	i_nCylinder3RetractedRunningTime : INT := GVL_InitialSetting.CYLINDER3RETRACTED_RunningTime; // ms
+	i_nCylinder1RetractedRunningTime : INT := GVL_InitialSetting.CYLINDER1RETRACTED_RunningTime; // ms
+	i_nPCylinder2ExtendedRunningTime : INT := GVL_InitialSetting.PCYLINDER2EXTENDED_RunningTime; // ms
+	i_nCylinder4ExtendedRunningTime : INT := GVL_InitialSetting.CYLINDER4EXTENDED_RunningTime; // ms
+	i_nCylinder2ExtendedRunningTime : INT := GVL_InitialSetting.CYLINDER2EXTENDED_RunningTime; // ms
+	i_nCylinder4RetractedRunningTime : INT := GVL_InitialSetting.CYLINDER4RETRACTED_RunningTime; // ms
+	i_nCylinder2RetractedRunningTime : INT := GVL_InitialSetting.CYLINDER2RETRACTED_RunningTime; // ms
+	i_nPCylinder5ExtendedRunningTime : INT := GVL_InitialSetting.PCYLINDER5EXTENDED_RunningTime; // ms
+	i_nPCylinder4ExtendedRunningTime : INT := GVL_InitialSetting.PCYLINDER4EXTENDED_RunningTime; // ms
+	i_nPE4MaintainTime : INT := GVL_InitialSetting.PE4_MaintainTime; // ms
+	i_nPCylinder6ExtendedRunningTime : INT := GVL_InitialSetting.PCYLINDER6EXTENDED_RunningTime; // ms
+	i_nPE6MaintainTime : INT := GVL_InitialSetting.PE6_MaintainTime; // ms
+	i_nCasingCountForStarting : INT := GVL_InitialSetting.CASING_COUNT_FOR_STARTING;
+	i_nCoreCountForStarting : INT := GVL_InitialSetting.CORE_COUNT_FOR_STARTING;
+	
+	// working count
+	nProductCount : INT := 0;
+	nCasingCount: INT := 0;
+	nCoreCount: INT := 0;
+	
+	// alram
+	o_bAlarmActive: BOOL := FALSE;
+	o_sAlarmMessage: STRING := '';
+	
+	// reset signal
+	i_bReset : BOOL := FALSE;
+	
+	
+	bOut_CYL1_E : BOOL := TRUE;			// TRUE: Extended, FALSE: Retracted
+	bOut_CYL1_Fault : BOOL := FALSE;	// TRUE: fault
+	bOut_CYL2_E : BOOL := FALSE;		// TRUE: Extended, FALSE: Retracted
+	bOut_CYL2_Fault : BOOL := FALSE;	// TRUE: fault
+	bOut_CYL3_E : BOOL := FALSE;		// TRUE: Extended, FALSE: Retracted
+	bOut_CYL3_Fault : BOOL := TRUE;		// TRUE: fault
 END_VAR]]></Declaration>
   </GVL>
 </TcPlcObject>

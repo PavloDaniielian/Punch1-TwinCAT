@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.6">
+  <POU Name="FB_TransmitStatesToHMI" Id="{bd67aa5a-e740-41f9-a2ca-e2a51652f913}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK FB_TransmitStatesToHMI
+VAR_INPUT
+END_VAR
+VAR_OUTPUT
+END_VAR
+VAR
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[// safeties
+GVL_HMI.i_b24VDC_CB_OK := GVL_IO.DI_24VDC_CB_OK;
+GVL_HMI.i_bESR1 := GVL_IO.DI_ESR1;
+GVL_HMI.i_bLS1 := GVL_IO.DI_LS1;
+GVL_HMI.i_bTS1 := GVL_IO.DI_TS1;
+GVL_HMI.i_bPS1 := GVL_IO.DI_PS1;
+
+// enabling flag
+GVL_HMI.i_bECS := GVL_IO.DI_ECS;
+
+// led
+IF NOT GVL_HMI.o_bAlarmActive THEN
+	GVL_IO.DO_LGreen := FALSE;
+	GVL_IO.DO_LRed := TRUE;
+ELSE
+	GVL_IO.DO_LGreen := TRUE;
+	GVL_IO.DO_LRed := FALSE;
+END_IF
+
+IF (GVL_HMI.i_nCylinder1State>=0) OR (GVL_HMI.i_nCylinder1State MOD 2 = 0) THEN
+	IF GVL_IO.DI_CYL1_E THEN GVL_HMI.i_nCylinder1State := 0; ELSIF GVL_IO.DI_CYL1_R THEN GVL_HMI.i_nCylinder1State := 2; END_IF
+END_IF
+IF (GVL_HMI.i_nCylinder2State>=0) OR (GVL_HMI.i_nCylinder2State MOD 2 = 0) THEN
+	IF GVL_IO.DI_CYL2_E THEN GVL_HMI.i_nCylinder2State := 0; ELSIF GVL_IO.DI_CYL2_R THEN GVL_HMI.i_nCylinder2State := 2; END_IF
+END_IF
+IF (GVL_HMI.i_nCylinder3State>=0) OR (GVL_HMI.i_nCylinder3State MOD 2 = 0) THEN
+	IF GVL_IO.DI_CYL3_E THEN GVL_HMI.i_nCylinder3State := 0; ELSIF GVL_IO.DI_CYL3_R THEN GVL_HMI.i_nCylinder3State := 2; END_IF
+END_IF
+IF (GVL_HMI.i_nCylinder4State>=0) OR (GVL_HMI.i_nCylinder4State MOD 2 = 0) THEN
+	IF GVL_IO.DI_CYL4_E THEN GVL_HMI.i_nCylinder4State := 0; ELSIF GVL_IO.DI_CYL4_R THEN GVL_HMI.i_nCylinder4State := 2; END_IF
+END_IF
+IF (GVL_HMI.i_nCylinder5State>=0) OR (GVL_HMI.i_nCylinder5State MOD 2 = 0) THEN
+	IF GVL_IO.DI_CYL5_E THEN GVL_HMI.i_nCylinder5State := 0; ELSIF GVL_IO.DI_CYL5_R THEN GVL_HMI.i_nCylinder5State := 2; END_IF
+END_IF
+IF (GVL_HMI.i_nCylinder6State>=0) OR (GVL_HMI.i_nCylinder6State MOD 2 = 0) THEN
+	IF GVL_IO.DI_CYL6_E THEN GVL_HMI.i_nCylinder6State := 0; ELSIF GVL_IO.DI_CYL6_R THEN GVL_HMI.i_nCylinder6State := 2; END_IF
+END_IF
+IF (GVL_HMI.i_nCylinder7State>=0) OR (GVL_HMI.i_nCylinder7State MOD 2 = 0) THEN
+	IF GVL_IO.DI_CYL7_E THEN GVL_HMI.i_nCylinder7State := 0; ELSIF GVL_IO.DI_CYL7_R THEN GVL_HMI.i_nCylinder7State := 2; END_IF
+END_IF
+
+]]></ST>
+    </Implementation>
+    <LineIds Name="FB_TransmitStatesToHMI">
+      <LineId Id="12" Count="4" />
+      <LineId Id="9" Count="0" />
+      <LineId Id="19" Count="2" />
+      <LineId Id="38" Count="8" />
+      <LineId Id="48" Count="0" />
+      <LineId Id="47" Count="0" />
+      <LineId Id="54" Count="0" />
+      <LineId Id="50" Count="0" />
+      <LineId Id="57" Count="2" />
+      <LineId Id="61" Count="2" />
+      <LineId Id="65" Count="2" />
+      <LineId Id="69" Count="2" />
+      <LineId Id="73" Count="2" />
+      <LineId Id="77" Count="2" />
+      <LineId Id="28" Count="0" />
+      <LineId Id="18" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

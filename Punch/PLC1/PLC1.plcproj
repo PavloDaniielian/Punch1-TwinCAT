@@ -15,8 +15,20 @@
     <Implicit_KindOfTask>{03fb81c0-ad16-4813-b070-7c934a24be59}</Implicit_KindOfTask>
     <Implicit_Jitter_Distribution>{571e6ff0-149d-4722-b326-2bfb74e60ccd}</Implicit_Jitter_Distribution>
     <LibraryReferences>{af02f6c6-7f8d-42c6-bd1c-15569a563666}</LibraryReferences>
+    <Released>false</Released>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="DUTs\E_FT.TcTLEO">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="GVLs\constants\GVL_AlarmMessage.TcGVL">
+      <SubType>Code</SubType>
+      <LinkAlways>true</LinkAlways>
+    </Compile>
+    <Compile Include="GVLs\constants\GVL_InitialSetting.TcGVL">
+      <SubType>Code</SubType>
+      <LinkAlways>true</LinkAlways>
+    </Compile>
     <Compile Include="GVLs\GVL_HMI.TcGVL">
       <SubType>Code</SubType>
     </Compile>
@@ -27,6 +39,15 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="PlcTask.TcTTO">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\BaseFuntion\FB_CheckFeedback.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\BaseFuntion\FB_SetAlarm.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\BaseFuntion\FB_TransmitStatesToHMI.TcPOU">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="POUs\Devices\Beckhoff\EL1809.TcPOU">
@@ -60,9 +81,11 @@
   <ItemGroup>
     <Folder Include="DUTs" />
     <Folder Include="GVLs" />
+    <Folder Include="GVLs\constants" />
     <Folder Include="POUs\Devices" />
     <Folder Include="POUs\Devices\Beckhoff" />
     <Folder Include="POUs\IO" />
+    <Folder Include="POUs\BaseFuntion" />
     <Folder Include="VISUs" />
     <Folder Include="POUs" />
   </ItemGroup>

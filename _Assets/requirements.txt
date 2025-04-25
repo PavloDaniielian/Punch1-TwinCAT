@@ -1,0 +1,26 @@
+Header menu bar same for all pages up top
+so overview page-
+Has the graphic of the machine i provided, and over the top of each part we overlay the status.
+For example each cylinder a green circle for extended, grey for retracted, and red blinking for fault
+An alarm reset button
+
+Settings page-
+Settings such as:
+Fail to extend and fail to retract timer presets
+any timer presets
+Time for pump pre start before machine moving time set point
+
+Alarms page-
+Active alarms list
+
+
+Plan:
+	Change HMI show state variable
+	m3 motor
+	Process Reset button
+Qusetion 1:
+If Low Oil Level Sw or High Oil Temp, PLC should inhivit pump.
+At that time, shouldn't Core Swagging stop?
+Question 2:
+nCorePress_CoreCount: INT := 0; ?
+nCorePress_CasingCount: INT := 0; ?

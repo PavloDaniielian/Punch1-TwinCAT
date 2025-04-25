@@ -1,3 +1,30 @@
 {
+  "controlTypeValues": {},
+  "controlClassValues": {
+    "CylinderExtended": {
+      "attributes": {
+        "BackgroundColor": {
+          "color": "rgba(0, 255, 0, 1)"
+        }
+      },
+      "themedResources": {}
+    },
+    "CylinderFaulted": {
+      "attributes": {
+        "BackgroundColor": {
+          "color": "rgba(255, 0, 0, 1)"
+        }
+      },
+      "themedResources": {}
+    },
+    "CylinderRetracted": {
+      "attributes": {
+        "BackgroundColor": {
+          "color": "rgba(128, 128, 128, 1)"
+        }
+      },
+      "themedResources": {}
+    }
+  },
   "$schema": "./../../../Packages/Beckhoff.TwinCAT.HMI.Framework.12.762.46/runtimes/native1.12-tchmi/Schema/ThemeDescription.Schema.json"
 }

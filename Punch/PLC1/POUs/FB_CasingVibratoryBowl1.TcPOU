@@ -3,87 +3,181 @@
   <POU Name="FB_CasingVibratoryBowl1" Id="{964fa243-99d7-4cd8-a60f-98887c839cc0}" SpecialFunc="None">
     <Declaration><![CDATA[FUNCTION_BLOCK FB_CasingVibratoryBowl1
 VAR_INPUT
-    i_bEnabled : BOOL;
-    i_bReset : BOOL;
 END_VAR
-
 VAR_OUTPUT
-	o_bFaulted: BOOL;
-    o_iCasingCount : INT; (* Counts number of casings processed *)
 END_VAR
-
 VAR
     iState : INT := 0;
+    iState2 : INT := 0;
+	FeedbackTimer : TON;
     DelayTimer : TON;
+	DelayTimer2 : TON;
 END_VAR]]></Declaration>
     <Implementation>
       <ST><![CDATA[CASE iState OF
     0: (* Idle/Off *)
-        IF GVL_IO.DI_24VDC_CB_OK AND GVL_IO.DI_ECS THEN
-            iState := 1;
+		iState := 10;
+	
+	10:
+        IF GVL_HMI.bSafeties AND GVL_IO.DI_ECS THEN
+            iState := iState + 10;
         END_IF
 
-    1: (* Wait for Product in Position *)
-        DelayTimer(IN := TRUE, PT := T#50MS);
-        IF DelayTimer.Q AND GVL_IO.DI_PE1 THEN
-            iState := 2;
+    20: (* Wait for Product in Position *)
+		DelayAndAdvance( GVL_InitialSetting.BOWL_RunningDelayTime, iState+1 );
+	21:
+	    IF GVL_IO.DI_PE1 THEN
+            iState := (iState + 10) / 10 * 10;
         END_IF
 
-    2: (* Energize Track Index Solenoid *)
+    30: (* Energize Track Index Solenoid *)
         GVL_IO.DO_PCYL3_E := TRUE;
-        DelayTimer(IN := TRUE, PT := T#250MS);
-        IF DelayTimer.Q THEN
-            GVL_IO.DO_PCYL3_E := FALSE;
-            iState := 3;
-        END_IF
-
-    3: (* Check Invert PE and Decide Path *)
-        DelayTimer(IN := TRUE, PT := T#100MS);
-        IF DelayTimer.Q THEN
-            IF NOT GVL_IO.DI_PE2 THEN
-                iState := 5;
-            ELSE
-                iState := 4;
-            END_IF
-        END_IF
-
-    4: (* Energize Flipper Solenoid *)
-        GVL_IO.DO_PCYL4_E := TRUE;
-        DelayTimer(IN := TRUE, PT := T#150MS);
-        IF DelayTimer.Q THEN
-            GVL_IO.DO_PCYL4_E := FALSE;
-            iState := 6;
-        END_IF
-
-    5: (* Energize Straight Through Solenoid *)
-        GVL_IO.DO_PCYL5_E := TRUE;
-        DelayTimer(IN := TRUE, PT := T#250MS);
-        IF DelayTimer.Q THEN
-            GVL_IO.DO_PCYL5_E := FALSE;
-            iState := 2; (* Loop back *)
-        END_IF
-
-    6: (* Check High-Level Sensor *)
-        DelayTimer(IN := TRUE, PT := T#500MS);
-        IF DelayTimer.Q THEN
-            IF GVL_IO.DI_PE4 THEN
-                iState := 6; (* Pause and wait *)
-            ELSE
-                o_iCasingCount := o_iCasingCount + 1;
-                iState := 2;
-            END_IF
-        END_IF
+		DelayAndAdvance( GVL_InitialSetting.PCYLINDER3EXTENDED_RunningTime, iState+1 );
+	31:
+		GVL_IO.DO_PCYL3_E := FALSE;
+		iState2 := 0;
+        iState := (iState + 10) / 10 * 10;
+		
+	40:
+		DelayAndAdvance( GVL_InitialSetting.PE2_CheckingDelayTime, iState+1 );
+	41: (* Check Invert PE and Decide Path *)
+		IF GVL_IO.DI_PE2 THEN
+			iState := iState + 10;
+			DelayTimer.IN := FALSE;
+		ELSE
+			DelayAndAdvance( GVL_InitialSetting.PE2_MaintainTime, iState+20 );
+		END_IF
+	
+	50:
+		GVL_IO.DO_PCYL5_E := TRUE;
+		DelayAndAdvance( GVL_HMI.i_nPCylinder5ExtendedRunningTime, iState+1);
+	51:
+		GVL_IO.DO_PCYL5_E := FALSE;
+		GVL_HMI.nCasingCount := GVL_HMI.nCasingCount + 1;
+		iState := 20;
+		
+	60:
+		GVL_IO.DO_PCYL4_E := TRUE;
+		DelayAndAdvance( GVL_HMI.i_nPCylinder4ExtendedRunningTime, iState+1);
+	61:
+		GVL_IO.DO_PCYL4_E := FALSE;
+		GVL_HMI.nCasingCount := GVL_HMI.nCasingCount + 1;
+		iState := (iState + 10) / 10 * 10;
+		
+	70: (* Check High-Level Sensor *)
+		IF GVL_IO.DI_PE4 THEN
+			DelayAndAdvance( GVL_HMI.i_nPE4MaintainTime, iState+10 );
+		ELSE
+			iState := 20;
+			DelayTimer.IN := FALSE;
+		END_IF
+	
+	80:
+		(* Pause and Wait *)
 END_CASE
 
-(* Reset logic *)
-IF i_bReset THEN
-    iState := 0;
-    o_iCasingCount := 0;
+IF iState >= 20 THEN
+	CASE iState2 OF
+		0:
+			GVL_IO.DO_VB1 := TRUE; 
+			IF NOT DelayTimer2.IN THEN
+				DelayTimer2(IN := TRUE, PT := INT_TO_TIME(GVL_InitialSetting.VB1_MaintainTime));
+			ELSE
+				IF DelayTimer2.Q THEN 
+					iState2 := iState2 + 10;
+				END_IF
+			END_IF
+		10:
+			IF GVL_IO.DI_PE1 THEN
+				iState2 := iState2 + 10;
+			END_IF
+		20:
+			(* Stop and Wait *)
+	END_CASE
+ELSE
+	iState2 := 0;
 END_IF]]></ST>
     </Implementation>
+    <Method Name="DelayAndAdvance" Id="{41bcb24e-3142-49ab-9a22-b6668bf4ec63}">
+      <Declaration><![CDATA[METHOD DelayAndAdvance : BOOL
+VAR_INPUT
+	i_nDelayTime: INT;	// ms
+	i_nNextState: INT;
+END_VAR
+
+VAR
+END_VAR]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[IF NOT DelayTimer.IN THEN
+    DelayTimer(IN := TRUE, PT := INT_TO_TIME(i_nDelayTime));
+ELSE
+    IF DelayTimer.Q THEN 
+        iState := i_nNextState; 
+    END_IF
+END_IF]]></ST>
+      </Implementation>
+    </Method>
     <LineIds Name="FB_CasingVibratoryBowl1">
-      <LineId Id="23" Count="61" />
+      <LineId Id="23" Count="1" />
+      <LineId Id="99" Count="2" />
+      <LineId Id="25" Count="4" />
+      <LineId Id="107" Count="1" />
+      <LineId Id="31" Count="5" />
+      <LineId Id="111" Count="0" />
+      <LineId Id="195" Count="0" />
+      <LineId Id="194" Count="0" />
+      <LineId Id="198" Count="0" />
+      <LineId Id="196" Count="0" />
+      <LineId Id="109" Count="0" />
+      <LineId Id="41" Count="0" />
+      <LineId Id="114" Count="1" />
+      <LineId Id="112" Count="0" />
+      <LineId Id="119" Count="0" />
+      <LineId Id="124" Count="0" />
+      <LineId Id="116" Count="0" />
+      <LineId Id="120" Count="0" />
+      <LineId Id="117" Count="0" />
+      <LineId Id="121" Count="0" />
+      <LineId Id="125" Count="0" />
+      <LineId Id="141" Count="0" />
+      <LineId Id="132" Count="0" />
+      <LineId Id="137" Count="0" />
+      <LineId Id="144" Count="0" />
+      <LineId Id="199" Count="0" />
+      <LineId Id="138" Count="0" />
+      <LineId Id="146" Count="5" />
+      <LineId Id="200" Count="0" />
+      <LineId Id="145" Count="0" />
+      <LineId Id="139" Count="0" />
+      <LineId Id="154" Count="0" />
+      <LineId Id="157" Count="0" />
+      <LineId Id="162" Count="0" />
+      <LineId Id="160" Count="1" />
+      <LineId Id="158" Count="0" />
+      <LineId Id="67" Count="0" />
+      <LineId Id="163" Count="0" />
+      <LineId Id="78" Count="0" />
+      <LineId Id="165" Count="0" />
+      <LineId Id="79" Count="0" />
+      <LineId Id="167" Count="0" />
+      <LineId Id="166" Count="0" />
+      <LineId Id="171" Count="0" />
+      <LineId Id="173" Count="0" />
+      <LineId Id="175" Count="0" />
+      <LineId Id="178" Count="5" />
+      <LineId Id="177" Count="0" />
+      <LineId Id="185" Count="1" />
+      <LineId Id="188" Count="1" />
+      <LineId Id="193" Count="0" />
+      <LineId Id="197" Count="0" />
+      <LineId Id="174" Count="0" />
+      <LineId Id="169" Count="0" />
+      <LineId Id="172" Count="0" />
       <LineId Id="9" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_CasingVibratoryBowl1.DelayAndAdvance">
+      <LineId Id="8" Count="5" />
+      <LineId Id="5" Count="0" />
     </LineIds>
   </POU>
 </TcPlcObject>

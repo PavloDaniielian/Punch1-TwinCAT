@@ -3,83 +3,101 @@
   <POU Name="FB_OilPump" Id="{eb1edbee-9a4b-4f1e-8695-a5d69ca2499b}" SpecialFunc="None">
     <Declaration><![CDATA[FUNCTION_BLOCK FB_OilPump
 VAR_INPUT
-    i_bEnabled : BOOL; (* Signal to enable the pump *)
-    i_bReset : BOOL;  (* Reset signal from HMI *)
-    bCallForCyl : BOOL; (* Any call for CYL1-CYL10 (DO5.6-DO6.3) *)
+	i_bCallForCyl: BOOL := TRUE;
 END_VAR
-
 VAR_OUTPUT
-    o_bFaulted : BOOL; (* Indicates failure to start alarm *)
 END_VAR
-
 VAR
-    iState : INT := 0; (* iState machine variable *)
-    StartDelayTimer : TON; (* Timer for 10s delay before activating DO5.2 *)
-    FaultTimer : TON; (* Timer for 3s monitoring if DI1.3 feedback is missing *)
+    iState : INT := 0;
+	FeedbackTimer : TON;
+    DelayTimer : TON;
 END_VAR]]></Declaration>
     <Implementation>
-      <ST><![CDATA[(* Default Output iStates *)
-GVL_IO.DO_M1 := FALSE; (* Pump Primary Output *)
-GVL_IO.DO_M2 := FALSE; (* Pump Secondary Output *)
-GVL_IO.DO_SV1 := FALSE; (* Enable Pump if CYL is called *)
-o_bFaulted := FALSE;
-
-CASE iState OF
+      <ST><![CDATA[CASE iState OF
     0: (* Pump Off, Not Enabled *)
-        IF i_bEnabled THEN
-            iState := 1;
-        END_IF
+        iState := 10;
 
-    1: (* Pump Enabled from Other Routine *)
-        GVL_IO.DO_M1 := TRUE; (* Start the pump *)
-        
-        (* Start the 10-second delay before DO5.2 activation *)
-        StartDelayTimer(IN := TRUE, PT := T#10S);
-
-        (* If delay timer completes, activate DO5.2 *)
-        IF StartDelayTimer.Q THEN
-            GVL_IO.DO_M2 := TRUE;
-        END_IF
-
-        (* Inhibit Pump if DI1.4 or DI1.5 goes Low *)
+    10: (* Pump Enabled from Other Routine *)
+		IF GVL_IO.DI_M1 THEN
+			DelayAndAdvance( GVL_InitialSetting.PUMP_FAN_DelayTime, iState+1 );
+		END_IF
+	11:
+		GVL_IO.DO_M2 := TRUE;
+	    (* Inhibit Pump if DI1.4 or DI1.5 goes Low *)
         IF (NOT GVL_IO.DI_LS1) OR (NOT GVL_IO.DI_TS1) THEN
-            iState := 2; (* Move to failure iState *)
+			GVL_IO.DO_M1 := FALSE;
+			GVL_IO.DO_M2 := FALSE;
+            iState := iState + 1;
+        END_IF
+	12: // check to off pump
+		IF NOT GVL_IO.DI_M1 THEN
+			FB_CheckFeedback( t := E_FT.PUMP, FeedbackTimer := FeedbackTimer );
+		ELSE
+			iState := (iState + 10) / 10 * 10;
         END_IF
 
-        (* If any CYL1-10 is called, Energise DO5.5 *)
-        IF bCallForCyl THEN
-            GVL_IO.DO_SV1 := TRUE;
-        ELSE
-            GVL_IO.DO_SV1 := FALSE;
-        END_IF
-
-    2: (* Fault Handling: Check DI1.3 Feedback *)
+    20: (* Fault Handling: Check DI1.3 Feedback *)
         (* Start 3-second timer to check for DI1.3 feedback *)
-        FaultTimer(IN := TRUE, PT := T#3S);
-
-        IF GVL_IO.DI_M1 THEN
-            (* Reset fault condition if feedback is received in time *)
-            FaultTimer(IN := FALSE);
-            o_bFaulted := FALSE;
-        END_IF
-
-        IF FaultTimer.Q THEN
-            (* If DI1.3 feedback was not received, set fault iState *)
-            o_bFaulted := TRUE;
-        END_IF
-
-        (* Reset Condition from HMI *)
-        IF i_bReset THEN
-            iState := 0; (* Reset to the initial iState *)
-            FaultTimer(IN := FALSE);
-            StartDelayTimer(IN := FALSE);
-            o_bFaulted := FALSE;
+        DelayAndAdvance( GVL_InitialSetting.PUMP_RestartingTime, iState+1 );
+	21:
+        IF NOT GVL_IO.DI_M1 THEN
+			GVL_HMI.i_nPumpState := -1;
+			FB_SetAlarm( sMsg:=GVL_AlarmMessage.PUMP );
+			iState := iState / 10 * 10;
+		ELSE
+			iState := (iState + 10) / 10 * 10;
         END_IF
 END_CASE]]></ST>
     </Implementation>
+    <Method Name="DelayAndAdvance" Id="{c0f40f36-8a2d-4f35-96c3-ddd282aa94ff}">
+      <Declaration><![CDATA[METHOD DelayAndAdvance : BOOL
+VAR_INPUT
+	i_nDelayTime: INT;	// ms
+	i_nNextState: INT;
+END_VAR
+
+VAR
+END_VAR]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[IF NOT DelayTimer.IN THEN
+    DelayTimer(IN := TRUE, PT := INT_TO_TIME(i_nDelayTime));
+ELSE
+    IF DelayTimer.Q THEN 
+        iState := i_nNextState; 
+    END_IF
+END_IF]]></ST>
+      </Implementation>
+    </Method>
     <LineIds Name="FB_OilPump">
-      <LineId Id="40" Count="56" />
+      <LineId Id="46" Count="2" />
+      <LineId Id="51" Count="1" />
+      <LineId Id="115" Count="0" />
+      <LineId Id="117" Count="0" />
+      <LineId Id="127" Count="0" />
+      <LineId Id="134" Count="1" />
+      <LineId Id="128" Count="1" />
+      <LineId Id="133" Count="0" />
+      <LineId Id="137" Count="0" />
+      <LineId Id="132" Count="0" />
+      <LineId Id="118" Count="0" />
+      <LineId Id="145" Count="0" />
+      <LineId Id="147" Count="0" />
+      <LineId Id="150" Count="0" />
+      <LineId Id="149" Count="0" />
+      <LineId Id="148" Count="0" />
+      <LineId Id="146" Count="0" />
+      <LineId Id="74" Count="4" />
+      <LineId Id="81" Count="0" />
+      <LineId Id="143" Count="0" />
+      <LineId Id="142" Count="0" />
+      <LineId Id="144" Count="0" />
+      <LineId Id="139" Count="1" />
+      <LineId Id="96" Count="0" />
       <LineId Id="9" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_OilPump.DelayAndAdvance">
+      <LineId Id="8" Count="5" />
+      <LineId Id="5" Count="0" />
     </LineIds>
   </POU>
 </TcPlcObject>

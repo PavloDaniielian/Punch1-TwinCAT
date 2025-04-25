@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.6">
+  <GVL Name="GVL_InitialSetting" Id="{8c97d501-930c-4d02-950d-ca9eb28cdbdf}">
+    <Declaration><![CDATA[{attribute 'qualified_only'}
+VAR_GLOBAL CONSTANT
+	PUMP_FeedbackCheckingTime : INT := 2000; // ms
+	PUMP_RunningDelayTime : INT := 2000; // ms
+	
+	CYLINDER_FeedbackCheckingTime : INT := 3000; // ms
+	
+	PCYLINDER1EXTENDED_RunningTime: INT := 100;
+	PCYLINDER1RETRACTED_RunningTime: INT := 100;
+	PCYLINDER2EXTENDED_RunningTime: INT := 100;
+	CYLINDER1EXTENDED_RunningTime: INT := 100;
+	CYLINDER1RETRACTED_RunningTime: INT := 100;
+	CYLINDER2EXTENDED_RunningTime: INT := 100;
+	CYLINDER2RETRACTED_RunningTime: INT := 100;
+	CYLINDER3EXTENDED_RunningTime: INT := 100;
+	CYLINDER3RETRACTED_RunningTime: INT := 100;
+	CYLINDER4EXTENDED_RunningTime: INT := 100;
+	CYLINDER4RETRACTED_RunningTime: INT := 100;
+	CYLINDER5EXTENDED_RunningDelayTime: INT := 250;
+	CYLINDER5RETRACTED_RunningDelayTime: INT := 1;
+	CYLINDER6RETRACTED_RunningDelayTime: INT := 50;
+	CYLINDER6EXTENDED_RunningDelayTime: INT := 50;
+	CYLINDER7RETRACTED_RunningDelayTime: INT := 50;
+	CYLINDER7EXTENDED_RunningDelayTime: INT := 50;
+	
+	M3_RunningDelayTime : INT := 50;
+	BOWL_RunningDelayTime : INT := 50;
+	
+	// for BOWL1
+	PCYLINDER3EXTENDED_RunningTime: INT := 250;
+	PE2_CheckingDelayTime: INT := 100;
+	PE2_MaintainTime: INT := 10;
+	PCYLINDER5EXTENDED_RunningTime: INT := 250;
+	PCYLINDER4EXTENDED_RunningTime: INT := 150;
+	PE4_MaintainTime: INT := 500;
+	VB1_MaintainTime: INT := 50;
+	
+	// for BOWL2
+	PCYLINDER6EXTENDED_RunningTime: INT := 250;
+	PE6_MaintainTime: INT := 500;
+	VB2_MaintainTime: INT := 50;
+	
+	PUMP_FAN_DelayTime : INT := 10000;
+	PUMP_RestartingTime: INT := 3000;
+	
+	CASING_COUNT_FOR_STARTING : INT := 5;
+	CORE_COUNT_FOR_STARTING : INT := 5;
+END_VAR]]></Declaration>
+  </GVL>
+</TcPlcObject>

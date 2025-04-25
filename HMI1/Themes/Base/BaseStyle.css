@@ -351,3 +351,17 @@ div[data-tchmi-type="TcHmi.Controls.System.TcHmiView"] {
         .tchmi-view-loading-spinner div:nth-child(3) {
             animation-delay: -0.15s;
         }
+
+
+
+
+/** custom */
+.tchmi-class-CylinderFaulted {
+    animation: blink 1s infinite;
+}
+
+@keyframes blink {
+    50% {
+        opacity: 0.2;
+    }
+}
