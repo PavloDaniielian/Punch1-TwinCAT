@@ -11,6 +11,8 @@ VAR
     iState : INT := 0;
 	FeedbackTimer : TON;
     DelayTimer : TON;
+	fSetAlarm : FB_SetAlarm;
+	fCheckFeedback : FB_CheckFeedback;
 END_VAR]]></Declaration>
     <Implementation>
       <ST><![CDATA[CASE iState OF
@@ -31,7 +33,7 @@ END_VAR]]></Declaration>
         END_IF
 	12: // check to off pump
 		IF NOT GVL_IO.DI_M1 THEN
-			FB_CheckFeedback( t := E_FT.PUMP, FeedbackTimer := FeedbackTimer );
+			fCheckFeedback( t := E_FT.PUMP, FeedbackTimer := FeedbackTimer );
 		ELSE
 			iState := (iState + 10) / 10 * 10;
         END_IF
@@ -42,7 +44,7 @@ END_VAR]]></Declaration>
 	21:
         IF NOT GVL_IO.DI_M1 THEN
 			GVL_HMI.i_nPumpState := -1;
-			FB_SetAlarm( sMsg:=GVL_AlarmMessage.PUMP );
+			fSetAlarm( sMsg:=GVL_AlarmMessage.PUMP );
 			iState := iState / 10 * 10;
 		ELSE
 			iState := (iState + 10) / 10 * 10;

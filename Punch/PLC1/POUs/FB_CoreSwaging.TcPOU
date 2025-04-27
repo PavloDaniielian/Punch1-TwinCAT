@@ -10,6 +10,8 @@ VAR
     iState : INT := 0;
 	FeedbackTimer : TON;
     DelayTimer : TON;
+	fSetAlarm : FB_SetAlarm;
+	fCheckFeedback : FB_CheckFeedback;
 END_VAR
 
 
@@ -62,7 +64,7 @@ END_VAR
     
     40: (* Low Lead Spool Check *)
         IF NOT GVL_IO.DI_PE5 THEN
-			FB_SetAlarm( sMsg := GVL_AlarmMessage.LOW_LEAD_SPOOL );
+			fSetAlarm( sMsg := GVL_AlarmMessage.LOW_LEAD_SPOOL );
         ELSE
 			IF GVL_IO.DI_CYL4_R THEN
 				(* index M3 *)
@@ -119,8 +121,8 @@ VAR_OUTPUT
 	o_nResult : INT := 0;	// -1: fail, 0: checking, 1: success 
 END_VAR]]></Declaration>
       <Implementation>
-        <ST><![CDATA[FB_CheckFeedback(t:=t, FeedbackTimer:=FeedbackTimer);
-o_nResult := FB_CheckFeedback.o_nResult;]]></ST>
+        <ST><![CDATA[fCheckFeedback(t:=t, FeedbackTimer:=FeedbackTimer);
+o_nResult := fCheckFeedback.o_nResult;]]></ST>
       </Implementation>
     </Method>
     <Method Name="DelayAndAdvance" Id="{532274d9-37b2-4f3d-a542-0cdcb8beabdd}">

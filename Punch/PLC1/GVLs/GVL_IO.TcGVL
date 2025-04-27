@@ -5,6 +5,7 @@
 VAR_GLOBAL
 	device1 : EL1809;
 	
+	AxisNumber : AXIS_REF;
 
 	DI_24VDC_CB_OK 	AT %I*: BOOL := FALSE;
 	DI_ESR1 		AT %I*: BOOL := FALSE;

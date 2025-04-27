@@ -17,6 +17,7 @@ VAR
 	nCheckingTime: INT;
 	sAlarmMessage: STRING;
 	sMsg: INT;
+	fSetAlarm : FB_SetAlarm;
 END_VAR
 ]]></Declaration>
     <Implementation>
@@ -140,7 +141,7 @@ ELSE
 				IF bRising THEN sAlarmMessage := GVL_AlarmMessage.PCYL2_NOT_RETRACTED; ELSE sAlarmMessage := GVL_AlarmMessage.PCYL2_NOT_RETRACTED_OFF; END_IF
 		END_CASE
 		
-		FB_SetAlarm( sMsg := sAlarmMessage );
+		fSetAlarm( sMsg := sAlarmMessage );
 		o_nResult := -1;
     END_IF
 END_IF]]></ST>

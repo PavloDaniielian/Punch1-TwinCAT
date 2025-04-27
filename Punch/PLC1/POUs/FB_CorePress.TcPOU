@@ -12,6 +12,8 @@ VAR
 	FeedbackTimer : TON;
 	FeedbackTimerForPCyl : TON;
     DelayTimer : TON;
+	fSetAlarm : FB_SetAlarm;
+	fCheckFeedback : FB_CheckFeedback;
 END_VAR]]></Declaration>
     <Implementation>
       <ST><![CDATA[CASE iState OF
@@ -226,8 +228,8 @@ VAR_OUTPUT
 	o_nResult : INT := 0;	// -1: fail, 0: checking, 1: success 
 END_VAR]]></Declaration>
       <Implementation>
-        <ST><![CDATA[FB_CheckFeedback(t:=t, bRising:=bRising, FeedbackTimer:=FeedbackTimer);
-o_nResult := FB_CheckFeedback.o_nResult;]]></ST>
+        <ST><![CDATA[fCheckFeedback(t:=t, bRising:=bRising, FeedbackTimer:=FeedbackTimer);
+o_nResult := fCheckFeedback.o_nResult;]]></ST>
       </Implementation>
     </Method>
     <Method Name="CheckFeedbackForPCyl" Id="{e39e4f48-4afd-4050-8182-b086e5fc7626}">
@@ -240,8 +242,8 @@ VAR_OUTPUT
 	o_nResult : INT := 0;	// -1: fail, 0: checking, 1: success 
 END_VAR]]></Declaration>
       <Implementation>
-        <ST><![CDATA[FB_CheckFeedback(t:=t, bRising:=bRising, FeedbackTimer:=FeedbackTimerForPCyl);
-o_nResult := FB_CheckFeedback.o_nResult;]]></ST>
+        <ST><![CDATA[fCheckFeedback(t:=t, bRising:=bRising, FeedbackTimer:=FeedbackTimerForPCyl);
+o_nResult := fCheckFeedback.o_nResult;]]></ST>
       </Implementation>
     </Method>
     <Method Name="DelayAndAdvance" Id="{cf5452f4-ec01-4f88-b470-caf86aa38707}">
