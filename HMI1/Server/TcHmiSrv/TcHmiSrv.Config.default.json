@@ -2508,6 +2508,270 @@
             },
             "USEMAPPING": true
         },
+        "PLC1.GVL_HMI.i_bCyl1E": {
+            "ACCESS": 3,
+            "DOMAIN": "TMC",
+            "DYNAMIC": true,
+            "MAPPING": "PLC1::GVL_HMI::i_bCyl1E",
+            "SCHEMA": {
+                "$ref": "tchmi:general#/definitions/BOOL"
+            },
+            "USEMAPPING": true
+        },
+        "PLC1.GVL_HMI.i_bCyl1R": {
+            "ACCESS": 3,
+            "DOMAIN": "TMC",
+            "DYNAMIC": true,
+            "MAPPING": "PLC1::GVL_HMI::i_bCyl1R",
+            "SCHEMA": {
+                "$ref": "tchmi:general#/definitions/BOOL"
+            },
+            "USEMAPPING": true
+        },
+        "PLC1.GVL_HMI.i_bCyl2E": {
+            "ACCESS": 3,
+            "DOMAIN": "TMC",
+            "DYNAMIC": true,
+            "MAPPING": "PLC1::GVL_HMI::i_bCyl2E",
+            "SCHEMA": {
+                "$ref": "tchmi:general#/definitions/BOOL"
+            },
+            "USEMAPPING": true
+        },
+        "PLC1.GVL_HMI.i_bCyl2R": {
+            "ACCESS": 3,
+            "DOMAIN": "TMC",
+            "DYNAMIC": true,
+            "MAPPING": "PLC1::GVL_HMI::i_bCyl2R",
+            "SCHEMA": {
+                "$ref": "tchmi:general#/definitions/BOOL"
+            },
+            "USEMAPPING": true
+        },
+        "PLC1.GVL_HMI.i_bCyl3E": {
+            "ACCESS": 3,
+            "DOMAIN": "TMC",
+            "DYNAMIC": true,
+            "MAPPING": "PLC1::GVL_HMI::i_bCyl3E",
+            "SCHEMA": {
+                "$ref": "tchmi:general#/definitions/BOOL"
+            },
+            "USEMAPPING": true
+        },
+        "PLC1.GVL_HMI.i_bCyl3R": {
+            "ACCESS": 3,
+            "DOMAIN": "TMC",
+            "DYNAMIC": true,
+            "MAPPING": "PLC1::GVL_HMI::i_bCyl3R",
+            "SCHEMA": {
+                "$ref": "tchmi:general#/definitions/BOOL"
+            },
+            "USEMAPPING": true
+        },
+        "PLC1.GVL_HMI.i_bCyl4E": {
+            "ACCESS": 3,
+            "DOMAIN": "TMC",
+            "DYNAMIC": true,
+            "MAPPING": "PLC1::GVL_HMI::i_bCyl4E",
+            "SCHEMA": {
+                "$ref": "tchmi:general#/definitions/BOOL"
+            },
+            "USEMAPPING": true
+        },
+        "PLC1.GVL_HMI.i_bCyl4R": {
+            "ACCESS": 3,
+            "DOMAIN": "TMC",
+            "DYNAMIC": true,
+            "MAPPING": "PLC1::GVL_HMI::i_bCyl4R",
+            "SCHEMA": {
+                "$ref": "tchmi:general#/definitions/BOOL"
+            },
+            "USEMAPPING": true
+        },
+        "PLC1.GVL_HMI.i_bCyl5E": {
+            "ACCESS": 3,
+            "DOMAIN": "TMC",
+            "DYNAMIC": true,
+            "MAPPING": "PLC1::GVL_HMI::i_bCyl5E",
+            "SCHEMA": {
+                "$ref": "tchmi:general#/definitions/BOOL"
+            },
+            "USEMAPPING": true
+        },
+        "PLC1.GVL_HMI.i_bCyl5R": {
+            "ACCESS": 3,
+            "DOMAIN": "TMC",
+            "DYNAMIC": true,
+            "MAPPING": "PLC1::GVL_HMI::i_bCyl5R",
+            "SCHEMA": {
+                "$ref": "tchmi:general#/definitions/BOOL"
+            },
+            "USEMAPPING": true
+        },
+        "PLC1.GVL_HMI.i_bCyl6E": {
+            "ACCESS": 3,
+            "DOMAIN": "TMC",
+            "DYNAMIC": true,
+            "MAPPING": "PLC1::GVL_HMI::i_bCyl6E",
+            "SCHEMA": {
+                "$ref": "tchmi:general#/definitions/BOOL"
+            },
+            "USEMAPPING": true
+        },
+        "PLC1.GVL_HMI.i_bCyl6R": {
+            "ACCESS": 3,
+            "DOMAIN": "TMC",
+            "DYNAMIC": true,
+            "MAPPING": "PLC1::GVL_HMI::i_bCyl6R",
+            "SCHEMA": {
+                "$ref": "tchmi:general#/definitions/BOOL"
+            },
+            "USEMAPPING": true
+        },
+        "PLC1.GVL_HMI.i_bCyl7E": {
+            "ACCESS": 3,
+            "DOMAIN": "TMC",
+            "DYNAMIC": true,
+            "MAPPING": "PLC1::GVL_HMI::i_bCyl7E",
+            "SCHEMA": {
+                "$ref": "tchmi:general#/definitions/BOOL"
+            },
+            "USEMAPPING": true
+        },
+        "PLC1.GVL_HMI.i_bCyl7R": {
+            "ACCESS": 3,
+            "DOMAIN": "TMC",
+            "DYNAMIC": true,
+            "MAPPING": "PLC1::GVL_HMI::i_bCyl7R",
+            "SCHEMA": {
+                "$ref": "tchmi:general#/definitions/BOOL"
+            },
+            "USEMAPPING": true
+        },
+        "PLC1.GVL_HMI.i_bCyl8E": {
+            "ACCESS": 3,
+            "DOMAIN": "TMC",
+            "DYNAMIC": true,
+            "MAPPING": "PLC1::GVL_HMI::i_bCyl8E",
+            "SCHEMA": {
+                "$ref": "tchmi:general#/definitions/BOOL"
+            },
+            "USEMAPPING": true
+        },
+        "PLC1.GVL_HMI.i_bCyl8R": {
+            "ACCESS": 3,
+            "DOMAIN": "TMC",
+            "DYNAMIC": true,
+            "MAPPING": "PLC1::GVL_HMI::i_bCyl8R",
+            "SCHEMA": {
+                "$ref": "tchmi:general#/definitions/BOOL"
+            },
+            "USEMAPPING": true
+        },
+        "PLC1.GVL_HMI.i_bESR1": {
+            "ACCESS": 3,
+            "DOMAIN": "TMC",
+            "DYNAMIC": true,
+            "MAPPING": "PLC1::GVL_HMI::i_bESR1",
+            "SCHEMA": {
+                "$ref": "tchmi:general#/definitions/BOOL"
+            },
+            "USEMAPPING": true
+        },
+        "PLC1.GVL_HMI.i_bPE1": {
+            "ACCESS": 3,
+            "DOMAIN": "TMC",
+            "DYNAMIC": true,
+            "MAPPING": "PLC1::GVL_HMI::i_bPE1",
+            "SCHEMA": {
+                "allOf": [
+                    {
+                        "$ref": "tchmi:general#/definitions/BOOL"
+                    },
+                    {
+                        "comment": "Vibratory"
+                    }
+                ]
+            },
+            "USEMAPPING": true
+        },
+        "PLC1.GVL_HMI.i_bPE2": {
+            "ACCESS": 3,
+            "DOMAIN": "TMC",
+            "DYNAMIC": true,
+            "MAPPING": "PLC1::GVL_HMI::i_bPE2",
+            "SCHEMA": {
+                "$ref": "tchmi:general#/definitions/BOOL"
+            },
+            "USEMAPPING": true
+        },
+        "PLC1.GVL_HMI.i_bPE3": {
+            "ACCESS": 3,
+            "DOMAIN": "TMC",
+            "DYNAMIC": true,
+            "MAPPING": "PLC1::GVL_HMI::i_bPE3",
+            "SCHEMA": {
+                "$ref": "tchmi:general#/definitions/BOOL"
+            },
+            "USEMAPPING": true
+        },
+        "PLC1.GVL_HMI.i_bPE4": {
+            "ACCESS": 3,
+            "DOMAIN": "TMC",
+            "DYNAMIC": true,
+            "MAPPING": "PLC1::GVL_HMI::i_bPE4",
+            "SCHEMA": {
+                "$ref": "tchmi:general#/definitions/BOOL"
+            },
+            "USEMAPPING": true
+        },
+        "PLC1.GVL_HMI.i_bPE5": {
+            "ACCESS": 3,
+            "DOMAIN": "TMC",
+            "DYNAMIC": true,
+            "MAPPING": "PLC1::GVL_HMI::i_bPE5",
+            "SCHEMA": {
+                "$ref": "tchmi:general#/definitions/BOOL"
+            },
+            "USEMAPPING": true
+        },
+        "PLC1.GVL_HMI.i_bPS1": {
+            "ACCESS": 3,
+            "DOMAIN": "TMC",
+            "DYNAMIC": true,
+            "MAPPING": "PLC1::GVL_HMI::i_bPS1",
+            "SCHEMA": {
+                "$ref": "tchmi:general#/definitions/BOOL"
+            },
+            "USEMAPPING": true
+        },
+        "PLC1.GVL_HMI.i_bVB1": {
+            "ACCESS": 3,
+            "DOMAIN": "TMC",
+            "DYNAMIC": true,
+            "MAPPING": "PLC1::GVL_HMI::i_bVB1",
+            "SCHEMA": {
+                "allOf": [
+                    {
+                        "$ref": "tchmi:general#/definitions/BOOL"
+                    },
+                    {
+                        "comment": "output"
+                    }
+                ]
+            },
+            "USEMAPPING": true
+        },
+        "PLC1.GVL_HMI.i_bVB2": {
+            "ACCESS": 3,
+            "DOMAIN": "TMC",
+            "DYNAMIC": true,
+            "MAPPING": "PLC1::GVL_HMI::i_bVB2",
+            "SCHEMA": {
+                "$ref": "tchmi:general#/definitions/BOOL"
+            },
+            "USEMAPPING": true
+        },
         "PLC1.GVL_HMI.i_nCylinder1State": {
             "ACCESS": 3,
             "DOMAIN": "TMC",
@@ -2627,11 +2891,11 @@
             },
             "USEMAPPING": true
         },
-        "PLC1.GVL_HMI.i_nCylinder8State": {
+        "PLC1.GVL_HMI.i_nPCylinder1State": {
             "ACCESS": 3,
             "DOMAIN": "TMC",
             "DYNAMIC": true,
-            "MAPPING": "PLC1::GVL_HMI::i_nCylinder8State",
+            "MAPPING": "PLC1::GVL_HMI::i_nPCylinder1State",
             "SCHEMA": {
                 "allOf": [
                     {
@@ -2641,6 +2905,114 @@
                         "comment": "-1:Faulted, 0:Extended, 1:Retracting, 2: Retracted, 3:Extending"
                     }
                 ]
+            },
+            "USEMAPPING": true
+        },
+        "PLC1.GVL_HMI.i_nPCylinder2State": {
+            "ACCESS": 3,
+            "DOMAIN": "TMC",
+            "DYNAMIC": true,
+            "MAPPING": "PLC1::GVL_HMI::i_nPCylinder2State",
+            "SCHEMA": {
+                "allOf": [
+                    {
+                        "$ref": "tchmi:general#/definitions/INT"
+                    },
+                    {
+                        "comment": "-1:Faulted, 0:Extended, 1:Retracting, 2: Retracted, 3:Extending"
+                    }
+                ]
+            },
+            "USEMAPPING": true
+        },
+        "PLC1.GVL_HMI.i_rPT1": {
+            "ACCESS": 3,
+            "DOMAIN": "TMC",
+            "DYNAMIC": true,
+            "MAPPING": "PLC1::GVL_HMI::i_rPT1",
+            "SCHEMA": {
+                "allOf": [
+                    {
+                        "$ref": "tchmi:general#/definitions/REAL"
+                    },
+                    {
+                        "comment": "Analog Value"
+                    }
+                ]
+            },
+            "USEMAPPING": true
+        },
+        "PLC1.GVL_HMI.i_rPT2": {
+            "ACCESS": 3,
+            "DOMAIN": "TMC",
+            "DYNAMIC": true,
+            "MAPPING": "PLC1::GVL_HMI::i_rPT2",
+            "SCHEMA": {
+                "$ref": "tchmi:general#/definitions/REAL"
+            },
+            "USEMAPPING": true
+        },
+        "PLC1.GVL_HMI.nCasingCount": {
+            "ACCESS": 3,
+            "DOMAIN": "TMC",
+            "DYNAMIC": true,
+            "MAPPING": "PLC1::GVL_HMI::nCasingCount",
+            "SCHEMA": {
+                "$ref": "tchmi:general#/definitions/INT"
+            },
+            "USEMAPPING": true
+        },
+        "PLC1.GVL_HMI.nCoreCount": {
+            "ACCESS": 3,
+            "DOMAIN": "TMC",
+            "DYNAMIC": true,
+            "MAPPING": "PLC1::GVL_HMI::nCoreCount",
+            "SCHEMA": {
+                "$ref": "tchmi:general#/definitions/INT"
+            },
+            "USEMAPPING": true
+        },
+        "PLC1.GVL_HMI.nProductCount": {
+            "ACCESS": 3,
+            "DOMAIN": "TMC",
+            "DYNAMIC": true,
+            "MAPPING": "PLC1::GVL_HMI::nProductCount",
+            "SCHEMA": {
+                "allOf": [
+                    {
+                        "$ref": "tchmi:general#/definitions/INT"
+                    },
+                    {
+                        "comment": "working count"
+                    }
+                ]
+            },
+            "USEMAPPING": true
+        },
+        "PLC1.GVL_HMI.o_bAlarmActive": {
+            "ACCESS": 3,
+            "DOMAIN": "TMC",
+            "DYNAMIC": true,
+            "MAPPING": "PLC1::GVL_HMI::o_bAlarmActive",
+            "SCHEMA": {
+                "allOf": [
+                    {
+                        "$ref": "tchmi:general#/definitions/BOOL"
+                    },
+                    {
+                        "comment": "alram"
+                    }
+                ]
+            },
+            "USEMAPPING": true
+        },
+        "PLC1.GVL_HMI.o_sAlarmMessage": {
+            "ACCESS": 3,
+            "DOMAIN": "TMC",
+            "DYNAMIC": true,
+            "MAPPING": "PLC1::GVL_HMI::o_sAlarmMessage",
+            "SCHEMA": {
+                "$ref": "tchmi:general#/definitions/STRING%2880%29"
             },
             "USEMAPPING": true
         },
@@ -3563,6 +3935,34 @@
                 "LocalizeText": 3,
                 "Login": 3,
                 "Logout": 3,
+                "PLC1.GVL_HMI.bSafeties": 3,
+                "PLC1.GVL_HMI.i_b24VDC_CB_OK": 3,
+                "PLC1.GVL_HMI.i_bCoreSwagingManualMode": 3,
+                "PLC1.GVL_HMI.i_bCyl1E": 3,
+                "PLC1.GVL_HMI.i_bCyl1R": 3,
+                "PLC1.GVL_HMI.i_bCyl2E": 3,
+                "PLC1.GVL_HMI.i_bCyl2R": 3,
+                "PLC1.GVL_HMI.i_bCyl3E": 3,
+                "PLC1.GVL_HMI.i_bCyl3R": 3,
+                "PLC1.GVL_HMI.i_bCyl4E": 3,
+                "PLC1.GVL_HMI.i_bCyl4R": 3,
+                "PLC1.GVL_HMI.i_bCyl5E": 3,
+                "PLC1.GVL_HMI.i_bCyl5R": 3,
+                "PLC1.GVL_HMI.i_bCyl6E": 3,
+                "PLC1.GVL_HMI.i_bCyl6R": 3,
+                "PLC1.GVL_HMI.i_bCyl7E": 3,
+                "PLC1.GVL_HMI.i_bCyl7R": 3,
+                "PLC1.GVL_HMI.i_bCyl8E": 3,
+                "PLC1.GVL_HMI.i_bCyl8R": 3,
+                "PLC1.GVL_HMI.i_bESR1": 3,
+                "PLC1.GVL_HMI.i_bPE1": 3,
+                "PLC1.GVL_HMI.i_bPE2": 3,
+                "PLC1.GVL_HMI.i_bPE3": 3,
+                "PLC1.GVL_HMI.i_bPE4": 3,
+                "PLC1.GVL_HMI.i_bPE5": 3,
+                "PLC1.GVL_HMI.i_bPS1": 3,
+                "PLC1.GVL_HMI.i_bVB1": 3,
+                "PLC1.GVL_HMI.i_bVB2": 3,
                 "PLC1.GVL_HMI.i_nCylinder1State": 3,
                 "PLC1.GVL_HMI.i_nCylinder2State": 3,
                 "PLC1.GVL_HMI.i_nCylinder3State": 3,
@@ -3571,6 +3971,15 @@
                 "PLC1.GVL_HMI.i_nCylinder6State": 3,
                 "PLC1.GVL_HMI.i_nCylinder7State": 3,
                 "PLC1.GVL_HMI.i_nCylinder8State": 3,
+                "PLC1.GVL_HMI.i_nPCylinder1State": 3,
+                "PLC1.GVL_HMI.i_nPCylinder2State": 3,
+                "PLC1.GVL_HMI.i_rPT1": 3,
+                "PLC1.GVL_HMI.i_rPT2": 3,
+                "PLC1.GVL_HMI.nCasingCount": 3,
+                "PLC1.GVL_HMI.nCoreCount": 3,
+                "PLC1.GVL_HMI.nProductCount": 3,
+                "PLC1.GVL_HMI.o_bAlarmActive": 3,
+                "PLC1.GVL_HMI.o_sAlarmMessage": 3,
                 "SetLocale": 3,
                 "SubscribeEvents": 3,
                 "TcHmiSqliteLogger.Diagnostics": 1,

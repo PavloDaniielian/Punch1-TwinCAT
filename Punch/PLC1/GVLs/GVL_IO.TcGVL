@@ -41,6 +41,7 @@ VAR_GLOBAL
 	DI_PE4			AT %I*: BOOL := FALSE;
 	DI_PE5			AT %I*: BOOL := FALSE;
 	DI_PE6			AT %I*: BOOL := FALSE;
+	
 	AI_PT1			AT %I*: REAL := 1.0;
 	AI_PT2			AT %I*: REAL := 1.0;
 
@@ -63,6 +64,8 @@ VAR_GLOBAL
 	DO_CYL6_R		AT %Q*: BOOL;
 	DO_CYL7_E		AT %Q*: BOOL;
 	DO_CYL7_R		AT %Q*: BOOL;
+	DO_CYL8_E		AT %Q*: BOOL;
+	DO_CYL8_R		AT %Q*: BOOL;
 	DO_PCYL1_E		AT %Q*: BOOL;
 	DO_PCYL1_R		AT %Q*: BOOL;
 	DO_PCYL2_E		AT %Q*: BOOL;

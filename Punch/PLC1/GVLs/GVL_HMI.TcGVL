@@ -15,6 +15,26 @@ VAR_GLOBAL
 	i_bECS : BOOL := FALSE;
 	i_bCoreSwagingManualMode: BOOL := FALSE;
 	
+	// output
+	i_bVB1 : BOOL := FALSE;
+	i_bVB2 : BOOL := FALSE;
+	i_bCyl1E : BOOL := FALSE;
+	i_bCyl1R : BOOL := FALSE;
+	i_bCyl2E : BOOL := FALSE;
+	i_bCyl2R : BOOL := FALSE;
+	i_bCyl3E : BOOL := FALSE;
+	i_bCyl3R : BOOL := FALSE;
+	i_bCyl4E : BOOL := FALSE;
+	i_bCyl4R : BOOL := FALSE;
+	i_bCyl5E : BOOL := FALSE;
+	i_bCyl5R : BOOL := FALSE;
+	i_bCyl6E : BOOL := FALSE;
+	i_bCyl6R : BOOL := FALSE;
+	i_bCyl7E : BOOL := FALSE;
+	i_bCyl7R : BOOL := FALSE;
+	i_bCyl8E : BOOL := FALSE;
+	i_bCyl8R : BOOL := FALSE;
+	
 	// pump
 	i_nPumpState : INT := 0; // -1:Faulted, 0:Stop, 2:Running
 	// cylinders
@@ -28,6 +48,17 @@ VAR_GLOBAL
 	i_nCylinder8State : INT := 0; // -1:Faulted, 0:Extended, 1:Retracting, 2: Retracted, 3:Extending
 	i_nPCylinder1State : INT := 0; // -1:Faulted, 0:Extended, 1:Retracting, 2: Retracted, 3:Extending
 	i_nPCylinder2State : INT := 0; // -1:Faulted, 0:Extended, 1:Retracting, 2: Retracted, 3:Extending
+	
+	// Vibratory
+	i_bPE1 : BOOL := FALSE;
+	i_bPE2 : BOOL := FALSE;
+	i_bPE3 : BOOL := FALSE;
+	i_bPE4 : BOOL := FALSE;
+	i_bPE5 : BOOL := FALSE;
+	
+	// Analog Value
+	i_rPT1 : REAL := 1.0;
+	i_rPT2 : REAL := 1.0;
 	
 	// settings
 	i_nPumpFeedbackCheckingTime : INT := GVL_InitialSetting.PUMP_FeedbackCheckingTime; // ms

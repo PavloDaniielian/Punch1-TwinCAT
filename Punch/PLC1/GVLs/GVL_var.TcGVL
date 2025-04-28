@@ -4,8 +4,6 @@
     <Declaration><![CDATA[{attribute 'qualified_only'}
 VAR_GLOBAL
 	
-
-	
 END_VAR]]></Declaration>
   </GVL>
 </TcPlcObject>

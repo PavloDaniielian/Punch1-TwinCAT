@@ -1467,7 +1467,7 @@ External Setpoint Generation:
 			</NC>
 		</Motion>
 		<Plc>
-			<Project Disabled="true" GUID="{860EA9E0-8F0B-4E61-ADB0-8ACB1CBA0613}" Name="PLC1" PrjFilePath="PLC1\PLC1.plcproj" TmcFilePath="PLC1\PLC1.tmc" ReloadTmc="true" AmsPort="851" FileArchiveSettings="#x000e">
+			<Project GUID="{860EA9E0-8F0B-4E61-ADB0-8ACB1CBA0613}" Name="PLC1" PrjFilePath="PLC1\PLC1.plcproj" TmcFilePath="PLC1\PLC1.tmc" ReloadTmc="true" AmsPort="851" FileArchiveSettings="#x000e">
 				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcPath="PLC1\PLC1.tmc">
 					<Name>PLC1 Instance</Name>
 					<CLSID ClassFactory="TcPlc30">{08500001-0000-0000-F000-000000000064}</CLSID>
@@ -1478,16 +1478,16 @@ External Setpoint Generation:
 							<Type>BOOL</Type>
 						</Var>
 						<Var>
+							<Name>GVL_IO.DI_ESR1</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
 							<Name>GVL_IO.device1.DI_ESR1_tmp.input</Name>
 							<Type>BOOL</Type>
 						</Var>
 						<Var>
 							<Name>GVL_IO.AxisNumber.NcToPlc</Name>
 							<Type GUID="{72F5AAAA-16DF-4ED3-8367-F6C8C3ADAE99}" Namespace="MC">NCTOPLC_AXIS_REF</Type>
-						</Var>
-						<Var>
-							<Name>GVL_IO.DI_ESR1</Name>
-							<Type>BOOL</Type>
 						</Var>
 						<Var>
 							<Name>GVL_IO.DI_M1</Name>
@@ -1702,6 +1702,14 @@ External Setpoint Generation:
 						</Var>
 						<Var>
 							<Name>GVL_IO.DO_CYL7_R</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>GVL_IO.DO_CYL8_E</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>GVL_IO.DO_CYL8_R</Name>
 							<Type>BOOL</Type>
 						</Var>
 						<Var>

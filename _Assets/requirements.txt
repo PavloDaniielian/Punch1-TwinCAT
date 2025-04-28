@@ -15,9 +15,18 @@ Active alarms list
 
 
 Plan:
-	Change HMI show state variable
+	Setting Page
+	Alarm List Page
 	m3 motor
 	Process Reset button
+		OilPump:goto 0, Count:0
 Qusetion 1:
 If Low Oil Level Sw or High Oil Temp, PLC should inhivit pump.
 At that time, shouldn't Core Swagging stop?
+Question 2:
+Should output signal like X2.2 and X2.3 show on HMI?
+The position of Cylinders don't match with design pdf file.
+ex) ID: Cy1: X2.8/2.9, PDF: Cy1: 2.2/2.3
+Question 3:
+How to show step motor state?
+

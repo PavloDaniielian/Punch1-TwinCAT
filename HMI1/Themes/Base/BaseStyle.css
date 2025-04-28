@@ -360,6 +360,16 @@ div[data-tchmi-type="TcHmi.Controls.System.TcHmiView"] {
     animation: blink 1s infinite;
 }
 
+/** custom */
+.tchmi-class-StateFaulted {
+    animation: blink 1s infinite;
+}
+
+/** custom */
+.tchmi-class-Flash {
+    animation: blink 1s infinite;
+}
+
 @keyframes blink {
     50% {
         opacity: 0.2;

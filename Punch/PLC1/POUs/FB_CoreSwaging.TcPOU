@@ -64,7 +64,7 @@ END_VAR
     
     40: (* Low Lead Spool Check *)
         IF NOT GVL_IO.DI_PE5 THEN
-			fSetAlarm( sMsg := GVL_AlarmMessage.LOW_LEAD_SPOOL );
+			fSetAlarm( sMsg := GVL_AlarmMessage.PE5_FAIL );
         ELSE
 			IF GVL_IO.DI_CYL4_R THEN
 				(* index M3 *)

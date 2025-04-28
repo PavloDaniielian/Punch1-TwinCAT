@@ -3,6 +3,9 @@
   <GVL Name="GVL_AlarmMessage" Id="{9ff5443a-0921-4b08-99cf-31fb6578e32a}">
     <Declaration><![CDATA[{attribute $27qualified_only$27}
 VAR_GLOBAL CONSTANT
+	DC_FAIL : STRING := '24 DC Power Off!';
+	ESR1_FAIL : STRING := 'Emergency Stop Relay 1 failed!';
+	
 	PUMP : STRING := 'Pump isn$27t started to run!';
 	PUMP_OFF : STRING := 'Pump isn$27t stopped TO run!';
 	
@@ -44,7 +47,13 @@ VAR_GLOBAL CONSTANT
 	PCYL2_NOT_RETRACTED : STRING := 'Pneumatic Cylinder 2 isn$27t be retracted!';
 	PCYL2_NOT_RETRACTED_OFF : STRING := 'Pneumatic Cylinder 2 isn$27t be de-retracted!'; 
 	
-	LOW_LEAD_SPOOL : STRING := 'Low Lead Spool!';
+	// Vibratory
+	PE1_FAIL : STRING := 'Vibratory Bowl 1 Product In Pos PE1 fail!';
+	PE2_FAIL : STRING := 'Vibratory Bowl 1 Product Invert PE2 fail!';
+	PE3_FAIL : STRING := 'Vibratory Bowl 2 Product In Pos PE3 fail!';
+	PE4_FAIL : STRING := 'Vibratory Bowl 1 Product High Level PE4 fail!';	
+	PE5_FAIL : STRING := 'Low Lead Spool!';
+	
 END_VAR]]></Declaration>
   </GVL>
 </TcPlcObject>

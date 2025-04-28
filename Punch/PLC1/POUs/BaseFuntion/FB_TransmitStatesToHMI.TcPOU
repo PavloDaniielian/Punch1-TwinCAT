@@ -7,15 +7,68 @@ END_VAR
 VAR_OUTPUT
 END_VAR
 VAR
+	fSetAlarm : FB_SetAlarm;
 END_VAR
 ]]></Declaration>
     <Implementation>
       <ST><![CDATA[// safeties
 GVL_HMI.i_b24VDC_CB_OK := GVL_IO.DI_24VDC_CB_OK;
+IF NOT GVL_HMI.i_b24VDC_CB_OK THEN
+	fSetAlarm( sMsg := GVL_AlarmMessage.DC_FAIL );
+END_IF
 GVL_HMI.i_bESR1 := GVL_IO.DI_ESR1;
+IF NOT GVL_HMI.i_bESR1 THEN
+	fSetAlarm( sMsg := GVL_AlarmMessage.ESR1_FAIL );
+END_IF
 GVL_HMI.i_bLS1 := GVL_IO.DI_LS1;
 GVL_HMI.i_bTS1 := GVL_IO.DI_TS1;
 GVL_HMI.i_bPS1 := GVL_IO.DI_PS1;
+
+// Output
+GVL_HMI.i_bVB1 := GVL_IO.DO_VB1;
+GVL_HMI.i_bVB2 := GVL_IO.DO_VB2;
+GVL_HMI.i_bCyl1E := GVL_IO.DO_CYL1_E;
+GVL_HMI.i_bCyl1R := GVL_IO.DO_CYL1_R;
+GVL_HMI.i_bCyl2E := GVL_IO.DO_CYL2_E;
+GVL_HMI.i_bCyl2R := GVL_IO.DO_CYL2_R;
+GVL_HMI.i_bCyl3E := GVL_IO.DO_CYL3_E;
+GVL_HMI.i_bCyl3R := GVL_IO.DO_CYL3_R;
+GVL_HMI.i_bCyl4E := GVL_IO.DO_CYL4_E;
+GVL_HMI.i_bCyl4R := GVL_IO.DO_CYL4_R;
+GVL_HMI.i_bCyl5E := GVL_IO.DO_CYL5_E;
+GVL_HMI.i_bCyl5R := GVL_IO.DO_CYL5_R;
+GVL_HMI.i_bCyl6E := GVL_IO.DO_CYL6_E;
+GVL_HMI.i_bCyl6R := GVL_IO.DO_CYL6_R;
+GVL_HMI.i_bCyl7E := GVL_IO.DO_CYL7_E;
+GVL_HMI.i_bCyl7R := GVL_IO.DO_CYL7_R;
+GVL_HMI.i_bCyl8E := GVL_IO.DO_CYL8_E;
+GVL_HMI.i_bCyl8R := GVL_IO.DO_CYL8_R;
+
+// Vibratory
+GVL_HMI.i_bPE1 := GVL_IO.DI_PE1;
+IF NOT GVL_HMI.i_bPE1 THEN
+	fSetAlarm( sMsg := GVL_AlarmMessage.PE1_FAIL );
+END_IF
+GVL_HMI.i_bPE2 := GVL_IO.DI_PE2;
+IF NOT GVL_HMI.i_bPE2 THEN
+	fSetAlarm( sMsg := GVL_AlarmMessage.PE2_FAIL );
+END_IF
+GVL_HMI.i_bPE3 := GVL_IO.DI_PE3;
+IF NOT GVL_HMI.i_bPE3 THEN
+	fSetAlarm( sMsg := GVL_AlarmMessage.PE3_FAIL );
+END_IF
+GVL_HMI.i_bPE4 := GVL_IO.DI_PE4;
+IF NOT GVL_HMI.i_bPE4 THEN
+	fSetAlarm( sMsg := GVL_AlarmMessage.PE4_FAIL );
+END_IF
+GVL_HMI.i_bPE5 := GVL_IO.DI_PE5;
+IF NOT GVL_HMI.i_bPE5 THEN
+	fSetAlarm( sMsg := GVL_AlarmMessage.PE5_FAIL );
+END_IF
+
+// analog value
+GVL_HMI.i_rPT1 := GVL_IO.AI_PT1;
+GVL_HMI.i_rPT2 := GVL_IO.AI_PT2;
 
 // enabling flag
 GVL_HMI.i_bECS := GVL_IO.DI_ECS;
@@ -54,8 +107,23 @@ END_IF
 ]]></ST>
     </Implementation>
     <LineIds Name="FB_TransmitStatesToHMI">
-      <LineId Id="12" Count="4" />
+      <LineId Id="12" Count="1" />
+      <LineId Id="87" Count="2" />
+      <LineId Id="91" Count="2" />
+      <LineId Id="14" Count="2" />
       <LineId Id="9" Count="0" />
+      <LineId Id="135" Count="0" />
+      <LineId Id="134" Count="0" />
+      <LineId Id="137" Count="16" />
+      <LineId Id="136" Count="0" />
+      <LineId Id="105" Count="0" />
+      <LineId Id="104" Count="0" />
+      <LineId Id="101" Count="2" />
+      <LineId Id="106" Count="15" />
+      <LineId Id="94" Count="0" />
+      <LineId Id="123" Count="0" />
+      <LineId Id="122" Count="0" />
+      <LineId Id="124" Count="1" />
       <LineId Id="19" Count="2" />
       <LineId Id="38" Count="8" />
       <LineId Id="48" Count="0" />
