@@ -11,9 +11,31 @@ VAR_GLOBAL
 	i_bPS1 : BOOL := FALSE;
 	bSafeties :BOOL := TRUE;
 	
-	// enabling flag
-	i_bECS : BOOL := FALSE;
+	// signals from HMI
 	i_bCoreSwagingManualMode: BOOL := FALSE;
+	i_bReset : BOOL := FALSE;	// reset
+	
+		// settings
+	i_nCasingCountForStarting : INT := GVL_InitialSetting.CASING_COUNT_FOR_STARTING;
+	i_nCoreCountForStarting : INT := GVL_InitialSetting.CORE_COUNT_FOR_STARTING;
+	i_nPumpFeedbackCheckingTime : INT := GVL_InitialSetting.PUMP_FeedbackCheckingTime; // ms
+	i_nCylinderFeedbackCheckingTime : INT := GVL_InitialSetting.CYLINDER_FeedbackCheckingTime; // ms
+	i_nPCylinder1ExtendedRunningTime : INT := GVL_InitialSetting.PCYLINDER1EXTENDED_RunningTime; // ms
+	i_nCylinder3ExtendedRunningTime : INT := GVL_InitialSetting.CYLINDER3EXTENDED_RunningTime; // ms
+	i_nCylinder1ExtendedRunningTime : INT := GVL_InitialSetting.CYLINDER1EXTENDED_RunningTime; // ms
+	i_nPCylinder1RetractedRunningTime : INT := GVL_InitialSetting.PCYLINDER1RETRACTED_RunningTime; // ms
+	i_nCylinder3RetractedRunningTime : INT := GVL_InitialSetting.CYLINDER3RETRACTED_RunningTime; // ms
+	i_nCylinder1RetractedRunningTime : INT := GVL_InitialSetting.CYLINDER1RETRACTED_RunningTime; // ms
+	i_nPCylinder2ExtendedRunningTime : INT := GVL_InitialSetting.PCYLINDER2EXTENDED_RunningTime; // ms
+	i_nCylinder4ExtendedRunningTime : INT := GVL_InitialSetting.CYLINDER4EXTENDED_RunningTime; // ms
+	i_nCylinder2ExtendedRunningTime : INT := GVL_InitialSetting.CYLINDER2EXTENDED_RunningTime; // ms
+	i_nCylinder4RetractedRunningTime : INT := GVL_InitialSetting.CYLINDER4RETRACTED_RunningTime; // ms
+	i_nCylinder2RetractedRunningTime : INT := GVL_InitialSetting.CYLINDER2RETRACTED_RunningTime; // ms
+	i_nPCylinder5ExtendedRunningTime : INT := GVL_InitialSetting.PCYLINDER5EXTENDED_RunningTime; // ms
+	i_nPCylinder4ExtendedRunningTime : INT := GVL_InitialSetting.PCYLINDER4EXTENDED_RunningTime; // ms
+	i_nPE4MaintainTime : INT := GVL_InitialSetting.PE4_MaintainTime; // ms
+	i_nPCylinder6ExtendedRunningTime : INT := GVL_InitialSetting.PCYLINDER6EXTENDED_RunningTime; // ms
+	i_nPE6MaintainTime : INT := GVL_InitialSetting.PE6_MaintainTime; // ms
 	
 	// output
 	i_bVB1 : BOOL := FALSE;
@@ -60,28 +82,6 @@ VAR_GLOBAL
 	i_rPT1 : REAL := 1.0;
 	i_rPT2 : REAL := 1.0;
 	
-	// settings
-	i_nPumpFeedbackCheckingTime : INT := GVL_InitialSetting.PUMP_FeedbackCheckingTime; // ms
-	i_nCylinderFeedbackCheckingTime : INT := GVL_InitialSetting.CYLINDER_FeedbackCheckingTime; // ms
-	i_nPCylinder1ExtendedRunningTime : INT := GVL_InitialSetting.PCYLINDER1EXTENDED_RunningTime; // ms
-	i_nCylinder3ExtendedRunningTime : INT := GVL_InitialSetting.CYLINDER3EXTENDED_RunningTime; // ms
-	i_nCylinder1ExtendedRunningTime : INT := GVL_InitialSetting.CYLINDER1EXTENDED_RunningTime; // ms
-	i_nPCylinder1RetractedRunningTime : INT := GVL_InitialSetting.PCYLINDER1RETRACTED_RunningTime; // ms
-	i_nCylinder3RetractedRunningTime : INT := GVL_InitialSetting.CYLINDER3RETRACTED_RunningTime; // ms
-	i_nCylinder1RetractedRunningTime : INT := GVL_InitialSetting.CYLINDER1RETRACTED_RunningTime; // ms
-	i_nPCylinder2ExtendedRunningTime : INT := GVL_InitialSetting.PCYLINDER2EXTENDED_RunningTime; // ms
-	i_nCylinder4ExtendedRunningTime : INT := GVL_InitialSetting.CYLINDER4EXTENDED_RunningTime; // ms
-	i_nCylinder2ExtendedRunningTime : INT := GVL_InitialSetting.CYLINDER2EXTENDED_RunningTime; // ms
-	i_nCylinder4RetractedRunningTime : INT := GVL_InitialSetting.CYLINDER4RETRACTED_RunningTime; // ms
-	i_nCylinder2RetractedRunningTime : INT := GVL_InitialSetting.CYLINDER2RETRACTED_RunningTime; // ms
-	i_nPCylinder5ExtendedRunningTime : INT := GVL_InitialSetting.PCYLINDER5EXTENDED_RunningTime; // ms
-	i_nPCylinder4ExtendedRunningTime : INT := GVL_InitialSetting.PCYLINDER4EXTENDED_RunningTime; // ms
-	i_nPE4MaintainTime : INT := GVL_InitialSetting.PE4_MaintainTime; // ms
-	i_nPCylinder6ExtendedRunningTime : INT := GVL_InitialSetting.PCYLINDER6EXTENDED_RunningTime; // ms
-	i_nPE6MaintainTime : INT := GVL_InitialSetting.PE6_MaintainTime; // ms
-	i_nCasingCountForStarting : INT := GVL_InitialSetting.CASING_COUNT_FOR_STARTING;
-	i_nCoreCountForStarting : INT := GVL_InitialSetting.CORE_COUNT_FOR_STARTING;
-	
 	// working count
 	nProductCount : INT := 0;
 	nCasingCount: INT := 0;
@@ -90,9 +90,6 @@ VAR_GLOBAL
 	// alram
 	o_bAlarmActive: BOOL := FALSE;
 	o_sAlarmMessage: STRING := '';
-	
-	// reset signal
-	i_bReset : BOOL := FALSE;
 END_VAR]]></Declaration>
   </GVL>
 </TcPlcObject>

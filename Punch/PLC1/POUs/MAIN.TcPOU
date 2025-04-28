@@ -20,6 +20,8 @@ fCasingVibratoryBowl1();
 fCoreVibratoryBowl2();
 
 fTransmitStatesToHMI();
+
+IF GVL_HMI.i_bReset THEN GVL_HMI.i_bReset := FALSE; END_IF
 ]]></ST>
     </Implementation>
     <LineIds Name="MAIN">
@@ -30,6 +32,8 @@ fTransmitStatesToHMI();
       <LineId Id="478" Count="1" />
       <LineId Id="549" Count="0" />
       <LineId Id="8" Count="0" />
+      <LineId Id="563" Count="0" />
+      <LineId Id="562" Count="0" />
       <LineId Id="444" Count="0" />
     </LineIds>
   </POU>

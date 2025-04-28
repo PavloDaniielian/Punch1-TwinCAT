@@ -70,9 +70,6 @@ END_IF
 GVL_HMI.i_rPT1 := GVL_IO.AI_PT1;
 GVL_HMI.i_rPT2 := GVL_IO.AI_PT2;
 
-// enabling flag
-GVL_HMI.i_bECS := GVL_IO.DI_ECS;
-
 // led
 IF NOT GVL_HMI.o_bAlarmActive THEN
 	GVL_IO.DO_LGreen := FALSE;
@@ -124,7 +121,6 @@ END_IF
       <LineId Id="123" Count="0" />
       <LineId Id="122" Count="0" />
       <LineId Id="124" Count="1" />
-      <LineId Id="19" Count="2" />
       <LineId Id="38" Count="8" />
       <LineId Id="48" Count="0" />
       <LineId Id="47" Count="0" />
