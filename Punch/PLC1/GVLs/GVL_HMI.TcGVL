@@ -62,14 +62,6 @@ VAR_GLOBAL
 	
 	// reset signal
 	i_bReset : BOOL := FALSE;
-	
-	
-	bOut_CYL1_E : BOOL := TRUE;			// TRUE: Extended, FALSE: Retracted
-	bOut_CYL1_Fault : BOOL := FALSE;	// TRUE: fault
-	bOut_CYL2_E : BOOL := FALSE;		// TRUE: Extended, FALSE: Retracted
-	bOut_CYL2_Fault : BOOL := FALSE;	// TRUE: fault
-	bOut_CYL3_E : BOOL := FALSE;		// TRUE: Extended, FALSE: Retracted
-	bOut_CYL3_Fault : BOOL := TRUE;		// TRUE: fault
 END_VAR]]></Declaration>
   </GVL>
 </TcPlcObject>

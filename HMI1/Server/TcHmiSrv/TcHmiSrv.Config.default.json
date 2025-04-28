@@ -35,7 +35,7 @@
     "ENABLE_SERVER_UPDATE": true,
     "ENDPOINTS": [
         "http://127.0.0.1:13000",
-        "http://127.0.0.1:3001"
+        "http://127.0.0.1:3000"
     ],
     "ETAGENABLED": true,
     "EXTENSIONS": {
@@ -109,336 +109,336 @@
             "MIME_ENABLE_CHUNKING": true,
             "MIME_ENABLE_GZIP": false,
             "MIME_HTTP_HEADERS": "",
-            "MIME_FTYPE": "application/octet-stream"
+            "MIME_TYPE": "application/octet-stream"
         },
         "bmp": {
             "MIME_ENABLE_CACHE": true,
             "MIME_ENABLE_CHUNKING": true,
             "MIME_ENABLE_GZIP": true,
             "MIME_HTTP_HEADERS": "",
-            "MIME_FTYPE": "image/bmp"
+            "MIME_TYPE": "image/bmp"
         },
         "cer": {
             "MIME_ENABLE_CACHE": false,
             "MIME_ENABLE_CHUNKING": false,
             "MIME_ENABLE_GZIP": false,
             "MIME_HTTP_HEADERS": "",
-            "MIME_FTYPE": "application/x-x509-ca-cert"
+            "MIME_TYPE": "application/x-x509-ca-cert"
         },
         "config": {
             "MIME_ENABLE_CACHE": true,
             "MIME_ENABLE_CHUNKING": true,
             "MIME_ENABLE_GZIP": true,
             "MIME_HTTP_HEADERS": "",
-            "MIME_FTYPE": "text/xml"
+            "MIME_TYPE": "text/xml"
         },
         "content": {
             "MIME_ENABLE_CACHE": true,
             "MIME_ENABLE_CHUNKING": true,
             "MIME_ENABLE_GZIP": true,
             "MIME_HTTP_HEADERS": "",
-            "MIME_FTYPE": "text/plain"
+            "MIME_TYPE": "text/plain"
         },
         "css": {
             "MIME_ENABLE_CACHE": true,
             "MIME_ENABLE_CHUNKING": true,
             "MIME_ENABLE_GZIP": true,
             "MIME_HTTP_HEADERS": "",
-            "MIME_FTYPE": "text/css"
+            "MIME_TYPE": "text/css"
         },
         "dll": {
             "MIME_ENABLE_CACHE": true,
             "MIME_ENABLE_CHUNKING": true,
             "MIME_ENABLE_GZIP": false,
             "MIME_HTTP_HEADERS": "",
-            "MIME_FTYPE": "application/octet-stream"
+            "MIME_TYPE": "application/octet-stream"
         },
         "ear": {
             "MIME_ENABLE_CACHE": true,
             "MIME_ENABLE_CHUNKING": true,
             "MIME_ENABLE_GZIP": false,
             "MIME_HTTP_HEADERS": "",
-            "MIME_FTYPE": "application/java-archive"
+            "MIME_TYPE": "application/java-archive"
         },
         "eot": {
             "MIME_ENABLE_CACHE": true,
             "MIME_ENABLE_CHUNKING": true,
             "MIME_ENABLE_GZIP": true,
             "MIME_HTTP_HEADERS": "",
-            "MIME_FTYPE": "vnd.ms-fontobject"
+            "MIME_TYPE": "vnd.ms-fontobject"
         },
         "exe": {
             "MIME_ENABLE_CACHE": true,
             "MIME_ENABLE_CHUNKING": true,
             "MIME_ENABLE_GZIP": false,
             "MIME_HTTP_HEADERS": "",
-            "MIME_FTYPE": "application/octet-stream"
+            "MIME_TYPE": "application/octet-stream"
         },
         "gif": {
             "MIME_ENABLE_CACHE": true,
             "MIME_ENABLE_CHUNKING": true,
             "MIME_ENABLE_GZIP": false,
             "MIME_HTTP_HEADERS": "",
-            "MIME_FTYPE": "image/gif"
+            "MIME_TYPE": "image/gif"
         },
         "htm": {
             "MIME_ENABLE_CACHE": true,
             "MIME_ENABLE_CHUNKING": true,
             "MIME_ENABLE_GZIP": true,
             "MIME_HTTP_HEADERS": "",
-            "MIME_FTYPE": "text/html"
+            "MIME_TYPE": "text/html"
         },
         "html": {
             "MIME_ENABLE_CACHE": true,
             "MIME_ENABLE_CHUNKING": true,
             "MIME_ENABLE_GZIP": true,
             "MIME_HTTP_HEADERS": "",
-            "MIME_FTYPE": "text/html"
+            "MIME_TYPE": "text/html"
         },
         "ico": {
             "MIME_ENABLE_CACHE": true,
             "MIME_ENABLE_CHUNKING": true,
             "MIME_ENABLE_GZIP": true,
             "MIME_HTTP_HEADERS": "",
-            "MIME_FTYPE": "image/x-icon"
+            "MIME_TYPE": "image/x-icon"
         },
         "img": {
             "MIME_ENABLE_CACHE": true,
             "MIME_ENABLE_CHUNKING": true,
             "MIME_ENABLE_GZIP": false,
             "MIME_HTTP_HEADERS": "",
-            "MIME_FTYPE": "application/octet-stream"
+            "MIME_TYPE": "application/octet-stream"
         },
         "iso": {
             "MIME_ENABLE_CACHE": true,
             "MIME_ENABLE_CHUNKING": true,
             "MIME_ENABLE_GZIP": false,
             "MIME_HTTP_HEADERS": "",
-            "MIME_FTYPE": "application/octet-stream"
+            "MIME_TYPE": "application/octet-stream"
         },
         "jar": {
             "MIME_ENABLE_CACHE": true,
             "MIME_ENABLE_CHUNKING": true,
             "MIME_ENABLE_GZIP": false,
             "MIME_HTTP_HEADERS": "",
-            "MIME_FTYPE": "application/java-archive"
+            "MIME_TYPE": "application/java-archive"
         },
         "jpeg": {
             "MIME_ENABLE_CACHE": true,
             "MIME_ENABLE_CHUNKING": true,
             "MIME_ENABLE_GZIP": false,
             "MIME_HTTP_HEADERS": "",
-            "MIME_FTYPE": "image/jpeg"
+            "MIME_TYPE": "image/jpeg"
         },
         "jpg": {
             "MIME_ENABLE_CACHE": true,
             "MIME_ENABLE_CHUNKING": true,
             "MIME_ENABLE_GZIP": false,
             "MIME_HTTP_HEADERS": "",
-            "MIME_FTYPE": "image/jpeg"
+            "MIME_TYPE": "image/jpeg"
         },
         "js": {
             "MIME_ENABLE_CACHE": true,
             "MIME_ENABLE_CHUNKING": true,
             "MIME_ENABLE_GZIP": true,
             "MIME_HTTP_HEADERS": "",
-            "MIME_FTYPE": "text/javascript"
+            "MIME_TYPE": "text/javascript"
         },
         "json": {
             "MIME_ENABLE_CACHE": true,
             "MIME_ENABLE_CHUNKING": true,
             "MIME_ENABLE_GZIP": true,
             "MIME_HTTP_HEADERS": "",
-            "MIME_FTYPE": "application/json"
+            "MIME_TYPE": "application/json"
         },
         "jsonp": {
             "MIME_ENABLE_CACHE": true,
             "MIME_ENABLE_CHUNKING": true,
             "MIME_ENABLE_GZIP": true,
             "MIME_HTTP_HEADERS": "",
-            "MIME_FTYPE": "text/javascript"
+            "MIME_TYPE": "text/javascript"
         },
         "localization": {
             "MIME_ENABLE_CACHE": true,
             "MIME_ENABLE_CHUNKING": true,
             "MIME_ENABLE_GZIP": true,
             "MIME_HTTP_HEADERS": "",
-            "MIME_FTYPE": "application/json"
+            "MIME_TYPE": "application/json"
         },
         "lp": {
             "MIME_ENABLE_CACHE": false,
             "MIME_ENABLE_CHUNKING": true,
             "MIME_ENABLE_GZIP": false,
             "MIME_HTTP_HEADERS": "no-store",
-            "MIME_FTYPE": "application/lp"
+            "MIME_TYPE": "application/lp"
         },
         "lua": {
             "MIME_ENABLE_CACHE": false,
             "MIME_ENABLE_CHUNKING": true,
             "MIME_ENABLE_GZIP": false,
             "MIME_HTTP_HEADERS": "no-store",
-            "MIME_FTYPE": "application/lua"
+            "MIME_TYPE": "application/lua"
         },
         "map": {
             "MIME_ENABLE_CACHE": false,
             "MIME_ENABLE_CHUNKING": true,
             "MIME_ENABLE_GZIP": true,
             "MIME_HTTP_HEADERS": "",
-            "MIME_FTYPE": "application/json"
+            "MIME_TYPE": "application/json"
         },
         "mjs": {
             "MIME_ENABLE_CACHE": true,
             "MIME_ENABLE_CHUNKING": true,
             "MIME_ENABLE_GZIP": true,
             "MIME_HTTP_HEADERS": "",
-            "MIME_FTYPE": "text/javascript"
+            "MIME_TYPE": "text/javascript"
         },
         "mp3": {
             "MIME_ENABLE_CACHE": false,
             "MIME_ENABLE_CHUNKING": false,
             "MIME_ENABLE_GZIP": false,
             "MIME_HTTP_HEADERS": "",
-            "MIME_FTYPE": "audio/mpeg"
+            "MIME_TYPE": "audio/mpeg"
         },
         "mp4": {
             "MIME_ENABLE_CACHE": false,
             "MIME_ENABLE_CHUNKING": false,
             "MIME_ENABLE_GZIP": false,
             "MIME_HTTP_HEADERS": "",
-            "MIME_FTYPE": "video/mp4"
+            "MIME_TYPE": "video/mp4"
         },
         "ogg": {
             "MIME_ENABLE_CACHE": false,
             "MIME_ENABLE_CHUNKING": false,
             "MIME_ENABLE_GZIP": false,
             "MIME_HTTP_HEADERS": "",
-            "MIME_FTYPE": "video/ogg"
+            "MIME_TYPE": "video/ogg"
         },
         "ogv": {
             "MIME_ENABLE_CACHE": false,
             "MIME_ENABLE_CHUNKING": false,
             "MIME_ENABLE_GZIP": false,
             "MIME_HTTP_HEADERS": "",
-            "MIME_FTYPE": "video/ogg"
+            "MIME_TYPE": "video/ogg"
         },
         "otf": {
             "MIME_ENABLE_CACHE": true,
             "MIME_ENABLE_CHUNKING": true,
             "MIME_ENABLE_GZIP": true,
             "MIME_HTTP_HEADERS": "",
-            "MIME_FTYPE": "application/font-sfnt"
+            "MIME_TYPE": "application/font-sfnt"
         },
         "pdf": {
             "MIME_ENABLE_CACHE": true,
             "MIME_ENABLE_CHUNKING": true,
             "MIME_ENABLE_GZIP": false,
             "MIME_HTTP_HEADERS": "",
-            "MIME_FTYPE": "application/pdf"
+            "MIME_TYPE": "application/pdf"
         },
         "pem": {
             "MIME_ENABLE_CACHE": false,
             "MIME_ENABLE_CHUNKING": false,
             "MIME_ENABLE_GZIP": false,
             "MIME_HTTP_HEADERS": "",
-            "MIME_FTYPE": "application/x-pem-file"
+            "MIME_TYPE": "application/x-pem-file"
         },
         "png": {
             "MIME_ENABLE_CACHE": true,
             "MIME_ENABLE_CHUNKING": true,
             "MIME_ENABLE_GZIP": false,
             "MIME_HTTP_HEADERS": "",
-            "MIME_FTYPE": "image/png"
+            "MIME_TYPE": "image/png"
         },
         "shtml": {
             "MIME_ENABLE_CACHE": true,
             "MIME_ENABLE_CHUNKING": true,
             "MIME_ENABLE_GZIP": true,
             "MIME_HTTP_HEADERS": "",
-            "MIME_FTYPE": "text/html"
+            "MIME_TYPE": "text/html"
         },
         "svg": {
             "MIME_ENABLE_CACHE": true,
             "MIME_ENABLE_CHUNKING": true,
             "MIME_ENABLE_GZIP": true,
             "MIME_HTTP_HEADERS": "",
-            "MIME_FTYPE": "image/svg+xml"
+            "MIME_TYPE": "image/svg+xml"
         },
         "theme": {
             "MIME_ENABLE_CACHE": true,
             "MIME_ENABLE_CHUNKING": true,
             "MIME_ENABLE_GZIP": true,
             "MIME_HTTP_HEADERS": "",
-            "MIME_FTYPE": "application/json"
+            "MIME_TYPE": "application/json"
         },
         "ttf": {
             "MIME_ENABLE_CACHE": true,
             "MIME_ENABLE_CHUNKING": true,
             "MIME_ENABLE_GZIP": true,
             "MIME_HTTP_HEADERS": "",
-            "MIME_FTYPE": "application/font-sfnt"
+            "MIME_TYPE": "application/font-sfnt"
         },
         "txt": {
             "MIME_ENABLE_CACHE": true,
             "MIME_ENABLE_CHUNKING": true,
             "MIME_ENABLE_GZIP": true,
             "MIME_HTTP_HEADERS": "",
-            "MIME_FTYPE": "text/plain"
+            "MIME_TYPE": "text/plain"
         },
         "usercontrol": {
             "MIME_ENABLE_CACHE": true,
             "MIME_ENABLE_CHUNKING": true,
             "MIME_ENABLE_GZIP": true,
             "MIME_HTTP_HEADERS": "",
-            "MIME_FTYPE": "text/plain"
+            "MIME_TYPE": "text/plain"
         },
         "view": {
             "MIME_ENABLE_CACHE": true,
             "MIME_ENABLE_CHUNKING": true,
             "MIME_ENABLE_GZIP": true,
             "MIME_HTTP_HEADERS": "",
-            "MIME_FTYPE": "text/plain"
+            "MIME_TYPE": "text/plain"
         },
         "war": {
             "MIME_ENABLE_CACHE": true,
             "MIME_ENABLE_CHUNKING": true,
             "MIME_ENABLE_GZIP": false,
             "MIME_HTTP_HEADERS": "",
-            "MIME_FTYPE": "application/java-archive"
+            "MIME_TYPE": "application/java-archive"
         },
         "webm": {
             "MIME_ENABLE_CACHE": false,
             "MIME_ENABLE_CHUNKING": false,
             "MIME_ENABLE_GZIP": false,
             "MIME_HTTP_HEADERS": "",
-            "MIME_FTYPE": "video/webm"
+            "MIME_TYPE": "video/webm"
         },
         "woff": {
             "MIME_ENABLE_CACHE": true,
             "MIME_ENABLE_CHUNKING": true,
             "MIME_ENABLE_GZIP": false,
             "MIME_HTTP_HEADERS": "",
-            "MIME_FTYPE": "application/font-woff"
+            "MIME_TYPE": "application/font-woff"
         },
         "woff2": {
             "MIME_ENABLE_CACHE": true,
             "MIME_ENABLE_CHUNKING": true,
             "MIME_ENABLE_GZIP": false,
             "MIME_HTTP_HEADERS": "",
-            "MIME_FTYPE": "application/font-woff2"
+            "MIME_TYPE": "application/font-woff2"
         },
         "xml": {
             "MIME_ENABLE_CACHE": true,
             "MIME_ENABLE_CHUNKING": true,
             "MIME_ENABLE_GZIP": true,
             "MIME_HTTP_HEADERS": "",
-            "MIME_FTYPE": "text/xml"
+            "MIME_TYPE": "text/xml"
         },
         "zip": {
             "MIME_ENABLE_CACHE": true,
             "MIME_ENABLE_CHUNKING": true,
             "MIME_ENABLE_GZIP": false,
             "MIME_HTTP_HEADERS": "",
-            "MIME_FTYPE": "application/zip"
+            "MIME_TYPE": "application/zip"
         }
     },
     "PERMESSAGEDEFLATEENABLED": true,
@@ -454,7 +454,7 @@
     "SHOW_CONFIGURATION_HINTS": true,
     "SHOW_MAINTENANCE_MODE": true,
     "SHUTDOWNTIMEOUT": "PT10S",
-    "SOCKEFT_TIMEOUT": "PT10S",
+    "SOCKET_TIMEOUT": "PT10S",
     "SYMBOLS": {
         "ADS.AdsSyncReadDeviceInfoReq": {
             "ACCESS": 3,
@@ -2508,113 +2508,137 @@
             },
             "USEMAPPING": true
         },
-        "PLC1.GVL_HMI.bIn_CoreSwagingManualMode": {
+        "PLC1.GVL_HMI.i_nCylinder1State": {
             "ACCESS": 3,
             "DOMAIN": "TMC",
             "DYNAMIC": true,
-            "MAPPING": "PLC1::GVL_HMI::bIn_CoreSwagingManualMode",
-            "SCHEMA": {
-                "$ref": "tchmi:general#/definitions/BOOL"
-            },
-            "USEMAPPING": true
-        },
-        "PLC1.GVL_HMI.bOut_CYL1_E": {
-            "ACCESS": 3,
-            "DOMAIN": "TMC",
-            "DYNAMIC": true,
-            "MAPPING": "PLC1::GVL_HMI::bOut_CYL1_E",
+            "MAPPING": "PLC1::GVL_HMI::i_nCylinder1State",
             "SCHEMA": {
                 "allOf": [
                     {
-                        "$ref": "tchmi:general#/definitions/BOOL"
+                        "$ref": "tchmi:general#/definitions/INT"
                     },
                     {
-                        "comment": "TRUE: Extended, FALSE: Retracted"
+                        "comment": "-1:Faulted, 0:Extended, 1:Retracting, 2: Retracted, 3:Extending"
                     }
                 ]
             },
             "USEMAPPING": true
         },
-        "PLC1.GVL_HMI.bOut_CYL1_Fault": {
+        "PLC1.GVL_HMI.i_nCylinder2State": {
             "ACCESS": 3,
             "DOMAIN": "TMC",
             "DYNAMIC": true,
-            "MAPPING": "PLC1::GVL_HMI::bOut_CYL1_Fault",
+            "MAPPING": "PLC1::GVL_HMI::i_nCylinder2State",
             "SCHEMA": {
                 "allOf": [
                     {
-                        "$ref": "tchmi:general#/definitions/BOOL"
+                        "$ref": "tchmi:general#/definitions/INT"
                     },
                     {
-                        "comment": "TRUE: fault"
+                        "comment": "-1:Faulted, 0:Extended, 1:Retracting, 2: Retracted, 3:Extending"
                     }
                 ]
             },
             "USEMAPPING": true
         },
-        "PLC1.GVL_HMI.bOut_CYL2_E": {
+        "PLC1.GVL_HMI.i_nCylinder3State": {
             "ACCESS": 3,
             "DOMAIN": "TMC",
             "DYNAMIC": true,
-            "MAPPING": "PLC1::GVL_HMI::bOut_CYL2_E",
+            "MAPPING": "PLC1::GVL_HMI::i_nCylinder3State",
             "SCHEMA": {
                 "allOf": [
                     {
-                        "$ref": "tchmi:general#/definitions/BOOL"
+                        "$ref": "tchmi:general#/definitions/INT"
                     },
                     {
-                        "comment": "TRUE: Extended, FALSE: Retracted"
+                        "comment": "-1:Faulted, 0:Extended, 1:Retracting, 2: Retracted, 3:Extending"
                     }
                 ]
             },
             "USEMAPPING": true
         },
-        "PLC1.GVL_HMI.bOut_CYL2_Fault": {
+        "PLC1.GVL_HMI.i_nCylinder4State": {
             "ACCESS": 3,
             "DOMAIN": "TMC",
             "DYNAMIC": true,
-            "MAPPING": "PLC1::GVL_HMI::bOut_CYL2_Fault",
+            "MAPPING": "PLC1::GVL_HMI::i_nCylinder4State",
             "SCHEMA": {
                 "allOf": [
                     {
-                        "$ref": "tchmi:general#/definitions/BOOL"
+                        "$ref": "tchmi:general#/definitions/INT"
                     },
                     {
-                        "comment": "TRUE: fault"
+                        "comment": "-1:Faulted, 0:Extended, 1:Retracting, 2: Retracted, 3:Extending"
                     }
                 ]
             },
             "USEMAPPING": true
         },
-        "PLC1.GVL_HMI.bOut_CYL3_E": {
+        "PLC1.GVL_HMI.i_nCylinder5State": {
             "ACCESS": 3,
             "DOMAIN": "TMC",
             "DYNAMIC": true,
-            "MAPPING": "PLC1::GVL_HMI::bOut_CYL3_E",
+            "MAPPING": "PLC1::GVL_HMI::i_nCylinder5State",
             "SCHEMA": {
                 "allOf": [
                     {
-                        "$ref": "tchmi:general#/definitions/BOOL"
+                        "$ref": "tchmi:general#/definitions/INT"
                     },
                     {
-                        "comment": "TRUE: Extended, FALSE: Retracted"
+                        "comment": "-1:Faulted, 0:Extended, 1:Retracting, 2: Retracted, 3:Extending"
                     }
                 ]
             },
             "USEMAPPING": true
         },
-        "PLC1.GVL_HMI.bOut_CYL3_Fault": {
+        "PLC1.GVL_HMI.i_nCylinder6State": {
             "ACCESS": 3,
             "DOMAIN": "TMC",
             "DYNAMIC": true,
-            "MAPPING": "PLC1::GVL_HMI::bOut_CYL3_Fault",
+            "MAPPING": "PLC1::GVL_HMI::i_nCylinder6State",
             "SCHEMA": {
                 "allOf": [
                     {
-                        "$ref": "tchmi:general#/definitions/BOOL"
+                        "$ref": "tchmi:general#/definitions/INT"
                     },
                     {
-                        "comment": "TRUE: fault"
+                        "comment": "-1:Faulted, 0:Extended, 1:Retracting, 2: Retracted, 3:Extending"
+                    }
+                ]
+            },
+            "USEMAPPING": true
+        },
+        "PLC1.GVL_HMI.i_nCylinder7State": {
+            "ACCESS": 3,
+            "DOMAIN": "TMC",
+            "DYNAMIC": true,
+            "MAPPING": "PLC1::GVL_HMI::i_nCylinder7State",
+            "SCHEMA": {
+                "allOf": [
+                    {
+                        "$ref": "tchmi:general#/definitions/INT"
+                    },
+                    {
+                        "comment": "-1:Faulted, 0:Extended, 1:Retracting, 2: Retracted, 3:Extending"
+                    }
+                ]
+            },
+            "USEMAPPING": true
+        },
+        "PLC1.GVL_HMI.i_nCylinder8State": {
+            "ACCESS": 3,
+            "DOMAIN": "TMC",
+            "DYNAMIC": true,
+            "MAPPING": "PLC1::GVL_HMI::i_nCylinder8State",
+            "SCHEMA": {
+                "allOf": [
+                    {
+                        "$ref": "tchmi:general#/definitions/INT"
+                    },
+                    {
+                        "comment": "-1:Faulted, 0:Extended, 1:Retracting, 2: Retracted, 3:Extending"
                     }
                 ]
             },
@@ -3539,42 +3563,14 @@
                 "LocalizeText": 3,
                 "Login": 3,
                 "Logout": 3,
-                "PLC1.GVL_HMI.bInCoreSwagingManualMode": 3,
-                "PLC1.GVL_HMI.bIn_CoreSwagingManualMode": 3,
-                "PLC1.GVL_HMI.bOut_CYL1_E": 3,
-                "PLC1.GVL_HMI.bOut_CYL1_Fault": 3,
-                "PLC1.GVL_HMI.bOut_CYL2_E": 3,
-                "PLC1.GVL_HMI.bOut_CYL2_Fault": 3,
-                "PLC1.GVL_HMI.bOut_CYL3_E": 3,
-                "PLC1.GVL_HMI.bOut_CYL3_Fault": 3,
-                "PLC1.GVL_IO.DI_24VDC_CB_OK": 3,
-                "PLC1.GVL_IO.DI_CYL1_E": 3,
-                "PLC1.GVL_IO.DI_CYL1_R": 3,
-                "PLC1.GVL_IO.DI_CYL2_E": 3,
-                "PLC1.GVL_IO.DI_CYL2_R": 3,
-                "PLC1.GVL_IO.DI_CYL3_E": 3,
-                "PLC1.GVL_IO.DI_CYL3_R": 3,
-                "PLC1.GVL_IO.DI_CYL4_E": 3,
-                "PLC1.GVL_IO.DI_CYL4_R": 3,
-                "PLC1.GVL_IO.DI_CYL5_E": 3,
-                "PLC1.GVL_IO.DI_CYL5_R": 3,
-                "PLC1.GVL_IO.DI_CYL6_E": 3,
-                "PLC1.GVL_IO.DI_CYL6_R": 3,
-                "PLC1.GVL_IO.DI_CYL7_E": 3,
-                "PLC1.GVL_IO.DI_CYL7_R": 3,
-                "PLC1.GVL_IO.DI_ECS": 3,
-                "PLC1.GVL_IO.DI_EPD": 3,
-                "PLC1.GVL_IO.DI_ESR1": 3,
-                "PLC1.GVL_IO.DI_JLU": 3,
-                "PLC1.GVL_IO.DI_LS1": 3,
-                "PLC1.GVL_IO.DI_PCYL1_E": 3,
-                "PLC1.GVL_IO.DI_PCYL1_R": 3,
-                "PLC1.GVL_IO.DI_PCYL2_E": 3,
-                "PLC1.GVL_IO.DI_PCYL2_R": 3,
-                "PLC1.GVL_IO.DI_PE1": 3,
-                "PLC1.GVL_IO.DI_PE5": 3,
-                "PLC1.GVL_var.DI_CYL1_Fault": 3,
-                "PLC1.GVL_var.DI_CYL1_R_Fault": 3,
+                "PLC1.GVL_HMI.i_nCylinder1State": 3,
+                "PLC1.GVL_HMI.i_nCylinder2State": 3,
+                "PLC1.GVL_HMI.i_nCylinder3State": 3,
+                "PLC1.GVL_HMI.i_nCylinder4State": 3,
+                "PLC1.GVL_HMI.i_nCylinder5State": 3,
+                "PLC1.GVL_HMI.i_nCylinder6State": 3,
+                "PLC1.GVL_HMI.i_nCylinder7State": 3,
+                "PLC1.GVL_HMI.i_nCylinder8State": 3,
                 "SetLocale": 3,
                 "SubscribeEvents": 3,
                 "TcHmiSqliteLogger.Diagnostics": 1,
