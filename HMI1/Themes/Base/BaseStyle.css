@@ -355,23 +355,29 @@ div[data-tchmi-type="TcHmi.Controls.System.TcHmiView"] {
 
 
 
-/** custom */
+/** state blink style */
 .tchmi-class-CylinderFaulted {
     animation: blink 1s infinite;
 }
-
-/** custom */
 .tchmi-class-StateFaulted {
     animation: blink 1s infinite;
 }
-
-/** custom */
 .tchmi-class-Flash {
     animation: blink 1s infinite;
 }
-
 @keyframes blink {
     50% {
         opacity: 0.2;
     }
+}
+
+/** spinbox control style */
+.TcHmi_Controls_Beckhoff_TcHmiSpinboxInput .TcHmi_Controls_Beckhoff_TcHmiNumericInput-template.minus-left-plus-right .button-minus,
+.TcHmi_Controls_Beckhoff_TcHmiSpinboxInput .TcHmi_Controls_Beckhoff_TcHmiNumericInput-template.minus-left-plus-right .button-plus {
+    width: 50px !important;
+}
+
+/** combobox control style */
+.TcHmi_Controls_Beckhoff_TcHmiCombobox-template-button, .tchmi-combobox-template-button {
+    width: 50px !important;
 }

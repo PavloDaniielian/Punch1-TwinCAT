@@ -15,9 +15,10 @@ Active alarms list
 
 
 Plan:
-	Setting Page
-	Alarm List Page ( Reset, ManualMode )
+	Device Link (variable)
+	Setting Page ( messagebox, link )
 	m3 motor
+	Alarm Log
 Qusetion 1:
 If Low Oil Level Sw or High Oil Temp, PLC should inhivit pump.
 At that time, shouldn't Core Swagging stop?
@@ -28,4 +29,38 @@ The position of Cylinders don't match with design pdf file.
 ex) ID: Cy1: X2.8/2.9, PDF: Cy1: 2.2/2.3
 Question 3:
 How to show step motor state?
+
+4-26 : Adjusted HMI layout and rearranged controls
+4-27 : Splited Setting and Alarm page.
+
+- Alarm-CoreSwagging
+Safeties	Enable Switch On
+Running Pump
+Hydaulic Cylinder 6 Extended	Cylinder5 Retracted
+Hydaulic Cylinder 7 Retracted
+Low Lead Spool
+(Motor)
+Hydaulic Cylinder 7 Extended
+Hydaulic Cylinder 6 Retracted
+Hydaulic Cylinder 5 Extended
+Hydaulic Cylinder 5 Retracted
+
+- Alarm-OilPump
+Low Oil Level Sw
+High Oil Temp Sw
+
+
+- Alarm-CorePress
+Safeties	CorePress Switch On
+Running Pump
+Hydaulic Cylinder 1 Retracted
+Pnumatic Cylinder 1 Extended
+Pnumatic Cylinder 1 Retracted
+Hydaulic Cylinder 3 Retracted
+Hydaulic Cylinder 1 Retracted
+Pnumatic Cylinder 2 Extended
+Hydaulic Cylinder 4 Extended
+Hydaulic Cylinder 2 Extended
+Hydaulic Cylinder 4 Retracted
+Hydaulic Cylinder 2 Retracted
 

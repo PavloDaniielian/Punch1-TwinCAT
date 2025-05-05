@@ -32,7 +32,7 @@ END_VAR]]></Declaration>
 
     30: (* Energize Track Index Solenoid *)
         GVL_IO.DO_PCYL3_E := TRUE;
-		DelayAndAdvance( GVL_InitialSetting.PCYLINDER3EXTENDED_RunningTime, iState+1 );
+		DelayAndAdvance( GVL_HMI.i_nPCylinder3ExtendedRunningTime, iState+1 );
 	31:
 		GVL_IO.DO_PCYL3_E := FALSE;
 		iState2 := 0;

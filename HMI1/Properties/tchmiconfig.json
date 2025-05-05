@@ -55,21 +55,70 @@
   "userControls": [],
   "content": [
     {
-      "url": "Overview.content",
+      "url": "Contents/Alarm.content",
       "preload": false,
       "keepAlive": false,
       "loadSync": false,
       "preloadBindings": false
     },
     {
-      "url": "Alarm.content",
+      "url": "Contents/Alarm/CorePress.content",
       "preload": false,
       "keepAlive": false,
       "loadSync": false,
       "preloadBindings": false
     },
     {
-      "url": "Setting.content",
+      "url": "Contents/Alarm/CoreSwagging.content",
+      "preload": false,
+      "keepAlive": false,
+      "loadSync": false,
+      "preloadBindings": false
+    },
+    {
+      "url": "Contents/Alarm/OilPump.content",
+      "preload": false,
+      "keepAlive": false,
+      "loadSync": false,
+      "preloadBindings": false
+    },
+    {
+      "url": "Contents/Alarm/Safeties.content",
+      "preload": false,
+      "keepAlive": false,
+      "loadSync": false,
+      "preloadBindings": false
+    },
+    {
+      "url": "Contents/Overview.content",
+      "preload": false,
+      "keepAlive": false,
+      "loadSync": false,
+      "preloadBindings": false
+    },
+    {
+      "url": "Contents/Setting.content",
+      "preload": false,
+      "keepAlive": false,
+      "loadSync": false,
+      "preloadBindings": false
+    },
+    {
+      "url": "Contents/Setting/Basic.content",
+      "preload": false,
+      "keepAlive": false,
+      "loadSync": false,
+      "preloadBindings": false
+    },
+    {
+      "url": "Contents/Setting/Hydaulic.content",
+      "preload": false,
+      "keepAlive": false,
+      "loadSync": false,
+      "preloadBindings": false
+    },
+    {
+      "url": "Contents/Setting/Pneumatic.content",
       "preload": false,
       "keepAlive": false,
       "loadSync": false,

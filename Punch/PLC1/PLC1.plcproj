@@ -50,9 +50,6 @@
     <Compile Include="POUs\BaseFuntion\FB_TransmitStatesToHMI.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="POUs\Devices\Beckhoff\EL1809.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="POUs\FB_CasingVibratoryBowl1.TcPOU">
       <SubType>Code</SubType>
     </Compile>
@@ -68,13 +65,10 @@
     <Compile Include="POUs\FB_OilPump.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="POUs\IO\DIChannel.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="POUs\IO\I_DigitalInput.TcIO">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="POUs\MAIN.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\FB_Motor.TcPOU">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
@@ -82,9 +76,6 @@
     <Folder Include="DUTs" />
     <Folder Include="GVLs" />
     <Folder Include="GVLs\constants" />
-    <Folder Include="POUs\Devices" />
-    <Folder Include="POUs\Devices\Beckhoff" />
-    <Folder Include="POUs\IO" />
     <Folder Include="POUs\BaseFuntion" />
     <Folder Include="VISUs" />
     <Folder Include="POUs" />

@@ -27,7 +27,7 @@
     <HmiViewportUserScaleable>Default</HmiViewportUserScaleable>
     <HmiPostProcessing>True</HmiPostProcessing>
     <Name>HMI1</Name>
-    <HmiCommunicationRouterPort>10104</HmiCommunicationRouterPort>
+    <HmiCommunicationRouterPort>10108</HmiCommunicationRouterPort>
     <HmiCommunicationServerAuthPort>13000</HmiCommunicationServerAuthPort>
     <HmiInitial>1.12.762.46</HmiInitial>
     <HmiRecent>1.12.762.46</HmiRecent>
@@ -117,6 +117,8 @@
   <Target Name="Clean" DependsOnTargets="$(CleanDependsOn)" />
   <Target Name="ReBuild" DependsOnTargets="Clean; Build" />
   <ItemGroup>
+    <Folder Include="Contents\Alarm" />
+    <Folder Include="Contents\Setting" />
     <Folder Include="Fonts\" />
     <Folder Include="Images" />
     <Folder Include="Images\Manifest" />
@@ -125,6 +127,7 @@
     <Folder Include="Imports\Videos" />
     <Folder Include="KeyboardLayouts\" />
     <Folder Include="Localization" />
+    <Folder Include="Contents" />
     <Folder Include="Themes" />
     <Folder Include="Themes\Base-Dark\Images\" />
     <Folder Include="Themes\Base\" />
@@ -136,13 +139,40 @@
     <Content Include=".eslintrc.json">
       <Visible>false</Visible>
     </Content>
+    <Content Include="Contents\Alarm.content">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Contents\Alarm\CorePress.content">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Contents\Alarm\CoreSwagging.content">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Contents\Alarm\OilPump.content">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Contents\Alarm\Safeties.content">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Contents\Overview.content">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Contents\Setting.content">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Contents\Setting\Basic.content">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Contents\Setting\Hydaulic.content">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Contents\Setting\Pneumatic.content">
+      <SubType>Content</SubType>
+    </Content>
     <Content Include="Images\logo.png">
       <SubType>Content</SubType>
     </Content>
     <Content Include="Images\machine.png">
-      <SubType>Content</SubType>
-    </Content>
-    <Content Include="Overview.content">
       <SubType>Content</SubType>
     </Content>
     <Content Include="Server\TcHmiLua\TcHmiLua.Config.default.json">
@@ -170,12 +200,6 @@
       <SubType>Content</SubType>
     </Content>
     <Content Include="Server\TcHmiUserManagement\TcHmiUserManagement.Storage.json">
-      <SubType>Content</SubType>
-    </Content>
-    <Content Include="Alarm.content">
-      <SubType>Content</SubType>
-    </Content>
-    <Content Include="Setting.content">
       <SubType>Content</SubType>
     </Content>
     <Content Include="tsconfig.tpl.json">

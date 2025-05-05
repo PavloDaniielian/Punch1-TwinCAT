@@ -9,6 +9,7 @@ VAR
     fCasingVibratoryBowl1: FB_CasingVibratoryBowl1;
     fCoreVibratoryBowl2: FB_CoreVibratoryBowl2;
 	fTransmitStatesToHMI: FB_TransmitStatesToHMI;
+
 END_VAR]]></Declaration>
     <Implementation>
       <ST><![CDATA[GVL_HMI.bSafeties := GVL_IO.DI_24VDC_CB_OK AND GVL_IO.DI_ESR1 AND GVL_IO.DI_LS1 AND GVL_IO.DI_TS1 AND GVL_IO.DI_PS1;

@@ -20,7 +20,7 @@ END_VAR
       <ST><![CDATA[CASE iState OF
 	0: (* Idle/Off, DI_ECS=FALSE *)
 		(* Manual Mode Handling *)
-		IF GVL_HMI.i_bCoreSwagingManualMode THEN
+		IF GVL_HMI.i_nCoreSwagingMode = 1 THEN
 			IF GVL_IO.DI_JLU THEN (* Jog switch pressed *)
 				(* Motor M3 runs infinitely while switch is pressed *)
 				iState := 10;
@@ -51,7 +51,7 @@ END_VAR
 			GVL_IO.DO_CYL5_R := TRUE;
 			CheckFeedback(E_FT.CYL5_R);
 		ELSE
-			DelayAndAdvance(GVL_InitialSetting.CYLINDER5RETRACTED_RunningDelayTime, (iState + 10) / 10 * 10);
+			iState := (iState + 10) / 10 * 10;
 		END_IF
 		
     30: (* Ensure CYL7 is Retracted *)

@@ -61,8 +61,22 @@
       },
       "themedResources": {}
     },
-    "Vertical": {
-      "attributes": {},
+    "StateTextFail": {
+      "attributes": {
+        "BackgroundColor": {
+          "color": "rgba(255, 0, 0, 1)"
+        },
+        "TextColor": {
+          "color": "rgba(255, 255, 255, 1)"
+        }
+      },
+      "themedResources": {}
+    },
+    "StateTextOk": {
+      "attributes": {
+        "BackgroundColor": null,
+        "TextColor": null
+      },
       "themedResources": {}
     }
   },

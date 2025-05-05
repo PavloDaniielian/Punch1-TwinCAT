@@ -1,27 +1,41 @@
-<div id="Desktop" data-tchmi-type="TcHmi.Controls.System.TcHmiView" data-tchmi-top="0" data-tchmi-left="0" data-tchmi-width-mode="Content" data-tchmi-min-width="100" data-tchmi-min-width-unit="%" data-tchmi-height-mode="Content" data-tchmi-min-height="100" data-tchmi-min-height-unit="%" data-tchmi-creator-viewport-width="1024" data-tchmi-creator-viewport-height="600" data-tchmi-zindex="2">
-<div id="TcHmi_Controls_Beckhoff_TcHmiImage" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiImage" data-tchmi-height="51" data-tchmi-height-unit="px" data-tchmi-left="34" data-tchmi-left-unit="px" data-tchmi-src="Images/logo.png" data-tchmi-top="32" data-tchmi-top-unit="px" data-tchmi-width="262" data-tchmi-width-unit="px" data-tchmi-zindex="2">
+<div id="Desktop" data-tchmi-type="TcHmi.Controls.System.TcHmiView" data-tchmi-top="0" data-tchmi-left="0" data-tchmi-width-mode="Content" data-tchmi-min-width="100" data-tchmi-min-width-unit="%" data-tchmi-height-mode="Content" data-tchmi-min-height="100" data-tchmi-min-height-unit="%" data-tchmi-creator-viewport-width="1024" data-tchmi-creator-viewport-height="600" data-tchmi-zindex="2" data-tchmi-width="1024" data-tchmi-height="768">
+<div id="TcHmi_Controls_Beckhoff_TcHmiImage" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiImage" data-tchmi-height="51" data-tchmi-height-unit="px" data-tchmi-left="34" data-tchmi-left-unit="px" data-tchmi-src="Images/logo.png" data-tchmi-top="26" data-tchmi-top-unit="px" data-tchmi-width="262" data-tchmi-width-unit="px" data-tchmi-zindex="2">
 </div>
-<div id="TcHmiTextblock" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiTextblock" data-tchmi-height="26" data-tchmi-height-unit="px" data-tchmi-left="709" data-tchmi-left-unit="px" data-tchmi-text="Copyright @2025   Tel : 123456789   mail : abcdefg@hijk.com" data-tchmi-top="564" data-tchmi-top-unit="px" data-tchmi-width="305" data-tchmi-width-unit="px" data-tchmi-word-wrap="true" data-tchmi-zindex="2" data-tchmi-text-vertical-alignment="Center">
+<div id="TcHmiTextblock" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiTextblock" data-tchmi-height="48" data-tchmi-height-unit="px" data-tchmi-left="876" data-tchmi-left-unit="px" data-tchmi-text="Copyright @2025" data-tchmi-top="720" data-tchmi-top-unit="px" data-tchmi-width="147" data-tchmi-width-unit="px" data-tchmi-word-wrap="true" data-tchmi-zindex="2" data-tchmi-text-vertical-alignment="Center" data-tchmi-text-font-size="20">
 </div>
-<div id="TcHmiRectangle" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiRectangle" data-tchmi-height="100" data-tchmi-height-unit="px" data-tchmi-left="0" data-tchmi-left-unit="px" data-tchmi-top="0" data-tchmi-top-unit="px" data-tchmi-width="1024" data-tchmi-width-unit="px" data-tchmi-zindex="1">
+<div id="TcHmiRectangle" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiRectangle" data-tchmi-height="100" data-tchmi-height-unit="px" data-tchmi-left="0" data-tchmi-left-unit="px" data-tchmi-top="0" data-tchmi-top-unit="px" data-tchmi-width="1024" data-tchmi-width-unit="px" data-tchmi-zindex="1" data-tchmi-stroke-thickness="0">
 
 <script data-tchmi-target-attribute="data-tchmi-background-color" type="application/json">
 {
   "angle": 90.0,
   "stopPoints": [
     {
-      "color": "rgba(93, 0, 0, 1)",
+      "color": "rgba(165, 0, 0, 1)",
       "stop": "0%"
     },
     {
-      "color": "rgba(189, 0, 0, 1)",
+      "color": "rgba(204, 66, 66, 1)",
       "stop": "50%"
     },
     {
-      "color": "rgba(93, 0, 0, 1)",
+      "color": "rgba(166, 0, 0, 1)",
       "stop": "100%"
     }
   ]
+}
+</script>
+
+<script data-tchmi-target-attribute="data-tchmi-border-color" type="application/json">
+{
+  "color": "None"
+}
+</script>
+
+
+
+<script data-tchmi-target-attribute="data-tchmi-fill-color" type="application/json">
+{
+  "color": "None"
 }
 </script>
 </div>
@@ -43,7 +57,7 @@
   ]
 }
 </script>
-<div id="btnSetting" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiButton" data-tchmi-height="50" data-tchmi-height-unit="px" data-tchmi-left="686" data-tchmi-left-unit="px" data-tchmi-text="Setting" data-tchmi-top="39" data-tchmi-top-unit="px" data-tchmi-width="131" data-tchmi-width-unit="px" data-tchmi-word-wrap="true" data-tchmi-text-font-size="30" data-tchmi-tooltip="OverView" data-tchmi-text-font-family="RobotoCondensed" data-tchmi-text-font-weight="Normal" data-tchmi-zindex="1">
+<div id="btnSetting" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiButton" data-tchmi-height="60" data-tchmi-height-unit="px" data-tchmi-left="660" data-tchmi-left-unit="px" data-tchmi-text="Setting" data-tchmi-top="35" data-tchmi-top-unit="px" data-tchmi-width="165" data-tchmi-width-unit="px" data-tchmi-word-wrap="true" data-tchmi-text-font-size="40" data-tchmi-tooltip="OverView" data-tchmi-text-font-family="RobotoCondensed" data-tchmi-text-font-weight="Normal" data-tchmi-zindex="1">
 <script data-tchmi-target-attribute="data-tchmi-background-color" type="application/json">
 {
   "color": "None"
@@ -70,7 +84,40 @@
         "value": {
           "objectType": "StaticValue",
           "valueType": "tchmi:framework#/definitions/ContentPath",
-          "value": "Setting.content"
+          "value": "Contents/Setting.content"
+        },
+        "asyncWait": true
+      },
+      {
+        "objectType": "WriteToSymbol",
+        "active": true,
+        "symbolExpression": "%ctrl%btnOverview::IsEnabled%/ctrl%",
+        "value": {
+          "objectType": "StaticValue",
+          "valueType": "tchmi:general#/definitions/Boolean",
+          "value": true
+        },
+        "asyncWait": true
+      },
+      {
+        "objectType": "WriteToSymbol",
+        "active": true,
+        "symbolExpression": "%ctrl%btnSetting::IsEnabled%/ctrl%",
+        "value": {
+          "objectType": "StaticValue",
+          "valueType": "tchmi:general#/definitions/Boolean",
+          "value": false
+        },
+        "asyncWait": true
+      },
+      {
+        "objectType": "WriteToSymbol",
+        "active": true,
+        "symbolExpression": "%ctrl%btnAlarm::IsEnabled%/ctrl%",
+        "value": {
+          "objectType": "StaticValue",
+          "valueType": "tchmi:general#/definitions/Boolean",
+          "value": true
         },
         "asyncWait": true
       }
@@ -79,7 +126,7 @@
 ]
 </script>
 </div>
-<div id="btnAlarm" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiButton" data-tchmi-height="50" data-tchmi-height-unit="px" data-tchmi-left="848" data-tchmi-left-unit="px" data-tchmi-text="Alarm" data-tchmi-top="39" data-tchmi-top-unit="px" data-tchmi-width="131" data-tchmi-width-unit="px" data-tchmi-word-wrap="true" data-tchmi-text-font-size="30" data-tchmi-tooltip="OverView" data-tchmi-text-font-family="RobotoCondensed" data-tchmi-text-font-weight="Normal" data-tchmi-zindex="1">
+<div id="btnAlarm" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiButton" data-tchmi-height="60" data-tchmi-height-unit="px" data-tchmi-left="840" data-tchmi-left-unit="px" data-tchmi-text="Alarm" data-tchmi-top="35" data-tchmi-top-unit="px" data-tchmi-width="165" data-tchmi-width-unit="px" data-tchmi-word-wrap="true" data-tchmi-text-font-size="40" data-tchmi-tooltip="OverView" data-tchmi-text-font-family="RobotoCondensed" data-tchmi-text-font-weight="Normal" data-tchmi-zindex="1">
 <script data-tchmi-target-attribute="data-tchmi-background-color" type="application/json">
 {
   "color": "None"
@@ -106,7 +153,40 @@
         "value": {
           "objectType": "StaticValue",
           "valueType": "tchmi:framework#/definitions/ContentPath",
-          "value": "Alarm.content"
+          "value": "Contents/Alarm.content"
+        },
+        "asyncWait": true
+      },
+      {
+        "objectType": "WriteToSymbol",
+        "active": true,
+        "symbolExpression": "%ctrl%btnOverview::IsEnabled%/ctrl%",
+        "value": {
+          "objectType": "StaticValue",
+          "valueType": "tchmi:general#/definitions/Boolean",
+          "value": true
+        },
+        "asyncWait": true
+      },
+      {
+        "objectType": "WriteToSymbol",
+        "active": true,
+        "symbolExpression": "%ctrl%btnSetting::IsEnabled%/ctrl%",
+        "value": {
+          "objectType": "StaticValue",
+          "valueType": "tchmi:general#/definitions/Boolean",
+          "value": true
+        },
+        "asyncWait": true
+      },
+      {
+        "objectType": "WriteToSymbol",
+        "active": true,
+        "symbolExpression": "%ctrl%btnAlarm::IsEnabled%/ctrl%",
+        "value": {
+          "objectType": "StaticValue",
+          "valueType": "tchmi:general#/definitions/Boolean",
+          "value": false
         },
         "asyncWait": true
       }
@@ -115,12 +195,8 @@
 ]
 </script>
 </div>
-<div id="btnOverview" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiButton" data-tchmi-height="50" data-tchmi-height-unit="px" data-tchmi-left="528" data-tchmi-left-unit="px" data-tchmi-text="OverView" data-tchmi-top="39" data-tchmi-top-unit="px" data-tchmi-width="131" data-tchmi-width-unit="px" data-tchmi-word-wrap="true" data-tchmi-text-font-size="30" data-tchmi-tooltip="OverView" data-tchmi-text-font-family="RobotoCondensed" data-tchmi-text-font-weight="Normal" data-tchmi-zindex="1">
-<script data-tchmi-target-attribute="data-tchmi-background-color" type="application/json">
-{
-  "color": "None"
-}
-</script>
+<div id="btnOverview" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiButton" data-tchmi-height="60" data-tchmi-height-unit="px" data-tchmi-left="480" data-tchmi-left-unit="px" data-tchmi-text="OverView" data-tchmi-top="35" data-tchmi-top-unit="px" data-tchmi-width="165" data-tchmi-width-unit="px" data-tchmi-word-wrap="true" data-tchmi-text-font-size="40" data-tchmi-tooltip="OverView" data-tchmi-text-font-family="RobotoCondensed" data-tchmi-text-font-weight="Normal" data-tchmi-zindex="1" data-tchmi-is-enabled="false">
+
 
 
 
@@ -142,7 +218,40 @@
         "value": {
           "objectType": "StaticValue",
           "valueType": "tchmi:framework#/definitions/ContentPath",
-          "value": "Overview.content"
+          "value": "Contents/Overview.content"
+        },
+        "asyncWait": true
+      },
+      {
+        "objectType": "WriteToSymbol",
+        "active": true,
+        "symbolExpression": "%ctrl%btnOverview::IsEnabled%/ctrl%",
+        "value": {
+          "objectType": "StaticValue",
+          "valueType": "tchmi:general#/definitions/Boolean",
+          "value": false
+        },
+        "asyncWait": true
+      },
+      {
+        "objectType": "WriteToSymbol",
+        "active": true,
+        "symbolExpression": "%ctrl%btnSetting::IsEnabled%/ctrl%",
+        "value": {
+          "objectType": "StaticValue",
+          "valueType": "tchmi:general#/definitions/Boolean",
+          "value": true
+        },
+        "asyncWait": true
+      },
+      {
+        "objectType": "WriteToSymbol",
+        "active": true,
+        "symbolExpression": "%ctrl%btnAlarm::IsEnabled%/ctrl%",
+        "value": {
+          "objectType": "StaticValue",
+          "valueType": "tchmi:general#/definitions/Boolean",
+          "value": true
         },
         "asyncWait": true
       }
@@ -150,12 +259,20 @@
   }
 ]
 </script>
+
+<script data-tchmi-target-attribute="data-tchmi-background-color" type="application/json">
+{
+  "color": "None"
+}
+</script>
+
+
 </div>
-<div id="rgnContent" data-tchmi-type="TcHmi.Controls.System.TcHmiRegion" data-tchmi-height="465" data-tchmi-height-unit="px" data-tchmi-left="0" data-tchmi-left-unit="px" data-tchmi-top="99" data-tchmi-top-unit="px" data-tchmi-width="1024" data-tchmi-width-unit="px" data-tchmi-target-content="Overview.content">
+<div id="rgnContent" data-tchmi-type="TcHmi.Controls.System.TcHmiRegion" data-tchmi-height="620" data-tchmi-height-unit="px" data-tchmi-left="0" data-tchmi-left-unit="px" data-tchmi-top="100" data-tchmi-top-unit="px" data-tchmi-width="1024" data-tchmi-width-unit="px" data-tchmi-target-content="Contents/Overview.content">
 </div>
-<div id="TcHmiDateTimeDisplay" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiDateTimeDisplay" data-tchmi-height="26" data-tchmi-height-unit="px" data-tchmi-left="0" data-tchmi-left-unit="px" data-tchmi-top="564" data-tchmi-top-unit="px" data-tchmi-width="184" data-tchmi-width-unit="px" data-tchmi-time-display-layout="DateTimeSingleLine" data-tchmi-text-vertical-alignment="Center">
+<div id="TcHmiDateTimeDisplay" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiDateTimeDisplay" data-tchmi-height="48" data-tchmi-height-unit="px" data-tchmi-left="0" data-tchmi-left-unit="px" data-tchmi-top="720" data-tchmi-top-unit="px" data-tchmi-width="195" data-tchmi-width-unit="px" data-tchmi-time-display-layout="DateTimeSingleLine" data-tchmi-text-vertical-alignment="Center" data-tchmi-text-font-size="20">
 </div>
-<div id="lblAlarm" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiTextblock" data-tchmi-height="26" data-tchmi-height-unit="px" data-tchmi-left="184" data-tchmi-left-unit="px" data-tchmi-text="Alarm: Cylinder1 was not retracted normally!" data-tchmi-top="564" data-tchmi-top-unit="px" data-tchmi-width="525" data-tchmi-width-unit="px" data-tchmi-word-wrap="true" data-tchmi-zindex="2" data-tchmi-text-font-size="20" data-tchmi-text-vertical-alignment="Center" data-tchmi-text-horizontal-alignment="Center">
+<div id="lblAlarm" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiTextblock" data-tchmi-height="48" data-tchmi-height-unit="px" data-tchmi-left="195" data-tchmi-left-unit="px" data-tchmi-text="Alarm: Cylinder1 was not retracted normally!" data-tchmi-top="720" data-tchmi-top-unit="px" data-tchmi-width="681" data-tchmi-width-unit="px" data-tchmi-word-wrap="true" data-tchmi-zindex="2" data-tchmi-text-font-size="30" data-tchmi-text-vertical-alignment="Center" data-tchmi-text-horizontal-alignment="Center">
 
 
 

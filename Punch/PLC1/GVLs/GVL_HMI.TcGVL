@@ -1,8 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.6">
   <GVL Name="GVL_HMI" Id="{80a1a5a0-00a7-49c7-a368-c9a3531de34b}">
-    <Declaration><![CDATA[{attribute 'qualified_only'}
-VAR_GLOBAL
+    <Declaration><![CDATA[VAR_GLOBAL
 	// safeties
 	i_b24VDC_CB_OK : BOOL := FALSE;
 	i_bESR1 : BOOL := FALSE;
@@ -12,7 +11,7 @@ VAR_GLOBAL
 	bSafeties :BOOL := TRUE;
 	
 	// signals from HMI
-	i_bCoreSwagingManualMode: BOOL := FALSE;
+	i_nCoreSwagingMode: INT := 0;	// 0: Auto, 1: Manual
 	i_bReset : BOOL := FALSE;	// reset
 	
 		// settings
@@ -31,6 +30,7 @@ VAR_GLOBAL
 	i_nCylinder2ExtendedRunningTime : INT := GVL_InitialSetting.CYLINDER2EXTENDED_RunningTime; // ms
 	i_nCylinder4RetractedRunningTime : INT := GVL_InitialSetting.CYLINDER4RETRACTED_RunningTime; // ms
 	i_nCylinder2RetractedRunningTime : INT := GVL_InitialSetting.CYLINDER2RETRACTED_RunningTime; // ms
+	i_nPCylinder3ExtendedRunningTime : INT := GVL_InitialSetting.PCYLINDER3EXTENDED_RunningTime; // ms
 	i_nPCylinder5ExtendedRunningTime : INT := GVL_InitialSetting.PCYLINDER5EXTENDED_RunningTime; // ms
 	i_nPCylinder4ExtendedRunningTime : INT := GVL_InitialSetting.PCYLINDER4EXTENDED_RunningTime; // ms
 	i_nPE4MaintainTime : INT := GVL_InitialSetting.PE4_MaintainTime; // ms

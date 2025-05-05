@@ -1,0 +1,119 @@
+<div id="Basic" data-tchmi-type="TcHmi.Controls.System.TcHmiContent" data-tchmi-top="0" data-tchmi-left="0" data-tchmi-width="770" data-tchmi-height="530">
+
+<div id="TcHmiSpinboxInput_22" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiSpinboxInput" data-tchmi-auto-focus-out="true" data-tchmi-decimal-digits="0" data-tchmi-height="50" data-tchmi-height-unit="px" data-tchmi-left="540" data-tchmi-left-unit="px" data-tchmi-max-value="50" data-tchmi-min-value="1" data-tchmi-reset-to-last-valid-value="true" data-tchmi-top="90" data-tchmi-top-unit="px" data-tchmi-value="5" data-tchmi-value-horizontal-alignment="Center" data-tchmi-width="175" data-tchmi-width-unit="px" data-tchmi-step="1" data-tchmi-value-font-size="30" data-tchmi-button-position="MinusLeftAndPlusRight">
+<script data-tchmi-target-attribute="data-tchmi-content-padding" type="application/json">
+{
+  "top": 3,
+  "right": 3,
+  "bottom": 3,
+  "left": 3
+}
+</script>
+
+</div>
+<div id="lblDummyS_2" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiTextblock" data-tchmi-height="50" data-tchmi-height-unit="px" data-tchmi-left="0" data-tchmi-left-unit="px" data-tchmi-text="Casing Count For Starting" data-tchmi-top="90" data-tchmi-top-unit="px" data-tchmi-width="540" data-tchmi-width-unit="px" data-tchmi-word-wrap="true" data-tchmi-text-horizontal-alignment="Center" data-tchmi-text-font-size="30" data-tchmi-text-vertical-alignment="Center">
+</div>
+<div id="lblDummyS_3" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiTextblock" data-tchmi-height="50" data-tchmi-height-unit="px" data-tchmi-left="0" data-tchmi-left-unit="px" data-tchmi-text="Core Count For Starting" data-tchmi-top="165" data-tchmi-top-unit="px" data-tchmi-width="540" data-tchmi-width-unit="px" data-tchmi-word-wrap="true" data-tchmi-text-horizontal-alignment="Center" data-tchmi-text-font-size="30" data-tchmi-text-vertical-alignment="Center">
+</div>
+<div id="TcHmiSpinboxInput_1" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiSpinboxInput" data-tchmi-auto-focus-out="true" data-tchmi-decimal-digits="0" data-tchmi-height="50" data-tchmi-height-unit="px" data-tchmi-left="540" data-tchmi-left-unit="px" data-tchmi-max-value="50" data-tchmi-min-value="1" data-tchmi-reset-to-last-valid-value="true" data-tchmi-top="165" data-tchmi-top-unit="px" data-tchmi-value="5" data-tchmi-value-horizontal-alignment="Center" data-tchmi-width="175" data-tchmi-width-unit="px" data-tchmi-step="1" data-tchmi-value-font-size="30" data-tchmi-button-position="MinusLeftAndPlusRight">
+<script data-tchmi-target-attribute="data-tchmi-content-padding" type="application/json">
+{
+  "top": 3,
+  "right": 3,
+  "bottom": 3,
+  "left": 3
+}
+</script>
+
+</div>
+<div id="lblDummyS_4" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiTextblock" data-tchmi-height="50" data-tchmi-height-unit="px" data-tchmi-left="0" data-tchmi-left-unit="px" data-tchmi-text="Pump Feedback Checking Time" data-tchmi-top="240" data-tchmi-top-unit="px" data-tchmi-width="540" data-tchmi-width-unit="px" data-tchmi-word-wrap="true" data-tchmi-text-horizontal-alignment="Center" data-tchmi-text-font-size="30" data-tchmi-text-vertical-alignment="Center">
+</div>
+<div id="TcHmiSpinboxInput_2" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiSpinboxInput" data-tchmi-auto-focus-out="true" data-tchmi-decimal-digits="0" data-tchmi-height="50" data-tchmi-height-unit="px" data-tchmi-left="540" data-tchmi-left-unit="px" data-tchmi-max-value="10000" data-tchmi-min-value="100" data-tchmi-reset-to-last-valid-value="true" data-tchmi-top="240" data-tchmi-top-unit="px" data-tchmi-value="2000" data-tchmi-value-horizontal-alignment="Center" data-tchmi-width="175" data-tchmi-width-unit="px" data-tchmi-step="100" data-tchmi-value-font-size="30" data-tchmi-button-position="MinusLeftAndPlusRight">
+<script data-tchmi-target-attribute="data-tchmi-content-padding" type="application/json">
+{
+  "top": 3,
+  "right": 3,
+  "bottom": 3,
+  "left": 3
+}
+</script>
+
+</div>
+<div id="lblDummySUnit_1" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiTextblock" data-tchmi-height="50" data-tchmi-height-unit="px" data-tchmi-left="715" data-tchmi-left-unit="px" data-tchmi-text="ms" data-tchmi-top="240" data-tchmi-top-unit="px" data-tchmi-width="55" data-tchmi-width-unit="px" data-tchmi-word-wrap="true" data-tchmi-text-font-size="30" data-tchmi-text-horizontal-alignment="Center" data-tchmi-text-vertical-alignment="Center">
+</div>
+<div id="lblDummyS_5" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiTextblock" data-tchmi-height="50" data-tchmi-height-unit="px" data-tchmi-left="0" data-tchmi-left-unit="px" data-tchmi-text="Cylinder Feedback Checking Time" data-tchmi-top="315" data-tchmi-top-unit="px" data-tchmi-width="540" data-tchmi-width-unit="px" data-tchmi-word-wrap="true" data-tchmi-text-horizontal-alignment="Center" data-tchmi-text-font-size="30" data-tchmi-text-vertical-alignment="Center">
+</div>
+<div id="TcHmiSpinboxInput_3" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiSpinboxInput" data-tchmi-auto-focus-out="true" data-tchmi-decimal-digits="0" data-tchmi-height="50" data-tchmi-height-unit="px" data-tchmi-left="540" data-tchmi-left-unit="px" data-tchmi-max-value="10000" data-tchmi-min-value="100" data-tchmi-reset-to-last-valid-value="true" data-tchmi-top="315" data-tchmi-top-unit="px" data-tchmi-value="3000" data-tchmi-value-horizontal-alignment="Center" data-tchmi-width="175" data-tchmi-width-unit="px" data-tchmi-step="100" data-tchmi-value-font-size="30" data-tchmi-button-position="MinusLeftAndPlusRight">
+<script data-tchmi-target-attribute="data-tchmi-content-padding" type="application/json">
+{
+  "top": 3,
+  "right": 3,
+  "bottom": 3,
+  "left": 3
+}
+</script>
+
+</div>
+<div id="lblDummySUnit_2" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiTextblock" data-tchmi-height="50" data-tchmi-height-unit="px" data-tchmi-left="715" data-tchmi-left-unit="px" data-tchmi-text="ms" data-tchmi-top="315" data-tchmi-top-unit="px" data-tchmi-width="55" data-tchmi-width-unit="px" data-tchmi-word-wrap="true" data-tchmi-text-font-size="30" data-tchmi-text-horizontal-alignment="Center" data-tchmi-text-vertical-alignment="Center">
+</div>
+<div id="lblDummyS_6" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiTextblock" data-tchmi-height="75" data-tchmi-height-unit="px" data-tchmi-left="0" data-tchmi-left-unit="px" data-tchmi-text="Vibratory Bowl 1 Product High Level\n Maintain Time" data-tchmi-top="375" data-tchmi-top-unit="px" data-tchmi-width="540" data-tchmi-width-unit="px" data-tchmi-word-wrap="true" data-tchmi-text-horizontal-alignment="Center" data-tchmi-text-font-size="30" data-tchmi-text-vertical-alignment="Center">
+</div>
+<div id="TcHmiSpinboxInput_4" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiSpinboxInput" data-tchmi-auto-focus-out="true" data-tchmi-decimal-digits="0" data-tchmi-height="50" data-tchmi-height-unit="px" data-tchmi-left="540" data-tchmi-left-unit="px" data-tchmi-max-value="500" data-tchmi-min-value="0" data-tchmi-reset-to-last-valid-value="true" data-tchmi-top="390" data-tchmi-top-unit="px" data-tchmi-value="100" data-tchmi-value-horizontal-alignment="Center" data-tchmi-width="175" data-tchmi-width-unit="px" data-tchmi-step="10" data-tchmi-value-font-size="30" data-tchmi-button-position="MinusLeftAndPlusRight">
+<script data-tchmi-target-attribute="data-tchmi-content-padding" type="application/json">
+{
+  "top": 3,
+  "right": 3,
+  "bottom": 3,
+  "left": 3
+}
+</script>
+
+</div>
+<div id="lblDummySUnit_3" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiTextblock" data-tchmi-height="50" data-tchmi-height-unit="px" data-tchmi-left="715" data-tchmi-left-unit="px" data-tchmi-text="ms" data-tchmi-top="390" data-tchmi-top-unit="px" data-tchmi-width="55" data-tchmi-width-unit="px" data-tchmi-word-wrap="true" data-tchmi-text-font-size="30" data-tchmi-text-horizontal-alignment="Center" data-tchmi-text-vertical-alignment="Center">
+</div>
+<div id="lblDummyS_7" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiTextblock" data-tchmi-height="75" data-tchmi-height-unit="px" data-tchmi-left="0" data-tchmi-left-unit="px" data-tchmi-text="Vibratory Bowl 2 Product High Level\n Maintain Time" data-tchmi-top="450" data-tchmi-top-unit="px" data-tchmi-width="540" data-tchmi-width-unit="px" data-tchmi-word-wrap="true" data-tchmi-text-horizontal-alignment="Center" data-tchmi-text-font-size="30" data-tchmi-text-vertical-alignment="Center">
+</div>
+<div id="TcHmiSpinboxInput_5" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiSpinboxInput" data-tchmi-auto-focus-out="true" data-tchmi-decimal-digits="0" data-tchmi-height="50" data-tchmi-height-unit="px" data-tchmi-left="540" data-tchmi-left-unit="px" data-tchmi-max-value="500" data-tchmi-min-value="0" data-tchmi-reset-to-last-valid-value="true" data-tchmi-top="465" data-tchmi-top-unit="px" data-tchmi-value="100" data-tchmi-value-horizontal-alignment="Center" data-tchmi-width="175" data-tchmi-width-unit="px" data-tchmi-step="10" data-tchmi-value-font-size="30" data-tchmi-button-position="MinusLeftAndPlusRight">
+<script data-tchmi-target-attribute="data-tchmi-content-padding" type="application/json">
+{
+  "top": 3,
+  "right": 3,
+  "bottom": 3,
+  "left": 3
+}
+</script>
+
+</div>
+<div id="lblDummySUnit_4" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiTextblock" data-tchmi-height="50" data-tchmi-height-unit="px" data-tchmi-left="715" data-tchmi-left-unit="px" data-tchmi-text="ms" data-tchmi-top="465" data-tchmi-top-unit="px" data-tchmi-width="55" data-tchmi-width-unit="px" data-tchmi-word-wrap="true" data-tchmi-text-font-size="30" data-tchmi-text-horizontal-alignment="Center" data-tchmi-text-vertical-alignment="Center">
+</div>
+<div id="lblDummyS_1" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiTextblock" data-tchmi-height="50" data-tchmi-height-unit="px" data-tchmi-left="0" data-tchmi-left-unit="px" data-tchmi-text="CoreSwagging Mode" data-tchmi-top="15" data-tchmi-top-unit="px" data-tchmi-width="540" data-tchmi-width-unit="px" data-tchmi-word-wrap="true" data-tchmi-text-horizontal-alignment="Center" data-tchmi-text-font-size="30" data-tchmi-text-vertical-alignment="Center">
+</div>
+<div id="cmbSwaggingMode" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiCombobox" data-tchmi-auto-focus-out="true" data-tchmi-height="50" data-tchmi-height-unit="px" data-tchmi-left="540" data-tchmi-left-unit="px" data-tchmi-top="15" data-tchmi-top-unit="px" data-tchmi-width="175" data-tchmi-width-unit="px" data-tchmi-text-font-size="30" data-tchmi-text-horizontal-alignment="Center" data-tchmi-drop-down-horizontal-alignment="Center" data-tchmi-drop-down-font-size="30" data-tchmi-data-height="50" data-tchmi-selected-index="%s%PLC1.GVL_HMI.i_nCoreSwagingMode%/s%" data-tchmi-text="Auto" data-tchmi-selected-id="0">
+<script data-tchmi-target-attribute="data-tchmi-content-padding" type="application/json">
+{
+  "top": 3,
+  "right": 3,
+  "bottom": 3,
+  "left": 3
+}
+</script>
+
+
+<script data-tchmi-target-attribute="data-tchmi-src-data" type="application/json">
+[
+  {
+    "id": 0.0,
+    "text": "Auto",
+    "value": false
+  },
+  {
+    "id": 1.0,
+    "text": "Manual",
+    "value": true
+  }
+]
+</script>
+
+
+</div>
+</div>

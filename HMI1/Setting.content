@@ -1,9 +1,0 @@
-<div id="Setting" data-tchmi-type="TcHmi.Controls.System.TcHmiContent" data-tchmi-top="0" data-tchmi-left="0" data-tchmi-width="1024" data-tchmi-height="450" data-tchmi-creator-viewport-width="1024" data-tchmi-creator-viewport-height="600">
-
-<div id="TcHmiTextblock_1" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiTextblock" data-tchmi-height="131" data-tchmi-height-unit="px" data-tchmi-left="47" data-tchmi-left-unit="px" data-tchmi-text="This is Alarm content." data-tchmi-top="105" data-tchmi-top-unit="px" data-tchmi-width="915" data-tchmi-width-unit="px" data-tchmi-word-wrap="true" data-tchmi-text-font-size="100">
-</div>
-<div id="btnSettingA1" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiButton" data-tchmi-height="50" data-tchmi-height-unit="px" data-tchmi-left="299" data-tchmi-left-unit="px" data-tchmi-text="A1" data-tchmi-top="295" data-tchmi-top-unit="px" data-tchmi-width="100" data-tchmi-width-unit="px" data-tchmi-word-wrap="true">
-
-
-</div>
-</div>
