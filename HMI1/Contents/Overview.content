@@ -113,27 +113,21 @@
     "event": "%s%PLC1.GVL_HMI.i_nCylinder2State%/s%",
     "actions": [
       {
-        "objectType": "Condition",
+        "objectType": "SwitchCase",
         "active": true,
-        "parts": [
+        "compare": {
+          "objectType": "Symbol",
+          "valueType": "tchmi:general#/definitions/INT",
+          "symbolExpression": "%s%PLC1.GVL_HMI.i_nCylinder2State%/s%"
+        },
+        "cases": [
           {
-            "if": [
-              {
-                "compare1": {
-                  "objectType": "Symbol",
-                  "valueType": "tchmi:general#/definitions/String",
-                  "symbolExpression": "%s%PLC1.GVL_HMI.i_nCylinder2State%/s%"
-                },
-                "compare2": {
-                  "objectType": "StaticValue",
-                  "valueType": "tchmi:general#/definitions/INT",
-                  "value": 0
-                },
-                "compareOperator": "<",
-                "logic": null
-              }
-            ],
-            "then": [
+            "caseValue": {
+              "objectType": "StaticValue",
+              "valueType": "tchmi:general#/definitions/INT",
+              "value": -1
+            },
+            "actions": [
               {
                 "objectType": "WriteToSymbol",
                 "active": true,
@@ -150,67 +144,67 @@
             ]
           },
           {
-            "else": [
+            "caseValue": {
+              "objectType": "StaticValue",
+              "valueType": "tchmi:general#/definitions/INT",
+              "value": 0
+            },
+            "actions": [
               {
-                "objectType": "Condition",
+                "objectType": "WriteToSymbol",
                 "active": true,
-                "parts": [
-                  {
-                    "if": [
-                      {
-                        "compare1": {
-                          "objectType": "Symbol",
-                          "valueType": "tchmi:general#/definitions/String",
-                          "symbolExpression": "%s%PLC1.GVL_HMI.i_nCylinder2State%/s%"
-                        },
-                        "compare2": {
-                          "objectType": "StaticValue",
-                          "valueType": "tchmi:general#/definitions/INT",
-                          "value": 0
-                        },
-                        "compareOperator": "==",
-                        "logic": null
-                      }
-                    ],
-                    "then": [
-                      {
-                        "objectType": "WriteToSymbol",
-                        "active": true,
-                        "symbolExpression": "%ctrl%sttCyl2::ClassNames%/ctrl%",
-                        "value": {
-                          "objectType": "StaticValue",
-                          "valueType": "tchmi:framework#/definitions/ClassNameList",
-                          "value": [
-                            "CylinderExtended"
-                          ]
-                        },
-                        "asyncWait": true
-                      }
-                    ]
-                  },
-                  {
-                    "else": [
-                      {
-                        "objectType": "WriteToSymbol",
-                        "active": true,
-                        "symbolExpression": "%ctrl%sttCyl2::ClassNames%/ctrl%",
-                        "value": {
-                          "objectType": "StaticValue",
-                          "valueType": "tchmi:framework#/definitions/ClassNameList",
-                          "value": [
-                            "CylinderRetracted"
-                          ]
-                        },
-                        "asyncWait": true
-                      }
-                    ]
-                  }
-                ],
+                "symbolExpression": "%ctrl%sttCyl2::ClassNames%/ctrl%",
+                "value": {
+                  "objectType": "StaticValue",
+                  "valueType": "tchmi:framework#/definitions/ClassNameList",
+                  "value": [
+                    "CylinderExtended"
+                  ]
+                },
+                "asyncWait": true
+              }
+            ]
+          },
+          {
+            "caseValue": {
+              "objectType": "StaticValue",
+              "valueType": "tchmi:general#/definitions/INT",
+              "value": 2
+            },
+            "actions": [
+              {
+                "objectType": "WriteToSymbol",
+                "active": true,
+                "symbolExpression": "%ctrl%sttCyl2::ClassNames%/ctrl%",
+                "value": {
+                  "objectType": "StaticValue",
+                  "valueType": "tchmi:framework#/definitions/ClassNameList",
+                  "value": [
+                    "CylinderRetracted"
+                  ]
+                },
                 "asyncWait": true
               }
             ]
           }
         ],
+        "caseDefault": {
+          "actions": [
+            {
+              "objectType": "WriteToSymbol",
+              "active": true,
+              "symbolExpression": "%ctrl%sttCyl2::ClassNames%/ctrl%",
+              "value": {
+                "objectType": "StaticValue",
+                "valueType": "tchmi:framework#/definitions/ClassNameList",
+                "value": [
+                  "StateInit"
+                ]
+              },
+              "asyncWait": true
+            }
+          ]
+        },
         "asyncWait": true
       }
     ]
@@ -306,27 +300,21 @@
     "event": "%s%PLC1.GVL_HMI.i_nCylinder1State%/s%",
     "actions": [
       {
-        "objectType": "Condition",
+        "objectType": "SwitchCase",
         "active": true,
-        "parts": [
+        "compare": {
+          "objectType": "Symbol",
+          "valueType": "tchmi:general#/definitions/INT",
+          "symbolExpression": "%s%PLC1.GVL_HMI.i_nCylinder1State%/s%"
+        },
+        "cases": [
           {
-            "if": [
-              {
-                "compare1": {
-                  "objectType": "Symbol",
-                  "valueType": "tchmi:general#/definitions/INT",
-                  "symbolExpression": "%s%PLC1.GVL_HMI.i_nCylinder1State%/s%"
-                },
-                "compare2": {
-                  "objectType": "StaticValue",
-                  "valueType": "tchmi:general#/definitions/INT",
-                  "value": 0
-                },
-                "compareOperator": "<",
-                "logic": null
-              }
-            ],
-            "then": [
+            "caseValue": {
+              "objectType": "StaticValue",
+              "valueType": "tchmi:general#/definitions/INT",
+              "value": -1
+            },
+            "actions": [
               {
                 "objectType": "WriteToSymbol",
                 "active": true,
@@ -343,66 +331,67 @@
             ]
           },
           {
-            "else": [
+            "caseValue": {
+              "objectType": "StaticValue",
+              "valueType": "tchmi:general#/definitions/INT",
+              "value": 0
+            },
+            "actions": [
               {
-                "objectType": "Condition",
+                "objectType": "WriteToSymbol",
                 "active": true,
-                "parts": [
-                  {
-                    "if": [
-                      {
-                        "compare1": {
-                          "objectType": "FunctionExpression",
-                          "functionExpression": "%f%%s%PLC1.GVL_HMI.i_nCylinder1State%/s%%/f%"
-                        },
-                        "compare2": {
-                          "objectType": "StaticValue",
-                          "valueType": "tchmi:general#/definitions/INT",
-                          "value": "0"
-                        },
-                        "compareOperator": "==",
-                        "logic": null
-                      }
-                    ],
-                    "then": [
-                      {
-                        "objectType": "WriteToSymbol",
-                        "active": true,
-                        "symbolExpression": "%ctrl%sttCyl1::ClassNames%/ctrl%",
-                        "value": {
-                          "objectType": "StaticValue",
-                          "valueType": "tchmi:framework#/definitions/ClassNameList",
-                          "value": [
-                            "CylinderExtended"
-                          ]
-                        },
-                        "asyncWait": true
-                      }
-                    ]
-                  },
-                  {
-                    "else": [
-                      {
-                        "objectType": "WriteToSymbol",
-                        "active": true,
-                        "symbolExpression": "%ctrl%sttCyl1::ClassNames%/ctrl%",
-                        "value": {
-                          "objectType": "StaticValue",
-                          "valueType": "tchmi:framework#/definitions/ClassNameList",
-                          "value": [
-                            "CylinderRetracted"
-                          ]
-                        },
-                        "asyncWait": true
-                      }
-                    ]
-                  }
-                ],
+                "symbolExpression": "%ctrl%sttCyl1::ClassNames%/ctrl%",
+                "value": {
+                  "objectType": "StaticValue",
+                  "valueType": "tchmi:framework#/definitions/ClassNameList",
+                  "value": [
+                    "CylinderExtended"
+                  ]
+                },
+                "asyncWait": true
+              }
+            ]
+          },
+          {
+            "caseValue": {
+              "objectType": "StaticValue",
+              "valueType": "tchmi:general#/definitions/INT",
+              "value": 2
+            },
+            "actions": [
+              {
+                "objectType": "WriteToSymbol",
+                "active": true,
+                "symbolExpression": "%ctrl%sttCyl1::ClassNames%/ctrl%",
+                "value": {
+                  "objectType": "StaticValue",
+                  "valueType": "tchmi:framework#/definitions/ClassNameList",
+                  "value": [
+                    "CylinderRetracted"
+                  ]
+                },
                 "asyncWait": true
               }
             ]
           }
         ],
+        "caseDefault": {
+          "actions": [
+            {
+              "objectType": "WriteToSymbol",
+              "active": true,
+              "symbolExpression": "%ctrl%sttCyl1::ClassNames%/ctrl%",
+              "value": {
+                "objectType": "StaticValue",
+                "valueType": "tchmi:framework#/definitions/ClassNameList",
+                "value": [
+                  "StateInit"
+                ]
+              },
+              "asyncWait": true
+            }
+          ]
+        },
         "asyncWait": true
       }
     ]
@@ -484,27 +473,21 @@
     "event": "%s%PLC1.GVL_HMI.i_nCylinder3State%/s%",
     "actions": [
       {
-        "objectType": "Condition",
+        "objectType": "SwitchCase",
         "active": true,
-        "parts": [
+        "compare": {
+          "objectType": "Symbol",
+          "valueType": "tchmi:general#/definitions/INT",
+          "symbolExpression": "%s%PLC1.GVL_HMI.i_nCylinder3State%/s%"
+        },
+        "cases": [
           {
-            "if": [
-              {
-                "compare1": {
-                  "objectType": "Symbol",
-                  "valueType": "tchmi:general#/definitions/String",
-                  "symbolExpression": "%s%PLC1.GVL_HMI.i_nCylinder3State%/s%"
-                },
-                "compare2": {
-                  "objectType": "StaticValue",
-                  "valueType": "tchmi:general#/definitions/INT",
-                  "value": 0
-                },
-                "compareOperator": "<",
-                "logic": null
-              }
-            ],
-            "then": [
+            "caseValue": {
+              "objectType": "StaticValue",
+              "valueType": "tchmi:general#/definitions/INT",
+              "value": -1
+            },
+            "actions": [
               {
                 "objectType": "WriteToSymbol",
                 "active": true,
@@ -521,67 +504,67 @@
             ]
           },
           {
-            "else": [
+            "caseValue": {
+              "objectType": "StaticValue",
+              "valueType": "tchmi:general#/definitions/INT",
+              "value": 0
+            },
+            "actions": [
               {
-                "objectType": "Condition",
+                "objectType": "WriteToSymbol",
                 "active": true,
-                "parts": [
-                  {
-                    "if": [
-                      {
-                        "compare1": {
-                          "objectType": "Symbol",
-                          "valueType": "tchmi:general#/definitions/String",
-                          "symbolExpression": "%s%PLC1.GVL_HMI.i_nCylinder3State%/s%"
-                        },
-                        "compare2": {
-                          "objectType": "StaticValue",
-                          "valueType": "tchmi:general#/definitions/INT",
-                          "value": 0
-                        },
-                        "compareOperator": "==",
-                        "logic": null
-                      }
-                    ],
-                    "then": [
-                      {
-                        "objectType": "WriteToSymbol",
-                        "active": true,
-                        "symbolExpression": "%ctrl%sttCyl3::ClassNames%/ctrl%",
-                        "value": {
-                          "objectType": "StaticValue",
-                          "valueType": "tchmi:framework#/definitions/ClassNameList",
-                          "value": [
-                            "CylinderExtended"
-                          ]
-                        },
-                        "asyncWait": true
-                      }
-                    ]
-                  },
-                  {
-                    "else": [
-                      {
-                        "objectType": "WriteToSymbol",
-                        "active": true,
-                        "symbolExpression": "%ctrl%sttCyl3::ClassNames%/ctrl%",
-                        "value": {
-                          "objectType": "StaticValue",
-                          "valueType": "tchmi:framework#/definitions/ClassNameList",
-                          "value": [
-                            "CylinderRetracted"
-                          ]
-                        },
-                        "asyncWait": true
-                      }
-                    ]
-                  }
-                ],
+                "symbolExpression": "%ctrl%sttCyl3::ClassNames%/ctrl%",
+                "value": {
+                  "objectType": "StaticValue",
+                  "valueType": "tchmi:framework#/definitions/ClassNameList",
+                  "value": [
+                    "CylinderExtended"
+                  ]
+                },
+                "asyncWait": true
+              }
+            ]
+          },
+          {
+            "caseValue": {
+              "objectType": "StaticValue",
+              "valueType": "tchmi:general#/definitions/INT",
+              "value": 2
+            },
+            "actions": [
+              {
+                "objectType": "WriteToSymbol",
+                "active": true,
+                "symbolExpression": "%ctrl%sttCyl3::ClassNames%/ctrl%",
+                "value": {
+                  "objectType": "StaticValue",
+                  "valueType": "tchmi:framework#/definitions/ClassNameList",
+                  "value": [
+                    "CylinderRetracted"
+                  ]
+                },
                 "asyncWait": true
               }
             ]
           }
         ],
+        "caseDefault": {
+          "actions": [
+            {
+              "objectType": "WriteToSymbol",
+              "active": true,
+              "symbolExpression": "%ctrl%sttCyl3::ClassNames%/ctrl%",
+              "value": {
+                "objectType": "StaticValue",
+                "valueType": "tchmi:framework#/definitions/ClassNameList",
+                "value": [
+                  "StateInit"
+                ]
+              },
+              "asyncWait": true
+            }
+          ]
+        },
         "asyncWait": true
       }
     ]
@@ -659,27 +642,21 @@
     "event": "%s%PLC1.GVL_HMI.i_nCylinder4State%/s%",
     "actions": [
       {
-        "objectType": "Condition",
+        "objectType": "SwitchCase",
         "active": true,
-        "parts": [
+        "compare": {
+          "objectType": "Symbol",
+          "valueType": "tchmi:general#/definitions/INT",
+          "symbolExpression": "%s%PLC1.GVL_HMI.i_nCylinder4State%/s%"
+        },
+        "cases": [
           {
-            "if": [
-              {
-                "compare1": {
-                  "objectType": "Symbol",
-                  "valueType": "tchmi:general#/definitions/String",
-                  "symbolExpression": "%s%PLC1.GVL_HMI.i_nCylinder4State%/s%"
-                },
-                "compare2": {
-                  "objectType": "StaticValue",
-                  "valueType": "tchmi:general#/definitions/INT",
-                  "value": 0
-                },
-                "compareOperator": "<",
-                "logic": null
-              }
-            ],
-            "then": [
+            "caseValue": {
+              "objectType": "StaticValue",
+              "valueType": "tchmi:general#/definitions/INT",
+              "value": -1
+            },
+            "actions": [
               {
                 "objectType": "WriteToSymbol",
                 "active": true,
@@ -696,67 +673,67 @@
             ]
           },
           {
-            "else": [
+            "caseValue": {
+              "objectType": "StaticValue",
+              "valueType": "tchmi:general#/definitions/INT",
+              "value": 0
+            },
+            "actions": [
               {
-                "objectType": "Condition",
+                "objectType": "WriteToSymbol",
                 "active": true,
-                "parts": [
-                  {
-                    "if": [
-                      {
-                        "compare1": {
-                          "objectType": "Symbol",
-                          "valueType": "tchmi:general#/definitions/String",
-                          "symbolExpression": "%s%PLC1.GVL_HMI.i_nCylinder4State%/s%"
-                        },
-                        "compare2": {
-                          "objectType": "StaticValue",
-                          "valueType": "tchmi:general#/definitions/INT",
-                          "value": 0
-                        },
-                        "compareOperator": "==",
-                        "logic": null
-                      }
-                    ],
-                    "then": [
-                      {
-                        "objectType": "WriteToSymbol",
-                        "active": true,
-                        "symbolExpression": "%ctrl%sttCyl4::ClassNames%/ctrl%",
-                        "value": {
-                          "objectType": "StaticValue",
-                          "valueType": "tchmi:framework#/definitions/ClassNameList",
-                          "value": [
-                            "CylinderExtended"
-                          ]
-                        },
-                        "asyncWait": true
-                      }
-                    ]
-                  },
-                  {
-                    "else": [
-                      {
-                        "objectType": "WriteToSymbol",
-                        "active": true,
-                        "symbolExpression": "%ctrl%sttCyl4::ClassNames%/ctrl%",
-                        "value": {
-                          "objectType": "StaticValue",
-                          "valueType": "tchmi:framework#/definitions/ClassNameList",
-                          "value": [
-                            "CylinderRetracted"
-                          ]
-                        },
-                        "asyncWait": true
-                      }
-                    ]
-                  }
-                ],
+                "symbolExpression": "%ctrl%sttCyl4::ClassNames%/ctrl%",
+                "value": {
+                  "objectType": "StaticValue",
+                  "valueType": "tchmi:framework#/definitions/ClassNameList",
+                  "value": [
+                    "CylinderExtended"
+                  ]
+                },
+                "asyncWait": true
+              }
+            ]
+          },
+          {
+            "caseValue": {
+              "objectType": "StaticValue",
+              "valueType": "tchmi:general#/definitions/INT",
+              "value": 2
+            },
+            "actions": [
+              {
+                "objectType": "WriteToSymbol",
+                "active": true,
+                "symbolExpression": "%ctrl%sttCyl4::ClassNames%/ctrl%",
+                "value": {
+                  "objectType": "StaticValue",
+                  "valueType": "tchmi:framework#/definitions/ClassNameList",
+                  "value": [
+                    "CylinderRetracted"
+                  ]
+                },
                 "asyncWait": true
               }
             ]
           }
         ],
+        "caseDefault": {
+          "actions": [
+            {
+              "objectType": "WriteToSymbol",
+              "active": true,
+              "symbolExpression": "%ctrl%sttCyl4::ClassNames%/ctrl%",
+              "value": {
+                "objectType": "StaticValue",
+                "valueType": "tchmi:framework#/definitions/ClassNameList",
+                "value": [
+                  "StateInit"
+                ]
+              },
+              "asyncWait": true
+            }
+          ]
+        },
         "asyncWait": true
       }
     ]
@@ -834,27 +811,21 @@
     "event": "%s%PLC1.GVL_HMI.i_nCylinder7State%/s%",
     "actions": [
       {
-        "objectType": "Condition",
+        "objectType": "SwitchCase",
         "active": true,
-        "parts": [
+        "compare": {
+          "objectType": "Symbol",
+          "valueType": "tchmi:general#/definitions/INT",
+          "symbolExpression": "%s%PLC1.GVL_HMI.i_nCylinder7State%/s%"
+        },
+        "cases": [
           {
-            "if": [
-              {
-                "compare1": {
-                  "objectType": "Symbol",
-                  "valueType": "tchmi:general#/definitions/String",
-                  "symbolExpression": "%s%PLC1.GVL_HMI.i_nCylinder7State%/s%"
-                },
-                "compare2": {
-                  "objectType": "StaticValue",
-                  "valueType": "tchmi:general#/definitions/INT",
-                  "value": 0
-                },
-                "compareOperator": "<",
-                "logic": null
-              }
-            ],
-            "then": [
+            "caseValue": {
+              "objectType": "StaticValue",
+              "valueType": "tchmi:general#/definitions/INT",
+              "value": -1
+            },
+            "actions": [
               {
                 "objectType": "WriteToSymbol",
                 "active": true,
@@ -871,67 +842,67 @@
             ]
           },
           {
-            "else": [
+            "caseValue": {
+              "objectType": "StaticValue",
+              "valueType": "tchmi:general#/definitions/INT",
+              "value": 0
+            },
+            "actions": [
               {
-                "objectType": "Condition",
+                "objectType": "WriteToSymbol",
                 "active": true,
-                "parts": [
-                  {
-                    "if": [
-                      {
-                        "compare1": {
-                          "objectType": "Symbol",
-                          "valueType": "tchmi:general#/definitions/String",
-                          "symbolExpression": "%s%PLC1.GVL_HMI.i_nCylinder7State%/s%"
-                        },
-                        "compare2": {
-                          "objectType": "StaticValue",
-                          "valueType": "tchmi:general#/definitions/INT",
-                          "value": 0
-                        },
-                        "compareOperator": "==",
-                        "logic": null
-                      }
-                    ],
-                    "then": [
-                      {
-                        "objectType": "WriteToSymbol",
-                        "active": true,
-                        "symbolExpression": "%ctrl%sttCyl7::ClassNames%/ctrl%",
-                        "value": {
-                          "objectType": "StaticValue",
-                          "valueType": "tchmi:framework#/definitions/ClassNameList",
-                          "value": [
-                            "CylinderExtended"
-                          ]
-                        },
-                        "asyncWait": true
-                      }
-                    ]
-                  },
-                  {
-                    "else": [
-                      {
-                        "objectType": "WriteToSymbol",
-                        "active": true,
-                        "symbolExpression": "%ctrl%sttCyl7::ClassNames%/ctrl%",
-                        "value": {
-                          "objectType": "StaticValue",
-                          "valueType": "tchmi:framework#/definitions/ClassNameList",
-                          "value": [
-                            "CylinderRetracted"
-                          ]
-                        },
-                        "asyncWait": true
-                      }
-                    ]
-                  }
-                ],
+                "symbolExpression": "%ctrl%sttCyl7::ClassNames%/ctrl%",
+                "value": {
+                  "objectType": "StaticValue",
+                  "valueType": "tchmi:framework#/definitions/ClassNameList",
+                  "value": [
+                    "CylinderExtended"
+                  ]
+                },
+                "asyncWait": true
+              }
+            ]
+          },
+          {
+            "caseValue": {
+              "objectType": "StaticValue",
+              "valueType": "tchmi:general#/definitions/INT",
+              "value": 2
+            },
+            "actions": [
+              {
+                "objectType": "WriteToSymbol",
+                "active": true,
+                "symbolExpression": "%ctrl%sttCyl7::ClassNames%/ctrl%",
+                "value": {
+                  "objectType": "StaticValue",
+                  "valueType": "tchmi:framework#/definitions/ClassNameList",
+                  "value": [
+                    "CylinderRetracted"
+                  ]
+                },
                 "asyncWait": true
               }
             ]
           }
         ],
+        "caseDefault": {
+          "actions": [
+            {
+              "objectType": "WriteToSymbol",
+              "active": true,
+              "symbolExpression": "%ctrl%sttCyl7::ClassNames%/ctrl%",
+              "value": {
+                "objectType": "StaticValue",
+                "valueType": "tchmi:framework#/definitions/ClassNameList",
+                "value": [
+                  "StateInit"
+                ]
+              },
+              "asyncWait": true
+            }
+          ]
+        },
         "asyncWait": true
       }
     ]
@@ -1011,27 +982,21 @@
     "event": "%s%PLC1.GVL_HMI.i_nPCylinder1State%/s%",
     "actions": [
       {
-        "objectType": "Condition",
+        "objectType": "SwitchCase",
         "active": true,
-        "parts": [
+        "compare": {
+          "objectType": "Symbol",
+          "valueType": "tchmi:general#/definitions/INT",
+          "symbolExpression": "%s%PLC1.GVL_HMI.i_nPCylinder1State%/s%"
+        },
+        "cases": [
           {
-            "if": [
-              {
-                "compare1": {
-                  "objectType": "Symbol",
-                  "valueType": "tchmi:general#/definitions/String",
-                  "symbolExpression": "%s%PLC1.GVL_HMI.i_nPCylinder1State%/s%"
-                },
-                "compare2": {
-                  "objectType": "StaticValue",
-                  "valueType": "tchmi:general#/definitions/INT",
-                  "value": 0
-                },
-                "compareOperator": "<",
-                "logic": null
-              }
-            ],
-            "then": [
+            "caseValue": {
+              "objectType": "StaticValue",
+              "valueType": "tchmi:general#/definitions/INT",
+              "value": -1
+            },
+            "actions": [
               {
                 "objectType": "WriteToSymbol",
                 "active": true,
@@ -1048,67 +1013,67 @@
             ]
           },
           {
-            "else": [
+            "caseValue": {
+              "objectType": "StaticValue",
+              "valueType": "tchmi:general#/definitions/INT",
+              "value": 0
+            },
+            "actions": [
               {
-                "objectType": "Condition",
+                "objectType": "WriteToSymbol",
                 "active": true,
-                "parts": [
-                  {
-                    "if": [
-                      {
-                        "compare1": {
-                          "objectType": "Symbol",
-                          "valueType": "tchmi:general#/definitions/String",
-                          "symbolExpression": "%s%PLC1.GVL_HMI.i_nPCylinder1State%/s%"
-                        },
-                        "compare2": {
-                          "objectType": "StaticValue",
-                          "valueType": "tchmi:general#/definitions/INT",
-                          "value": 0
-                        },
-                        "compareOperator": "==",
-                        "logic": null
-                      }
-                    ],
-                    "then": [
-                      {
-                        "objectType": "WriteToSymbol",
-                        "active": true,
-                        "symbolExpression": "%ctrl%sttPCyl1::ClassNames%/ctrl%",
-                        "value": {
-                          "objectType": "StaticValue",
-                          "valueType": "tchmi:framework#/definitions/ClassNameList",
-                          "value": [
-                            "CylinderExtended"
-                          ]
-                        },
-                        "asyncWait": true
-                      }
-                    ]
-                  },
-                  {
-                    "else": [
-                      {
-                        "objectType": "WriteToSymbol",
-                        "active": true,
-                        "symbolExpression": "%ctrl%sttPCyl1::ClassNames%/ctrl%",
-                        "value": {
-                          "objectType": "StaticValue",
-                          "valueType": "tchmi:framework#/definitions/ClassNameList",
-                          "value": [
-                            "CylinderRetracted"
-                          ]
-                        },
-                        "asyncWait": true
-                      }
-                    ]
-                  }
-                ],
+                "symbolExpression": "%ctrl%sttPCyl1::ClassNames%/ctrl%",
+                "value": {
+                  "objectType": "StaticValue",
+                  "valueType": "tchmi:framework#/definitions/ClassNameList",
+                  "value": [
+                    "CylinderExtended"
+                  ]
+                },
+                "asyncWait": true
+              }
+            ]
+          },
+          {
+            "caseValue": {
+              "objectType": "StaticValue",
+              "valueType": "tchmi:general#/definitions/INT",
+              "value": 2
+            },
+            "actions": [
+              {
+                "objectType": "WriteToSymbol",
+                "active": true,
+                "symbolExpression": "%ctrl%sttPCyl1::ClassNames%/ctrl%",
+                "value": {
+                  "objectType": "StaticValue",
+                  "valueType": "tchmi:framework#/definitions/ClassNameList",
+                  "value": [
+                    "CylinderRetracted"
+                  ]
+                },
                 "asyncWait": true
               }
             ]
           }
         ],
+        "caseDefault": {
+          "actions": [
+            {
+              "objectType": "WriteToSymbol",
+              "active": true,
+              "symbolExpression": "%ctrl%sttPCyl1::ClassNames%/ctrl%",
+              "value": {
+                "objectType": "StaticValue",
+                "valueType": "tchmi:framework#/definitions/ClassNameList",
+                "value": [
+                  "StateInit"
+                ]
+              },
+              "asyncWait": true
+            }
+          ]
+        },
         "asyncWait": true
       }
     ]
@@ -1181,27 +1146,21 @@
     "event": "%s%PLC1.GVL_HMI.i_nCylinder6State%/s%",
     "actions": [
       {
-        "objectType": "Condition",
+        "objectType": "SwitchCase",
         "active": true,
-        "parts": [
+        "compare": {
+          "objectType": "Symbol",
+          "valueType": "tchmi:general#/definitions/INT",
+          "symbolExpression": "%s%PLC1.GVL_HMI.i_nCylinder6State%/s%"
+        },
+        "cases": [
           {
-            "if": [
-              {
-                "compare1": {
-                  "objectType": "Symbol",
-                  "valueType": "tchmi:general#/definitions/String",
-                  "symbolExpression": "%s%PLC1.GVL_HMI.i_nCylinder6State%/s%"
-                },
-                "compare2": {
-                  "objectType": "StaticValue",
-                  "valueType": "tchmi:general#/definitions/INT",
-                  "value": 0
-                },
-                "compareOperator": "<",
-                "logic": null
-              }
-            ],
-            "then": [
+            "caseValue": {
+              "objectType": "StaticValue",
+              "valueType": "tchmi:general#/definitions/INT",
+              "value": -1
+            },
+            "actions": [
               {
                 "objectType": "WriteToSymbol",
                 "active": true,
@@ -1218,67 +1177,67 @@
             ]
           },
           {
-            "else": [
+            "caseValue": {
+              "objectType": "StaticValue",
+              "valueType": "tchmi:general#/definitions/INT",
+              "value": 0
+            },
+            "actions": [
               {
-                "objectType": "Condition",
+                "objectType": "WriteToSymbol",
                 "active": true,
-                "parts": [
-                  {
-                    "if": [
-                      {
-                        "compare1": {
-                          "objectType": "Symbol",
-                          "valueType": "tchmi:general#/definitions/String",
-                          "symbolExpression": "%s%PLC1.GVL_HMI.i_nCylinder6State%/s%"
-                        },
-                        "compare2": {
-                          "objectType": "StaticValue",
-                          "valueType": "tchmi:general#/definitions/INT",
-                          "value": 0
-                        },
-                        "compareOperator": "==",
-                        "logic": null
-                      }
-                    ],
-                    "then": [
-                      {
-                        "objectType": "WriteToSymbol",
-                        "active": true,
-                        "symbolExpression": "%ctrl%sttCyl6::ClassNames%/ctrl%",
-                        "value": {
-                          "objectType": "StaticValue",
-                          "valueType": "tchmi:framework#/definitions/ClassNameList",
-                          "value": [
-                            "CylinderExtended"
-                          ]
-                        },
-                        "asyncWait": true
-                      }
-                    ]
-                  },
-                  {
-                    "else": [
-                      {
-                        "objectType": "WriteToSymbol",
-                        "active": true,
-                        "symbolExpression": "%ctrl%sttCyl6::ClassNames%/ctrl%",
-                        "value": {
-                          "objectType": "StaticValue",
-                          "valueType": "tchmi:framework#/definitions/ClassNameList",
-                          "value": [
-                            "CylinderRetracted"
-                          ]
-                        },
-                        "asyncWait": true
-                      }
-                    ]
-                  }
-                ],
+                "symbolExpression": "%ctrl%sttCyl6::ClassNames%/ctrl%",
+                "value": {
+                  "objectType": "StaticValue",
+                  "valueType": "tchmi:framework#/definitions/ClassNameList",
+                  "value": [
+                    "CylinderExtended"
+                  ]
+                },
+                "asyncWait": true
+              }
+            ]
+          },
+          {
+            "caseValue": {
+              "objectType": "StaticValue",
+              "valueType": "tchmi:general#/definitions/INT",
+              "value": 2
+            },
+            "actions": [
+              {
+                "objectType": "WriteToSymbol",
+                "active": true,
+                "symbolExpression": "%ctrl%sttCyl6::ClassNames%/ctrl%",
+                "value": {
+                  "objectType": "StaticValue",
+                  "valueType": "tchmi:framework#/definitions/ClassNameList",
+                  "value": [
+                    "CylinderRetracted"
+                  ]
+                },
                 "asyncWait": true
               }
             ]
           }
         ],
+        "caseDefault": {
+          "actions": [
+            {
+              "objectType": "WriteToSymbol",
+              "active": true,
+              "symbolExpression": "%ctrl%sttCyl6::ClassNames%/ctrl%",
+              "value": {
+                "objectType": "StaticValue",
+                "valueType": "tchmi:framework#/definitions/ClassNameList",
+                "value": [
+                  "StateInit"
+                ]
+              },
+              "asyncWait": true
+            }
+          ]
+        },
         "asyncWait": true
       }
     ]
@@ -1351,27 +1310,21 @@
     "event": "%s%PLC1.GVL_HMI.i_nCylinder5State%/s%",
     "actions": [
       {
-        "objectType": "Condition",
+        "objectType": "SwitchCase",
         "active": true,
-        "parts": [
+        "compare": {
+          "objectType": "Symbol",
+          "valueType": "tchmi:general#/definitions/INT",
+          "symbolExpression": "%s%PLC1.GVL_HMI.i_nCylinder5State%/s%"
+        },
+        "cases": [
           {
-            "if": [
-              {
-                "compare1": {
-                  "objectType": "Symbol",
-                  "valueType": "tchmi:general#/definitions/String",
-                  "symbolExpression": "%s%PLC1.GVL_HMI.i_nCylinder5State%/s%"
-                },
-                "compare2": {
-                  "objectType": "StaticValue",
-                  "valueType": "tchmi:general#/definitions/INT",
-                  "value": 0
-                },
-                "compareOperator": "<",
-                "logic": null
-              }
-            ],
-            "then": [
+            "caseValue": {
+              "objectType": "StaticValue",
+              "valueType": "tchmi:general#/definitions/INT",
+              "value": -1
+            },
+            "actions": [
               {
                 "objectType": "WriteToSymbol",
                 "active": true,
@@ -1388,67 +1341,67 @@
             ]
           },
           {
-            "else": [
+            "caseValue": {
+              "objectType": "StaticValue",
+              "valueType": "tchmi:general#/definitions/INT",
+              "value": 0
+            },
+            "actions": [
               {
-                "objectType": "Condition",
+                "objectType": "WriteToSymbol",
                 "active": true,
-                "parts": [
-                  {
-                    "if": [
-                      {
-                        "compare1": {
-                          "objectType": "Symbol",
-                          "valueType": "tchmi:general#/definitions/String",
-                          "symbolExpression": "%s%PLC1.GVL_HMI.i_nCylinder5State%/s%"
-                        },
-                        "compare2": {
-                          "objectType": "StaticValue",
-                          "valueType": "tchmi:general#/definitions/INT",
-                          "value": 0
-                        },
-                        "compareOperator": "==",
-                        "logic": null
-                      }
-                    ],
-                    "then": [
-                      {
-                        "objectType": "WriteToSymbol",
-                        "active": true,
-                        "symbolExpression": "%ctrl%sttCyl5::ClassNames%/ctrl%",
-                        "value": {
-                          "objectType": "StaticValue",
-                          "valueType": "tchmi:framework#/definitions/ClassNameList",
-                          "value": [
-                            "CylinderExtended"
-                          ]
-                        },
-                        "asyncWait": true
-                      }
-                    ]
-                  },
-                  {
-                    "else": [
-                      {
-                        "objectType": "WriteToSymbol",
-                        "active": true,
-                        "symbolExpression": "%ctrl%sttCyl5::ClassNames%/ctrl%",
-                        "value": {
-                          "objectType": "StaticValue",
-                          "valueType": "tchmi:framework#/definitions/ClassNameList",
-                          "value": [
-                            "CylinderRetracted"
-                          ]
-                        },
-                        "asyncWait": true
-                      }
-                    ]
-                  }
-                ],
+                "symbolExpression": "%ctrl%sttCyl5::ClassNames%/ctrl%",
+                "value": {
+                  "objectType": "StaticValue",
+                  "valueType": "tchmi:framework#/definitions/ClassNameList",
+                  "value": [
+                    "CylinderExtended"
+                  ]
+                },
+                "asyncWait": true
+              }
+            ]
+          },
+          {
+            "caseValue": {
+              "objectType": "StaticValue",
+              "valueType": "tchmi:general#/definitions/INT",
+              "value": 2
+            },
+            "actions": [
+              {
+                "objectType": "WriteToSymbol",
+                "active": true,
+                "symbolExpression": "%ctrl%sttCyl5::ClassNames%/ctrl%",
+                "value": {
+                  "objectType": "StaticValue",
+                  "valueType": "tchmi:framework#/definitions/ClassNameList",
+                  "value": [
+                    "CylinderRetracted"
+                  ]
+                },
                 "asyncWait": true
               }
             ]
           }
         ],
+        "caseDefault": {
+          "actions": [
+            {
+              "objectType": "WriteToSymbol",
+              "active": true,
+              "symbolExpression": "%ctrl%sttCyl5::ClassNames%/ctrl%",
+              "value": {
+                "objectType": "StaticValue",
+                "valueType": "tchmi:framework#/definitions/ClassNameList",
+                "value": [
+                  "StateInit"
+                ]
+              },
+              "asyncWait": true
+            }
+          ]
+        },
         "asyncWait": true
       }
     ]
@@ -2062,27 +2015,21 @@
     "event": "%s%PLC1.GVL_HMI.i_nPCylinder2State%/s%",
     "actions": [
       {
-        "objectType": "Condition",
+        "objectType": "SwitchCase",
         "active": true,
-        "parts": [
+        "compare": {
+          "objectType": "Symbol",
+          "valueType": "tchmi:general#/definitions/INT",
+          "symbolExpression": "%s%PLC1.GVL_HMI.i_nPCylinder2State%/s%"
+        },
+        "cases": [
           {
-            "if": [
-              {
-                "compare1": {
-                  "objectType": "Symbol",
-                  "valueType": "tchmi:general#/definitions/String",
-                  "symbolExpression": "%s%PLC1.GVL_HMI.i_nPCylinder2State%/s%"
-                },
-                "compare2": {
-                  "objectType": "StaticValue",
-                  "valueType": "tchmi:general#/definitions/INT",
-                  "value": 0
-                },
-                "compareOperator": "<",
-                "logic": null
-              }
-            ],
-            "then": [
+            "caseValue": {
+              "objectType": "StaticValue",
+              "valueType": "tchmi:general#/definitions/INT",
+              "value": -1
+            },
+            "actions": [
               {
                 "objectType": "WriteToSymbol",
                 "active": true,
@@ -2099,67 +2046,67 @@
             ]
           },
           {
-            "else": [
+            "caseValue": {
+              "objectType": "StaticValue",
+              "valueType": "tchmi:general#/definitions/INT",
+              "value": 0
+            },
+            "actions": [
               {
-                "objectType": "Condition",
+                "objectType": "WriteToSymbol",
                 "active": true,
-                "parts": [
-                  {
-                    "if": [
-                      {
-                        "compare1": {
-                          "objectType": "Symbol",
-                          "valueType": "tchmi:general#/definitions/String",
-                          "symbolExpression": "%s%PLC1.GVL_HMI.i_nPCylinder2State%/s%"
-                        },
-                        "compare2": {
-                          "objectType": "StaticValue",
-                          "valueType": "tchmi:general#/definitions/INT",
-                          "value": 0
-                        },
-                        "compareOperator": "==",
-                        "logic": null
-                      }
-                    ],
-                    "then": [
-                      {
-                        "objectType": "WriteToSymbol",
-                        "active": true,
-                        "symbolExpression": "%ctrl%sttPCy2::ClassNames%/ctrl%",
-                        "value": {
-                          "objectType": "StaticValue",
-                          "valueType": "tchmi:framework#/definitions/ClassNameList",
-                          "value": [
-                            "CylinderExtended"
-                          ]
-                        },
-                        "asyncWait": true
-                      }
-                    ]
-                  },
-                  {
-                    "else": [
-                      {
-                        "objectType": "WriteToSymbol",
-                        "active": true,
-                        "symbolExpression": "%ctrl%sttPCy2::ClassNames%/ctrl%",
-                        "value": {
-                          "objectType": "StaticValue",
-                          "valueType": "tchmi:framework#/definitions/ClassNameList",
-                          "value": [
-                            "CylinderRetracted"
-                          ]
-                        },
-                        "asyncWait": true
-                      }
-                    ]
-                  }
-                ],
+                "symbolExpression": "%ctrl%sttPCy2::ClassNames%/ctrl%",
+                "value": {
+                  "objectType": "StaticValue",
+                  "valueType": "tchmi:framework#/definitions/ClassNameList",
+                  "value": [
+                    "CylinderExtended"
+                  ]
+                },
+                "asyncWait": true
+              }
+            ]
+          },
+          {
+            "caseValue": {
+              "objectType": "StaticValue",
+              "valueType": "tchmi:general#/definitions/INT",
+              "value": 2
+            },
+            "actions": [
+              {
+                "objectType": "WriteToSymbol",
+                "active": true,
+                "symbolExpression": "%ctrl%sttPCy2::ClassNames%/ctrl%",
+                "value": {
+                  "objectType": "StaticValue",
+                  "valueType": "tchmi:framework#/definitions/ClassNameList",
+                  "value": [
+                    "CylinderRetracted"
+                  ]
+                },
                 "asyncWait": true
               }
             ]
           }
         ],
+        "caseDefault": {
+          "actions": [
+            {
+              "objectType": "WriteToSymbol",
+              "active": true,
+              "symbolExpression": "%ctrl%sttPCy2::ClassNames%/ctrl%",
+              "value": {
+                "objectType": "StaticValue",
+                "valueType": "tchmi:framework#/definitions/ClassNameList",
+                "value": [
+                  "StateInit"
+                ]
+              },
+              "asyncWait": true
+            }
+          ]
+        },
         "asyncWait": true
       }
     ]
@@ -3998,7 +3945,7 @@
               {
                 "compare1": {
                   "objectType": "Symbol",
-                  "valueType": "tchmi:general#/definitions/String",
+                  "valueType": "tchmi:general#/definitions/BOOL",
                   "symbolExpression": "%s%PLC1.GVL_HMI.i_bCyl3E%/s%"
                 },
                 "compare2": {
@@ -4018,7 +3965,9 @@
                 "value": {
                   "objectType": "StaticValue",
                   "valueType": "tchmi:framework#/definitions/ClassNameList",
-                  "value": null
+                  "value": [
+                    "StateOn"
+                  ]
                 },
                 "asyncWait": true
               }
@@ -4033,7 +3982,9 @@
                 "value": {
                   "objectType": "StaticValue",
                   "valueType": "tchmi:framework#/definitions/ClassNameList",
-                  "value": null
+                  "value": [
+                    "StateOff"
+                  ]
                 },
                 "asyncWait": true
               }
@@ -4260,13 +4211,13 @@
               {
                 "compare1": {
                   "objectType": "Symbol",
-                  "valueType": "tchmi:general#/definitions/String",
+                  "valueType": "tchmi:general#/definitions/BOOL",
                   "symbolExpression": "%s%PLC1.GVL_HMI.i_bCyl4E%/s%"
                 },
                 "compare2": {
                   "objectType": "StaticValue",
                   "valueType": "tchmi:general#/definitions/BOOL",
-                  "value": false
+                  "value": true
                 },
                 "compareOperator": "==",
                 "logic": null

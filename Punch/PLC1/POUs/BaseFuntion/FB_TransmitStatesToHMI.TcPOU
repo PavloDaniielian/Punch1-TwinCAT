@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.6">
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.11">
   <POU Name="FB_TransmitStatesToHMI" Id="{bd67aa5a-e740-41f9-a2ca-e2a51652f913}" SpecialFunc="None">
     <Declaration><![CDATA[FUNCTION_BLOCK FB_TransmitStatesToHMI
 VAR_INPUT

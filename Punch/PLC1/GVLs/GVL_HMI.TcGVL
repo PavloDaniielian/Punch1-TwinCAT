@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.6">
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.11">
   <GVL Name="GVL_HMI" Id="{80a1a5a0-00a7-49c7-a368-c9a3531de34b}">
     <Declaration><![CDATA[VAR_GLOBAL
 	// safeties
@@ -58,18 +58,18 @@
 	i_bCyl8R : BOOL := FALSE;
 	
 	// pump
-	i_nPumpState : INT := 0; // -1:Faulted, 0:Stop, 2:Running
+	i_nPumpState : INT := -2; // -2: InitialState, -1:Faulted, 0:Stop, 2:Running
 	// cylinders
-	i_nCylinder1State : INT := 0; // -1:Faulted, 0:Extended, 1:Retracting, 2: Retracted, 3:Extending
-	i_nCylinder2State : INT := 0; // -1:Faulted, 0:Extended, 1:Retracting, 2: Retracted, 3:Extending
-	i_nCylinder3State : INT := 0; // -1:Faulted, 0:Extended, 1:Retracting, 2: Retracted, 3:Extending
-	i_nCylinder4State : INT := 0; // -1:Faulted, 0:Extended, 1:Retracting, 2: Retracted, 3:Extending
-	i_nCylinder5State : INT := 0; // -1:Faulted, 0:Extended, 1:Retracting, 2: Retracted, 3:Extending
-	i_nCylinder6State : INT := 0; // -1:Faulted, 0:Extended, 1:Retracting, 2: Retracted, 3:Extending
-	i_nCylinder7State : INT := 0; // -1:Faulted, 0:Extended, 1:Retracting, 2: Retracted, 3:Extending
-	i_nCylinder8State : INT := 0; // -1:Faulted, 0:Extended, 1:Retracting, 2: Retracted, 3:Extending
-	i_nPCylinder1State : INT := 0; // -1:Faulted, 0:Extended, 1:Retracting, 2: Retracted, 3:Extending
-	i_nPCylinder2State : INT := 0; // -1:Faulted, 0:Extended, 1:Retracting, 2: Retracted, 3:Extending
+	i_nCylinder1State : INT := -2; // -2: InitialState, -1:Faulted, 0:Extended, 1:Retracting, 2: Retracted, 3:Extending
+	i_nCylinder2State : INT := -2; // -2: InitialState, -1:Faulted, 0:Extended, 1:Retracting, 2: Retracted, 3:Extending
+	i_nCylinder3State : INT := -2; // -2: InitialState, -1:Faulted, 0:Extended, 1:Retracting, 2: Retracted, 3:Extending
+	i_nCylinder4State : INT := -2; // -2: InitialState, -1:Faulted, 0:Extended, 1:Retracting, 2: Retracted, 3:Extending
+	i_nCylinder5State : INT := -2; // -2: InitialState, -1:Faulted, 0:Extended, 1:Retracting, 2: Retracted, 3:Extending
+	i_nCylinder6State : INT := -2; // -2: InitialState, -1:Faulted, 0:Extended, 1:Retracting, 2: Retracted, 3:Extending
+	i_nCylinder7State : INT := -2; // -2: InitialState, -1:Faulted, 0:Extended, 1:Retracting, 2: Retracted, 3:Extending
+	i_nCylinder8State : INT := -2; // -2: InitialState, -1:Faulted, 0:Extended, 1:Retracting, 2: Retracted, 3:Extending
+	i_nPCylinder1State : INT := -2; // -2: InitialState, -1:Faulted, 0:Extended, 1:Retracting, 2: Retracted, 3:Extending
+	i_nPCylinder2State : INT := -2; // -2: InitialState, -1:Faulted, 0:Extended, 1:Retracting, 2: Retracted, 3:Extending
 	
 	// Vibratory
 	i_bPE1 : BOOL := FALSE;

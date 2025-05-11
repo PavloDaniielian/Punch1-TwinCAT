@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.6">
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.11">
   <GVL Name="GVL_IO" Id="{94fa442e-6485-4b26-9bf3-2f5b8b8194f6}">
     <Declaration><![CDATA[{attribute 'qualified_only'}
 VAR_GLOBAL
@@ -40,8 +40,8 @@ VAR_GLOBAL
 	DI_PE5			AT %I*: BOOL := FALSE;
 	DI_PE6			AT %I*: BOOL := FALSE;
 	
-	AI_PT1			AT %I*: REAL := 1.0;
-	AI_PT2			AT %I*: REAL := 1.0;
+	AI_PT1			AT %I*: INT := 1;
+	AI_PT2			AT %I*: INT := 1;
 
 	DO_M1			AT %Q*: BOOL;
 	DO_M2			AT %Q*: BOOL;

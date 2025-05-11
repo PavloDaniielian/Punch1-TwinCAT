@@ -1,1 +1,60 @@
-[]
+[
+  {
+    "serverExtensions": [
+      {
+        "publishServerExtension": true,
+        "name": "ADS"
+      },
+      {
+        "publishServerExtension": true,
+        "name": "TcHmiLua"
+      },
+      {
+        "publishServerExtension": true,
+        "name": "TcHmiSqliteLogger"
+      },
+      {
+        "publishServerExtension": true,
+        "name": "TcHmiSrv"
+      },
+      {
+        "publishServerExtension": true,
+        "name": "TcHmiUserManagement"
+      }
+    ],
+    "isNew": false,
+    "profileName": "hmi",
+    "publishMode": "TcHmi",
+    "targetDirectory": "",
+    "server": "",
+    "sitePath": "",
+    "destinationUrl": "",
+    "passiveMode": true,
+    "savePassword": true,
+    "deleteAllFilesBeforePublish": false,
+    "deleteExtensionDataBeforePublish": false,
+    "alwaysPublishLocalServerConfiguration": true,
+    "temporaryPublishWithoutServerConfiguration": false,
+    "abortOnErrors": true,
+    "createPublishLog": false,
+    "userName": "",
+    "encryptedPassword": "",
+    "encryptedTcHmiServerPassword": "Qz916KFxOqFgE2fR3tLmeg==",
+    "tcHmiServerHost": "192.168.1.59",
+    "tcHmiServerPort": "1020",
+    "uploadTimeout": "60",
+    "connectionTimeout": "5",
+    "requestTimeout": "60",
+    "extensionStartupTimeout": "120",
+    "clientCertificateCN": "",
+    "tcHmiUseTLS": true,
+    "useClientCertificate": false,
+    "launchBrowserAfterPublish": true,
+    "createVirtualDirectoriesOnTargetSystem": false,
+    "tcHmiServerUserName": "__SystemAdministrator",
+    "tcHmiDestinationUrl": "https://192.168.1.59:1020/",
+    "publishConfiguration": "remote",
+    "tcHmiSavePassword": false,
+    "tcHmiIgnoreCertificateErrors": true
+  }
+]

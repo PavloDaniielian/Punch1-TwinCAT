@@ -195,7 +195,7 @@
 ]
 </script>
 </div>
-<div id="btnOverview" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiButton" data-tchmi-height="60" data-tchmi-height-unit="px" data-tchmi-left="480" data-tchmi-left-unit="px" data-tchmi-text="OverView" data-tchmi-top="35" data-tchmi-top-unit="px" data-tchmi-width="165" data-tchmi-width-unit="px" data-tchmi-word-wrap="true" data-tchmi-text-font-size="40" data-tchmi-tooltip="OverView" data-tchmi-text-font-family="RobotoCondensed" data-tchmi-text-font-weight="Normal" data-tchmi-zindex="1" data-tchmi-is-enabled="false">
+<div id="btnOverview" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiButton" data-tchmi-height="60" data-tchmi-height-unit="px" data-tchmi-left="480" data-tchmi-left-unit="px" data-tchmi-text="Overview" data-tchmi-top="35" data-tchmi-top-unit="px" data-tchmi-width="165" data-tchmi-width-unit="px" data-tchmi-word-wrap="true" data-tchmi-text-font-size="40" data-tchmi-tooltip="OverView" data-tchmi-text-font-family="RobotoCondensed" data-tchmi-text-font-weight="Normal" data-tchmi-zindex="1" data-tchmi-is-enabled="false">
 
 
 
