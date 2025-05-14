@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.6">
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.11">
   <POU Name="FB_CheckFeedback" Id="{6366c31c-5a01-44e5-9972-875c3b27c878}" SpecialFunc="None">
     <Declaration><![CDATA[FUNCTION_BLOCK FB_CheckFeedback
 VAR_INPUT
@@ -24,44 +24,61 @@ END_VAR
       <ST><![CDATA[CASE t OF
 	E_FT.PUMP:
 		bFeedback := GVL_IO.DI_M1;
-		
+		IF bRising THEN GVL_HMI.i_nPumpState := 1; ELSE GVL_HMI.i_nPumpState := 3; END_IF
 	E_FT.CYL1_E:
 		bFeedback := GVL_IO.DI_CYL1_E;
+		IF bRising THEN GVL_HMI.i_nCylinder1State := 1; ELSE GVL_HMI.i_nCylinder1State := 0; END_IF
 	E_FT.CYL1_R:
 		bFeedback := GVL_IO.DI_CYL1_R;
+		IF bRising THEN GVL_HMI.i_nCylinder1State := 3; ELSE GVL_HMI.i_nCylinder1State := 0; END_IF
 	E_FT.CYL2_E:
 		bFeedback := GVL_IO.DI_CYL2_E;
+		IF bRising THEN GVL_HMI.i_nCylinder2State := 1; ELSE GVL_HMI.i_nCylinder2State := 0; END_IF
 	E_FT.CYL2_R:
 		bFeedback := GVL_IO.DI_CYL2_R;
+		IF bRising THEN GVL_HMI.i_nCylinder2State := 3; ELSE GVL_HMI.i_nCylinder2State := 0; END_IF
 	E_FT.CYL3_E:
 		bFeedback := GVL_IO.DI_CYL3_E;
+		IF bRising THEN GVL_HMI.i_nCylinder3State := 1; ELSE GVL_HMI.i_nCylinder1State := 0; END_IF
 	E_FT.CYL3_R:
 		bFeedback := GVL_IO.DI_CYL3_R;
+		IF bRising THEN GVL_HMI.i_nCylinder3State := 3; ELSE GVL_HMI.i_nCylinder3State := 0; END_IF
 	E_FT.CYL4_E:
 		bFeedback := GVL_IO.DI_CYL4_E;
+		IF bRising THEN GVL_HMI.i_nCylinder4State := 1; ELSE GVL_HMI.i_nCylinder4State := 0; END_IF
 	E_FT.CYL4_R:
 		bFeedback := GVL_IO.DI_CYL4_R;
+		IF bRising THEN GVL_HMI.i_nCylinder4State := 3; ELSE GVL_HMI.i_nCylinder4State := 0; END_IF
 	E_FT.CYL5_E:
 		bFeedback := GVL_IO.DI_CYL5_E;
+		IF bRising THEN GVL_HMI.i_nCylinder5State := 1; ELSE GVL_HMI.i_nCylinder5State := 0; END_IF
 	E_FT.CYL5_R:
 		bFeedback := GVL_IO.DI_CYL5_R;
+		IF bRising THEN GVL_HMI.i_nCylinder5State := 3; ELSE GVL_HMI.i_nCylinder5State := 0; END_IF
 	E_FT.CYL6_E:
 		bFeedback := GVL_IO.DI_CYL6_E;
+		IF bRising THEN GVL_HMI.i_nCylinder6State := 1; ELSE GVL_HMI.i_nCylinder6State := 0; END_IF
 	E_FT.CYL6_R:
 		bFeedback := GVL_IO.DI_CYL6_R;
+		IF bRising THEN GVL_HMI.i_nCylinder6State := 3; ELSE GVL_HMI.i_nCylinder6State := 0; END_IF
 	E_FT.CYL7_E:
 		bFeedback := GVL_IO.DI_CYL7_E;
+		IF bRising THEN GVL_HMI.i_nCylinder7State := 1; ELSE GVL_HMI.i_nCylinder7State := 0; END_IF
 	E_FT.CYL7_R:
 		bFeedback := GVL_IO.DI_CYL7_R;
-		
+		IF bRising THEN GVL_HMI.i_nCylinder7State := 3; ELSE GVL_HMI.i_nCylinder7State := 0; END_IF
 	E_FT.PCYL1_E:
 		bFeedback := GVL_IO.DI_PCYL1_E;
+		IF bRising THEN GVL_HMI.i_nPCylinder1State := 1; ELSE GVL_HMI.i_nPCylinder1State := 0; END_IF
 	E_FT.PCYL1_R:
 		bFeedback := GVL_IO.DI_PCYL1_R;
+		IF bRising THEN GVL_HMI.i_nPCylinder1State := 3; ELSE GVL_HMI.i_nPCylinder1State := 0; END_IF
 	E_FT.PCYL2_E:
 		bFeedback := GVL_IO.DI_PCYL2_E;
+		IF bRising THEN GVL_HMI.i_nPCylinder2State := 1; ELSE GVL_HMI.i_nPCylinder2State := 0; END_IF
 	E_FT.PCYL2_R:
 		bFeedback := GVL_IO.DI_PCYL2_R;
+		IF bRising THEN GVL_HMI.i_nPCylinder2State := 3; ELSE GVL_HMI.i_nPCylinder2State := 0; END_IF
 END_CASE
 IF t = E_FT.PUMP THEN
 	nCheckingTime := GVL_HMI.i_nPumpFeedbackCheckingTime;
@@ -75,6 +92,46 @@ IF NOT bFeedback AND NOT FeedbackTimer.IN THEN
     FeedbackTimer(IN := TRUE, PT := INT_TO_TIME(nCheckingTime));	// T#3S
 ELSE
 	IF bFeedback THEN
+		CASE t OF
+			E_FT.PUMP:
+				IF bRising THEN GVL_HMI.i_nPumpState := 2; ELSE GVL_HMI.i_nPumpState := 4; END_IF
+			E_FT.CYL1_E:
+				IF bRising THEN GVL_HMI.i_nCylinder1State := 2; END_IF
+			E_FT.CYL1_R:
+				IF bRising THEN GVL_HMI.i_nCylinder1State := 4; END_IF
+			E_FT.CYL2_E:
+				IF bRising THEN GVL_HMI.i_nCylinder2State := 2; END_IF
+			E_FT.CYL2_R:
+				IF bRising THEN GVL_HMI.i_nCylinder2State := 4; END_IF
+			E_FT.CYL3_E:
+				IF bRising THEN GVL_HMI.i_nCylinder3State := 2; END_IF
+			E_FT.CYL3_R:
+				IF bRising THEN GVL_HMI.i_nCylinder3State := 4; END_IF
+			E_FT.CYL4_E:
+				IF bRising THEN GVL_HMI.i_nCylinder4State := 2; END_IF
+			E_FT.CYL4_R:
+				IF bRising THEN GVL_HMI.i_nCylinder4State := 4; END_IF
+			E_FT.CYL5_E:
+				IF bRising THEN GVL_HMI.i_nCylinder5State := 2; END_IF
+			E_FT.CYL5_R:
+				IF bRising THEN GVL_HMI.i_nCylinder5State := 4; END_IF
+			E_FT.CYL6_E:
+				IF bRising THEN GVL_HMI.i_nCylinder6State := 2; END_IF
+			E_FT.CYL6_R:
+				IF bRising THEN GVL_HMI.i_nCylinder6State := 4; END_IF
+			E_FT.CYL7_E:
+				IF bRising THEN GVL_HMI.i_nCylinder7State := 2; END_IF
+			E_FT.CYL7_R:
+				IF bRising THEN GVL_HMI.i_nCylinder7State := 4; END_IF
+			E_FT.PCYL1_E:
+				IF bRising THEN GVL_HMI.i_nPCylinder1State := 2; END_IF
+			E_FT.PCYL1_R:
+				IF bRising THEN GVL_HMI.i_nPCylinder1State := 4; END_IF
+			E_FT.PCYL2_E:
+				IF bRising THEN GVL_HMI.i_nPCylinder2State := 2; END_IF
+			E_FT.PCYL2_R:
+				IF bRising THEN GVL_HMI.i_nPCylinder2State := 4; END_IF
+		END_CASE
 		FeedbackTimer(IN := FALSE);
 		o_nResult := 1;
     ELSIF FeedbackTimer.Q THEN
@@ -83,61 +140,59 @@ ELSE
 				GVL_HMI.i_nPumpState := -1;
 				sAlarmMessage := GVL_AlarmMessage.PUMP;
 				IF bRising THEN sAlarmMessage := GVL_AlarmMessage.PUMP; ELSE sAlarmMessage := GVL_AlarmMessage.PUMP_OFF; END_IF
-				
 			E_FT.CYL1_E:
-				GVL_HMI.i_nPCylinder1State := -1;
+				GVL_HMI.i_nCylinder1State := -1;
 				IF bRising THEN sAlarmMessage := GVL_AlarmMessage.CYL1_NOT_EXTENDED; ELSE sAlarmMessage := GVL_AlarmMessage.CYL1_NOT_EXTENDED_OFF; END_IF
 			E_FT.CYL1_R:
-				GVL_HMI.i_nCylinder1State := -1;
+				GVL_HMI.i_nCylinder1State := -3;
 				IF bRising THEN sAlarmMessage := GVL_AlarmMessage.CYL1_NOT_RETRACTED; ELSE sAlarmMessage := GVL_AlarmMessage.CYL1_NOT_RETRACTED_OFF; END_IF
 			E_FT.CYL2_E:
 				GVL_HMI.i_nCylinder2State := -1;
 				IF bRising THEN sAlarmMessage := GVL_AlarmMessage.CYL2_NOT_EXTENDED; ELSE sAlarmMessage := GVL_AlarmMessage.CYL2_NOT_EXTENDED_OFF; END_IF
 			E_FT.CYL2_R:
-				GVL_HMI.i_nCylinder2State := -1;
+				GVL_HMI.i_nCylinder2State := -3;
 				IF bRising THEN sAlarmMessage := GVL_AlarmMessage.CYL2_NOT_RETRACTED; ELSE sAlarmMessage := GVL_AlarmMessage.CYL2_NOT_RETRACTED_OFF; END_IF
 			E_FT.CYL3_E:
 				GVL_HMI.i_nCylinder3State := -1;
 				IF bRising THEN sAlarmMessage := GVL_AlarmMessage.CYL3_NOT_EXTENDED; ELSE sAlarmMessage := GVL_AlarmMessage.CYL3_NOT_EXTENDED_OFF; END_IF
 			E_FT.CYL3_R:
-				GVL_HMI.i_nCylinder3State := -1;
+				GVL_HMI.i_nCylinder3State := -3;
 				IF bRising THEN sAlarmMessage := GVL_AlarmMessage.CYL3_NOT_RETRACTED; ELSE sAlarmMessage := GVL_AlarmMessage.CYL3_NOT_RETRACTED_OFF; END_IF
 			E_FT.CYL4_E:
 				GVL_HMI.i_nCylinder4State := -1;
 				IF bRising THEN sAlarmMessage := GVL_AlarmMessage.CYL4_NOT_EXTENDED; ELSE sAlarmMessage := GVL_AlarmMessage.CYL4_NOT_EXTENDED_OFF; END_IF
 			E_FT.CYL4_R:
-				GVL_HMI.i_nCylinder4State := -1;
+				GVL_HMI.i_nCylinder4State := -3;
 				IF bRising THEN sAlarmMessage := GVL_AlarmMessage.CYL4_NOT_RETRACTED; ELSE sAlarmMessage := GVL_AlarmMessage.CYL4_NOT_RETRACTED_OFF; END_IF
 			E_FT.CYL5_E:
 				GVL_HMI.i_nCylinder5State := -1;
 				IF bRising THEN sAlarmMessage := GVL_AlarmMessage.CYL5_NOT_EXTENDED; ELSE sAlarmMessage := GVL_AlarmMessage.CYL5_NOT_EXTENDED_OFF; END_IF
 			E_FT.CYL5_R:
-				GVL_HMI.i_nCylinder5State := -1;
+				GVL_HMI.i_nCylinder5State := -3;
 				IF bRising THEN sAlarmMessage := GVL_AlarmMessage.CYL5_NOT_RETRACTED; ELSE sAlarmMessage := GVL_AlarmMessage.CYL5_NOT_RETRACTED_OFF; END_IF
 			E_FT.CYL6_E:
 				GVL_HMI.i_nCylinder6State := -1;
 				IF bRising THEN sAlarmMessage := GVL_AlarmMessage.CYL6_NOT_EXTENDED; ELSE sAlarmMessage := GVL_AlarmMessage.CYL6_NOT_EXTENDED_OFF; END_IF
 			E_FT.CYL6_R:
-				GVL_HMI.i_nCylinder6State := -1;
+				GVL_HMI.i_nCylinder6State := -3;
 				IF bRising THEN sAlarmMessage := GVL_AlarmMessage.CYL6_NOT_RETRACTED; ELSE sAlarmMessage := GVL_AlarmMessage.CYL6_NOT_RETRACTED_OFF; END_IF
 			E_FT.CYL7_E:
 				GVL_HMI.i_nCylinder7State := -1;
 				IF bRising THEN sAlarmMessage := GVL_AlarmMessage.CYL7_NOT_EXTENDED; ELSE sAlarmMessage := GVL_AlarmMessage.CYL7_NOT_EXTENDED_OFF; END_IF
 			E_FT.CYL7_R:
-				GVL_HMI.i_nCylinder7State := -1;
+				GVL_HMI.i_nCylinder7State := -3;
 				IF bRising THEN sAlarmMessage := GVL_AlarmMessage.CYL7_NOT_RETRACTED; ELSE sAlarmMessage := GVL_AlarmMessage.CYL7_NOT_RETRACTED_OFF; END_IF
-				
 			E_FT.PCYL1_E:
 				GVL_HMI.i_nPCylinder1State := -1;
 				IF bRising THEN sAlarmMessage := GVL_AlarmMessage.PCYL1_NOT_EXTENDED; ELSE sAlarmMessage := GVL_AlarmMessage.PCYL1_NOT_EXTENDED_OFF; END_IF
 			E_FT.PCYL1_R:
-				GVL_HMI.i_nPCylinder1State := -1;
+				GVL_HMI.i_nPCylinder1State := -3;
 				IF bRising THEN sAlarmMessage := GVL_AlarmMessage.PCYL1_NOT_RETRACTED; ELSE sAlarmMessage := GVL_AlarmMessage.PCYL1_NOT_RETRACTED_OFF; END_IF
 			E_FT.PCYL2_E:
 				GVL_HMI.i_nPCylinder2State := -1;
 				IF bRising THEN sAlarmMessage := GVL_AlarmMessage.PCYL2_NOT_EXTENDED; ELSE sAlarmMessage := GVL_AlarmMessage.PCYL2_NOT_EXTENDED_OFF; END_IF
 			E_FT.PCYL2_R:
-				GVL_HMI.i_nPCylinder2State := -1;
+				GVL_HMI.i_nPCylinder2State := -3;
 				IF bRising THEN sAlarmMessage := GVL_AlarmMessage.PCYL2_NOT_RETRACTED; ELSE sAlarmMessage := GVL_AlarmMessage.PCYL2_NOT_RETRACTED_OFF; END_IF
 		END_CASE
 		
@@ -150,23 +205,41 @@ END_IF]]></ST>
       <LineId Id="34" Count="0" />
       <LineId Id="55" Count="1" />
       <LineId Id="65" Count="2" />
+      <LineId Id="329" Count="0" />
       <LineId Id="75" Count="1" />
+      <LineId Id="330" Count="0" />
       <LineId Id="79" Count="1" />
+      <LineId Id="331" Count="0" />
       <LineId Id="83" Count="1" />
+      <LineId Id="332" Count="0" />
       <LineId Id="87" Count="1" />
+      <LineId Id="333" Count="0" />
       <LineId Id="91" Count="1" />
+      <LineId Id="334" Count="0" />
       <LineId Id="95" Count="1" />
+      <LineId Id="335" Count="0" />
       <LineId Id="99" Count="1" />
+      <LineId Id="336" Count="0" />
       <LineId Id="103" Count="1" />
+      <LineId Id="337" Count="0" />
       <LineId Id="107" Count="1" />
+      <LineId Id="338" Count="0" />
       <LineId Id="111" Count="1" />
+      <LineId Id="339" Count="0" />
       <LineId Id="115" Count="1" />
+      <LineId Id="340" Count="0" />
       <LineId Id="119" Count="1" />
+      <LineId Id="341" Count="0" />
       <LineId Id="123" Count="1" />
-      <LineId Id="235" Count="2" />
+      <LineId Id="342" Count="0" />
+      <LineId Id="236" Count="1" />
+      <LineId Id="343" Count="0" />
       <LineId Id="240" Count="1" />
+      <LineId Id="344" Count="0" />
       <LineId Id="244" Count="1" />
+      <LineId Id="345" Count="0" />
       <LineId Id="248" Count="1" />
+      <LineId Id="346" Count="0" />
       <LineId Id="33" Count="0" />
       <LineId Id="284" Count="1" />
       <LineId Id="287" Count="1" />
@@ -174,13 +247,49 @@ END_IF]]></ST>
       <LineId Id="282" Count="0" />
       <LineId Id="218" Count="0" />
       <LineId Id="217" Count="0" />
-      <LineId Id="10" Count="6" />
+      <LineId Id="10" Count="2" />
+      <LineId Id="347" Count="2" />
+      <LineId Id="352" Count="1" />
+      <LineId Id="355" Count="1" />
+      <LineId Id="359" Count="0" />
+      <LineId Id="407" Count="0" />
+      <LineId Id="362" Count="0" />
+      <LineId Id="408" Count="0" />
+      <LineId Id="365" Count="0" />
+      <LineId Id="409" Count="0" />
+      <LineId Id="368" Count="0" />
+      <LineId Id="410" Count="0" />
+      <LineId Id="371" Count="0" />
+      <LineId Id="411" Count="0" />
+      <LineId Id="374" Count="0" />
+      <LineId Id="412" Count="0" />
+      <LineId Id="377" Count="0" />
+      <LineId Id="413" Count="0" />
+      <LineId Id="380" Count="0" />
+      <LineId Id="414" Count="0" />
+      <LineId Id="383" Count="0" />
+      <LineId Id="415" Count="0" />
+      <LineId Id="386" Count="0" />
+      <LineId Id="416" Count="0" />
+      <LineId Id="389" Count="0" />
+      <LineId Id="417" Count="0" />
+      <LineId Id="392" Count="0" />
+      <LineId Id="418" Count="0" />
+      <LineId Id="395" Count="0" />
+      <LineId Id="419" Count="0" />
+      <LineId Id="398" Count="0" />
+      <LineId Id="420" Count="0" />
+      <LineId Id="401" Count="0" />
+      <LineId Id="421" Count="0" />
+      <LineId Id="404" Count="0" />
+      <LineId Id="422" Count="0" />
+      <LineId Id="13" Count="0" />
+      <LineId Id="423" Count="0" />
+      <LineId Id="14" Count="2" />
       <LineId Id="143" Count="2" />
       <LineId Id="263" Count="0" />
       <LineId Id="289" Count="0" />
-      <LineId Id="219" Count="0" />
-      <LineId Id="152" Count="0" />
-      <LineId Id="220" Count="0" />
+      <LineId Id="219" Count="1" />
       <LineId Id="290" Count="0" />
       <LineId Id="156" Count="0" />
       <LineId Id="221" Count="0" />
@@ -221,7 +330,8 @@ END_IF]]></ST>
       <LineId Id="204" Count="0" />
       <LineId Id="233" Count="0" />
       <LineId Id="303" Count="0" />
-      <LineId Id="253" Count="2" />
+      <LineId Id="253" Count="0" />
+      <LineId Id="255" Count="0" />
       <LineId Id="304" Count="0" />
       <LineId Id="256" Count="1" />
       <LineId Id="305" Count="0" />

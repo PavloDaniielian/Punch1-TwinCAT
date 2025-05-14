@@ -286,6 +286,27 @@
 }
 </script>
 <div id="btnAlarmReset" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiButton" data-tchmi-height="60" data-tchmi-height-unit="px" data-tchmi-left="38" data-tchmi-left-unit="px" data-tchmi-text="Reset" data-tchmi-top="469" data-tchmi-top-unit="px" data-tchmi-width="266" data-tchmi-width-unit="px" data-tchmi-word-wrap="true" data-tchmi-text-font-size="40" data-tchmi-text-horizontal-alignment="Center">
+
+<script data-tchmi-target-attribute="data-tchmi-trigger" type="application/json">
+[
+  {
+    "event": "btnAlarmReset.onPressed",
+    "actions": [
+      {
+        "objectType": "WriteToSymbol",
+        "active": true,
+        "symbolExpression": "%s%PLC1.GVL_HMI.i_nCmd_ResetAlarm%/s%",
+        "value": {
+          "objectType": "StaticValue",
+          "valueType": "tchmi:general#/definitions/SINT",
+          "value": 1
+        },
+        "asyncWait": true
+      }
+    ]
+  }
+]
+</script>
 </div>
 <div id="lblOverViewTitle_2" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiTextblock" data-tchmi-height="51" data-tchmi-height-unit="px" data-tchmi-left="15" data-tchmi-left-unit="px" data-tchmi-top="10" data-tchmi-top-unit="px" data-tchmi-width="987" data-tchmi-width-unit="px" data-tchmi-word-wrap="true" data-tchmi-text="Active Alarm List Page" data-tchmi-text-font-size="40" data-tchmi-text-font-weight="Bold">
 <script data-tchmi-target-attribute="data-tchmi-text-color" type="application/json">

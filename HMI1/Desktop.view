@@ -279,7 +279,7 @@
 <script data-tchmi-target-attribute="data-tchmi-trigger" type="application/json">
 [
   {
-    "event": "%s%PLC1.GVL_HMI.o_bAlarmActive%/s%%s%PLC1.GVL_HMI.o_sAlarmMessage%/s%",
+    "event": "%s%PLC1.GVL_HMI.o_bAlarmActive%/s%",
     "actions": [
       {
         "objectType": "Condition",

@@ -2,7 +2,7 @@
 
 <div id="lblDummyS_17" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiTextblock" data-tchmi-height="50" data-tchmi-height-unit="px" data-tchmi-left="0" data-tchmi-left-unit="px" data-tchmi-text="Pneumatic Cylinder1 Extended Running Time" data-tchmi-top="13" data-tchmi-top-unit="px" data-tchmi-width="540" data-tchmi-width-unit="px" data-tchmi-word-wrap="true" data-tchmi-text-horizontal-alignment="Left" data-tchmi-text-font-size="30" data-tchmi-text-vertical-alignment="Center">
 </div>
-<div id="TcHmiSpinboxInput_15" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiSpinboxInput" data-tchmi-auto-focus-out="true" data-tchmi-decimal-digits="0" data-tchmi-height="50" data-tchmi-height-unit="px" data-tchmi-left="540" data-tchmi-left-unit="px" data-tchmi-max-value="500" data-tchmi-min-value="0" data-tchmi-reset-to-last-valid-value="true" data-tchmi-top="15" data-tchmi-top-unit="px" data-tchmi-value="100" data-tchmi-width="175" data-tchmi-width-unit="px" data-tchmi-step="10" data-tchmi-value-font-size="30" data-tchmi-button-position="MinusLeftAndPlusRight" data-tchmi-value-horizontal-alignment="Center">
+<div id="txtPCyl1ExRunningTime" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiSpinboxInput" data-tchmi-auto-focus-out="true" data-tchmi-decimal-digits="0" data-tchmi-height="50" data-tchmi-height-unit="px" data-tchmi-left="540" data-tchmi-left-unit="px" data-tchmi-max-value="500" data-tchmi-min-value="0" data-tchmi-reset-to-last-valid-value="true" data-tchmi-top="15" data-tchmi-top-unit="px" data-tchmi-value="%s%PLC1.GVL_HMI.i_nPCylinder1ExtendedRunningTime%/s%" data-tchmi-width="175" data-tchmi-width-unit="px" data-tchmi-step="10" data-tchmi-value-font-size="30" data-tchmi-button-position="MinusLeftAndPlusRight" data-tchmi-value-horizontal-alignment="Center">
 <script data-tchmi-target-attribute="data-tchmi-content-padding" type="application/json">
 {
   "top": 3,
@@ -12,10 +12,31 @@
 }
 </script>
 
+
+<script data-tchmi-target-attribute="data-tchmi-trigger" type="application/json">
+[
+  {
+    "event": "txtPCyl1ExRunningTime.onValueChanged",
+    "actions": [
+      {
+        "objectType": "WriteToSymbol",
+        "active": true,
+        "symbolExpression": "%s%PLC1.GVL_HMI.i_nPCylinder1ExtendedRunningTime%/s%",
+        "value": {
+          "objectType": "Symbol",
+          "valueType": "tchmi:general#/definitions/String",
+          "symbolExpression": "%ctrl%txtPCyl1ExRunningTime::Value%/ctrl%"
+        },
+        "asyncWait": true
+      }
+    ]
+  }
+]
+</script>
 </div>
 <div id="lblDummyS_18" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiTextblock" data-tchmi-height="50" data-tchmi-height-unit="px" data-tchmi-left="0" data-tchmi-left-unit="px" data-tchmi-text="Pneumatic Cylinder1 Retracted Running Time" data-tchmi-top="90" data-tchmi-top-unit="px" data-tchmi-width="540" data-tchmi-width-unit="px" data-tchmi-word-wrap="true" data-tchmi-text-horizontal-alignment="Left" data-tchmi-text-font-size="30" data-tchmi-text-vertical-alignment="Center">
 </div>
-<div id="TcHmiSpinboxInput_16" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiSpinboxInput" data-tchmi-auto-focus-out="true" data-tchmi-decimal-digits="0" data-tchmi-height="50" data-tchmi-height-unit="px" data-tchmi-left="540" data-tchmi-left-unit="px" data-tchmi-max-value="500" data-tchmi-min-value="0" data-tchmi-reset-to-last-valid-value="true" data-tchmi-top="90" data-tchmi-top-unit="px" data-tchmi-value="100" data-tchmi-width="175" data-tchmi-width-unit="px" data-tchmi-step="10" data-tchmi-value-font-size="30" data-tchmi-button-position="MinusLeftAndPlusRight" data-tchmi-value-horizontal-alignment="Center">
+<div id="txtPCyl1ReRunningTime" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiSpinboxInput" data-tchmi-auto-focus-out="true" data-tchmi-decimal-digits="0" data-tchmi-height="50" data-tchmi-height-unit="px" data-tchmi-left="540" data-tchmi-left-unit="px" data-tchmi-max-value="500" data-tchmi-min-value="0" data-tchmi-reset-to-last-valid-value="true" data-tchmi-top="90" data-tchmi-top-unit="px" data-tchmi-value="%s%PLC1.GVL_HMI.i_nPCylinder1RetractedRunningTime%/s%" data-tchmi-width="175" data-tchmi-width-unit="px" data-tchmi-step="10" data-tchmi-value-font-size="30" data-tchmi-button-position="MinusLeftAndPlusRight" data-tchmi-value-horizontal-alignment="Center">
 <script data-tchmi-target-attribute="data-tchmi-content-padding" type="application/json">
 {
   "top": 3,
@@ -25,10 +46,31 @@
 }
 </script>
 
+
+<script data-tchmi-target-attribute="data-tchmi-trigger" type="application/json">
+[
+  {
+    "event": "txtPCyl1ReRunningTime.onValueChanged",
+    "actions": [
+      {
+        "objectType": "WriteToSymbol",
+        "active": true,
+        "symbolExpression": "%s%PLC1.GVL_HMI.i_nPCylinder1RetractedRunningTime%/s%",
+        "value": {
+          "objectType": "Symbol",
+          "valueType": "tchmi:general#/definitions/String",
+          "symbolExpression": "%ctrl%txtPCyl1ReRunningTime::Value%/ctrl%"
+        },
+        "asyncWait": true
+      }
+    ]
+  }
+]
+</script>
 </div>
 <div id="lblDummyS_19" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiTextblock" data-tchmi-height="50" data-tchmi-height-unit="px" data-tchmi-left="0" data-tchmi-left-unit="px" data-tchmi-text="Pneumatic Cylinder2 Extended Running Time" data-tchmi-top="165" data-tchmi-top-unit="px" data-tchmi-width="540" data-tchmi-width-unit="px" data-tchmi-word-wrap="true" data-tchmi-text-horizontal-alignment="Left" data-tchmi-text-font-size="30" data-tchmi-text-vertical-alignment="Center">
 </div>
-<div id="TcHmiSpinboxInput_17" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiSpinboxInput" data-tchmi-auto-focus-out="true" data-tchmi-decimal-digits="0" data-tchmi-height="50" data-tchmi-height-unit="px" data-tchmi-left="540" data-tchmi-left-unit="px" data-tchmi-max-value="500" data-tchmi-min-value="0" data-tchmi-reset-to-last-valid-value="true" data-tchmi-top="165" data-tchmi-top-unit="px" data-tchmi-value="100" data-tchmi-width="175" data-tchmi-width-unit="px" data-tchmi-step="10" data-tchmi-value-font-size="30" data-tchmi-button-position="MinusLeftAndPlusRight" data-tchmi-value-horizontal-alignment="Center">
+<div id="txtPCyl2ExRunningTime" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiSpinboxInput" data-tchmi-auto-focus-out="true" data-tchmi-decimal-digits="0" data-tchmi-height="50" data-tchmi-height-unit="px" data-tchmi-left="540" data-tchmi-left-unit="px" data-tchmi-max-value="500" data-tchmi-min-value="0" data-tchmi-reset-to-last-valid-value="true" data-tchmi-top="165" data-tchmi-top-unit="px" data-tchmi-value="%s%PLC1.GVL_HMI.i_nPCylinder2ExtendedRunningTime%/s%" data-tchmi-width="175" data-tchmi-width-unit="px" data-tchmi-step="10" data-tchmi-value-font-size="30" data-tchmi-button-position="MinusLeftAndPlusRight" data-tchmi-value-horizontal-alignment="Center">
 <script data-tchmi-target-attribute="data-tchmi-content-padding" type="application/json">
 {
   "top": 3,
@@ -38,8 +80,29 @@
 }
 </script>
 
+
+<script data-tchmi-target-attribute="data-tchmi-trigger" type="application/json">
+[
+  {
+    "event": "txtPCyl2ExRunningTime.onValueChanged",
+    "actions": [
+      {
+        "objectType": "WriteToSymbol",
+        "active": true,
+        "symbolExpression": "%s%PLC1.GVL_HMI.i_nPCylinder2ExtendedRunningTime%/s%",
+        "value": {
+          "objectType": "Symbol",
+          "valueType": "tchmi:general#/definitions/String",
+          "symbolExpression": "%ctrl%txtPCyl2ExRunningTime::Value%/ctrl%"
+        },
+        "asyncWait": true
+      }
+    ]
+  }
+]
+</script>
 </div>
-<div id="TcHmiSpinboxInput_18" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiSpinboxInput" data-tchmi-auto-focus-out="true" data-tchmi-decimal-digits="0" data-tchmi-height="50" data-tchmi-height-unit="px" data-tchmi-left="540" data-tchmi-left-unit="px" data-tchmi-max-value="500" data-tchmi-min-value="0" data-tchmi-reset-to-last-valid-value="true" data-tchmi-top="240" data-tchmi-top-unit="px" data-tchmi-value="250" data-tchmi-width="175" data-tchmi-width-unit="px" data-tchmi-step="10" data-tchmi-value-font-size="30" data-tchmi-button-position="MinusLeftAndPlusRight" data-tchmi-value-horizontal-alignment="Center">
+<div id="txtPCyl3ExRunningTime" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiSpinboxInput" data-tchmi-auto-focus-out="true" data-tchmi-decimal-digits="0" data-tchmi-height="50" data-tchmi-height-unit="px" data-tchmi-left="540" data-tchmi-left-unit="px" data-tchmi-max-value="500" data-tchmi-min-value="0" data-tchmi-reset-to-last-valid-value="true" data-tchmi-top="240" data-tchmi-top-unit="px" data-tchmi-value="%s%PLC1.GVL_HMI.i_nPCylinder3ExtendedRunningTime%/s%" data-tchmi-width="175" data-tchmi-width-unit="px" data-tchmi-step="10" data-tchmi-value-font-size="30" data-tchmi-button-position="MinusLeftAndPlusRight" data-tchmi-value-horizontal-alignment="Center">
 <script data-tchmi-target-attribute="data-tchmi-content-padding" type="application/json">
 {
   "top": 3,
@@ -49,6 +112,27 @@
 }
 </script>
 
+
+<script data-tchmi-target-attribute="data-tchmi-trigger" type="application/json">
+[
+  {
+    "event": "txtPCyl3ExRunningTime.onValueChanged",
+    "actions": [
+      {
+        "objectType": "WriteToSymbol",
+        "active": true,
+        "symbolExpression": "%s%PLC1.GVL_HMI.i_nPCylinder3ExtendedRunningTime%/s%",
+        "value": {
+          "objectType": "Symbol",
+          "valueType": "tchmi:general#/definitions/String",
+          "symbolExpression": "%ctrl%txtPCyl3ExRunningTime::Value%/ctrl%"
+        },
+        "asyncWait": true
+      }
+    ]
+  }
+]
+</script>
 </div>
 <div id="lblDummyS_20" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiTextblock" data-tchmi-height="50" data-tchmi-height-unit="px" data-tchmi-left="0" data-tchmi-left-unit="px" data-tchmi-text="Pneumatic Cylinder3 Extended Running Time" data-tchmi-top="240" data-tchmi-top-unit="px" data-tchmi-width="540" data-tchmi-width-unit="px" data-tchmi-word-wrap="true" data-tchmi-text-horizontal-alignment="Left" data-tchmi-text-font-size="30" data-tchmi-text-vertical-alignment="Center">
 </div>
@@ -56,7 +140,7 @@
 </div>
 <div id="lblDummyS_22" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiTextblock" data-tchmi-height="50" data-tchmi-height-unit="px" data-tchmi-left="0" data-tchmi-left-unit="px" data-tchmi-text="Pneumatic Cylinder5 Extended Running Time" data-tchmi-top="390" data-tchmi-top-unit="px" data-tchmi-width="540" data-tchmi-width-unit="px" data-tchmi-word-wrap="true" data-tchmi-text-horizontal-alignment="Left" data-tchmi-text-font-size="30" data-tchmi-text-vertical-alignment="Center">
 </div>
-<div id="TcHmiSpinboxInput_19" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiSpinboxInput" data-tchmi-auto-focus-out="true" data-tchmi-decimal-digits="0" data-tchmi-height="50" data-tchmi-height-unit="px" data-tchmi-left="540" data-tchmi-left-unit="px" data-tchmi-max-value="500" data-tchmi-min-value="0" data-tchmi-reset-to-last-valid-value="true" data-tchmi-top="390" data-tchmi-top-unit="px" data-tchmi-value="250" data-tchmi-width="175" data-tchmi-width-unit="px" data-tchmi-step="10" data-tchmi-value-font-size="30" data-tchmi-button-position="MinusLeftAndPlusRight" data-tchmi-value-horizontal-alignment="Center">
+<div id="txtPCyl5ExRunningTime" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiSpinboxInput" data-tchmi-auto-focus-out="true" data-tchmi-decimal-digits="0" data-tchmi-height="50" data-tchmi-height-unit="px" data-tchmi-left="540" data-tchmi-left-unit="px" data-tchmi-max-value="500" data-tchmi-min-value="0" data-tchmi-reset-to-last-valid-value="true" data-tchmi-top="390" data-tchmi-top-unit="px" data-tchmi-value="%s%PLC1.GVL_HMI.i_nPCylinder5ExtendedRunningTime%/s%" data-tchmi-width="175" data-tchmi-width-unit="px" data-tchmi-step="10" data-tchmi-value-font-size="30" data-tchmi-button-position="MinusLeftAndPlusRight" data-tchmi-value-horizontal-alignment="Center">
 <script data-tchmi-target-attribute="data-tchmi-content-padding" type="application/json">
 {
   "top": 3,
@@ -66,8 +150,29 @@
 }
 </script>
 
+
+<script data-tchmi-target-attribute="data-tchmi-trigger" type="application/json">
+[
+  {
+    "event": "txtPCyl5ExRunningTime.onValueChanged",
+    "actions": [
+      {
+        "objectType": "WriteToSymbol",
+        "active": true,
+        "symbolExpression": "%s%PLC1.GVL_HMI.i_nPCylinder5ExtendedRunningTime%/s%",
+        "value": {
+          "objectType": "Symbol",
+          "valueType": "tchmi:general#/definitions/String",
+          "symbolExpression": "%ctrl%txtPCyl5ExRunningTime::Value%/ctrl%"
+        },
+        "asyncWait": true
+      }
+    ]
+  }
+]
+</script>
 </div>
-<div id="TcHmiSpinboxInput_20" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiSpinboxInput" data-tchmi-auto-focus-out="true" data-tchmi-decimal-digits="0" data-tchmi-height="50" data-tchmi-height-unit="px" data-tchmi-left="540" data-tchmi-left-unit="px" data-tchmi-max-value="500" data-tchmi-min-value="0" data-tchmi-reset-to-last-valid-value="true" data-tchmi-top="315" data-tchmi-top-unit="px" data-tchmi-value="150" data-tchmi-width="175" data-tchmi-width-unit="px" data-tchmi-step="10" data-tchmi-value-font-size="30" data-tchmi-button-position="MinusLeftAndPlusRight" data-tchmi-value-horizontal-alignment="Center">
+<div id="txtPCyl4ExRunningTime" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiSpinboxInput" data-tchmi-auto-focus-out="true" data-tchmi-decimal-digits="0" data-tchmi-height="50" data-tchmi-height-unit="px" data-tchmi-left="540" data-tchmi-left-unit="px" data-tchmi-max-value="500" data-tchmi-min-value="0" data-tchmi-reset-to-last-valid-value="true" data-tchmi-top="315" data-tchmi-top-unit="px" data-tchmi-value="%s%PLC1.GVL_HMI.i_nPCylinder4ExtendedRunningTime%/s%" data-tchmi-width="175" data-tchmi-width-unit="px" data-tchmi-step="10" data-tchmi-value-font-size="30" data-tchmi-button-position="MinusLeftAndPlusRight" data-tchmi-value-horizontal-alignment="Center">
 <script data-tchmi-target-attribute="data-tchmi-content-padding" type="application/json">
 {
   "top": 3,
@@ -77,10 +182,31 @@
 }
 </script>
 
+
+<script data-tchmi-target-attribute="data-tchmi-trigger" type="application/json">
+[
+  {
+    "event": "txtPCyl4ExRunningTime.onValueChanged",
+    "actions": [
+      {
+        "objectType": "WriteToSymbol",
+        "active": true,
+        "symbolExpression": "%s%PLC1.GVL_HMI.i_nPCylinder4ExtendedRunningTime%/s%",
+        "value": {
+          "objectType": "Symbol",
+          "valueType": "tchmi:general#/definitions/String",
+          "symbolExpression": "%ctrl%txtPCyl4ExRunningTime::Value%/ctrl%"
+        },
+        "asyncWait": true
+      }
+    ]
+  }
+]
+</script>
 </div>
 <div id="lblDummyS_23" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiTextblock" data-tchmi-height="50" data-tchmi-height-unit="px" data-tchmi-left="0" data-tchmi-left-unit="px" data-tchmi-text="Pneumatic Cylinder6 Extended Running Time" data-tchmi-top="465" data-tchmi-top-unit="px" data-tchmi-width="540" data-tchmi-width-unit="px" data-tchmi-word-wrap="true" data-tchmi-text-horizontal-alignment="Left" data-tchmi-text-font-size="30" data-tchmi-text-vertical-alignment="Center">
 </div>
-<div id="TcHmiSpinboxInput_21" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiSpinboxInput" data-tchmi-auto-focus-out="true" data-tchmi-decimal-digits="0" data-tchmi-height="50" data-tchmi-height-unit="px" data-tchmi-left="540" data-tchmi-left-unit="px" data-tchmi-max-value="500" data-tchmi-min-value="0" data-tchmi-reset-to-last-valid-value="true" data-tchmi-top="465" data-tchmi-top-unit="px" data-tchmi-value="250" data-tchmi-value-horizontal-alignment="Center" data-tchmi-width="175" data-tchmi-width-unit="px" data-tchmi-step="10" data-tchmi-value-font-size="30" data-tchmi-button-position="MinusLeftAndPlusRight">
+<div id="txtPCyl6ExRunningTime" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiSpinboxInput" data-tchmi-auto-focus-out="true" data-tchmi-decimal-digits="0" data-tchmi-height="50" data-tchmi-height-unit="px" data-tchmi-left="540" data-tchmi-left-unit="px" data-tchmi-max-value="500" data-tchmi-min-value="0" data-tchmi-reset-to-last-valid-value="true" data-tchmi-top="465" data-tchmi-top-unit="px" data-tchmi-value="%s%PLC1.GVL_HMI.i_nPCylinder6ExtendedRunningTime%/s%" data-tchmi-value-horizontal-alignment="Center" data-tchmi-width="175" data-tchmi-width-unit="px" data-tchmi-step="10" data-tchmi-value-font-size="30" data-tchmi-button-position="MinusLeftAndPlusRight">
 <script data-tchmi-target-attribute="data-tchmi-content-padding" type="application/json">
 {
   "top": 3,
@@ -90,6 +216,27 @@
 }
 </script>
 
+
+<script data-tchmi-target-attribute="data-tchmi-trigger" type="application/json">
+[
+  {
+    "event": "txtPCyl6ExRunningTime.onValueChanged",
+    "actions": [
+      {
+        "objectType": "WriteToSymbol",
+        "active": true,
+        "symbolExpression": "%s%PLC1.GVL_HMI.i_nPCylinder6ExtendedRunningTime%/s%",
+        "value": {
+          "objectType": "Symbol",
+          "valueType": "tchmi:general#/definitions/String",
+          "symbolExpression": "%ctrl%txtPCyl6ExRunningTime::Value%/ctrl%"
+        },
+        "asyncWait": true
+      }
+    ]
+  }
+]
+</script>
 </div>
 <div id="lblDummySUnit_14" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiTextblock" data-tchmi-height="50" data-tchmi-height-unit="px" data-tchmi-left="715" data-tchmi-left-unit="px" data-tchmi-text="ms" data-tchmi-top="15" data-tchmi-top-unit="px" data-tchmi-width="55" data-tchmi-width-unit="px" data-tchmi-word-wrap="true" data-tchmi-text-font-size="30" data-tchmi-text-horizontal-alignment="Center" data-tchmi-text-vertical-alignment="Center">
 </div>

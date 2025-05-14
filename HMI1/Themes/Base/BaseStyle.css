@@ -359,6 +359,12 @@ div[data-tchmi-type="TcHmi.Controls.System.TcHmiView"] {
 .tchmi-class-CylinderFaulted {
     animation: blink 1s infinite;
 }
+.tchmi-class-CylinderExtending {
+    animation: blink 1s infinite;
+}
+.tchmi-class-CylinderRetracting {
+    animation: blink 1s infinite;
+}
 .tchmi-class-StateFaulted {
     animation: blink 1s infinite;
 }

@@ -2695,11 +2695,48 @@
             },
             "USEMAPPING": true
         },
+        "PLC1.GVL_HMI.i_bECS": {
+            "ACCESS": 3,
+            "DOMAIN": "ADS",
+            "DYNAMIC": true,
+            "MAPPING": "PLC1::GVL_HMI::i_bECS",
+            "SCHEMA": {
+                "allOf": [
+                    {
+                        "$ref": "tchmi:general#/definitions/BOOL"
+                    },
+                    {
+                        "comment": "core swagging"
+                    }
+                ]
+            },
+            "USEMAPPING": true
+        },
+        "PLC1.GVL_HMI.i_bEPD": {
+            "ACCESS": 3,
+            "DOMAIN": "ADS",
+            "DYNAMIC": true,
+            "MAPPING": "PLC1::GVL_HMI::i_bEPD",
+            "SCHEMA": {
+                "$ref": "tchmi:general#/definitions/BOOL"
+            },
+            "USEMAPPING": true
+        },
         "PLC1.GVL_HMI.i_bESR1": {
             "ACCESS": 3,
             "DOMAIN": "ADS",
             "DYNAMIC": true,
             "MAPPING": "PLC1::GVL_HMI::i_bESR1",
+            "SCHEMA": {
+                "$ref": "tchmi:general#/definitions/BOOL"
+            },
+            "USEMAPPING": true
+        },
+        "PLC1.GVL_HMI.i_bJLU": {
+            "ACCESS": 3,
+            "DOMAIN": "ADS",
+            "DYNAMIC": true,
+            "MAPPING": "PLC1::GVL_HMI::i_bJLU",
             "SCHEMA": {
                 "$ref": "tchmi:general#/definitions/BOOL"
             },
@@ -2782,23 +2819,6 @@
             },
             "USEMAPPING": true
         },
-        "PLC1.GVL_HMI.i_bReset": {
-            "ACCESS": 3,
-            "DOMAIN": "ADS",
-            "DYNAMIC": true,
-            "MAPPING": "PLC1::GVL_HMI::i_bReset",
-            "SCHEMA": {
-                "allOf": [
-                    {
-                        "$ref": "tchmi:general#/definitions/BOOL"
-                    },
-                    {
-                        "comment": "reset"
-                    }
-                ]
-            },
-            "USEMAPPING": true
-        },
         "PLC1.GVL_HMI.i_bTS1": {
             "ACCESS": 3,
             "DOMAIN": "ADS",
@@ -2848,6 +2868,74 @@
                     },
                     {
                         "comment": "settings"
+                    }
+                ]
+            },
+            "USEMAPPING": true
+        },
+        "PLC1.GVL_HMI.i_nCmd_ClearCount": {
+            "ACCESS": 3,
+            "DOMAIN": "ADS",
+            "DYNAMIC": true,
+            "MAPPING": "PLC1::GVL_HMI::i_nCmd_ClearCount",
+            "SCHEMA": {
+                "allOf": [
+                    {
+                        "$ref": "tchmi:general#/definitions/SINT"
+                    },
+                    {
+                        "comment": "clear casing count and core count; 0:NoAction, 1:Act, 2:AcceptToAct"
+                    }
+                ]
+            },
+            "USEMAPPING": true
+        },
+        "PLC1.GVL_HMI.i_nCmd_Reset": {
+            "ACCESS": 3,
+            "DOMAIN": "ADS",
+            "DYNAMIC": true,
+            "MAPPING": "PLC1::GVL_HMI::i_nCmd_Reset",
+            "SCHEMA": {
+                "allOf": [
+                    {
+                        "$ref": "tchmi:general#/definitions/SINT"
+                    },
+                    {
+                        "comment": "reset Alarm; 0:NoAction, 1:Act, 2:AcceptToAct"
+                    }
+                ]
+            },
+            "USEMAPPING": true
+        },
+        "PLC1.GVL_HMI.i_nCmd_ResetAlarm": {
+            "ACCESS": 3,
+            "DOMAIN": "ADS",
+            "DYNAMIC": true,
+            "MAPPING": "PLC1::GVL_HMI::i_nCmd_ResetAlarm",
+            "SCHEMA": {
+                "allOf": [
+                    {
+                        "$ref": "tchmi:general#/definitions/SINT"
+                    },
+                    {
+                        "comment": "reset Alarm; 0:NoAction, 1:Act, 2:AcceptToAct"
+                    }
+                ]
+            },
+            "USEMAPPING": true
+        },
+        "PLC1.GVL_HMI.i_nCmd_ResetSetting": {
+            "ACCESS": 3,
+            "DOMAIN": "ADS",
+            "DYNAMIC": true,
+            "MAPPING": "PLC1::GVL_HMI::i_nCmd_ResetSetting",
+            "SCHEMA": {
+                "allOf": [
+                    {
+                        "$ref": "tchmi:general#/definitions/SINT"
+                    },
+                    {
+                        "comment": "reset setting; 0:NoAction, 1:Act, 2:AcceptToAct"
                     }
                 ]
             },
@@ -2922,10 +3010,10 @@
             "SCHEMA": {
                 "allOf": [
                     {
-                        "$ref": "tchmi:general#/definitions/INT"
+                        "$ref": "tchmi:general#/definitions/SINT"
                     },
                     {
-                        "comment": "-1:Faulted, 0:Extended, 1:Retracting, 2: Retracted, 3:Extending"
+                        "comment": "0: InitialState, -3: FaultedWhileRetracting, -1: FaultedWhileExtending, 1: Extending, 2:Extended, 3:Retracting, 4: Retracted"
                     }
                 ]
             },
@@ -2973,10 +3061,10 @@
             "SCHEMA": {
                 "allOf": [
                     {
-                        "$ref": "tchmi:general#/definitions/INT"
+                        "$ref": "tchmi:general#/definitions/SINT"
                     },
                     {
-                        "comment": "-1:Faulted, 0:Extended, 1:Retracting, 2: Retracted, 3:Extending"
+                        "comment": "0: InitialState, -3: FaultedWhileRetracting, -1: FaultedWhileExtending, 1: Extending, 2:Extended, 3:Retracting, 4: Retracted"
                     }
                 ]
             },
@@ -3024,10 +3112,10 @@
             "SCHEMA": {
                 "allOf": [
                     {
-                        "$ref": "tchmi:general#/definitions/INT"
+                        "$ref": "tchmi:general#/definitions/SINT"
                     },
                     {
-                        "comment": "-1:Faulted, 0:Extended, 1:Retracting, 2: Retracted, 3:Extending"
+                        "comment": "0: InitialState, -3: FaultedWhileRetracting, -1: FaultedWhileExtending, 1: Extending, 2:Extended, 3:Retracting, 4: Retracted"
                     }
                 ]
             },
@@ -3075,10 +3163,10 @@
             "SCHEMA": {
                 "allOf": [
                     {
-                        "$ref": "tchmi:general#/definitions/INT"
+                        "$ref": "tchmi:general#/definitions/SINT"
                     },
                     {
-                        "comment": "-1:Faulted, 0:Extended, 1:Retracting, 2: Retracted, 3:Extending"
+                        "comment": "0: InitialState, -3: FaultedWhileRetracting, -1: FaultedWhileExtending, 1: Extending, 2:Extended, 3:Retracting, 4: Retracted"
                     }
                 ]
             },
@@ -3092,10 +3180,10 @@
             "SCHEMA": {
                 "allOf": [
                     {
-                        "$ref": "tchmi:general#/definitions/INT"
+                        "$ref": "tchmi:general#/definitions/SINT"
                     },
                     {
-                        "comment": "-1:Faulted, 0:Extended, 1:Retracting, 2: Retracted, 3:Extending"
+                        "comment": "0: InitialState, -3: FaultedWhileRetracting, -1: FaultedWhileExtending, 1: Extending, 2:Extended, 3:Retracting, 4: Retracted"
                     }
                 ]
             },
@@ -3109,10 +3197,10 @@
             "SCHEMA": {
                 "allOf": [
                     {
-                        "$ref": "tchmi:general#/definitions/INT"
+                        "$ref": "tchmi:general#/definitions/SINT"
                     },
                     {
-                        "comment": "-1:Faulted, 0:Extended, 1:Retracting, 2: Retracted, 3:Extending"
+                        "comment": "0: InitialState, -3: FaultedWhileRetracting, -1: FaultedWhileExtending, 1: Extending, 2:Extended, 3:Retracting, 4: Retracted"
                     }
                 ]
             },
@@ -3126,10 +3214,10 @@
             "SCHEMA": {
                 "allOf": [
                     {
-                        "$ref": "tchmi:general#/definitions/INT"
+                        "$ref": "tchmi:general#/definitions/SINT"
                     },
                     {
-                        "comment": "-1:Faulted, 0:Extended, 1:Retracting, 2: Retracted, 3:Extending"
+                        "comment": "0: InitialState, -3: FaultedWhileRetracting, -1: FaultedWhileExtending, 1: Extending, 2:Extended, 3:Retracting, 4: Retracted"
                     }
                 ]
             },
@@ -3143,10 +3231,10 @@
             "SCHEMA": {
                 "allOf": [
                     {
-                        "$ref": "tchmi:general#/definitions/INT"
+                        "$ref": "tchmi:general#/definitions/SINT"
                     },
                     {
-                        "comment": "-1:Faulted, 0:Extended, 1:Retracting, 2: Retracted, 3:Extending"
+                        "comment": "0: InitialState, -3: FaultedWhileRetracting, -1: FaultedWhileExtending, 1: Extending, 2:Extended, 3:Retracting, 4: Retracted"
                     }
                 ]
             },
@@ -3211,10 +3299,10 @@
             "SCHEMA": {
                 "allOf": [
                     {
-                        "$ref": "tchmi:general#/definitions/INT"
+                        "$ref": "tchmi:general#/definitions/SINT"
                     },
                     {
-                        "comment": "-1:Faulted, 0:Extended, 1:Retracting, 2: Retracted, 3:Extending"
+                        "comment": "0: InitialState, -3: FaultedWhileRetracting, -1: FaultedWhileExtending, 1: Extending, 2:Extended, 3:Retracting, 4: Retracted"
                     }
                 ]
             },
@@ -3245,10 +3333,10 @@
             "SCHEMA": {
                 "allOf": [
                     {
-                        "$ref": "tchmi:general#/definitions/INT"
+                        "$ref": "tchmi:general#/definitions/SINT"
                     },
                     {
-                        "comment": "-1:Faulted, 0:Extended, 1:Retracting, 2: Retracted, 3:Extending"
+                        "comment": "0: InitialState, -3: FaultedWhileRetracting, -1: FaultedWhileExtending, 1: Extending, 2:Extended, 3:Retracting, 4: Retracted"
                     }
                 ]
             },
@@ -3381,10 +3469,10 @@
             "SCHEMA": {
                 "allOf": [
                     {
-                        "$ref": "tchmi:general#/definitions/INT"
+                        "$ref": "tchmi:general#/definitions/SINT"
                     },
                     {
-                        "comment": "-1:Faulted, 0:Stop, 2:Running"
+                        "comment": "0: InitialState, -1:Faulted, 1: StartingToRun, 2:Running, 3:Stopping, 4:Stopped"
                     }
                 ]
             },
@@ -4402,6 +4490,7 @@
                 "Logout": 3,
                 "PLC1.GVL_HMI.bSafeties": 3,
                 "PLC1.GVL_HMI.i_b24VDC_CB_OK": 3,
+                "PLC1.GVL_HMI.i_bClearCount": 3,
                 "PLC1.GVL_HMI.i_bCoreSwagingManualMode": 3,
                 "PLC1.GVL_HMI.i_bCyl1E": 3,
                 "PLC1.GVL_HMI.i_bCyl1R": 3,
@@ -4419,7 +4508,10 @@
                 "PLC1.GVL_HMI.i_bCyl7R": 3,
                 "PLC1.GVL_HMI.i_bCyl8E": 3,
                 "PLC1.GVL_HMI.i_bCyl8R": 3,
+                "PLC1.GVL_HMI.i_bECS": 3,
+                "PLC1.GVL_HMI.i_bEPD": 3,
                 "PLC1.GVL_HMI.i_bESR1": 3,
+                "PLC1.GVL_HMI.i_bJLU": 3,
                 "PLC1.GVL_HMI.i_bLS1": 3,
                 "PLC1.GVL_HMI.i_bPE1": 3,
                 "PLC1.GVL_HMI.i_bPE2": 3,
@@ -4428,10 +4520,16 @@
                 "PLC1.GVL_HMI.i_bPE5": 3,
                 "PLC1.GVL_HMI.i_bPS1": 3,
                 "PLC1.GVL_HMI.i_bReset": 3,
+                "PLC1.GVL_HMI.i_bResetAlarm": 3,
+                "PLC1.GVL_HMI.i_bResetSetting": 3,
                 "PLC1.GVL_HMI.i_bTS1": 3,
                 "PLC1.GVL_HMI.i_bVB1": 3,
                 "PLC1.GVL_HMI.i_bVB2": 3,
                 "PLC1.GVL_HMI.i_nCasingCountForStarting": 3,
+                "PLC1.GVL_HMI.i_nCmd_ClearCount": 3,
+                "PLC1.GVL_HMI.i_nCmd_Reset": 3,
+                "PLC1.GVL_HMI.i_nCmd_ResetAlarm": 3,
+                "PLC1.GVL_HMI.i_nCmd_ResetSetting": 3,
                 "PLC1.GVL_HMI.i_nCoreCountForStarting": 3,
                 "PLC1.GVL_HMI.i_nCoreSwagingMode": 3,
                 "PLC1.GVL_HMI.i_nCylinder1ExtendedRunningTime": 3,

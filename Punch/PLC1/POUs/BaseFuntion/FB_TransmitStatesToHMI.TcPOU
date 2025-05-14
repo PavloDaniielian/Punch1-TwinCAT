@@ -44,6 +44,11 @@ GVL_HMI.i_bCyl7R := GVL_IO.DO_CYL7_R;
 GVL_HMI.i_bCyl8E := GVL_IO.DO_CYL8_E;
 GVL_HMI.i_bCyl8R := GVL_IO.DO_CYL8_R;
 
+// core swagging
+GVL_HMI.i_bECS := GVL_IO.DI_ECS;
+GVL_HMI.i_bEPD := GVL_IO.DI_EPD;
+GVL_HMI.i_bJLU := GVL_IO.DI_JLU;
+
 // Vibratory
 GVL_HMI.i_bPE1 := GVL_IO.DI_PE1;
 IF NOT GVL_HMI.i_bPE1 THEN
@@ -79,28 +84,6 @@ ELSE
 	GVL_IO.DO_LRed := FALSE;
 END_IF
 
-IF (GVL_HMI.i_nCylinder1State>=0) OR (GVL_HMI.i_nCylinder1State MOD 2 = 0) THEN
-	IF GVL_IO.DI_CYL1_E THEN GVL_HMI.i_nCylinder1State := 0; ELSIF GVL_IO.DI_CYL1_R THEN GVL_HMI.i_nCylinder1State := 2; END_IF
-END_IF
-IF (GVL_HMI.i_nCylinder2State>=0) OR (GVL_HMI.i_nCylinder2State MOD 2 = 0) THEN
-	IF GVL_IO.DI_CYL2_E THEN GVL_HMI.i_nCylinder2State := 0; ELSIF GVL_IO.DI_CYL2_R THEN GVL_HMI.i_nCylinder2State := 2; END_IF
-END_IF
-IF (GVL_HMI.i_nCylinder3State>=0) OR (GVL_HMI.i_nCylinder3State MOD 2 = 0) THEN
-	IF GVL_IO.DI_CYL3_E THEN GVL_HMI.i_nCylinder3State := 0; ELSIF GVL_IO.DI_CYL3_R THEN GVL_HMI.i_nCylinder3State := 2; END_IF
-END_IF
-IF (GVL_HMI.i_nCylinder4State>=0) OR (GVL_HMI.i_nCylinder4State MOD 2 = 0) THEN
-	IF GVL_IO.DI_CYL4_E THEN GVL_HMI.i_nCylinder4State := 0; ELSIF GVL_IO.DI_CYL4_R THEN GVL_HMI.i_nCylinder4State := 2; END_IF
-END_IF
-IF (GVL_HMI.i_nCylinder5State>=0) OR (GVL_HMI.i_nCylinder5State MOD 2 = 0) THEN
-	IF GVL_IO.DI_CYL5_E THEN GVL_HMI.i_nCylinder5State := 0; ELSIF GVL_IO.DI_CYL5_R THEN GVL_HMI.i_nCylinder5State := 2; END_IF
-END_IF
-IF (GVL_HMI.i_nCylinder6State>=0) OR (GVL_HMI.i_nCylinder6State MOD 2 = 0) THEN
-	IF GVL_IO.DI_CYL6_E THEN GVL_HMI.i_nCylinder6State := 0; ELSIF GVL_IO.DI_CYL6_R THEN GVL_HMI.i_nCylinder6State := 2; END_IF
-END_IF
-IF (GVL_HMI.i_nCylinder7State>=0) OR (GVL_HMI.i_nCylinder7State MOD 2 = 0) THEN
-	IF GVL_IO.DI_CYL7_E THEN GVL_HMI.i_nCylinder7State := 0; ELSIF GVL_IO.DI_CYL7_R THEN GVL_HMI.i_nCylinder7State := 2; END_IF
-END_IF
-
 ]]></ST>
     </Implementation>
     <LineIds Name="FB_TransmitStatesToHMI">
@@ -113,6 +96,9 @@ END_IF
       <LineId Id="134" Count="0" />
       <LineId Id="137" Count="16" />
       <LineId Id="136" Count="0" />
+      <LineId Id="163" Count="0" />
+      <LineId Id="162" Count="0" />
+      <LineId Id="164" Count="2" />
       <LineId Id="105" Count="0" />
       <LineId Id="104" Count="0" />
       <LineId Id="101" Count="2" />
@@ -122,16 +108,6 @@ END_IF
       <LineId Id="122" Count="0" />
       <LineId Id="124" Count="1" />
       <LineId Id="38" Count="8" />
-      <LineId Id="48" Count="0" />
-      <LineId Id="47" Count="0" />
-      <LineId Id="54" Count="0" />
-      <LineId Id="50" Count="0" />
-      <LineId Id="57" Count="2" />
-      <LineId Id="61" Count="2" />
-      <LineId Id="65" Count="2" />
-      <LineId Id="69" Count="2" />
-      <LineId Id="73" Count="2" />
-      <LineId Id="77" Count="2" />
       <LineId Id="28" Count="0" />
       <LineId Id="18" Count="0" />
     </LineIds>

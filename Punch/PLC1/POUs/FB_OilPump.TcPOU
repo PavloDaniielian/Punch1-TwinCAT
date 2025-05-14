@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.6">
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.11">
   <POU Name="FB_OilPump" Id="{eb1edbee-9a4b-4f1e-8695-a5d69ca2499b}" SpecialFunc="None">
     <Declaration><![CDATA[FUNCTION_BLOCK FB_OilPump
 VAR_INPUT
@@ -15,7 +15,7 @@ VAR
 	fCheckFeedback : FB_CheckFeedback;
 END_VAR]]></Declaration>
     <Implementation>
-      <ST><![CDATA[IF GVL_HMI.i_bReset THEN
+      <ST><![CDATA[IF GVL_HMI.i_nCmd_Reset = 2 THEN
 	IF 20 <= iState AND iState <= 29 THEN
 		iState := 0;
 	END_IF 

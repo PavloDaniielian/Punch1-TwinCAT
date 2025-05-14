@@ -1971,15 +1971,11 @@ External Setpoint Generation:
 		</Motion>
 		<Plc>
 			<Project GUID="{CFD6C91D-DCCB-4A04-A4E8-AEAB32F4ECE6}" Name="PLC1" PrjFilePath="PLC1\PLC1.plcproj" TmcFilePath="PLC1\PLC1.tmc" ReloadTmc="true" AmsPort="851" FileArchiveSettings="#x000e">
-				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcPath="PLC1\PLC1.tmc" TmcHash="{70A0B1C1-ACAF-E02D-9F26-F6F0C6A0925A}">
+				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcPath="PLC1\PLC1.tmc" TmcHash="{8B4BB46E-9F1C-79B4-118B-D19770FCC20C}">
 					<Name>PLC1 Instance</Name>
 					<CLSID ClassFactory="TcPlc30">{08500001-0000-0000-F000-000000000064}</CLSID>
 					<Vars VarGrpType="1">
 						<Name>PlcTask Inputs</Name>
-						<Var>
-							<Name>GVL_IO.AxisNumber.NcToPlc</Name>
-							<Type GUID="{10036166-C9D3-404B-BDD3-323034AAA7F4}" Namespace="MC">NCTOPLC_AXIS_REF</Type>
-						</Var>
 						<Var>
 							<Name>GVL_IO.DI_24VDC_CB_OK</Name>
 							<Type>BOOL</Type>
@@ -1991,6 +1987,10 @@ External Setpoint Generation:
 						<Var>
 							<Name>GVL_IO.DI_M1</Name>
 							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>GVL_IO.AxisNumber.NcToPlc</Name>
+							<Type GUID="{10036166-C9D3-404B-BDD3-323034AAA7F4}" Namespace="MC">NCTOPLC_AXIS_REF</Type>
 						</Var>
 						<Var>
 							<Name>GVL_IO.DI_LS1</Name>

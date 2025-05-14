@@ -14,6 +14,37 @@ END_VAR]]></Declaration>
     <Implementation>
       <ST><![CDATA[GVL_HMI.bSafeties := GVL_IO.DI_24VDC_CB_OK AND GVL_IO.DI_ESR1 AND GVL_IO.DI_LS1 AND GVL_IO.DI_TS1 AND GVL_IO.DI_PS1;
 
+// accept commands
+IF GVL_HMI.i_nCmd_ClearCount = 1 THEN GVL_HMI.i_nCmd_ClearCount := 2; END_IF
+IF GVL_HMI.i_nCmd_Reset = 1 THEN GVL_HMI.i_nCmd_Reset := 2; END_IF
+IF GVL_HMI.i_nCmd_ResetSetting = 1 THEN GVL_HMI.i_nCmd_ResetSetting := 2; END_IF
+IF GVL_HMI.i_nCmd_ResetAlarm = 1 THEN GVL_HMI.i_nCmd_ResetAlarm := 2; END_IF
+
+IF GVL_HMI.i_nCmd_ResetSetting = 2 THEN
+	GVL_HMI.i_nCoreSwagingMode:= 0;	// 0: Auto, 1: Manual
+	GVL_HMI.i_nCasingCountForStarting := GVL_InitialSetting.CASING_COUNT_FOR_STARTING;
+	GVL_HMI.i_nCoreCountForStarting := GVL_InitialSetting.CORE_COUNT_FOR_STARTING;
+	GVL_HMI.i_nPumpFeedbackCheckingTime := GVL_InitialSetting.PUMP_FeedbackCheckingTime; // ms
+	GVL_HMI.i_nCylinderFeedbackCheckingTime := GVL_InitialSetting.CYLINDER_FeedbackCheckingTime; // ms
+	GVL_HMI.i_nPCylinder1ExtendedRunningTime := GVL_InitialSetting.PCYLINDER1EXTENDED_RunningTime; // ms
+	GVL_HMI.i_nCylinder3ExtendedRunningTime := GVL_InitialSetting.CYLINDER3EXTENDED_RunningTime; // ms
+	GVL_HMI.i_nCylinder1ExtendedRunningTime := GVL_InitialSetting.CYLINDER1EXTENDED_RunningTime; // ms
+	GVL_HMI.i_nPCylinder1RetractedRunningTime := GVL_InitialSetting.PCYLINDER1RETRACTED_RunningTime; // ms
+	GVL_HMI.i_nCylinder3RetractedRunningTime := GVL_InitialSetting.CYLINDER3RETRACTED_RunningTime; // ms
+	GVL_HMI.i_nCylinder1RetractedRunningTime := GVL_InitialSetting.CYLINDER1RETRACTED_RunningTime; // ms
+	GVL_HMI.i_nPCylinder2ExtendedRunningTime := GVL_InitialSetting.PCYLINDER2EXTENDED_RunningTime; // ms
+	GVL_HMI.i_nCylinder4ExtendedRunningTime := GVL_InitialSetting.CYLINDER4EXTENDED_RunningTime; // ms
+	GVL_HMI.i_nCylinder2ExtendedRunningTime := GVL_InitialSetting.CYLINDER2EXTENDED_RunningTime; // ms
+	GVL_HMI.i_nCylinder4RetractedRunningTime := GVL_InitialSetting.CYLINDER4RETRACTED_RunningTime; // ms
+	GVL_HMI.i_nCylinder2RetractedRunningTime := GVL_InitialSetting.CYLINDER2RETRACTED_RunningTime; // ms
+	GVL_HMI.i_nPCylinder3ExtendedRunningTime := GVL_InitialSetting.PCYLINDER3EXTENDED_RunningTime; // ms
+	GVL_HMI.i_nPCylinder5ExtendedRunningTime := GVL_InitialSetting.PCYLINDER5EXTENDED_RunningTime; // ms
+	GVL_HMI.i_nPCylinder4ExtendedRunningTime := GVL_InitialSetting.PCYLINDER4EXTENDED_RunningTime; // ms
+	GVL_HMI.i_nPE4MaintainTime := GVL_InitialSetting.PE4_MaintainTime; // ms
+	GVL_HMI.i_nPCylinder6ExtendedRunningTime := GVL_InitialSetting.PCYLINDER6EXTENDED_RunningTime; // ms
+	GVL_HMI.i_nPE6MaintainTime := GVL_InitialSetting.PE6_MaintainTime; // ms
+END_IF
+
 fCoreSwaging();
 fOilPump();
 fCorePress();
@@ -22,19 +53,28 @@ fCoreVibratoryBowl2();
 
 fTransmitStatesToHMI();
 
-IF GVL_HMI.i_bReset THEN GVL_HMI.i_bReset := FALSE; END_IF
+// release commands
+IF GVL_HMI.i_nCmd_ClearCount = 2 THEN GVL_HMI.i_nCmd_ClearCount := 0; END_IF
+IF GVL_HMI.i_nCmd_Reset = 2 THEN GVL_HMI.i_nCmd_Reset := 0; END_IF
+IF GVL_HMI.i_nCmd_ResetSetting = 2 THEN GVL_HMI.i_nCmd_ResetSetting := 0; END_IF
+IF GVL_HMI.i_nCmd_ResetAlarm = 2 THEN GVL_HMI.i_nCmd_ResetAlarm := 0; END_IF
 ]]></ST>
     </Implementation>
     <LineIds Name="MAIN">
       <LineId Id="553" Count="0" />
+      <LineId Id="578" Count="0" />
+      <LineId Id="574" Count="0" />
+      <LineId Id="573" Count="0" />
+      <LineId Id="575" Count="2" />
+      <LineId Id="613" Count="23" />
+      <LineId Id="589" Count="0" />
       <LineId Id="552" Count="0" />
       <LineId Id="461" Count="1" />
       <LineId Id="451" Count="0" />
       <LineId Id="478" Count="1" />
       <LineId Id="549" Count="0" />
       <LineId Id="8" Count="0" />
-      <LineId Id="563" Count="0" />
-      <LineId Id="562" Count="0" />
+      <LineId Id="580" Count="5" />
       <LineId Id="444" Count="0" />
     </LineIds>
   </POU>

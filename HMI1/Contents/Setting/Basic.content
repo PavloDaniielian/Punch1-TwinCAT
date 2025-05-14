@@ -1,6 +1,6 @@
 <div id="Basic" data-tchmi-type="TcHmi.Controls.System.TcHmiContent" data-tchmi-top="0" data-tchmi-left="0" data-tchmi-width="770" data-tchmi-height="530">
 
-<div id="TcHmiSpinboxInput_22" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiSpinboxInput" data-tchmi-auto-focus-out="true" data-tchmi-decimal-digits="0" data-tchmi-height="50" data-tchmi-height-unit="px" data-tchmi-left="540" data-tchmi-left-unit="px" data-tchmi-max-value="50" data-tchmi-min-value="1" data-tchmi-reset-to-last-valid-value="true" data-tchmi-top="90" data-tchmi-top-unit="px" data-tchmi-value="5" data-tchmi-value-horizontal-alignment="Center" data-tchmi-width="175" data-tchmi-width-unit="px" data-tchmi-step="1" data-tchmi-value-font-size="30" data-tchmi-button-position="MinusLeftAndPlusRight">
+<div id="txtCasingCountForStarting" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiSpinboxInput" data-tchmi-auto-focus-out="true" data-tchmi-decimal-digits="0" data-tchmi-height="50" data-tchmi-height-unit="px" data-tchmi-left="540" data-tchmi-left-unit="px" data-tchmi-max-value="50" data-tchmi-min-value="1" data-tchmi-reset-to-last-valid-value="true" data-tchmi-top="90" data-tchmi-top-unit="px" data-tchmi-value="%s%PLC1.GVL_HMI.i_nCasingCountForStarting%/s%" data-tchmi-value-horizontal-alignment="Center" data-tchmi-width="175" data-tchmi-width-unit="px" data-tchmi-step="1" data-tchmi-value-font-size="30" data-tchmi-button-position="MinusLeftAndPlusRight">
 <script data-tchmi-target-attribute="data-tchmi-content-padding" type="application/json">
 {
   "top": 3,
@@ -10,12 +10,33 @@
 }
 </script>
 
+
+<script data-tchmi-target-attribute="data-tchmi-trigger" type="application/json">
+[
+  {
+    "event": "txtCasingCountForStarting.onValueChanged",
+    "actions": [
+      {
+        "objectType": "WriteToSymbol",
+        "active": true,
+        "symbolExpression": "%s%PLC1.GVL_HMI.i_nCasingCountForStarting%/s%",
+        "value": {
+          "objectType": "Symbol",
+          "valueType": "tchmi:general#/definitions/String",
+          "symbolExpression": "%ctrl%txtCasingCountForStarting::Value%/ctrl%"
+        },
+        "asyncWait": true
+      }
+    ]
+  }
+]
+</script>
 </div>
 <div id="lblDummyS_2" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiTextblock" data-tchmi-height="50" data-tchmi-height-unit="px" data-tchmi-left="0" data-tchmi-left-unit="px" data-tchmi-text="Casing Count For Starting" data-tchmi-top="90" data-tchmi-top-unit="px" data-tchmi-width="540" data-tchmi-width-unit="px" data-tchmi-word-wrap="true" data-tchmi-text-horizontal-alignment="Center" data-tchmi-text-font-size="30" data-tchmi-text-vertical-alignment="Center">
 </div>
 <div id="lblDummyS_3" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiTextblock" data-tchmi-height="50" data-tchmi-height-unit="px" data-tchmi-left="0" data-tchmi-left-unit="px" data-tchmi-text="Core Count For Starting" data-tchmi-top="165" data-tchmi-top-unit="px" data-tchmi-width="540" data-tchmi-width-unit="px" data-tchmi-word-wrap="true" data-tchmi-text-horizontal-alignment="Center" data-tchmi-text-font-size="30" data-tchmi-text-vertical-alignment="Center">
 </div>
-<div id="TcHmiSpinboxInput_1" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiSpinboxInput" data-tchmi-auto-focus-out="true" data-tchmi-decimal-digits="0" data-tchmi-height="50" data-tchmi-height-unit="px" data-tchmi-left="540" data-tchmi-left-unit="px" data-tchmi-max-value="50" data-tchmi-min-value="1" data-tchmi-reset-to-last-valid-value="true" data-tchmi-top="165" data-tchmi-top-unit="px" data-tchmi-value="5" data-tchmi-value-horizontal-alignment="Center" data-tchmi-width="175" data-tchmi-width-unit="px" data-tchmi-step="1" data-tchmi-value-font-size="30" data-tchmi-button-position="MinusLeftAndPlusRight">
+<div id="txtCoreCountForStarting" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiSpinboxInput" data-tchmi-auto-focus-out="true" data-tchmi-decimal-digits="0" data-tchmi-height="50" data-tchmi-height-unit="px" data-tchmi-left="540" data-tchmi-left-unit="px" data-tchmi-max-value="50" data-tchmi-min-value="1" data-tchmi-reset-to-last-valid-value="true" data-tchmi-top="165" data-tchmi-top-unit="px" data-tchmi-value="%s%PLC1.GVL_HMI.i_nCoreCountForStarting%/s%" data-tchmi-value-horizontal-alignment="Center" data-tchmi-width="175" data-tchmi-width-unit="px" data-tchmi-step="1" data-tchmi-value-font-size="30" data-tchmi-button-position="MinusLeftAndPlusRight">
 <script data-tchmi-target-attribute="data-tchmi-content-padding" type="application/json">
 {
   "top": 3,
@@ -25,10 +46,31 @@
 }
 </script>
 
+
+<script data-tchmi-target-attribute="data-tchmi-trigger" type="application/json">
+[
+  {
+    "event": "txtCoreCountForStarting.onValueChanged",
+    "actions": [
+      {
+        "objectType": "WriteToSymbol",
+        "active": true,
+        "symbolExpression": "%s%PLC1.GVL_HMI.i_nCoreCountForStarting%/s%",
+        "value": {
+          "objectType": "Symbol",
+          "valueType": "tchmi:general#/definitions/String",
+          "symbolExpression": "%ctrl%txtCoreCountForStarting::Value%/ctrl%"
+        },
+        "asyncWait": true
+      }
+    ]
+  }
+]
+</script>
 </div>
 <div id="lblDummyS_4" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiTextblock" data-tchmi-height="50" data-tchmi-height-unit="px" data-tchmi-left="0" data-tchmi-left-unit="px" data-tchmi-text="Pump Feedback Checking Time" data-tchmi-top="240" data-tchmi-top-unit="px" data-tchmi-width="540" data-tchmi-width-unit="px" data-tchmi-word-wrap="true" data-tchmi-text-horizontal-alignment="Center" data-tchmi-text-font-size="30" data-tchmi-text-vertical-alignment="Center">
 </div>
-<div id="TcHmiSpinboxInput_2" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiSpinboxInput" data-tchmi-auto-focus-out="true" data-tchmi-decimal-digits="0" data-tchmi-height="50" data-tchmi-height-unit="px" data-tchmi-left="540" data-tchmi-left-unit="px" data-tchmi-max-value="10000" data-tchmi-min-value="100" data-tchmi-reset-to-last-valid-value="true" data-tchmi-top="240" data-tchmi-top-unit="px" data-tchmi-value="2000" data-tchmi-value-horizontal-alignment="Center" data-tchmi-width="175" data-tchmi-width-unit="px" data-tchmi-step="100" data-tchmi-value-font-size="30" data-tchmi-button-position="MinusLeftAndPlusRight">
+<div id="txtPumpFeedbackCheckingTime" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiSpinboxInput" data-tchmi-auto-focus-out="true" data-tchmi-decimal-digits="0" data-tchmi-height="50" data-tchmi-height-unit="px" data-tchmi-left="540" data-tchmi-left-unit="px" data-tchmi-max-value="10000" data-tchmi-min-value="100" data-tchmi-reset-to-last-valid-value="true" data-tchmi-top="240" data-tchmi-top-unit="px" data-tchmi-value="%s%PLC1.GVL_HMI.i_nPumpFeedbackCheckingTime%/s%" data-tchmi-value-horizontal-alignment="Center" data-tchmi-width="175" data-tchmi-width-unit="px" data-tchmi-step="100" data-tchmi-value-font-size="30" data-tchmi-button-position="MinusLeftAndPlusRight">
 <script data-tchmi-target-attribute="data-tchmi-content-padding" type="application/json">
 {
   "top": 3,
@@ -38,12 +80,33 @@
 }
 </script>
 
+
+<script data-tchmi-target-attribute="data-tchmi-trigger" type="application/json">
+[
+  {
+    "event": "txtPumpFeedbackCheckingTime.onValueChanged",
+    "actions": [
+      {
+        "objectType": "WriteToSymbol",
+        "active": true,
+        "symbolExpression": "%s%PLC1.GVL_HMI.i_nPumpFeedbackCheckingTime%/s%",
+        "value": {
+          "objectType": "Symbol",
+          "valueType": "tchmi:general#/definitions/String",
+          "symbolExpression": "%ctrl%txtPumpFeedbackCheckingTime::Value%/ctrl%"
+        },
+        "asyncWait": true
+      }
+    ]
+  }
+]
+</script>
 </div>
 <div id="lblDummySUnit_1" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiTextblock" data-tchmi-height="50" data-tchmi-height-unit="px" data-tchmi-left="715" data-tchmi-left-unit="px" data-tchmi-text="ms" data-tchmi-top="240" data-tchmi-top-unit="px" data-tchmi-width="55" data-tchmi-width-unit="px" data-tchmi-word-wrap="true" data-tchmi-text-font-size="30" data-tchmi-text-horizontal-alignment="Center" data-tchmi-text-vertical-alignment="Center">
 </div>
 <div id="lblDummyS_5" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiTextblock" data-tchmi-height="50" data-tchmi-height-unit="px" data-tchmi-left="0" data-tchmi-left-unit="px" data-tchmi-text="Cylinder Feedback Checking Time" data-tchmi-top="315" data-tchmi-top-unit="px" data-tchmi-width="540" data-tchmi-width-unit="px" data-tchmi-word-wrap="true" data-tchmi-text-horizontal-alignment="Center" data-tchmi-text-font-size="30" data-tchmi-text-vertical-alignment="Center">
 </div>
-<div id="TcHmiSpinboxInput_3" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiSpinboxInput" data-tchmi-auto-focus-out="true" data-tchmi-decimal-digits="0" data-tchmi-height="50" data-tchmi-height-unit="px" data-tchmi-left="540" data-tchmi-left-unit="px" data-tchmi-max-value="10000" data-tchmi-min-value="100" data-tchmi-reset-to-last-valid-value="true" data-tchmi-top="315" data-tchmi-top-unit="px" data-tchmi-value="3000" data-tchmi-value-horizontal-alignment="Center" data-tchmi-width="175" data-tchmi-width-unit="px" data-tchmi-step="100" data-tchmi-value-font-size="30" data-tchmi-button-position="MinusLeftAndPlusRight">
+<div id="txtCylFeedbackCheckingTime" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiSpinboxInput" data-tchmi-auto-focus-out="true" data-tchmi-decimal-digits="0" data-tchmi-height="50" data-tchmi-height-unit="px" data-tchmi-left="540" data-tchmi-left-unit="px" data-tchmi-max-value="10000" data-tchmi-min-value="100" data-tchmi-reset-to-last-valid-value="true" data-tchmi-top="315" data-tchmi-top-unit="px" data-tchmi-value="%s%PLC1.GVL_HMI.i_nCylinderFeedbackCheckingTime%/s%" data-tchmi-value-horizontal-alignment="Center" data-tchmi-width="175" data-tchmi-width-unit="px" data-tchmi-step="100" data-tchmi-value-font-size="30" data-tchmi-button-position="MinusLeftAndPlusRight">
 <script data-tchmi-target-attribute="data-tchmi-content-padding" type="application/json">
 {
   "top": 3,
@@ -53,12 +116,33 @@
 }
 </script>
 
+
+<script data-tchmi-target-attribute="data-tchmi-trigger" type="application/json">
+[
+  {
+    "event": "txtCylFeedbackCheckingTime.onValueChanged",
+    "actions": [
+      {
+        "objectType": "WriteToSymbol",
+        "active": true,
+        "symbolExpression": "%s%PLC1.GVL_HMI.i_nCylinderFeedbackCheckingTime%/s%",
+        "value": {
+          "objectType": "Symbol",
+          "valueType": "tchmi:general#/definitions/String",
+          "symbolExpression": "%ctrl%txtCylFeedbackCheckingTime::Value%/ctrl%"
+        },
+        "asyncWait": true
+      }
+    ]
+  }
+]
+</script>
 </div>
 <div id="lblDummySUnit_2" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiTextblock" data-tchmi-height="50" data-tchmi-height-unit="px" data-tchmi-left="715" data-tchmi-left-unit="px" data-tchmi-text="ms" data-tchmi-top="315" data-tchmi-top-unit="px" data-tchmi-width="55" data-tchmi-width-unit="px" data-tchmi-word-wrap="true" data-tchmi-text-font-size="30" data-tchmi-text-horizontal-alignment="Center" data-tchmi-text-vertical-alignment="Center">
 </div>
 <div id="lblDummyS_6" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiTextblock" data-tchmi-height="75" data-tchmi-height-unit="px" data-tchmi-left="0" data-tchmi-left-unit="px" data-tchmi-text="Vibratory Bowl 1 Product High Level\n Maintain Time" data-tchmi-top="375" data-tchmi-top-unit="px" data-tchmi-width="540" data-tchmi-width-unit="px" data-tchmi-word-wrap="true" data-tchmi-text-horizontal-alignment="Center" data-tchmi-text-font-size="30" data-tchmi-text-vertical-alignment="Center">
 </div>
-<div id="TcHmiSpinboxInput_4" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiSpinboxInput" data-tchmi-auto-focus-out="true" data-tchmi-decimal-digits="0" data-tchmi-height="50" data-tchmi-height-unit="px" data-tchmi-left="540" data-tchmi-left-unit="px" data-tchmi-max-value="500" data-tchmi-min-value="0" data-tchmi-reset-to-last-valid-value="true" data-tchmi-top="390" data-tchmi-top-unit="px" data-tchmi-value="100" data-tchmi-value-horizontal-alignment="Center" data-tchmi-width="175" data-tchmi-width-unit="px" data-tchmi-step="10" data-tchmi-value-font-size="30" data-tchmi-button-position="MinusLeftAndPlusRight">
+<div id="txtPE4MaintainTime" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiSpinboxInput" data-tchmi-auto-focus-out="true" data-tchmi-decimal-digits="0" data-tchmi-height="50" data-tchmi-height-unit="px" data-tchmi-left="540" data-tchmi-left-unit="px" data-tchmi-max-value="500" data-tchmi-min-value="0" data-tchmi-reset-to-last-valid-value="true" data-tchmi-top="390" data-tchmi-top-unit="px" data-tchmi-value="%s%PLC1.GVL_HMI.i_nPE4MaintainTime%/s%" data-tchmi-value-horizontal-alignment="Center" data-tchmi-width="175" data-tchmi-width-unit="px" data-tchmi-step="10" data-tchmi-value-font-size="30" data-tchmi-button-position="MinusLeftAndPlusRight">
 <script data-tchmi-target-attribute="data-tchmi-content-padding" type="application/json">
 {
   "top": 3,
@@ -68,12 +152,33 @@
 }
 </script>
 
+
+<script data-tchmi-target-attribute="data-tchmi-trigger" type="application/json">
+[
+  {
+    "event": "txtPE4MaintainTime.onValueChanged",
+    "actions": [
+      {
+        "objectType": "WriteToSymbol",
+        "active": true,
+        "symbolExpression": "%s%PLC1.GVL_HMI.i_nPE4MaintainTime%/s%",
+        "value": {
+          "objectType": "Symbol",
+          "valueType": "tchmi:general#/definitions/String",
+          "symbolExpression": "%ctrl%txtPE4MaintainTime::Value%/ctrl%"
+        },
+        "asyncWait": true
+      }
+    ]
+  }
+]
+</script>
 </div>
 <div id="lblDummySUnit_3" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiTextblock" data-tchmi-height="50" data-tchmi-height-unit="px" data-tchmi-left="715" data-tchmi-left-unit="px" data-tchmi-text="ms" data-tchmi-top="390" data-tchmi-top-unit="px" data-tchmi-width="55" data-tchmi-width-unit="px" data-tchmi-word-wrap="true" data-tchmi-text-font-size="30" data-tchmi-text-horizontal-alignment="Center" data-tchmi-text-vertical-alignment="Center">
 </div>
 <div id="lblDummyS_7" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiTextblock" data-tchmi-height="75" data-tchmi-height-unit="px" data-tchmi-left="0" data-tchmi-left-unit="px" data-tchmi-text="Vibratory Bowl 2 Product High Level\n Maintain Time" data-tchmi-top="450" data-tchmi-top-unit="px" data-tchmi-width="540" data-tchmi-width-unit="px" data-tchmi-word-wrap="true" data-tchmi-text-horizontal-alignment="Center" data-tchmi-text-font-size="30" data-tchmi-text-vertical-alignment="Center">
 </div>
-<div id="TcHmiSpinboxInput_5" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiSpinboxInput" data-tchmi-auto-focus-out="true" data-tchmi-decimal-digits="0" data-tchmi-height="50" data-tchmi-height-unit="px" data-tchmi-left="540" data-tchmi-left-unit="px" data-tchmi-max-value="500" data-tchmi-min-value="0" data-tchmi-reset-to-last-valid-value="true" data-tchmi-top="465" data-tchmi-top-unit="px" data-tchmi-value="100" data-tchmi-value-horizontal-alignment="Center" data-tchmi-width="175" data-tchmi-width-unit="px" data-tchmi-step="10" data-tchmi-value-font-size="30" data-tchmi-button-position="MinusLeftAndPlusRight">
+<div id="txtPE6MaintainTime" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiSpinboxInput" data-tchmi-auto-focus-out="true" data-tchmi-decimal-digits="0" data-tchmi-height="50" data-tchmi-height-unit="px" data-tchmi-left="540" data-tchmi-left-unit="px" data-tchmi-max-value="500" data-tchmi-min-value="0" data-tchmi-reset-to-last-valid-value="true" data-tchmi-top="465" data-tchmi-top-unit="px" data-tchmi-value="%s%PLC1.GVL_HMI.i_nPE6MaintainTime%/s%" data-tchmi-value-horizontal-alignment="Center" data-tchmi-width="175" data-tchmi-width-unit="px" data-tchmi-step="10" data-tchmi-value-font-size="30" data-tchmi-button-position="MinusLeftAndPlusRight">
 <script data-tchmi-target-attribute="data-tchmi-content-padding" type="application/json">
 {
   "top": 3,
@@ -83,6 +188,27 @@
 }
 </script>
 
+
+<script data-tchmi-target-attribute="data-tchmi-trigger" type="application/json">
+[
+  {
+    "event": "txtPE6MaintainTime.onValueChanged",
+    "actions": [
+      {
+        "objectType": "WriteToSymbol",
+        "active": true,
+        "symbolExpression": "%s%PLC1.GVL_HMI.i_nPE6MaintainTime%/s%",
+        "value": {
+          "objectType": "Symbol",
+          "valueType": "tchmi:general#/definitions/String",
+          "symbolExpression": "%ctrl%txtPE6MaintainTime::Value%/ctrl%"
+        },
+        "asyncWait": true
+      }
+    ]
+  }
+]
+</script>
 </div>
 <div id="lblDummySUnit_4" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiTextblock" data-tchmi-height="50" data-tchmi-height-unit="px" data-tchmi-left="715" data-tchmi-left-unit="px" data-tchmi-text="ms" data-tchmi-top="465" data-tchmi-top-unit="px" data-tchmi-width="55" data-tchmi-width-unit="px" data-tchmi-word-wrap="true" data-tchmi-text-font-size="30" data-tchmi-text-horizontal-alignment="Center" data-tchmi-text-vertical-alignment="Center">
 </div>
@@ -104,7 +230,7 @@
   {
     "id": 0.0,
     "text": "Auto",
-    "value": false
+    "value": true
   },
   {
     "id": 1.0,
@@ -115,5 +241,26 @@
 </script>
 
 
+
+<script data-tchmi-target-attribute="data-tchmi-trigger" type="application/json">
+[
+  {
+    "event": "cmbSwaggingMode.onTextChanged",
+    "actions": [
+      {
+        "objectType": "WriteToSymbol",
+        "active": true,
+        "symbolExpression": "%s%PLC1.GVL_HMI.i_nCoreSwagingMode%/s%",
+        "value": {
+          "objectType": "Symbol",
+          "valueType": "tchmi:general#/definitions/String",
+          "symbolExpression": "%ctrl%cmbSwaggingMode::SelectedIndex%/ctrl%"
+        },
+        "asyncWait": true
+      }
+    ]
+  }
+]
+</script>
 </div>
 </div>

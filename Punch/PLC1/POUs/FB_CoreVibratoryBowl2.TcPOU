@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.6">
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.11">
   <POU Name="FB_CoreVibratoryBowl2" Id="{38cac3bb-8f58-4f28-bdcd-b1cc47d57b4f}" SpecialFunc="None">
     <Declaration><![CDATA[FUNCTION_BLOCK FB_CoreVibratoryBowl2
 VAR
@@ -10,7 +10,11 @@ VAR
 	DelayTimer2 : TON;
 END_VAR]]></Declaration>
     <Implementation>
-      <ST><![CDATA[CASE iState OF
+      <ST><![CDATA[IF GVL_HMI.i_nCmd_ClearCount = 2 THEN
+	GVL_HMI.nCoreCount := 0;
+END_IF
+
+CASE iState OF
     0: (* Idle/Off *)
 		iState := 10;
 	
@@ -89,6 +93,7 @@ END_IF]]></ST>
       </Implementation>
     </Method>
     <LineIds Name="FB_CoreVibratoryBowl2">
+      <LineId Id="264" Count="3" />
       <LineId Id="172" Count="21" />
       <LineId Id="254" Count="0" />
       <LineId Id="194" Count="0" />

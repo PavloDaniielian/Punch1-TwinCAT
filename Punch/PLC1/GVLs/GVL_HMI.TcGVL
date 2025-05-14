@@ -11,10 +11,13 @@
 	bSafeties :BOOL := TRUE;
 	
 	// signals from HMI
-	i_nCoreSwagingMode: INT := 0;	// 0: Auto, 1: Manual
-	i_bReset : BOOL := FALSE;	// reset
+	i_nCmd_Reset : SINT := 0;	// reset Alarm; 0:NoAction, 1:Act, 2:AcceptToAct
+	i_nCmd_ClearCount : SINT := 0;	// clear casing count and core count; 0:NoAction, 1:Act, 2:AcceptToAct
+	i_nCmd_ResetSetting : SINT := 0;	// reset setting; 0:NoAction, 1:Act, 2:AcceptToAct
+	i_nCmd_ResetAlarm : SINT := 0;	// reset Alarm; 0:NoAction, 1:Act, 2:AcceptToAct
 	
 		// settings
+	i_nCoreSwagingMode: INT := 0;	// 0: Auto, 1: Manual
 	i_nCasingCountForStarting : INT := GVL_InitialSetting.CASING_COUNT_FOR_STARTING;
 	i_nCoreCountForStarting : INT := GVL_InitialSetting.CORE_COUNT_FOR_STARTING;
 	i_nPumpFeedbackCheckingTime : INT := GVL_InitialSetting.PUMP_FeedbackCheckingTime; // ms
@@ -57,19 +60,24 @@
 	i_bCyl8E : BOOL := FALSE;
 	i_bCyl8R : BOOL := FALSE;
 	
+	// core swagging
+	i_bECS : BOOL := FALSE;
+	i_bEPD : BOOL := FALSE;
+	i_bJLU : BOOL := FALSE;
+	
 	// pump
-	i_nPumpState : INT := -2; // -2: InitialState, -1:Faulted, 0:Stop, 2:Running
+	i_nPumpState : SINT := 0; // 0: InitialState, -1:Faulted, 1: StartingToRun, 2:Running, 3:Stopping, 4:Stopped
 	// cylinders
-	i_nCylinder1State : INT := -2; // -2: InitialState, -1:Faulted, 0:Extended, 1:Retracting, 2: Retracted, 3:Extending
-	i_nCylinder2State : INT := -2; // -2: InitialState, -1:Faulted, 0:Extended, 1:Retracting, 2: Retracted, 3:Extending
-	i_nCylinder3State : INT := -2; // -2: InitialState, -1:Faulted, 0:Extended, 1:Retracting, 2: Retracted, 3:Extending
-	i_nCylinder4State : INT := -2; // -2: InitialState, -1:Faulted, 0:Extended, 1:Retracting, 2: Retracted, 3:Extending
-	i_nCylinder5State : INT := -2; // -2: InitialState, -1:Faulted, 0:Extended, 1:Retracting, 2: Retracted, 3:Extending
-	i_nCylinder6State : INT := -2; // -2: InitialState, -1:Faulted, 0:Extended, 1:Retracting, 2: Retracted, 3:Extending
-	i_nCylinder7State : INT := -2; // -2: InitialState, -1:Faulted, 0:Extended, 1:Retracting, 2: Retracted, 3:Extending
-	i_nCylinder8State : INT := -2; // -2: InitialState, -1:Faulted, 0:Extended, 1:Retracting, 2: Retracted, 3:Extending
-	i_nPCylinder1State : INT := -2; // -2: InitialState, -1:Faulted, 0:Extended, 1:Retracting, 2: Retracted, 3:Extending
-	i_nPCylinder2State : INT := -2; // -2: InitialState, -1:Faulted, 0:Extended, 1:Retracting, 2: Retracted, 3:Extending
+	i_nCylinder1State : SINT := 0; // 0: InitialState, -3: FaultedWhileRetracting, -1: FaultedWhileExtending, 1: Extending, 2:Extended, 3:Retracting, 4: Retracted
+	i_nCylinder2State : SINT := 0; // 0: InitialState, -3: FaultedWhileRetracting, -1: FaultedWhileExtending, 1: Extending, 2:Extended, 3:Retracting, 4: Retracted
+	i_nCylinder3State : SINT := 0; // 0: InitialState, -3: FaultedWhileRetracting, -1: FaultedWhileExtending, 1: Extending, 2:Extended, 3:Retracting, 4: Retracted
+	i_nCylinder4State : SINT := 0; // 0: InitialState, -3: FaultedWhileRetracting, -1: FaultedWhileExtending, 1: Extending, 2:Extended, 3:Retracting, 4: Retracted
+	i_nCylinder5State : SINT := 0; // 0: InitialState, -3: FaultedWhileRetracting, -1: FaultedWhileExtending, 1: Extending, 2:Extended, 3:Retracting, 4: Retracted
+	i_nCylinder6State : SINT := 0; // 0: InitialState, -3: FaultedWhileRetracting, -1: FaultedWhileExtending, 1: Extending, 2:Extended, 3:Retracting, 4: Retracted
+	i_nCylinder7State : SINT := 0; // 0: InitialState, -3: FaultedWhileRetracting, -1: FaultedWhileExtending, 1: Extending, 2:Extended, 3:Retracting, 4: Retracted
+	i_nCylinder8State : SINT := 0; // 0: InitialState, -3: FaultedWhileRetracting, -1: FaultedWhileExtending, 1: Extending, 2:Extended, 3:Retracting, 4: Retracted
+	i_nPCylinder1State : SINT := 0; // 0: InitialState, -3: FaultedWhileRetracting, -1: FaultedWhileExtending, 1: Extending, 2:Extended, 3:Retracting, 4: Retracted
+	i_nPCylinder2State : SINT := 0; // 0: InitialState, -3: FaultedWhileRetracting, -1: FaultedWhileExtending, 1: Extending, 2:Extended, 3:Retracting, 4: Retracted
 	
 	// Vibratory
 	i_bPE1 : BOOL := FALSE;

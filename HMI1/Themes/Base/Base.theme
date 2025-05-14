@@ -37,6 +37,14 @@
       },
       "themedResources": {}
     },
+    "StateInit": {
+      "attributes": {
+        "BackgroundColor": {
+          "color": "None"
+        }
+      },
+      "themedResources": {}
+    },
     "StateNormal": {
       "attributes": {
         "BackgroundColor": {
@@ -79,10 +87,18 @@
       },
       "themedResources": {}
     },
-    "StateInit": {
+    "CylinderExtending": {
       "attributes": {
         "BackgroundColor": {
-          "color": "None"
+          "color": "rgba(0, 255, 0, 1)"
+        }
+      },
+      "themedResources": {}
+    },
+    "CylinderRetracting": {
+      "attributes": {
+        "BackgroundColor": {
+          "color": "rgba(128, 128, 128, 1)"
         }
       },
       "themedResources": {}

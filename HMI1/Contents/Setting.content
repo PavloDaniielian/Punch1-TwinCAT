@@ -9,30 +9,15 @@
     "event": "btnResetCore.onPressed",
     "actions": [
       {
-        "objectType": "JavaScript",
+        "objectType": "WriteToSymbol",
         "active": true,
-        "sourceLines": [
-          "TcHmi.Controls.Helpers.showMessage(",
-          "    'Reset Confirmation', ",
-          "    'Will you really reset this machine?', ",
-          "    TcHmi.Controls.Helpers.MessageBoxButton.YesNo, ",
-          "    TcHmi.Controls.Helpers.MessageBoxIcon.Question, ",
-          "    function(result) {",
-          "        if (result === 'Yes') {",
-          "            // Set the reset variable to TRUE in PLC",
-          "            TcHmi.Symbol.writeEx('PLC1.GVL_HMI.i_bReset', true, function(data) {",
-          "                if (data.error === TcHmi.Errors.NONE) {",
-          "                    console.log('Reset signal sent.');",
-          "                }",
-          "            });",
-          "        }",
-          "    }",
-          ");",
-          ""
-        ],
-        "injectContextObject": true,
-        "asyncWait": true,
-        "waitMode": "Asynchronous"
+        "symbolExpression": "%s%PLC1.GVL_HMI.i_nCmd_ResetAlarm%/s%",
+        "value": {
+          "objectType": "StaticValue",
+          "valueType": "tchmi:general#/definitions/SINT",
+          "value": 1
+        },
+        "asyncWait": true
       }
     ]
   }
