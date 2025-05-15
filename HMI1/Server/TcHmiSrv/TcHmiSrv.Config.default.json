@@ -3505,6 +3505,278 @@
             },
             "USEMAPPING": true
         },
+        "PLC1.GVL_HMI.nAlarmCS_10_ECS": {
+            "ACCESS": 3,
+            "DOMAIN": "ADS",
+            "DYNAMIC": true,
+            "MAPPING": "PLC1::GVL_HMI::nAlarmCS_10_ECS",
+            "SCHEMA": {
+                "allOf": [
+                    {
+                        "$ref": "tchmi:general#/definitions/SINT"
+                    },
+                    {
+                        "comment": "0: Init, 1: On, -1: Off"
+                    }
+                ]
+            },
+            "USEMAPPING": true
+        },
+        "PLC1.GVL_HMI.nAlarmCS_10_Pump": {
+            "ACCESS": 3,
+            "DOMAIN": "ADS",
+            "DYNAMIC": true,
+            "MAPPING": "PLC1::GVL_HMI::nAlarmCS_10_Pump",
+            "SCHEMA": {
+                "allOf": [
+                    {
+                        "$ref": "tchmi:general#/definitions/SINT"
+                    },
+                    {
+                        "comment": "0: Init, 1: OK, -1: Fail"
+                    }
+                ]
+            },
+            "USEMAPPING": true
+        },
+        "PLC1.GVL_HMI.nAlarmCS_20_HC6E": {
+            "ACCESS": 3,
+            "DOMAIN": "ADS",
+            "DYNAMIC": true,
+            "MAPPING": "PLC1::GVL_HMI::nAlarmCS_20_HC6E",
+            "SCHEMA": {
+                "allOf": [
+                    {
+                        "$ref": "tchmi:general#/definitions/SINT"
+                    },
+                    {
+                        "comment": "0: Init, 1: OK, -1: Fail"
+                    }
+                ]
+            },
+            "USEMAPPING": true
+        },
+        "PLC1.GVL_HMI.nAlarmCS_21_HC5R": {
+            "ACCESS": 3,
+            "DOMAIN": "ADS",
+            "DYNAMIC": true,
+            "MAPPING": "PLC1::GVL_HMI::nAlarmCS_21_HC5R",
+            "SCHEMA": {
+                "allOf": [
+                    {
+                        "$ref": "tchmi:general#/definitions/SINT"
+                    },
+                    {
+                        "comment": "0: Init, 1: OK, -1: Fail"
+                    }
+                ]
+            },
+            "USEMAPPING": true
+        },
+        "PLC1.GVL_HMI.nAlarmCS_30_HC7R": {
+            "ACCESS": 3,
+            "DOMAIN": "ADS",
+            "DYNAMIC": true,
+            "MAPPING": "PLC1::GVL_HMI::nAlarmCS_30_HC7R",
+            "SCHEMA": {
+                "allOf": [
+                    {
+                        "$ref": "tchmi:general#/definitions/SINT"
+                    },
+                    {
+                        "comment": "0: Init, 1: OK, -1: Fail"
+                    }
+                ]
+            },
+            "USEMAPPING": true
+        },
+        "PLC1.GVL_HMI.nAlarmCS_40_PE5": {
+            "ACCESS": 3,
+            "DOMAIN": "ADS",
+            "DYNAMIC": true,
+            "MAPPING": "PLC1::GVL_HMI::nAlarmCS_40_PE5",
+            "SCHEMA": {
+                "allOf": [
+                    {
+                        "$ref": "tchmi:general#/definitions/SINT"
+                    },
+                    {
+                        "comment": "0: Init, 1: On, -1: Off"
+                    }
+                ]
+            },
+            "USEMAPPING": true
+        },
+        "PLC1.GVL_HMI.nAlarmCS_50_HC7E": {
+            "ACCESS": 3,
+            "DOMAIN": "ADS",
+            "DYNAMIC": true,
+            "MAPPING": "PLC1::GVL_HMI::nAlarmCS_50_HC7E",
+            "SCHEMA": {
+                "allOf": [
+                    {
+                        "$ref": "tchmi:general#/definitions/SINT"
+                    },
+                    {
+                        "comment": "0: Init, 1: OK, -1: Fail"
+                    }
+                ]
+            },
+            "USEMAPPING": true
+        },
+        "PLC1.GVL_HMI.nAlarmCS_60_HC6R": {
+            "ACCESS": 3,
+            "DOMAIN": "ADS",
+            "DYNAMIC": true,
+            "MAPPING": "PLC1::GVL_HMI::nAlarmCS_60_HC6R",
+            "SCHEMA": {
+                "allOf": [
+                    {
+                        "$ref": "tchmi:general#/definitions/SINT"
+                    },
+                    {
+                        "comment": "0: Init, 1: OK, -1: Fail"
+                    }
+                ]
+            },
+            "USEMAPPING": true
+        },
+        "PLC1.GVL_HMI.nAlarmCS_70_HC5E": {
+            "ACCESS": 3,
+            "DOMAIN": "ADS",
+            "DYNAMIC": true,
+            "MAPPING": "PLC1::GVL_HMI::nAlarmCS_70_HC5E",
+            "SCHEMA": {
+                "allOf": [
+                    {
+                        "$ref": "tchmi:general#/definitions/SINT"
+                    },
+                    {
+                        "comment": "0: Init, 1: OK, -1: Fail"
+                    }
+                ]
+            },
+            "USEMAPPING": true
+        },
+        "PLC1.GVL_HMI.nAlarmCS_80_HC5R": {
+            "ACCESS": 3,
+            "DOMAIN": "ADS",
+            "DYNAMIC": true,
+            "MAPPING": "PLC1::GVL_HMI::nAlarmCS_80_HC5R",
+            "SCHEMA": {
+                "allOf": [
+                    {
+                        "$ref": "tchmi:general#/definitions/SINT"
+                    },
+                    {
+                        "comment": "0: Init, 1: OK, -1: Fail"
+                    }
+                ]
+            },
+            "USEMAPPING": true
+        },
+        "PLC1.GVL_HMI.nAlarmS_24DC": {
+            "ACCESS": 3,
+            "DOMAIN": "ADS",
+            "DYNAMIC": true,
+            "MAPPING": "PLC1::GVL_HMI::nAlarmS_24DC",
+            "SCHEMA": {
+                "allOf": [
+                    {
+                        "$ref": "tchmi:general#/definitions/SINT"
+                    },
+                    {
+                        "comment": "0: Init, 1: OK, -1: Fail"
+                    }
+                ]
+            },
+            "USEMAPPING": true
+        },
+        "PLC1.GVL_HMI.nAlarmS_ESR1": {
+            "ACCESS": 3,
+            "DOMAIN": "ADS",
+            "DYNAMIC": true,
+            "MAPPING": "PLC1::GVL_HMI::nAlarmS_ESR1",
+            "SCHEMA": {
+                "allOf": [
+                    {
+                        "$ref": "tchmi:general#/definitions/SINT"
+                    },
+                    {
+                        "comment": "0: Init, 1: OK, -1: Fail"
+                    }
+                ]
+            },
+            "USEMAPPING": true
+        },
+        "PLC1.GVL_HMI.nAlarmS_LS1": {
+            "ACCESS": 3,
+            "DOMAIN": "ADS",
+            "DYNAMIC": true,
+            "MAPPING": "PLC1::GVL_HMI::nAlarmS_LS1",
+            "SCHEMA": {
+                "allOf": [
+                    {
+                        "$ref": "tchmi:general#/definitions/SINT"
+                    },
+                    {
+                        "comment": "0: Init, 1: OK, -1: Fail"
+                    }
+                ]
+            },
+            "USEMAPPING": true
+        },
+        "PLC1.GVL_HMI.nAlarmS_PS1": {
+            "ACCESS": 3,
+            "DOMAIN": "ADS",
+            "DYNAMIC": true,
+            "MAPPING": "PLC1::GVL_HMI::nAlarmS_PS1",
+            "SCHEMA": {
+                "allOf": [
+                    {
+                        "$ref": "tchmi:general#/definitions/SINT"
+                    },
+                    {
+                        "comment": "0: Init, 1: OK, -1: Fail"
+                    }
+                ]
+            },
+            "USEMAPPING": true
+        },
+        "PLC1.GVL_HMI.nAlarmS_TS1": {
+            "ACCESS": 3,
+            "DOMAIN": "ADS",
+            "DYNAMIC": true,
+            "MAPPING": "PLC1::GVL_HMI::nAlarmS_TS1",
+            "SCHEMA": {
+                "allOf": [
+                    {
+                        "$ref": "tchmi:general#/definitions/SINT"
+                    },
+                    {
+                        "comment": "0: Init, 1: OK, -1: Fail"
+                    }
+                ]
+            },
+            "USEMAPPING": true
+        },
+        "PLC1.GVL_HMI.nAlarmSafeties": {
+            "ACCESS": 3,
+            "DOMAIN": "ADS",
+            "DYNAMIC": true,
+            "MAPPING": "PLC1::GVL_HMI::nAlarmSafeties",
+            "SCHEMA": {
+                "allOf": [
+                    {
+                        "$ref": "tchmi:general#/definitions/SINT"
+                    },
+                    {
+                        "comment": "0: Init, 1: OK, -1: Fail"
+                    }
+                ]
+            },
+            "USEMAPPING": true
+        },
         "PLC1.GVL_HMI.nCasingCount": {
             "ACCESS": 3,
             "DOMAIN": "ADS",
@@ -4564,6 +4836,23 @@
                 "PLC1.GVL_HMI.i_nPumpState": 3,
                 "PLC1.GVL_HMI.i_rPT1": 3,
                 "PLC1.GVL_HMI.i_rPT2": 3,
+                "PLC1.GVL_HMI.nAlarmCS_10_ECS": 3,
+                "PLC1.GVL_HMI.nAlarmCS_10_Pump": 3,
+                "PLC1.GVL_HMI.nAlarmCS_20_HC6E": 3,
+                "PLC1.GVL_HMI.nAlarmCS_21_HC5R": 3,
+                "PLC1.GVL_HMI.nAlarmCS_24DC": 3,
+                "PLC1.GVL_HMI.nAlarmCS_30_HC7R": 3,
+                "PLC1.GVL_HMI.nAlarmCS_40_PE5": 3,
+                "PLC1.GVL_HMI.nAlarmCS_50_HC7E": 3,
+                "PLC1.GVL_HMI.nAlarmCS_60_HC6R": 3,
+                "PLC1.GVL_HMI.nAlarmCS_70_HC5E": 3,
+                "PLC1.GVL_HMI.nAlarmCS_80_HC5R": 3,
+                "PLC1.GVL_HMI.nAlarmS_24DC": 3,
+                "PLC1.GVL_HMI.nAlarmS_ESR1": 3,
+                "PLC1.GVL_HMI.nAlarmS_LS1": 3,
+                "PLC1.GVL_HMI.nAlarmS_PS1": 3,
+                "PLC1.GVL_HMI.nAlarmS_TS1": 3,
+                "PLC1.GVL_HMI.nAlarmSafeties": 3,
                 "PLC1.GVL_HMI.nCasingCount": 3,
                 "PLC1.GVL_HMI.nCoreCount": 3,
                 "PLC1.GVL_HMI.nProductCount": 3,

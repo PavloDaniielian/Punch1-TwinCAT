@@ -3,6 +3,7 @@
   <POU Name="MAIN" Id="{a9276fae-2b8f-4b86-a5ea-ccb7b5233763}" SpecialFunc="None">
     <Declaration><![CDATA[PROGRAM Main
 VAR
+	fSetAlarm : FB_SetAlarm;
 	fCoreSwaging: FB_CoreSwaging;
     fOilPump: FB_OilPump;
     fCorePress: FB_CorePress;
@@ -10,6 +11,8 @@ VAR
     fCoreVibratoryBowl2: FB_CoreVibratoryBowl2;
 	fTransmitStatesToHMI: FB_TransmitStatesToHMI;
 
+	pAlarm : POINTER TO SINT;
+	i : INT;
 END_VAR]]></Declaration>
     <Implementation>
       <ST><![CDATA[GVL_HMI.bSafeties := GVL_IO.DI_24VDC_CB_OK AND GVL_IO.DI_ESR1 AND GVL_IO.DI_LS1 AND GVL_IO.DI_TS1 AND GVL_IO.DI_PS1;
@@ -20,6 +23,21 @@ IF GVL_HMI.i_nCmd_Reset = 1 THEN GVL_HMI.i_nCmd_Reset := 2; END_IF
 IF GVL_HMI.i_nCmd_ResetSetting = 1 THEN GVL_HMI.i_nCmd_ResetSetting := 2; END_IF
 IF GVL_HMI.i_nCmd_ResetAlarm = 1 THEN GVL_HMI.i_nCmd_ResetAlarm := 2; END_IF
 
+// reset alarm
+IF GVL_HMI.i_nCmd_ResetAlarm = 2 THEN
+	GVL_HMI.o_bAlarmActive := FALSE;
+	pAlarm := ADR(GVL_HMI.nAlarmSafeties);
+	FOR i := 0 TO 20 DO
+		pAlarm[i] := 0;
+	END_FOR
+END_IF
+
+// reset
+IF GVL_HMI.i_nCmd_Reset = 2 THEN
+	GVL_HMI.o_bAlarmActive := FALSE;
+END_IF
+
+// reset setting
 IF GVL_HMI.i_nCmd_ResetSetting = 2 THEN
 	GVL_HMI.i_nCoreSwagingMode:= 0;	// 0: Auto, 1: Manual
 	GVL_HMI.i_nCasingCountForStarting := GVL_InitialSetting.CASING_COUNT_FOR_STARTING;
@@ -45,11 +63,51 @@ IF GVL_HMI.i_nCmd_ResetSetting = 2 THEN
 	GVL_HMI.i_nPE6MaintainTime := GVL_InitialSetting.PE6_MaintainTime; // ms
 END_IF
 
-fCoreSwaging();
-fOilPump();
-fCorePress();
-fCasingVibratoryBowl1();
-fCoreVibratoryBowl2();
+IF NOT GVL_HMI.o_bAlarmActive THEN
+	IF GVL_IO.DI_PS1 THEN
+		GVL_HMI.nAlarmS_PS1 := 1;
+	ELSE
+		GVL_HMI.nAlarmS_PS1 := -1;
+		GVL_HMI.nAlarmSafeties := -1;
+		fSetAlarm( sMsg := GVL_AlarmMessage.PS1 );
+	END_IF
+	IF GVL_IO.DI_TS1 THEN
+		GVL_HMI.nAlarmS_TS1 := 1;
+	ELSE
+		GVL_HMI.nAlarmS_TS1 := -1;
+		GVL_HMI.nAlarmSafeties := -1;
+		fSetAlarm( sMsg := GVL_AlarmMessage.TS1 );
+	END_IF
+	IF GVL_IO.DI_LS1 THEN
+		GVL_HMI.nAlarmS_LS1 := 1;
+	ELSE
+		GVL_HMI.nAlarmS_LS1 := -1;
+		GVL_HMI.nAlarmSafeties := -1;
+		fSetAlarm( sMsg := GVL_AlarmMessage.LS1 );
+	END_IF
+	IF GVL_IO.DI_ESR1 THEN
+		GVL_HMI.nAlarmS_ESR1 := 1;
+	ELSE
+		GVL_HMI.nAlarmS_ESR1 := -1;
+		GVL_HMI.nAlarmSafeties := -1;
+		fSetAlarm( sMsg := GVL_AlarmMessage.ESR1 );
+	END_IF
+	IF GVL_IO.DI_24VDC_CB_OK THEN
+		GVL_HMI.nAlarmS_24DC := 1;
+	ELSE
+		GVL_HMI.nAlarmS_24DC := -1;
+		GVL_HMI.nAlarmSafeties := -1;
+		fSetAlarm( sMsg := GVL_AlarmMessage.DC );
+	END_IF
+END_IF
+
+IF NOT GVL_HMI.o_bAlarmActive THEN
+	fCoreSwaging();
+	fOilPump();
+	fCorePress();
+	fCasingVibratoryBowl1();
+	fCoreVibratoryBowl2();
+END_IF
 
 fTransmitStatesToHMI();
 
@@ -61,20 +119,7 @@ IF GVL_HMI.i_nCmd_ResetAlarm = 2 THEN GVL_HMI.i_nCmd_ResetAlarm := 0; END_IF
 ]]></ST>
     </Implementation>
     <LineIds Name="MAIN">
-      <LineId Id="553" Count="0" />
-      <LineId Id="578" Count="0" />
-      <LineId Id="574" Count="0" />
-      <LineId Id="573" Count="0" />
-      <LineId Id="575" Count="2" />
-      <LineId Id="613" Count="23" />
-      <LineId Id="589" Count="0" />
-      <LineId Id="552" Count="0" />
-      <LineId Id="461" Count="1" />
-      <LineId Id="451" Count="0" />
-      <LineId Id="478" Count="1" />
-      <LineId Id="549" Count="0" />
-      <LineId Id="8" Count="0" />
-      <LineId Id="580" Count="5" />
+      <LineId Id="717" Count="100" />
       <LineId Id="444" Count="0" />
     </LineIds>
   </POU>

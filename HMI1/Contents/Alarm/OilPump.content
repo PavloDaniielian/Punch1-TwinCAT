@@ -29,7 +29,7 @@
 }
 </script>
 </div>
-<div id="TcHmiTextblock_54" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiTextblock" data-tchmi-height="180" data-tchmi-height-unit="px" data-tchmi-left="520" data-tchmi-left-unit="px" data-tchmi-text="OK" data-tchmi-top="39" data-tchmi-top-unit="px" data-tchmi-width="130" data-tchmi-width-unit="px" data-tchmi-word-wrap="true" data-tchmi-text-font-size="50" data-tchmi-text-horizontal-alignment="Center" data-tchmi-text-vertical-alignment="Center">
+<div id="txtAlarmLS1_2" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiTextblock" data-tchmi-height="180" data-tchmi-height-unit="px" data-tchmi-left="520" data-tchmi-left-unit="px" data-tchmi-text="OK" data-tchmi-top="39" data-tchmi-top-unit="px" data-tchmi-width="130" data-tchmi-width-unit="px" data-tchmi-word-wrap="true" data-tchmi-text-font-size="50" data-tchmi-text-horizontal-alignment="Center" data-tchmi-text-vertical-alignment="Center">
 <script data-tchmi-target-attribute="data-tchmi-border-width" type="application/json">
 {
   "left": 1,
@@ -57,8 +57,129 @@
   "color": "rgba(255, 255, 255, 1)"
 }
 </script>
+
+<script data-tchmi-target-attribute="data-tchmi-trigger" type="application/json">
+[
+  {
+    "event": "%s%PLC1.GVL_HMI.nAlarmS_LS1%/s%",
+    "actions": [
+      {
+        "objectType": "SwitchCase",
+        "active": true,
+        "compare": {
+          "objectType": "Symbol",
+          "valueType": "tchmi:general#/definitions/SINT",
+          "symbolExpression": "%s%PLC1.GVL_HMI.nAlarmS_LS1%/s%"
+        },
+        "cases": [
+          {
+            "caseValue": {
+              "objectType": "StaticValue",
+              "valueType": "tchmi:general#/definitions/SINT",
+              "value": 0
+            },
+            "actions": [
+              {
+                "objectType": "WriteToSymbol",
+                "active": true,
+                "symbolExpression": "%ctrl%txtAlarmLS1_2::Text%/ctrl%",
+                "value": {
+                  "objectType": "StaticValue",
+                  "valueType": "tchmi:general#/definitions/String",
+                  "value": "INIT"
+                },
+                "asyncWait": true
+              },
+              {
+                "objectType": "WriteToSymbol",
+                "active": true,
+                "symbolExpression": "%ctrl%txtAlarmLS1_2::ClassNames%/ctrl%",
+                "value": {
+                  "objectType": "StaticValue",
+                  "valueType": "tchmi:framework#/definitions/ClassNameList",
+                  "value": [
+                    "StateTextInit"
+                  ]
+                },
+                "asyncWait": true
+              }
+            ]
+          },
+          {
+            "caseValue": {
+              "objectType": "StaticValue",
+              "valueType": "tchmi:general#/definitions/SINT",
+              "value": 1
+            },
+            "actions": [
+              {
+                "objectType": "WriteToSymbol",
+                "active": true,
+                "symbolExpression": "%ctrl%txtAlarmLS1_2::Text%/ctrl%",
+                "value": {
+                  "objectType": "StaticValue",
+                  "valueType": "tchmi:general#/definitions/String",
+                  "value": "OK"
+                },
+                "asyncWait": true
+              },
+              {
+                "objectType": "WriteToSymbol",
+                "active": true,
+                "symbolExpression": "%ctrl%txtAlarmLS1_2::ClassNames%/ctrl%",
+                "value": {
+                  "objectType": "StaticValue",
+                  "valueType": "tchmi:framework#/definitions/ClassNameList",
+                  "value": [
+                    "StateTextOk"
+                  ]
+                },
+                "asyncWait": true
+              }
+            ]
+          },
+          {
+            "caseValue": {
+              "objectType": "StaticValue",
+              "valueType": "tchmi:general#/definitions/SINT",
+              "value": -1
+            },
+            "actions": [
+              {
+                "objectType": "WriteToSymbol",
+                "active": true,
+                "symbolExpression": "%ctrl%txtAlarmLS1_2::Text%/ctrl%",
+                "value": {
+                  "objectType": "StaticValue",
+                  "valueType": "tchmi:general#/definitions/String",
+                  "value": "FAIL"
+                },
+                "asyncWait": true
+              },
+              {
+                "objectType": "WriteToSymbol",
+                "active": true,
+                "symbolExpression": "%ctrl%txtAlarmLS1_2::ClassNames%/ctrl%",
+                "value": {
+                  "objectType": "StaticValue",
+                  "valueType": "tchmi:framework#/definitions/ClassNameList",
+                  "value": [
+                    "StateTextFail"
+                  ]
+                },
+                "asyncWait": true
+              }
+            ]
+          }
+        ],
+        "asyncWait": true
+      }
+    ]
+  }
+]
+</script>
 </div>
-<div id="TcHmiTextblock_55" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiTextblock" data-tchmi-height="180" data-tchmi-height-unit="px" data-tchmi-left="520" data-tchmi-left-unit="px" data-tchmi-text="FAIL" data-tchmi-top="219" data-tchmi-top-unit="px" data-tchmi-width="130" data-tchmi-width-unit="px" data-tchmi-word-wrap="true" data-tchmi-text-font-size="50" data-tchmi-text-horizontal-alignment="Center" data-tchmi-text-vertical-alignment="Center">
+<div id="txtAlarmTS1_2" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiTextblock" data-tchmi-height="180" data-tchmi-height-unit="px" data-tchmi-left="520" data-tchmi-left-unit="px" data-tchmi-text="FAIL" data-tchmi-top="219" data-tchmi-top-unit="px" data-tchmi-width="130" data-tchmi-width-unit="px" data-tchmi-word-wrap="true" data-tchmi-text-font-size="50" data-tchmi-text-horizontal-alignment="Center" data-tchmi-text-vertical-alignment="Center">
 <script data-tchmi-target-attribute="data-tchmi-border-width" type="application/json">
 {
   "left": 1,
@@ -96,34 +217,72 @@
 <script data-tchmi-target-attribute="data-tchmi-trigger" type="application/json">
 [
   {
-    "event": "%s%PLC1.GVL_HMI.i_bESR1%/s%",
+    "event": "%s%PLC1.GVL_HMI.nAlarmS_TS1%/s%",
     "actions": [
       {
-        "objectType": "Condition",
+        "objectType": "SwitchCase",
         "active": true,
-        "parts": [
+        "compare": {
+          "objectType": "Symbol",
+          "valueType": "tchmi:general#/definitions/SINT",
+          "symbolExpression": "%s%PLC1.GVL_HMI.nAlarmS_TS1%/s%"
+        },
+        "cases": [
           {
-            "if": [
-              {
-                "compare1": {
-                  "objectType": "Symbol",
-                  "valueType": "tchmi:general#/definitions/String",
-                  "symbolExpression": "%s%PLC1.GVL_HMI.i_bESR1%/s%"
-                },
-                "compare2": {
-                  "objectType": "StaticValue",
-                  "valueType": "tchmi:general#/definitions/BOOL",
-                  "value": true
-                },
-                "compareOperator": "==",
-                "logic": null
-              }
-            ],
-            "then": [
+            "caseValue": {
+              "objectType": "StaticValue",
+              "valueType": "tchmi:general#/definitions/SINT",
+              "value": 0
+            },
+            "actions": [
               {
                 "objectType": "WriteToSymbol",
                 "active": true,
-                "symbolExpression": "%ctrl%TcHmiTextblock_55::ClassNames%/ctrl%",
+                "symbolExpression": "%ctrl%txtAlarmTS1_2::Text%/ctrl%",
+                "value": {
+                  "objectType": "StaticValue",
+                  "valueType": "tchmi:general#/definitions/String",
+                  "value": "INIT"
+                },
+                "asyncWait": true
+              },
+              {
+                "objectType": "WriteToSymbol",
+                "active": true,
+                "symbolExpression": "%ctrl%txtAlarmTS1_2::ClassNames%/ctrl%",
+                "value": {
+                  "objectType": "StaticValue",
+                  "valueType": "tchmi:framework#/definitions/ClassNameList",
+                  "value": [
+                    "StateTextInit"
+                  ]
+                },
+                "asyncWait": true
+              }
+            ]
+          },
+          {
+            "caseValue": {
+              "objectType": "StaticValue",
+              "valueType": "tchmi:general#/definitions/SINT",
+              "value": 1
+            },
+            "actions": [
+              {
+                "objectType": "WriteToSymbol",
+                "active": true,
+                "symbolExpression": "%ctrl%txtAlarmTS1_2::Text%/ctrl%",
+                "value": {
+                  "objectType": "StaticValue",
+                  "valueType": "tchmi:general#/definitions/String",
+                  "value": "OK"
+                },
+                "asyncWait": true
+              },
+              {
+                "objectType": "WriteToSymbol",
+                "active": true,
+                "symbolExpression": "%ctrl%txtAlarmTS1_2::ClassNames%/ctrl%",
                 "value": {
                   "objectType": "StaticValue",
                   "valueType": "tchmi:framework#/definitions/ClassNameList",
@@ -136,11 +295,27 @@
             ]
           },
           {
-            "else": [
+            "caseValue": {
+              "objectType": "StaticValue",
+              "valueType": "tchmi:general#/definitions/SINT",
+              "value": -1
+            },
+            "actions": [
               {
                 "objectType": "WriteToSymbol",
                 "active": true,
-                "symbolExpression": "%ctrl%TcHmiTextblock_55::ClassNames%/ctrl%",
+                "symbolExpression": "%ctrl%txtAlarmTS1_2::Text%/ctrl%",
+                "value": {
+                  "objectType": "StaticValue",
+                  "valueType": "tchmi:general#/definitions/String",
+                  "value": "FAIL"
+                },
+                "asyncWait": true
+              },
+              {
+                "objectType": "WriteToSymbol",
+                "active": true,
+                "symbolExpression": "%ctrl%txtAlarmTS1_2::ClassNames%/ctrl%",
                 "value": {
                   "objectType": "StaticValue",
                   "valueType": "tchmi:framework#/definitions/ClassNameList",

@@ -95,9 +95,42 @@
 	nCasingCount: INT := 0;
 	nCoreCount: INT := 0;
 	
-	// alram
+	// alram message
 	o_bAlarmActive: BOOL := FALSE;
 	o_sAlarmMessage: STRING := '';
+	
+	// active alarm
+		// Safeties
+	nAlarmSafeties : SINT := 0;		// 0: Init, 1: OK, -1: Fail
+	nAlarmS_24DC : SINT :=0;	// 0: Init, 1: OK, -1: Fail
+	nAlarmS_ESR1 : SINT :=0;	// 0: Init, 1: OK, -1: Fail
+	nAlarmS_LS1 : SINT :=0;	// 0: Init, 1: OK, -1: Fail
+	nAlarmS_TS1 : SINT :=0;	// 0: Init, 1: OK, -1: Fail
+	nAlarmS_PS1 : SINT :=0;	// 0: Init, 1: OK, -1: Fail
+		// core swagging
+	nAlarmCS_10_ECS : SINT := 0;	// 0: Init, 1: On, -1: Off
+	nAlarmCS_10_Pump : SINT :=0;	// 0: Init, 1: OK, -1: Fail
+	nAlarmCS_20_HC6E : SINT :=0;	// 0: Init, 1: OK, -1: Fail
+	nAlarmCS_21_HC5R : SINT :=0;	// 0: Init, 1: OK, -1: Fail
+	nAlarmCS_30_HC7R : SINT :=0;	// 0: Init, 1: OK, -1: Fail
+	nAlarmCS_40_PE5 : SINT := 0;	// 0: Init, 1: On, -1: Off
+	nAlarmCS_50_HC7E : SINT :=0;	// 0: Init, 1: OK, -1: Fail
+	nAlarmCS_60_HC6R : SINT :=0;	// 0: Init, 1: OK, -1: Fail
+	nAlarmCS_70_HC5E : SINT :=0;	// 0: Init, 1: OK, -1: Fail
+	nAlarmCS_80_HC5R : SINT :=0;	// 0: Init, 1: OK, -1: Fail
+		// core pressing
+	nAlarmCP_10_EPD : SINT := 0;	// 0: Init, 1: On, -1: Off
+	nAlarmCP_10_Pump : SINT :=0;	// 0: Init, 1: OK, -1: Fail
+	nAlarmCP_10_HC1R : SINT :=0;
+	nAlarmCP_20_PC1E : SINT :=0;
+	nAlarmCP_10_PC1R : SINT :=0;
+	nAlarmCP_10_HC3R : SINT :=0;
+	nAlarmCP_50_HC1R : SINT :=0;
+	nAlarmCP_10_PC2E : SINT :=0;
+	nAlarmCP_10_HC4E : SINT :=0;
+	nAlarmCP_10_HC2E : SINT :=0;
+	nAlarmCP_10_HC4R : SINT :=0;
+	nAlarmCP_10_HC2R : SINT :=0;
 END_VAR]]></Declaration>
   </GVL>
 </TcPlcObject>

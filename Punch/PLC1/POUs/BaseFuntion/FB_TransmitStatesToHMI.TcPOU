@@ -13,13 +13,7 @@ END_VAR
     <Implementation>
       <ST><![CDATA[// safeties
 GVL_HMI.i_b24VDC_CB_OK := GVL_IO.DI_24VDC_CB_OK;
-IF NOT GVL_HMI.i_b24VDC_CB_OK THEN
-	fSetAlarm( sMsg := GVL_AlarmMessage.DC_FAIL );
-END_IF
 GVL_HMI.i_bESR1 := GVL_IO.DI_ESR1;
-IF NOT GVL_HMI.i_bESR1 THEN
-	fSetAlarm( sMsg := GVL_AlarmMessage.ESR1_FAIL );
-END_IF
 GVL_HMI.i_bLS1 := GVL_IO.DI_LS1;
 GVL_HMI.i_bTS1 := GVL_IO.DI_TS1;
 GVL_HMI.i_bPS1 := GVL_IO.DI_PS1;
@@ -87,9 +81,8 @@ END_IF
 ]]></ST>
     </Implementation>
     <LineIds Name="FB_TransmitStatesToHMI">
-      <LineId Id="12" Count="1" />
-      <LineId Id="87" Count="2" />
-      <LineId Id="91" Count="2" />
+      <LineId Id="12" Count="0" />
+      <LineId Id="89" Count="0" />
       <LineId Id="14" Count="2" />
       <LineId Id="9" Count="0" />
       <LineId Id="135" Count="0" />

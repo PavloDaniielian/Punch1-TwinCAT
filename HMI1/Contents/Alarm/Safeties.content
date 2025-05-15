@@ -1,5 +1,5 @@
 <div id="AlarmCoreSwagging_1" data-tchmi-type="TcHmi.Controls.System.TcHmiContent" data-tchmi-top="0" data-tchmi-left="0" data-tchmi-width="650" data-tchmi-height="530" data-tchmi-creator-viewport-width="810" data-tchmi-creator-viewport-height="600">
-<div id="TcHmiTextblock_1" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiTextblock" data-tchmi-height="100" data-tchmi-height-unit="px" data-tchmi-left="0" data-tchmi-left-unit="px" data-tchmi-text="24DC CB" data-tchmi-top="59" data-tchmi-top-unit="px" data-tchmi-width="520" data-tchmi-width-unit="px" data-tchmi-word-wrap="true" data-tchmi-text-font-size="30" data-tchmi-text-horizontal-alignment="Center" data-tchmi-text-vertical-alignment="Center">
+<div id="TcHmiTextblock_1" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiTextblock" data-tchmi-height="100" data-tchmi-height-unit="px" data-tchmi-left="0" data-tchmi-left-unit="px" data-tchmi-text="24DC CB" data-tchmi-top="0" data-tchmi-top-unit="px" data-tchmi-width="520" data-tchmi-width-unit="px" data-tchmi-word-wrap="true" data-tchmi-text-font-size="30" data-tchmi-text-horizontal-alignment="Center" data-tchmi-text-vertical-alignment="Center">
 
 <script data-tchmi-target-attribute="data-tchmi-border-width" type="application/json">
 {
@@ -29,7 +29,7 @@
 }
 </script>
 </div>
-<div id="txtAlarm24DC" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiTextblock" data-tchmi-height="100" data-tchmi-height-unit="px" data-tchmi-left="520" data-tchmi-left-unit="px" data-tchmi-text="OK" data-tchmi-top="59" data-tchmi-top-unit="px" data-tchmi-width="130" data-tchmi-width-unit="px" data-tchmi-word-wrap="true" data-tchmi-text-font-size="30" data-tchmi-text-horizontal-alignment="Center" data-tchmi-text-vertical-alignment="Center">
+<div id="txtAlarm24DC" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiTextblock" data-tchmi-height="100" data-tchmi-height-unit="px" data-tchmi-left="520" data-tchmi-left-unit="px" data-tchmi-text="OK" data-tchmi-top="0" data-tchmi-top-unit="px" data-tchmi-width="130" data-tchmi-width-unit="px" data-tchmi-word-wrap="true" data-tchmi-text-font-size="30" data-tchmi-text-horizontal-alignment="Center" data-tchmi-text-vertical-alignment="Center">
 <script data-tchmi-target-attribute="data-tchmi-border-width" type="application/json">
 {
   "left": 1,
@@ -61,30 +61,68 @@
 <script data-tchmi-target-attribute="data-tchmi-trigger" type="application/json">
 [
   {
-    "event": "%s%PLC1.GVL_HMI.i_b24VDC_CB_OK%/s%",
+    "event": "%s%PLC1.GVL_HMI.nAlarmS_24DC%/s%",
     "actions": [
       {
-        "objectType": "Condition",
+        "objectType": "SwitchCase",
         "active": true,
-        "parts": [
+        "compare": {
+          "objectType": "Symbol",
+          "valueType": "tchmi:general#/definitions/SINT",
+          "symbolExpression": "%s%PLC1.GVL_HMI.nAlarmS_24DC%/s%"
+        },
+        "cases": [
           {
-            "if": [
+            "caseValue": {
+              "objectType": "StaticValue",
+              "valueType": "tchmi:general#/definitions/SINT",
+              "value": 0
+            },
+            "actions": [
               {
-                "compare1": {
-                  "objectType": "Symbol",
-                  "valueType": "tchmi:general#/definitions/BOOL",
-                  "symbolExpression": "%s%PLC1.GVL_HMI.i_b24VDC_CB_OK%/s%"
-                },
-                "compare2": {
+                "objectType": "WriteToSymbol",
+                "active": true,
+                "symbolExpression": "%ctrl%txtAlarm24DC::Text%/ctrl%",
+                "value": {
                   "objectType": "StaticValue",
-                  "valueType": "tchmi:general#/definitions/BOOL",
-                  "value": true
+                  "valueType": "tchmi:general#/definitions/String",
+                  "value": "INIT"
                 },
-                "compareOperator": "==",
-                "logic": null
+                "asyncWait": true
+              },
+              {
+                "objectType": "WriteToSymbol",
+                "active": true,
+                "symbolExpression": "%ctrl%txtAlarm24DC::ClassNames%/ctrl%",
+                "value": {
+                  "objectType": "StaticValue",
+                  "valueType": "tchmi:framework#/definitions/ClassNameList",
+                  "value": [
+                    "StateTextInit"
+                  ]
+                },
+                "asyncWait": true
               }
-            ],
-            "then": [
+            ]
+          },
+          {
+            "caseValue": {
+              "objectType": "StaticValue",
+              "valueType": "tchmi:general#/definitions/SINT",
+              "value": 1
+            },
+            "actions": [
+              {
+                "objectType": "WriteToSymbol",
+                "active": true,
+                "symbolExpression": "%ctrl%txtAlarm24DC::Text%/ctrl%",
+                "value": {
+                  "objectType": "StaticValue",
+                  "valueType": "tchmi:general#/definitions/String",
+                  "value": "OK"
+                },
+                "asyncWait": true
+              },
               {
                 "objectType": "WriteToSymbol",
                 "active": true,
@@ -97,7 +135,16 @@
                   ]
                 },
                 "asyncWait": true
-              },
+              }
+            ]
+          },
+          {
+            "caseValue": {
+              "objectType": "StaticValue",
+              "valueType": "tchmi:general#/definitions/SINT",
+              "value": -1
+            },
+            "actions": [
               {
                 "objectType": "WriteToSymbol",
                 "active": true,
@@ -105,14 +152,10 @@
                 "value": {
                   "objectType": "StaticValue",
                   "valueType": "tchmi:general#/definitions/String",
-                  "value": "OK"
+                  "value": "FAIL"
                 },
                 "asyncWait": true
-              }
-            ]
-          },
-          {
-            "else": [
+              },
               {
                 "objectType": "WriteToSymbol",
                 "active": true,
@@ -125,17 +168,6 @@
                   ]
                 },
                 "asyncWait": true
-              },
-              {
-                "objectType": "WriteToSymbol",
-                "active": true,
-                "symbolExpression": "%ctrl%txtAlarm24DC::Text%/ctrl%",
-                "value": {
-                  "objectType": "StaticValue",
-                  "valueType": "tchmi:general#/definitions/String",
-                  "value": "FAIL"
-                },
-                "asyncWait": true
               }
             ]
           }
@@ -147,7 +179,7 @@
 ]
 </script>
 </div>
-<div id="txtAlarmESR1" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiTextblock" data-tchmi-height="100" data-tchmi-height-unit="px" data-tchmi-left="520" data-tchmi-left-unit="px" data-tchmi-text="FAIL" data-tchmi-top="159" data-tchmi-top-unit="px" data-tchmi-width="130" data-tchmi-width-unit="px" data-tchmi-word-wrap="true" data-tchmi-text-font-size="30" data-tchmi-text-horizontal-alignment="Center" data-tchmi-text-vertical-alignment="Center">
+<div id="txtAlarmESR1" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiTextblock" data-tchmi-height="100" data-tchmi-height-unit="px" data-tchmi-left="520" data-tchmi-left-unit="px" data-tchmi-text="FAIL" data-tchmi-top="100" data-tchmi-top-unit="px" data-tchmi-width="130" data-tchmi-width-unit="px" data-tchmi-word-wrap="true" data-tchmi-text-font-size="30" data-tchmi-text-horizontal-alignment="Center" data-tchmi-text-vertical-alignment="Center">
 <script data-tchmi-target-attribute="data-tchmi-border-width" type="application/json">
 {
   "left": 1,
@@ -187,30 +219,68 @@
 <script data-tchmi-target-attribute="data-tchmi-trigger" type="application/json">
 [
   {
-    "event": "%s%PLC1.GVL_HMI.i_bESR1%/s%",
+    "event": "%s%PLC1.GVL_HMI.nAlarmS_ESR1%/s%",
     "actions": [
       {
-        "objectType": "Condition",
+        "objectType": "SwitchCase",
         "active": true,
-        "parts": [
+        "compare": {
+          "objectType": "Symbol",
+          "valueType": "tchmi:general#/definitions/SINT",
+          "symbolExpression": "%s%PLC1.GVL_HMI.nAlarmS_ESR1%/s%"
+        },
+        "cases": [
           {
-            "if": [
+            "caseValue": {
+              "objectType": "StaticValue",
+              "valueType": "tchmi:general#/definitions/SINT",
+              "value": 0
+            },
+            "actions": [
               {
-                "compare1": {
-                  "objectType": "Symbol",
-                  "valueType": "tchmi:general#/definitions/BOOL",
-                  "symbolExpression": "%s%PLC1.GVL_HMI.i_bESR1%/s%"
-                },
-                "compare2": {
+                "objectType": "WriteToSymbol",
+                "active": true,
+                "symbolExpression": "%ctrl%txtAlarmESR1::Text%/ctrl%",
+                "value": {
                   "objectType": "StaticValue",
-                  "valueType": "tchmi:general#/definitions/BOOL",
-                  "value": true
+                  "valueType": "tchmi:general#/definitions/String",
+                  "value": "INIT"
                 },
-                "compareOperator": "==",
-                "logic": null
+                "asyncWait": true
+              },
+              {
+                "objectType": "WriteToSymbol",
+                "active": true,
+                "symbolExpression": "%ctrl%txtAlarmESR1::ClassNames%/ctrl%",
+                "value": {
+                  "objectType": "StaticValue",
+                  "valueType": "tchmi:framework#/definitions/ClassNameList",
+                  "value": [
+                    "StateTextInit"
+                  ]
+                },
+                "asyncWait": true
               }
-            ],
-            "then": [
+            ]
+          },
+          {
+            "caseValue": {
+              "objectType": "StaticValue",
+              "valueType": "tchmi:general#/definitions/SINT",
+              "value": 1
+            },
+            "actions": [
+              {
+                "objectType": "WriteToSymbol",
+                "active": true,
+                "symbolExpression": "%ctrl%txtAlarmESR1::Text%/ctrl%",
+                "value": {
+                  "objectType": "StaticValue",
+                  "valueType": "tchmi:general#/definitions/String",
+                  "value": "OK"
+                },
+                "asyncWait": true
+              },
               {
                 "objectType": "WriteToSymbol",
                 "active": true,
@@ -223,7 +293,16 @@
                   ]
                 },
                 "asyncWait": true
-              },
+              }
+            ]
+          },
+          {
+            "caseValue": {
+              "objectType": "StaticValue",
+              "valueType": "tchmi:general#/definitions/SINT",
+              "value": -1
+            },
+            "actions": [
               {
                 "objectType": "WriteToSymbol",
                 "active": true,
@@ -231,14 +310,10 @@
                 "value": {
                   "objectType": "StaticValue",
                   "valueType": "tchmi:general#/definitions/String",
-                  "value": "OK"
+                  "value": "FAIL"
                 },
                 "asyncWait": true
-              }
-            ]
-          },
-          {
-            "else": [
+              },
               {
                 "objectType": "WriteToSymbol",
                 "active": true,
@@ -251,17 +326,6 @@
                   ]
                 },
                 "asyncWait": true
-              },
-              {
-                "objectType": "WriteToSymbol",
-                "active": true,
-                "symbolExpression": "%ctrl%txtAlarmESR1::Text%/ctrl%",
-                "value": {
-                  "objectType": "StaticValue",
-                  "valueType": "tchmi:general#/definitions/String",
-                  "value": "FAIL"
-                },
-                "asyncWait": true
               }
             ]
           }
@@ -273,7 +337,7 @@
 ]
 </script>
 </div>
-<div id="TcHmiTextblock_4" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiTextblock" data-tchmi-height="100" data-tchmi-height-unit="px" data-tchmi-left="0" data-tchmi-left-unit="px" data-tchmi-text="Emergency Stop Relay" data-tchmi-top="159" data-tchmi-top-unit="px" data-tchmi-width="520" data-tchmi-width-unit="px" data-tchmi-word-wrap="true" data-tchmi-text-font-size="30" data-tchmi-text-horizontal-alignment="Center" data-tchmi-text-vertical-alignment="Center">
+<div id="TcHmiTextblock_4" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiTextblock" data-tchmi-height="100" data-tchmi-height-unit="px" data-tchmi-left="0" data-tchmi-left-unit="px" data-tchmi-text="Emergency Stop Relay" data-tchmi-top="100" data-tchmi-top-unit="px" data-tchmi-width="520" data-tchmi-width-unit="px" data-tchmi-word-wrap="true" data-tchmi-text-font-size="30" data-tchmi-text-horizontal-alignment="Center" data-tchmi-text-vertical-alignment="Center">
 <script data-tchmi-target-attribute="data-tchmi-border-width" type="application/json">
 {
   "left": 1,
@@ -304,7 +368,7 @@
 
 
 </div>
-<div id="TcHmiTextblock_5" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiTextblock" data-tchmi-height="100" data-tchmi-height-unit="px" data-tchmi-left="0" data-tchmi-left-unit="px" data-tchmi-text="Low Oil Level Sw" data-tchmi-top="259" data-tchmi-top-unit="px" data-tchmi-width="520" data-tchmi-width-unit="px" data-tchmi-word-wrap="true" data-tchmi-text-font-size="30" data-tchmi-text-horizontal-alignment="Center" data-tchmi-text-vertical-alignment="Center">
+<div id="TcHmiTextblock_5" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiTextblock" data-tchmi-height="100" data-tchmi-height-unit="px" data-tchmi-left="0" data-tchmi-left-unit="px" data-tchmi-text="Low Oil Level Sw" data-tchmi-top="200" data-tchmi-top-unit="px" data-tchmi-width="520" data-tchmi-width-unit="px" data-tchmi-word-wrap="true" data-tchmi-text-font-size="30" data-tchmi-text-horizontal-alignment="Center" data-tchmi-text-vertical-alignment="Center">
 <script data-tchmi-target-attribute="data-tchmi-border-width" type="application/json">
 {
   "left": 1,
@@ -335,7 +399,7 @@
 
 
 </div>
-<div id="txtAlarmLS1" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiTextblock" data-tchmi-height="100" data-tchmi-height-unit="px" data-tchmi-left="520" data-tchmi-left-unit="px" data-tchmi-text="FAIL" data-tchmi-top="259" data-tchmi-top-unit="px" data-tchmi-width="130" data-tchmi-width-unit="px" data-tchmi-word-wrap="true" data-tchmi-text-font-size="30" data-tchmi-text-horizontal-alignment="Center" data-tchmi-text-vertical-alignment="Center">
+<div id="txtAlarmLS1" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiTextblock" data-tchmi-height="100" data-tchmi-height-unit="px" data-tchmi-left="520" data-tchmi-left-unit="px" data-tchmi-text="FAIL" data-tchmi-top="200" data-tchmi-top-unit="px" data-tchmi-width="130" data-tchmi-width-unit="px" data-tchmi-word-wrap="true" data-tchmi-text-font-size="30" data-tchmi-text-horizontal-alignment="Center" data-tchmi-text-vertical-alignment="Center">
 <script data-tchmi-target-attribute="data-tchmi-border-width" type="application/json">
 {
   "left": 1,
@@ -373,30 +437,35 @@
 <script data-tchmi-target-attribute="data-tchmi-trigger" type="application/json">
 [
   {
-    "event": "%s%PLC1.GVL_HMI.i_bLS1%/s%",
+    "event": "%s%PLC1.GVL_HMI.nAlarmS_LS1%/s%",
     "actions": [
       {
-        "objectType": "Condition",
+        "objectType": "SwitchCase",
         "active": true,
-        "parts": [
+        "compare": {
+          "objectType": "Symbol",
+          "valueType": "tchmi:general#/definitions/SINT",
+          "symbolExpression": "%s%PLC1.GVL_HMI.nAlarmS_LS1%/s%"
+        },
+        "cases": [
           {
-            "if": [
+            "caseValue": {
+              "objectType": "StaticValue",
+              "valueType": "tchmi:general#/definitions/SINT",
+              "value": 0
+            },
+            "actions": [
               {
-                "compare1": {
-                  "objectType": "Symbol",
-                  "valueType": "tchmi:general#/definitions/BOOL",
-                  "symbolExpression": "%s%PLC1.GVL_HMI.i_bLS1%/s%"
-                },
-                "compare2": {
+                "objectType": "WriteToSymbol",
+                "active": true,
+                "symbolExpression": "%ctrl%txtAlarmLS1::Text%/ctrl%",
+                "value": {
                   "objectType": "StaticValue",
-                  "valueType": "tchmi:general#/definitions/BOOL",
-                  "value": true
+                  "valueType": "tchmi:general#/definitions/String",
+                  "value": "INIT"
                 },
-                "compareOperator": "==",
-                "logic": null
-              }
-            ],
-            "then": [
+                "asyncWait": true
+              },
               {
                 "objectType": "WriteToSymbol",
                 "active": true,
@@ -405,11 +474,20 @@
                   "objectType": "StaticValue",
                   "valueType": "tchmi:framework#/definitions/ClassNameList",
                   "value": [
-                    "StateTextOk"
+                    "StateTextInit"
                   ]
                 },
                 "asyncWait": true
-              },
+              }
+            ]
+          },
+          {
+            "caseValue": {
+              "objectType": "StaticValue",
+              "valueType": "tchmi:general#/definitions/SINT",
+              "value": 1
+            },
+            "actions": [
               {
                 "objectType": "WriteToSymbol",
                 "active": true,
@@ -420,11 +498,40 @@
                   "value": "OK"
                 },
                 "asyncWait": true
+              },
+              {
+                "objectType": "WriteToSymbol",
+                "active": true,
+                "symbolExpression": "%ctrl%txtAlarmLS1::ClassNames%/ctrl%",
+                "value": {
+                  "objectType": "StaticValue",
+                  "valueType": "tchmi:framework#/definitions/ClassNameList",
+                  "value": [
+                    "StateTextOk"
+                  ]
+                },
+                "asyncWait": true
               }
             ]
           },
           {
-            "else": [
+            "caseValue": {
+              "objectType": "StaticValue",
+              "valueType": "tchmi:general#/definitions/SINT",
+              "value": -1
+            },
+            "actions": [
+              {
+                "objectType": "WriteToSymbol",
+                "active": true,
+                "symbolExpression": "%ctrl%txtAlarmLS1::Text%/ctrl%",
+                "value": {
+                  "objectType": "StaticValue",
+                  "valueType": "tchmi:general#/definitions/String",
+                  "value": "FAIL"
+                },
+                "asyncWait": true
+              },
               {
                 "objectType": "WriteToSymbol",
                 "active": true,
@@ -435,17 +542,6 @@
                   "value": [
                     "StateTextFail"
                   ]
-                },
-                "asyncWait": true
-              },
-              {
-                "objectType": "WriteToSymbol",
-                "active": true,
-                "symbolExpression": "%ctrl%txtAlarmLS1::Text%/ctrl%",
-                "value": {
-                  "objectType": "StaticValue",
-                  "valueType": "tchmi:general#/definitions/String",
-                  "value": "FAIL"
                 },
                 "asyncWait": true
               }
@@ -459,7 +555,7 @@
 ]
 </script>
 </div>
-<div id="TcHmiTextblock_7" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiTextblock" data-tchmi-height="100" data-tchmi-height-unit="px" data-tchmi-left="0" data-tchmi-left-unit="px" data-tchmi-text="High Oil Temp Sw" data-tchmi-top="359" data-tchmi-top-unit="px" data-tchmi-width="520" data-tchmi-width-unit="px" data-tchmi-word-wrap="true" data-tchmi-text-font-size="30" data-tchmi-text-horizontal-alignment="Center" data-tchmi-text-vertical-alignment="Center">
+<div id="TcHmiTextblock_7" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiTextblock" data-tchmi-height="100" data-tchmi-height-unit="px" data-tchmi-left="0" data-tchmi-left-unit="px" data-tchmi-text="High Oil Temp Sw" data-tchmi-top="300" data-tchmi-top-unit="px" data-tchmi-width="520" data-tchmi-width-unit="px" data-tchmi-word-wrap="true" data-tchmi-text-font-size="30" data-tchmi-text-horizontal-alignment="Center" data-tchmi-text-vertical-alignment="Center">
 <script data-tchmi-target-attribute="data-tchmi-border-width" type="application/json">
 {
   "left": 1,
@@ -490,7 +586,7 @@
 
 
 </div>
-<div id="txtAlarmTS1" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiTextblock" data-tchmi-height="100" data-tchmi-height-unit="px" data-tchmi-left="520" data-tchmi-left-unit="px" data-tchmi-text="FAIL" data-tchmi-top="359" data-tchmi-top-unit="px" data-tchmi-width="130" data-tchmi-width-unit="px" data-tchmi-word-wrap="true" data-tchmi-text-font-size="30" data-tchmi-text-horizontal-alignment="Center" data-tchmi-text-vertical-alignment="Center">
+<div id="txtAlarmTS1" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiTextblock" data-tchmi-height="100" data-tchmi-height-unit="px" data-tchmi-left="520" data-tchmi-left-unit="px" data-tchmi-text="FAIL" data-tchmi-top="300" data-tchmi-top-unit="px" data-tchmi-width="130" data-tchmi-width-unit="px" data-tchmi-word-wrap="true" data-tchmi-text-font-size="30" data-tchmi-text-horizontal-alignment="Center" data-tchmi-text-vertical-alignment="Center">
 <script data-tchmi-target-attribute="data-tchmi-border-width" type="application/json">
 {
   "left": 1,
@@ -528,30 +624,68 @@
 <script data-tchmi-target-attribute="data-tchmi-trigger" type="application/json">
 [
   {
-    "event": "%s%PLC1.GVL_HMI.i_bTS1%/s%",
+    "event": "%s%PLC1.GVL_HMI.nAlarmS_TS1%/s%",
     "actions": [
       {
-        "objectType": "Condition",
+        "objectType": "SwitchCase",
         "active": true,
-        "parts": [
+        "compare": {
+          "objectType": "Symbol",
+          "valueType": "tchmi:general#/definitions/SINT",
+          "symbolExpression": "%s%PLC1.GVL_HMI.nAlarmS_TS1%/s%"
+        },
+        "cases": [
           {
-            "if": [
+            "caseValue": {
+              "objectType": "StaticValue",
+              "valueType": "tchmi:general#/definitions/SINT",
+              "value": 0
+            },
+            "actions": [
               {
-                "compare1": {
-                  "objectType": "Symbol",
-                  "valueType": "tchmi:general#/definitions/BOOL",
-                  "symbolExpression": "%s%PLC1.GVL_HMI.i_bTS1%/s%"
-                },
-                "compare2": {
+                "objectType": "WriteToSymbol",
+                "active": true,
+                "symbolExpression": "%ctrl%txtAlarmTS1::Text%/ctrl%",
+                "value": {
                   "objectType": "StaticValue",
-                  "valueType": "tchmi:general#/definitions/BOOL",
-                  "value": true
+                  "valueType": "tchmi:general#/definitions/String",
+                  "value": "INIT"
                 },
-                "compareOperator": "==",
-                "logic": null
+                "asyncWait": true
+              },
+              {
+                "objectType": "WriteToSymbol",
+                "active": true,
+                "symbolExpression": "%ctrl%txtAlarmTS1::ClassNames%/ctrl%",
+                "value": {
+                  "objectType": "StaticValue",
+                  "valueType": "tchmi:framework#/definitions/ClassNameList",
+                  "value": [
+                    "StateTextInit"
+                  ]
+                },
+                "asyncWait": true
               }
-            ],
-            "then": [
+            ]
+          },
+          {
+            "caseValue": {
+              "objectType": "StaticValue",
+              "valueType": "tchmi:general#/definitions/SINT",
+              "value": 1
+            },
+            "actions": [
+              {
+                "objectType": "WriteToSymbol",
+                "active": true,
+                "symbolExpression": "%ctrl%txtAlarmTS1::Text%/ctrl%",
+                "value": {
+                  "objectType": "StaticValue",
+                  "valueType": "tchmi:general#/definitions/String",
+                  "value": "OK"
+                },
+                "asyncWait": true
+              },
               {
                 "objectType": "WriteToSymbol",
                 "active": true,
@@ -564,7 +698,16 @@
                   ]
                 },
                 "asyncWait": true
-              },
+              }
+            ]
+          },
+          {
+            "caseValue": {
+              "objectType": "StaticValue",
+              "valueType": "tchmi:general#/definitions/SINT",
+              "value": -1
+            },
+            "actions": [
               {
                 "objectType": "WriteToSymbol",
                 "active": true,
@@ -572,14 +715,10 @@
                 "value": {
                   "objectType": "StaticValue",
                   "valueType": "tchmi:general#/definitions/String",
-                  "value": null
+                  "value": "FAIL"
                 },
                 "asyncWait": true
-              }
-            ]
-          },
-          {
-            "else": [
+              },
               {
                 "objectType": "WriteToSymbol",
                 "active": true,
@@ -592,7 +731,170 @@
                   ]
                 },
                 "asyncWait": true
+              }
+            ]
+          }
+        ],
+        "asyncWait": true
+      }
+    ]
+  }
+]
+</script>
+</div>
+<div id="TcHmiTextblock_61" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiTextblock" data-tchmi-height="100" data-tchmi-height-unit="px" data-tchmi-left="0" data-tchmi-left-unit="px" data-tchmi-text="Low Air Pressure Switch" data-tchmi-top="400" data-tchmi-top-unit="px" data-tchmi-width="520" data-tchmi-width-unit="px" data-tchmi-word-wrap="true" data-tchmi-text-font-size="30" data-tchmi-text-horizontal-alignment="Center" data-tchmi-text-vertical-alignment="Center">
+<script data-tchmi-target-attribute="data-tchmi-border-width" type="application/json">
+{
+  "left": 1,
+  "right": 1,
+  "top": 1,
+  "bottom": 1,
+  "leftUnit": "px",
+  "rightUnit": "px",
+  "topUnit": "px",
+  "bottomUnit": "px"
+}
+</script>
+
+<script data-tchmi-target-attribute="data-tchmi-border-style" type="application/json">
+{
+  "left": "Solid",
+  "right": "Solid",
+  "top": "Solid",
+  "bottom": "Solid"
+}
+</script>
+
+<script data-tchmi-target-attribute="data-tchmi-border-color" type="application/json">
+{
+  "color": "rgba(255, 255, 255, 1)"
+}
+</script>
+
+
+</div>
+<div id="txtAlarmPS1" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiTextblock" data-tchmi-height="100" data-tchmi-height-unit="px" data-tchmi-left="520" data-tchmi-left-unit="px" data-tchmi-text="FAIL" data-tchmi-top="400" data-tchmi-top-unit="px" data-tchmi-width="130" data-tchmi-width-unit="px" data-tchmi-word-wrap="true" data-tchmi-text-font-size="30" data-tchmi-text-horizontal-alignment="Center" data-tchmi-text-vertical-alignment="Center">
+<script data-tchmi-target-attribute="data-tchmi-border-width" type="application/json">
+{
+  "left": 1,
+  "right": 1,
+  "top": 1,
+  "bottom": 1,
+  "leftUnit": "px",
+  "rightUnit": "px",
+  "topUnit": "px",
+  "bottomUnit": "px"
+}
+</script>
+
+<script data-tchmi-target-attribute="data-tchmi-border-style" type="application/json">
+{
+  "left": "Solid",
+  "right": "Solid",
+  "top": "Solid",
+  "bottom": "Solid"
+}
+</script>
+
+<script data-tchmi-target-attribute="data-tchmi-border-color" type="application/json">
+{
+  "color": "rgba(255, 255, 255, 1)"
+}
+</script>
+
+<script data-tchmi-target-attribute="data-tchmi-class-names" type="application/json">
+[
+  "StateTextFail"
+]
+</script>
+
+<script data-tchmi-target-attribute="data-tchmi-trigger" type="application/json">
+[
+  {
+    "event": "%s%PLC1.GVL_HMI.nAlarmS_PS1%/s%",
+    "actions": [
+      {
+        "objectType": "SwitchCase",
+        "active": true,
+        "compare": {
+          "objectType": "Symbol",
+          "valueType": "tchmi:general#/definitions/SINT",
+          "symbolExpression": "%s%PLC1.GVL_HMI.nAlarmS_PS1%/s%"
+        },
+        "cases": [
+          {
+            "caseValue": {
+              "objectType": "StaticValue",
+              "valueType": "tchmi:general#/definitions/SINT",
+              "value": 0
+            },
+            "actions": [
+              {
+                "objectType": "WriteToSymbol",
+                "active": true,
+                "symbolExpression": "%ctrl%txtAlarmTS1::Text%/ctrl%",
+                "value": {
+                  "objectType": "StaticValue",
+                  "valueType": "tchmi:general#/definitions/String",
+                  "value": "INIT"
+                },
+                "asyncWait": true
               },
+              {
+                "objectType": "WriteToSymbol",
+                "active": true,
+                "symbolExpression": "%ctrl%txtAlarmTS1::ClassNames%/ctrl%",
+                "value": {
+                  "objectType": "StaticValue",
+                  "valueType": "tchmi:framework#/definitions/ClassNameList",
+                  "value": [
+                    "StateTextInit"
+                  ]
+                },
+                "asyncWait": true
+              }
+            ]
+          },
+          {
+            "caseValue": {
+              "objectType": "StaticValue",
+              "valueType": "tchmi:general#/definitions/SINT",
+              "value": 1
+            },
+            "actions": [
+              {
+                "objectType": "WriteToSymbol",
+                "active": true,
+                "symbolExpression": "%ctrl%txtAlarmTS1::Text%/ctrl%",
+                "value": {
+                  "objectType": "StaticValue",
+                  "valueType": "tchmi:general#/definitions/String",
+                  "value": "OK"
+                },
+                "asyncWait": true
+              },
+              {
+                "objectType": "WriteToSymbol",
+                "active": true,
+                "symbolExpression": "%ctrl%txtAlarmTS1::ClassNames%/ctrl%",
+                "value": {
+                  "objectType": "StaticValue",
+                  "valueType": "tchmi:framework#/definitions/ClassNameList",
+                  "value": [
+                    "StateTextOk"
+                  ]
+                },
+                "asyncWait": true
+              }
+            ]
+          },
+          {
+            "caseValue": {
+              "objectType": "StaticValue",
+              "valueType": "tchmi:general#/definitions/SINT",
+              "value": -1
+            },
+            "actions": [
               {
                 "objectType": "WriteToSymbol",
                 "active": true,
@@ -601,6 +903,19 @@
                   "objectType": "StaticValue",
                   "valueType": "tchmi:general#/definitions/String",
                   "value": "FAIL"
+                },
+                "asyncWait": true
+              },
+              {
+                "objectType": "WriteToSymbol",
+                "active": true,
+                "symbolExpression": "%ctrl%txtAlarmTS1::ClassNames%/ctrl%",
+                "value": {
+                  "objectType": "StaticValue",
+                  "valueType": "tchmi:framework#/definitions/ClassNameList",
+                  "value": [
+                    "StateTextFail"
+                  ]
                 },
                 "asyncWait": true
               }

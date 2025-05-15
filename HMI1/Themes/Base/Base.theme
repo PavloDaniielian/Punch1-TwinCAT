@@ -9,6 +9,14 @@
       },
       "themedResources": {}
     },
+    "CylinderExtending": {
+      "attributes": {
+        "BackgroundColor": {
+          "color": "rgba(0, 255, 0, 1)"
+        }
+      },
+      "themedResources": {}
+    },
     "CylinderFaulted": {
       "attributes": {
         "BackgroundColor": {
@@ -18,6 +26,14 @@
       "themedResources": {}
     },
     "CylinderRetracted": {
+      "attributes": {
+        "BackgroundColor": {
+          "color": "rgba(128, 128, 128, 1)"
+        }
+      },
+      "themedResources": {}
+    },
+    "CylinderRetracting": {
       "attributes": {
         "BackgroundColor": {
           "color": "rgba(128, 128, 128, 1)"
@@ -80,25 +96,20 @@
       },
       "themedResources": {}
     },
-    "StateTextOk": {
+    "StateTextInit": {
       "attributes": {
         "BackgroundColor": null,
         "TextColor": null
       },
       "themedResources": {}
     },
-    "CylinderExtending": {
+    "StateTextOk": {
       "attributes": {
         "BackgroundColor": {
           "color": "rgba(0, 255, 0, 1)"
-        }
-      },
-      "themedResources": {}
-    },
-    "CylinderRetracting": {
-      "attributes": {
-        "BackgroundColor": {
-          "color": "rgba(128, 128, 128, 1)"
+        },
+        "TextColor": {
+          "color": "rgba(0, 0, 0, 1)"
         }
       },
       "themedResources": {}

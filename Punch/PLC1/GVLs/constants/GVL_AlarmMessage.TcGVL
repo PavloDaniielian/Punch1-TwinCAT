@@ -1,13 +1,18 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.6">
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.11">
   <GVL Name="GVL_AlarmMessage" Id="{9ff5443a-0921-4b08-99cf-31fb6578e32a}">
     <Declaration><![CDATA[{attribute $27qualified_only$27}
 VAR_GLOBAL CONSTANT
-	DC_FAIL : STRING := '24 DC Power Off!';
-	ESR1_FAIL : STRING := 'Emergency Stop Relay 1 failed!';
+	DC : STRING := '24 DC Power Off!';
+	ESR1 : STRING := 'Emergency Stop Relay 1 failed!';
+	LS1 : STRING := 'Low Oil Level Sw failed!';
+	TS1 : STRING := 'High Oil Temp Sw failed!';
+	PS1 : STRING := 'Low Air Pressure Switch failed!';
 	
 	PUMP : STRING := 'Pump isn$27t started to run!';
-	PUMP_OFF : STRING := 'Pump isn$27t stopped TO run!';
+	PUMP_OFF : STRING := 'Pump isn$27t stopped To run!';
+	
+	ECS : STRING := 'Operator interface Enable Core Swaging (Stayput Switch) failed!';
 	
 	CYL1_NOT_EXTENDED : STRING := 'Cylinder 1 isn$27t be extended!'; 
 	CYL1_NOT_EXTENDED_OFF : STRING := 'Cylinder 1 isn$27t be de-extended!'; 

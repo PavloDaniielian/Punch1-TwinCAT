@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.6">
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.11">
   <POU Name="FB_CoreSwaging" Id="{32bb99d5-55a6-44d7-8d53-4198850662e4}" SpecialFunc="None">
     <Declaration><![CDATA[FUNCTION_BLOCK FB_CoreSwaging
 VAR_INPUT
@@ -30,11 +30,20 @@ END_VAR
 		END_IF
 		
 	10: (* check safety conditions *)
-		IF GVL_HMI.bSafeties AND GVL_IO.DI_ECS THEN (* Safeties OK and Enable Switch On *)
-            GVL_IO.DO_M1 := TRUE; (* Start Oil Pump *)
-			CheckFeedback(E_FT.PUMP);
-			IF GVL_IO.DI_M1 THEN
-				DelayAndAdvance(GVL_InitialSetting.PUMP_RunningDelayTime, iState+10);
+		IF GVL_HMI.bSafeties THEN (* Safeties OK*)
+			IF GVL_IO.DI_ECS THEN (* Enable Switch On *)
+				GVL_IO.DO_M1 := TRUE; (* Start Oil Pump *)
+				CheckFeedback(E_FT.PUMP);
+				IF GVL_IO.DI_M1 THEN
+					DelayAndAdvance(GVL_InitialSetting.PUMP_RunningDelayTime, iState+10);
+					GVL_HMI.nAlarmCS_10_Pump := 1;
+				ELSIF FeedbackTimer.Q THEN
+					GVL_HMI.nAlarmCS_10_Pump := -1;
+				END_IF
+				GVL_HMI.nAlarmCS_10_ECS := 1;
+			ELSE
+				GVL_HMI.nAlarmCS_10_ECS := -1;
+				fSetAlarm( sMsg := GVL_AlarmMessage.ECS );
 			END_IF
         END_IF
 		
@@ -43,14 +52,18 @@ END_VAR
 			GVL_IO.DO_SV1 := TRUE;	// Power Pack Hydraulic Pressure Relief Valve
             GVL_IO.DO_CYL6_E := TRUE;
 			CheckFeedback(E_FT.CYL6_E);
+			IF FeedbackTimer.Q THEN GVL_HMI.nAlarmCS_20_HC6E := -1; END_IF
         ELSE
+			GVL_HMI.nAlarmCS_20_HC6E := 1;
 			DelayAndAdvance(GVL_InitialSetting.CYLINDER6EXTENDED_RunningDelayTime, iState+1);
         END_IF
 	21: (* Ensure CYL5 is Retracted *)
     	IF NOT GVL_IO.DI_CYL5_R THEN
 			GVL_IO.DO_CYL5_R := TRUE;
 			CheckFeedback(E_FT.CYL5_R);
+			IF FeedbackTimer.Q THEN GVL_HMI.nAlarmCS_21_HC5R := -1; END_IF
 		ELSE
+			GVL_HMI.nAlarmCS_21_HC5R := 1;
 			iState := (iState + 10) / 10 * 10;
 		END_IF
 		
@@ -58,14 +71,18 @@ END_VAR
         IF NOT GVL_IO.DI_CYL7_R THEN
             GVL_IO.DO_CYL7_R := TRUE;
 			CheckFeedback(E_FT.CYL7_R);
+			IF FeedbackTimer.Q THEN GVL_HMI.nAlarmCS_30_HC7R := -1; END_IF
         ELSE
+			GVL_HMI.nAlarmCS_30_HC7R := 1;
 			DelayAndAdvance(GVL_InitialSetting.CYLINDER7RETRACTED_RunningDelayTime, iState+10);
         END_IF
     
     40: (* Low Lead Spool Check *)
         IF NOT GVL_IO.DI_PE5 THEN
 			fSetAlarm( sMsg := GVL_AlarmMessage.PE5_FAIL );
+			GVL_HMI.nAlarmCS_40_PE5 := -1;
         ELSE
+			GVL_HMI.nAlarmCS_40_PE5 := 1;
 			IF GVL_IO.DI_CYL4_R THEN
 				(* index M3 *)
 				
@@ -79,7 +96,9 @@ END_VAR
         IF NOT GVL_IO.DI_CYL7_E THEN
 			GVL_IO.DO_CYL7_E := TRUE;
 			CheckFeedback(E_FT.CYL7_E);
+			IF FeedbackTimer.Q THEN GVL_HMI.nAlarmCS_50_HC7E := -1; END_IF
         ELSE
+			GVL_HMI.nAlarmCS_50_HC7E := 1;
 			DelayAndAdvance(GVL_InitialSetting.CYLINDER7EXTENDED_RunningDelayTime, iState + 10);
         END_IF
     
@@ -87,7 +106,9 @@ END_VAR
         IF NOT GVL_IO.DI_CYL6_R THEN
 			GVL_IO.DO_CYL6_R := TRUE;
 			CheckFeedback(E_FT.CYL6_R);
+			IF FeedbackTimer.Q THEN GVL_HMI.nAlarmCS_60_HC6R := -1; END_IF
         ELSE
+			GVL_HMI.nAlarmCS_60_HC6R := 1;
 			DelayAndAdvance(GVL_InitialSetting.CYLINDER6RETRACTED_RunningDelayTime, iState + 10);
         END_IF
     
@@ -95,7 +116,9 @@ END_VAR
         IF NOT GVL_IO.DI_CYL5_E THEN
 			GVL_IO.DO_CYL5_E := TRUE;
 			CheckFeedback(E_FT.CYL5_E);
+			IF FeedbackTimer.Q THEN GVL_HMI.nAlarmCS_70_HC5E := -1; END_IF
         ELSE
+			GVL_HMI.nAlarmCS_70_HC5E := 1;
 			DelayAndAdvance(GVL_InitialSetting.CYLINDER5EXTENDED_RunningDelayTime, iState + 10);
         END_IF
     
@@ -103,7 +126,9 @@ END_VAR
         IF NOT GVL_IO.DI_CYL5_R THEN
 			GVL_IO.DO_CYL5_R := TRUE;
 			CheckFeedback(E_FT.CYL5_R);
+			IF FeedbackTimer.Q THEN GVL_HMI.nAlarmCS_80_HC5R := -1; END_IF
 		ELSE
+			GVL_HMI.nAlarmCS_80_HC5R := 1;
 			DelayAndAdvance(GVL_InitialSetting.CYLINDER5RETRACTED_RunningDelayTime, iState + 10);
         END_IF
 		
@@ -152,29 +177,45 @@ END_IF]]></ST>
       <LineId Id="293" Count="1" />
       <LineId Id="26" Count="0" />
       <LineId Id="295" Count="0" />
-      <LineId Id="27" Count="3" />
+      <LineId Id="27" Count="2" />
+      <LineId Id="381" Count="0" />
+      <LineId Id="30" Count="0" />
       <LineId Id="251" Count="0" />
       <LineId Id="300" Count="0" />
       <LineId Id="34" Count="0" />
+      <LineId Id="387" Count="2" />
       <LineId Id="301" Count="0" />
+      <LineId Id="385" Count="0" />
+      <LineId Id="382" Count="1" />
+      <LineId Id="386" Count="0" />
+      <LineId Id="384" Count="0" />
       <LineId Id="35" Count="2" />
       <LineId Id="363" Count="1" />
       <LineId Id="39" Count="0" />
       <LineId Id="254" Count="0" />
+      <LineId Id="390" Count="0" />
       <LineId Id="40" Count="0" />
+      <LineId Id="391" Count="0" />
       <LineId Id="155" Count="0" />
       <LineId Id="44" Count="0" />
       <LineId Id="151" Count="0" />
       <LineId Id="45" Count="1" />
       <LineId Id="256" Count="0" />
+      <LineId Id="392" Count="0" />
       <LineId Id="365" Count="0" />
+      <LineId Id="393" Count="0" />
       <LineId Id="156" Count="0" />
       <LineId Id="49" Count="4" />
       <LineId Id="304" Count="0" />
+      <LineId Id="394" Count="0" />
       <LineId Id="54" Count="0" />
+      <LineId Id="395" Count="0" />
       <LineId Id="161" Count="0" />
       <LineId Id="58" Count="3" />
-      <LineId Id="63" Count="1" />
+      <LineId Id="63" Count="0" />
+      <LineId Id="396" Count="0" />
+      <LineId Id="64" Count="0" />
+      <LineId Id="397" Count="0" />
       <LineId Id="165" Count="0" />
       <LineId Id="169" Count="0" />
       <LineId Id="348" Count="0" />
@@ -184,15 +225,27 @@ END_IF]]></ST>
       <LineId Id="69" Count="1" />
       <LineId Id="325" Count="1" />
       <LineId Id="260" Count="0" />
+      <LineId Id="398" Count="0" />
       <LineId Id="73" Count="0" />
+      <LineId Id="399" Count="0" />
       <LineId Id="75" Count="0" />
       <LineId Id="77" Count="1" />
-      <LineId Id="327" Count="5" />
+      <LineId Id="327" Count="3" />
+      <LineId Id="400" Count="0" />
+      <LineId Id="331" Count="0" />
+      <LineId Id="401" Count="0" />
+      <LineId Id="332" Count="0" />
       <LineId Id="86" Count="1" />
-      <LineId Id="334" Count="5" />
+      <LineId Id="334" Count="3" />
+      <LineId Id="402" Count="0" />
+      <LineId Id="338" Count="0" />
+      <LineId Id="403" Count="0" />
+      <LineId Id="339" Count="0" />
       <LineId Id="95" Count="1" />
       <LineId Id="341" Count="3" />
+      <LineId Id="404" Count="0" />
       <LineId Id="366" Count="0" />
+      <LineId Id="405" Count="0" />
       <LineId Id="346" Count="0" />
       <LineId Id="104" Count="4" />
       <LineId Id="227" Count="0" />
