@@ -75,7 +75,7 @@ div[data-tchmi-type="TcHmi.Controls.System.TcHmiView"] {
         #tchmi-splash-container .tchmi-splash-stage-progress-container {
             position: absolute;
             left: 362px;
-            top: 395px;
+            top: 500px;
             right: 0px;
             bottom: 0px;
             width: 412px;
@@ -92,12 +92,13 @@ div[data-tchmi-type="TcHmi.Controls.System.TcHmiView"] {
         #tchmi-splash-container .tchmi-splash-stage-info {
             position: absolute;
             left: 362px;
-            top: 418px;
+            top: 525px;
             right: 0px;
             bottom: 0px;
             width: 412px;
             height: 23px;
             font-size: 14px;
+            color: white;
         }
 
         #tchmi-splash-container .tchmi-splash-version-info {
