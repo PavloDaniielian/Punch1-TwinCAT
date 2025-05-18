@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.11">
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.6">
   <POU Name="MAIN" Id="{a9276fae-2b8f-4b86-a5ea-ccb7b5233763}" SpecialFunc="None">
     <Declaration><![CDATA[PROGRAM Main
 VAR
@@ -64,27 +64,15 @@ IF GVL_HMI.i_nCmd_ResetSetting = 2 THEN
 END_IF
 
 IF NOT GVL_HMI.o_bAlarmActive THEN
-	IF GVL_IO.DI_PS1 THEN
-		GVL_HMI.nAlarmS_PS1 := 1;
+	IF GVL_IO.DI_24VDC_CB_OK THEN
+		GVL_HMI.nAlarmS_24DC := 1;
 	ELSE
-		GVL_HMI.nAlarmS_PS1 := -1;
+		GVL_HMI.nAlarmS_24DC := -1;
 		GVL_HMI.nAlarmSafeties := -1;
-		fSetAlarm( sMsg := GVL_AlarmMessage.PS1 );
+		fSetAlarm( sMsg := GVL_AlarmMessage.DC );
 	END_IF
-	IF GVL_IO.DI_TS1 THEN
-		GVL_HMI.nAlarmS_TS1 := 1;
-	ELSE
-		GVL_HMI.nAlarmS_TS1 := -1;
-		GVL_HMI.nAlarmSafeties := -1;
-		fSetAlarm( sMsg := GVL_AlarmMessage.TS1 );
-	END_IF
-	IF GVL_IO.DI_LS1 THEN
-		GVL_HMI.nAlarmS_LS1 := 1;
-	ELSE
-		GVL_HMI.nAlarmS_LS1 := -1;
-		GVL_HMI.nAlarmSafeties := -1;
-		fSetAlarm( sMsg := GVL_AlarmMessage.LS1 );
-	END_IF
+END_IF
+IF NOT GVL_HMI.o_bAlarmActive THEN
 	IF GVL_IO.DI_ESR1 THEN
 		GVL_HMI.nAlarmS_ESR1 := 1;
 	ELSE
@@ -92,12 +80,32 @@ IF NOT GVL_HMI.o_bAlarmActive THEN
 		GVL_HMI.nAlarmSafeties := -1;
 		fSetAlarm( sMsg := GVL_AlarmMessage.ESR1 );
 	END_IF
-	IF GVL_IO.DI_24VDC_CB_OK THEN
-		GVL_HMI.nAlarmS_24DC := 1;
+END_IF
+IF NOT GVL_HMI.o_bAlarmActive THEN
+	IF GVL_IO.DI_LS1 THEN
+		GVL_HMI.nAlarmS_LS1 := 1;
 	ELSE
-		GVL_HMI.nAlarmS_24DC := -1;
+		GVL_HMI.nAlarmS_LS1 := -1;
 		GVL_HMI.nAlarmSafeties := -1;
-		fSetAlarm( sMsg := GVL_AlarmMessage.DC );
+		fSetAlarm( sMsg := GVL_AlarmMessage.LS1 );
+	END_IF
+END_IF
+IF NOT GVL_HMI.o_bAlarmActive THEN
+	IF GVL_IO.DI_TS1 THEN
+		GVL_HMI.nAlarmS_TS1 := 1;
+	ELSE
+		GVL_HMI.nAlarmS_TS1 := -1;
+		GVL_HMI.nAlarmSafeties := -1;
+		fSetAlarm( sMsg := GVL_AlarmMessage.TS1 );
+	END_IF
+END_IF
+IF NOT GVL_HMI.o_bAlarmActive THEN
+	IF GVL_IO.DI_PS1 THEN
+		GVL_HMI.nAlarmS_PS1 := 1;
+	ELSE
+		GVL_HMI.nAlarmS_PS1 := -1;
+		GVL_HMI.nAlarmSafeties := -1;
+		fSetAlarm( sMsg := GVL_AlarmMessage.PS1 );
 	END_IF
 END_IF
 
@@ -119,7 +127,7 @@ IF GVL_HMI.i_nCmd_ResetAlarm = 2 THEN GVL_HMI.i_nCmd_ResetAlarm := 0; END_IF
 ]]></ST>
     </Implementation>
     <LineIds Name="MAIN">
-      <LineId Id="717" Count="100" />
+      <LineId Id="830" Count="108" />
       <LineId Id="444" Count="0" />
     </LineIds>
   </POU>
