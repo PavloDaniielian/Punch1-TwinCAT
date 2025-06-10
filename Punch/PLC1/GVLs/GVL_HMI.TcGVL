@@ -2,6 +2,15 @@
 <TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.11">
   <GVL Name="GVL_HMI" Id="{80a1a5a0-00a7-49c7-a368-c9a3531de34b}">
     <Declaration><![CDATA[VAR_GLOBAL
+	// Manual Control
+	bManualControl : BOOL := FALSE;
+		// motor1
+	MC_M1_bSet : BOOL := FALSE;
+	MC_M1_rPos : REAL := 0.0;
+	MC_M1_rVel : REAL := 0.0;
+	MC_M1_rAcc : REAL := 0.0;
+	MC_M1_rDec : REAL := 0.0;	
+
 	// safeties
 	i_b24VDC_CB_OK : BOOL := FALSE;
 	i_bESR1 : BOOL := FALSE;

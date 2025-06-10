@@ -1,0 +1,177 @@
+<?xml version="1.0"?>
+<TcSmItem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.beckhoff.com/schemas/2012/07/TcSmProject" TcSmVersion="1.0" TcVersion="3.1.4024.32" ClassName="CFlbTermDef" SubType="9099">
+	<Box Id="9" BoxType="9099" BoxFlags="#x00000020">
+		<Name>Drive 9 (IHSS57/60-EC)</Name>
+		<ImageId>65</ImageId>
+		<EtherCAT SlaveType="2" PdiType="#x3c00" MboxDataLinkLayer="true" StateMBoxPolling="true" CycleMBoxPollingTime="0" CoeType="47" VendorId="#x66668888" ProductCode="#x20193303" RevisionNo="#x20190320" InfoDataAddr="true" InfoDataSoeDS401="true" InfoDataDcTimes="true" PortPhys="17" MaxSlotCount="256" MaxSlotGroupCount="1" SlotPdoIncrement="1" SlotIndexIncrement="16" Type="IHSS57/60-EC" Desc="IHSS57/60-EC">
+			<SyncMan>001080002600010001000000000000008000001026010000</SyncMan>
+			<SyncMan>001200012200010002000000000000000001001222010000</SyncMan>
+			<SyncMan>001411006400010003000000000000000000001464010000</SyncMan>
+			<SyncMan>00161f002000010004000000000000000000001620010000</SyncMan>
+			<Fmmu>0000000000000000001400020100000001000000000000000000000000000000</Fmmu>
+			<Fmmu>0000000000000000001600010100000002000000000000000000000000000000</Fmmu>
+			<Fmmu>00000000000000000d0800010100000003000000000000000000000000000000</Fmmu>
+			<DcData>000300000000000020a107000000000001000000000000000000000000000000</DcData>
+			<DcMode>444300000000000000000000000000004443000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000030100000000000000000000000000000000000000000000000000000000000000</DcMode>
+			<DcMode>53796e6368726f6e000000000000000053796e6368726f6e000000000000000000000000000000000000000000000000000000000000000000000000000000000100000000000000000000000000000000000000000000000000000000000000</DcMode>
+			<Pdo Name="TxPdoMapping" Index="#x1a00" Flags="#x0001" SyncMan="3">
+				<Entry Name="errorcode" Index="#x603f">
+					<Type>UINT</Type>
+				</Entry>
+				<Entry Name="statusword" Index="#x6041">
+					<Type>UINT</Type>
+				</Entry>
+				<Entry Name="op_mode_display" Index="#x6061">
+					<Type>SINT</Type>
+				</Entry>
+				<Entry Name="actual_position" Index="#x6064">
+					<Type>DINT</Type>
+				</Entry>
+				<Entry Name="Touch_probe_status" Index="#x60b9">
+					<Type>UINT</Type>
+				</Entry>
+				<Entry Name="Touch_probe_pos1_pos_value" Index="#x60ba">
+					<Type>DINT</Type>
+				</Entry>
+				<Entry Name="Touch_probe_pos1_neg_value" Index="#x60bb">
+					<Type>DINT</Type>
+				</Entry>
+				<Entry Name="Touch_probe_pos2_pos_value" Index="#x60bc">
+					<Type>DINT</Type>
+				</Entry>
+				<Entry Name="Touch_probe_pos2_neg_value" Index="#x60bd">
+					<Type>DINT</Type>
+				</Entry>
+				<Entry Name="digtal_inputs" Index="#x60fd">
+					<Type>UDINT</Type>
+				</Entry>
+			</Pdo>
+			<Pdo Name="TxPdoMapping" Index="#x1a01" Flags="#x0000">
+				<Entry Name="op_mode_display" Index="#x6061">
+					<Type>SINT</Type>
+				</Entry>
+				<Entry Name="actual_velocity" Index="#x606c">
+					<Type>DINT</Type>
+				</Entry>
+				<Entry Name="follow_err_actual" Index="#x60f4">
+					<Type>DINT</Type>
+				</Entry>
+			</Pdo>
+			<Pdo Name="TxPdoMapping" Index="#x1a02" Flags="#x0000">
+				<Entry Name="errorcode" Index="#x603f">
+					<Type>UINT</Type>
+				</Entry>
+				<Entry Name="Torque_actual_value" Index="#x6077">
+					<Type>INT</Type>
+				</Entry>
+			</Pdo>
+			<Pdo Name="TxPdoMapping" Index="#x1a03" Flags="#x0000"/>
+			<Pdo Name="RxPdoMapping" Index="#x1600" InOut="1" Flags="#x0001" SyncMan="2">
+				<Entry Name="controlword" Index="#x6040">
+					<Type>UINT</Type>
+				</Entry>
+				<Entry Name="op_mode" Index="#x6060">
+					<Type>SINT</Type>
+				</Entry>
+				<Entry Name="target_position" Index="#x607a">
+					<Type>DINT</Type>
+				</Entry>
+				<Entry Name="Touch_probe_function" Index="#x60b8">
+					<Type>UINT</Type>
+				</Entry>
+				<Entry Name="physical_outputs" Index="#x60fe" Sub="#x01">
+					<Type>UDINT</Type>
+				</Entry>
+				<Entry Name="bit_mask" Index="#x60fe" Sub="#x02">
+					<Type>UDINT</Type>
+				</Entry>
+			</Pdo>
+			<Pdo Name="RxPdoMapping" Index="#x1601" InOut="1" Flags="#x0000">
+				<Entry Name="controlword" Index="#x6040">
+					<Type>UINT</Type>
+				</Entry>
+				<Entry Name="op_mode" Index="#x6060">
+					<Type>SINT</Type>
+				</Entry>
+				<Entry Name="targrt_velocity" Index="#x60ff">
+					<Type>DINT</Type>
+				</Entry>
+				<Entry Name="Touch_probe_function" Index="#x60b8">
+					<Type>UINT</Type>
+				</Entry>
+				<Entry Name="physical_outputs" Index="#x60fe" Sub="#x01">
+					<Type>UDINT</Type>
+				</Entry>
+				<Entry Name="bit_mask" Index="#x60fe" Sub="#x02">
+					<Type>UDINT</Type>
+				</Entry>
+			</Pdo>
+			<Pdo Name="RxPdoMapping" Index="#x1602" InOut="1" Flags="#x0000">
+				<Entry Name="target_torque" Index="#x6071">
+					<Type>INT</Type>
+				</Entry>
+				<Entry Name="profile_velocity" Index="#x6081">
+					<Type>UDINT</Type>
+				</Entry>
+				<Entry Name="profile_acceleration" Index="#x6083">
+					<Type>UDINT</Type>
+				</Entry>
+				<Entry Name="profile_deceleration" Index="#x6084">
+					<Type>UDINT</Type>
+				</Entry>
+				<Entry Name="physical_outputs" Index="#x60fe" Sub="#x01">
+					<Type>UDINT</Type>
+				</Entry>
+				<Entry Name="bit_mask" Index="#x60fe" Sub="#x02">
+					<Type>UDINT</Type>
+				</Entry>
+			</Pdo>
+			<Pdo Name="RxPdoMapping" Index="#x1603" InOut="1" Flags="#x0000">
+				<Entry Name="home_offset" Index="#x607c">
+					<Type>DINT</Type>
+				</Entry>
+				<Entry Name="home_method" Index="#x6098">
+					<Type>SINT</Type>
+				</Entry>
+				<Entry Name="home_switch_velocity" Index="#x6099" Sub="#x01">
+					<Type>DINT</Type>
+				</Entry>
+				<Entry Name="home_zero_velocity" Index="#x6099" Sub="#x02">
+					<Type>DINT</Type>
+				</Entry>
+				<Entry Name="home_acceleration" Index="#x609a">
+					<Type>UDINT</Type>
+				</Entry>
+			</Pdo>
+			<CoeProfile ProfileNo="402"/>
+		</EtherCAT>
+	</Box>
+	<Mappings>
+		<OwnerA Name="__THIS__">
+			<OwnerB Name="TINC^NC-Task 1 SAF^Axes^Axis 1">
+				<Link VarA="InfoData^DcInputShift" VarB="Enc^Inputs^In^nDcInputTime"/>
+				<Link VarA="InfoData^DcOutputShift" VarB="Drive^Inputs^In^nDcOutputTime"/>
+				<Link VarA="RxPdoMapping^Touch_probe_function" VarB="Enc^Outputs^Out^nCtrl5"/>
+				<Link VarA="RxPdoMapping^Touch_probe_function" VarB="Enc^Outputs^Out^nCtrl6" Size="8" OffsA="8"/>
+				<Link VarA="RxPdoMapping^controlword" VarB="Drive^Outputs^Out^nCtrl1"/>
+				<Link VarA="RxPdoMapping^controlword" VarB="Drive^Outputs^Out^nCtrl2" Size="8" OffsA="8"/>
+				<Link VarA="RxPdoMapping^op_mode" VarB="Drive^Outputs^Out^nCtrl5"/>
+				<Link VarA="RxPdoMapping^target_position" VarB="Drive^Outputs^Out^nDataOut1"/>
+				<Link VarA="TxPdoMapping^Touch_probe_pos1_neg_value" VarB="Enc^Inputs^In^nDataIn4"/>
+				<Link VarA="TxPdoMapping^Touch_probe_pos1_pos_value" VarB="Enc^Inputs^In^nDataIn3"/>
+				<Link VarA="TxPdoMapping^Touch_probe_pos2_neg_value" VarB="Enc^Inputs^In^nDataIn6"/>
+				<Link VarA="TxPdoMapping^Touch_probe_pos2_pos_value" VarB="Enc^Inputs^In^nDataIn5"/>
+				<Link VarA="TxPdoMapping^Touch_probe_status" VarB="Enc^Inputs^In^nState5"/>
+				<Link VarA="TxPdoMapping^Touch_probe_status" VarB="Enc^Inputs^In^nState6" Size="8" OffsA="8"/>
+				<Link VarA="TxPdoMapping^actual_position" VarB="Enc^Inputs^In^nDataIn1"/>
+				<Link VarA="TxPdoMapping^op_mode_display" VarB="Drive^Inputs^In^nState5"/>
+				<Link VarA="TxPdoMapping^statusword" VarB="Drive^Inputs^In^nState1"/>
+				<Link VarA="TxPdoMapping^statusword" VarB="Drive^Inputs^In^nState2" Size="8" OffsA="8"/>
+				<Link VarA="WcState^InputToggle" VarB="Drive^Inputs^In^nState4" Size="1" OffsB="1"/>
+				<Link VarA="WcState^InputToggle" VarB="Enc^Inputs^In^nState4" Size="1" OffsB="1"/>
+				<Link VarA="WcState^WcState" VarB="Drive^Inputs^In^nState4"/>
+				<Link VarA="WcState^WcState" VarB="Enc^Inputs^In^nState4"/>
+			</OwnerB>
+		</OwnerA>
+	</Mappings>
+</TcSmItem>

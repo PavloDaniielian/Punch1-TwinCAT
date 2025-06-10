@@ -2508,6 +2508,80 @@
             },
             "USEMAPPING": true
         },
+        "PLC1.GVL_HMI.MC_M1_bSet": {
+            "ACCESS": 3,
+            "DOMAIN": "ADS",
+            "DYNAMIC": true,
+            "MAPPING": "PLC1::GVL_HMI::MC_M1_bSet",
+            "SCHEMA": {
+                "allOf": [
+                    {
+                        "$ref": "tchmi:general#/definitions/BOOL"
+                    },
+                    {
+                        "comment": "motor1"
+                    }
+                ]
+            },
+            "USEMAPPING": true
+        },
+        "PLC1.GVL_HMI.MC_M1_rAcc": {
+            "ACCESS": 3,
+            "DOMAIN": "ADS",
+            "DYNAMIC": true,
+            "MAPPING": "PLC1::GVL_HMI::MC_M1_rAcc",
+            "SCHEMA": {
+                "$ref": "tchmi:general#/definitions/REAL"
+            },
+            "USEMAPPING": true
+        },
+        "PLC1.GVL_HMI.MC_M1_rDec": {
+            "ACCESS": 3,
+            "DOMAIN": "ADS",
+            "DYNAMIC": true,
+            "MAPPING": "PLC1::GVL_HMI::MC_M1_rDec",
+            "SCHEMA": {
+                "$ref": "tchmi:general#/definitions/REAL"
+            },
+            "USEMAPPING": true
+        },
+        "PLC1.GVL_HMI.MC_M1_rPos": {
+            "ACCESS": 3,
+            "DOMAIN": "ADS",
+            "DYNAMIC": true,
+            "MAPPING": "PLC1::GVL_HMI::MC_M1_rPos",
+            "SCHEMA": {
+                "$ref": "tchmi:general#/definitions/REAL"
+            },
+            "USEMAPPING": true
+        },
+        "PLC1.GVL_HMI.MC_M1_rVel": {
+            "ACCESS": 3,
+            "DOMAIN": "ADS",
+            "DYNAMIC": true,
+            "MAPPING": "PLC1::GVL_HMI::MC_M1_rVel",
+            "SCHEMA": {
+                "$ref": "tchmi:general#/definitions/REAL"
+            },
+            "USEMAPPING": true
+        },
+        "PLC1.GVL_HMI.bManualControl": {
+            "ACCESS": 3,
+            "DOMAIN": "ADS",
+            "DYNAMIC": true,
+            "MAPPING": "PLC1::GVL_HMI::bManualControl",
+            "SCHEMA": {
+                "allOf": [
+                    {
+                        "$ref": "tchmi:general#/definitions/BOOL"
+                    },
+                    {
+                        "comment": "Manual Control"
+                    }
+                ]
+            },
+            "USEMAPPING": true
+        },
         "PLC1.GVL_HMI.bSafeties": {
             "ACCESS": 3,
             "DOMAIN": "ADS",
@@ -3841,6 +3915,40 @@
             },
             "USEMAPPING": true
         },
+        "PLC1.GVL_IO.AxisRef1.NcToPlc.ActPos": {
+            "ACCESS": 3,
+            "DOMAIN": "ADS",
+            "DYNAMIC": true,
+            "MAPPING": "PLC1::GVL_IO::AxisRef1::NcToPlc::ActPos",
+            "SCHEMA": {
+                "allOf": [
+                    {
+                        "$ref": "tchmi:general#/definitions/LREAL"
+                    },
+                    {
+                        "propertyOrder": 11
+                    }
+                ]
+            },
+            "USEMAPPING": true
+        },
+        "PLC1.GVL_IO.AxisRef1.NcToPlc.ActVelo": {
+            "ACCESS": 3,
+            "DOMAIN": "ADS",
+            "DYNAMIC": true,
+            "MAPPING": "PLC1::GVL_IO::AxisRef1::NcToPlc::ActVelo",
+            "SCHEMA": {
+                "allOf": [
+                    {
+                        "$ref": "tchmi:general#/definitions/LREAL"
+                    },
+                    {
+                        "propertyOrder": 16
+                    }
+                ]
+            },
+            "USEMAPPING": true
+        },
         "RefreshDefinitions": {
             "ACCESS": 3,
             "DOMAIN": "TcHmiSrv",
@@ -4760,6 +4868,12 @@
                 "LocalizeText": 3,
                 "Login": 3,
                 "Logout": 3,
+                "PLC1.GVL_HMI.MC_M1_bSet": 3,
+                "PLC1.GVL_HMI.MC_M1_rAcc": 3,
+                "PLC1.GVL_HMI.MC_M1_rDec": 3,
+                "PLC1.GVL_HMI.MC_M1_rPos": 3,
+                "PLC1.GVL_HMI.MC_M1_rVel": 3,
+                "PLC1.GVL_HMI.bManualControl": 3,
                 "PLC1.GVL_HMI.bSafeties": 3,
                 "PLC1.GVL_HMI.i_b24VDC_CB_OK": 3,
                 "PLC1.GVL_HMI.i_bClearCount": 3,
@@ -4858,6 +4972,8 @@
                 "PLC1.GVL_HMI.nProductCount": 3,
                 "PLC1.GVL_HMI.o_bAlarmActive": 3,
                 "PLC1.GVL_HMI.o_sAlarmMessage": 3,
+                "PLC1.GVL_IO.AxisRef1.NcToPlc.ActPos": 3,
+                "PLC1.GVL_IO.AxisRef1.NcToPlc.ActVelo": 3,
                 "SetLocale": 3,
                 "SubscribeEvents": 3,
                 "TcHmiSqliteLogger.Diagnostics": 1,

@@ -27,7 +27,7 @@
     <HmiViewportUserScaleable>Default</HmiViewportUserScaleable>
     <HmiPostProcessing>True</HmiPostProcessing>
     <Name>HMI1</Name>
-    <HmiCommunicationRouterPort>10109</HmiCommunicationRouterPort>
+    <HmiCommunicationRouterPort>10112</HmiCommunicationRouterPort>
     <HmiCommunicationServerAuthPort>13000</HmiCommunicationServerAuthPort>
     <HmiInitial>1.12.762.46</HmiInitial>
     <HmiRecent>1.12.762.46</HmiRecent>
@@ -118,6 +118,7 @@
   <Target Name="ReBuild" DependsOnTargets="Clean; Build" />
   <ItemGroup>
     <Folder Include="Contents\Alarm" />
+    <Folder Include="Contents\ManualControl" />
     <Folder Include="Contents\Setting" />
     <Folder Include="Fonts\" />
     <Folder Include="Images" />
@@ -154,7 +155,13 @@
     <Content Include="Contents\Alarm\Safeties.content">
       <SubType>Content</SubType>
     </Content>
+    <Content Include="Contents\ManualControl\Motor1.content">
+      <SubType>Content</SubType>
+    </Content>
     <Content Include="Contents\Overview.content">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Contents\ManualControl.content">
       <SubType>Content</SubType>
     </Content>
     <Content Include="Contents\Setting.content">

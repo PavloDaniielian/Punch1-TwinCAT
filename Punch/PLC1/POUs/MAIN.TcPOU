@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.6">
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.11">
   <POU Name="MAIN" Id="{a9276fae-2b8f-4b86-a5ea-ccb7b5233763}" SpecialFunc="None">
     <Declaration><![CDATA[PROGRAM Main
 VAR
@@ -10,7 +10,7 @@ VAR
     fCasingVibratoryBowl1: FB_CasingVibratoryBowl1;
     fCoreVibratoryBowl2: FB_CoreVibratoryBowl2;
 	fTransmitStatesToHMI: FB_TransmitStatesToHMI;
-
+	
 	pAlarm : POINTER TO SINT;
 	i : INT;
 END_VAR]]></Declaration>
@@ -109,13 +109,28 @@ IF NOT GVL_HMI.o_bAlarmActive THEN
 	END_IF
 END_IF
 
-IF NOT GVL_HMI.o_bAlarmActive THEN
-	fCoreSwaging();
-	fOilPump();
-	fCorePress();
-	fCasingVibratoryBowl1();
-	fCoreVibratoryBowl2();
+IF GVL_HMI.bManualControl THEN
+	IF GVL_HMI.MC_M1_bSet THEN
+		GVL_HMI.MC_M1_bSet := FALSE;
+		GVL_Var.Motor1_bNew := TRUE;
+		GVL_Var.Motor1_rPos := GVL_HMI.MC_M1_rPos;
+		GVL_Var.Motor1_rVel := GVL_HMI.MC_M1_rVel;
+		GVL_Var.Motor1_rAcc := GVL_HMI.MC_M1_rAcc;
+		GVL_Var.Motor1_rDec := GVL_HMI.MC_M1_rDec;
+	ELSE
+		GVL_Var.Motor1_bNew := FALSE;
+	END_IF
+ELSE
+	IF NOT GVL_HMI.o_bAlarmActive THEN
+		fCoreSwaging();
+		fOilPump();
+		fCorePress();
+		fCasingVibratoryBowl1();
+		fCoreVibratoryBowl2();
+	END_IF
 END_IF
+
+GVL_Var.fMotor1( new:=GVL_Var.Motor1_bNew, pos:=GVL_Var.Motor1_rPos, vel:=GVL_Var.Motor1_rVel, acc:=GVL_Var.Motor1_rAcc, dec:=GVL_Var.Motor1_rDec );
 
 fTransmitStatesToHMI();
 
@@ -127,7 +142,22 @@ IF GVL_HMI.i_nCmd_ResetAlarm = 2 THEN GVL_HMI.i_nCmd_ResetAlarm := 0; END_IF
 ]]></ST>
     </Implementation>
     <LineIds Name="MAIN">
-      <LineId Id="830" Count="108" />
+      <LineId Id="931" Count="92" />
+      <LineId Id="1068" Count="0" />
+      <LineId Id="1024" Count="0" />
+      <LineId Id="1076" Count="0" />
+      <LineId Id="1087" Count="0" />
+      <LineId Id="1103" Count="0" />
+      <LineId Id="1086" Count="0" />
+      <LineId Id="1088" Count="2" />
+      <LineId Id="1104" Count="1" />
+      <LineId Id="1075" Count="0" />
+      <LineId Id="1071" Count="0" />
+      <LineId Id="1025" Count="6" />
+      <LineId Id="1073" Count="0" />
+      <LineId Id="1085" Count="0" />
+      <LineId Id="1084" Count="0" />
+      <LineId Id="1032" Count="7" />
       <LineId Id="444" Count="0" />
     </LineIds>
   </POU>

@@ -113,6 +113,10 @@
         }
       },
       "themedResources": {}
+    },
+    "LineHeight1": {
+      "attributes": {},
+      "themedResources": {}
     }
   },
   "$schema": "./../../../Packages/Beckhoff.TwinCAT.HMI.Framework.12.762.46/runtimes/native1.12-tchmi/Schema/ThemeDescription.Schema.json"

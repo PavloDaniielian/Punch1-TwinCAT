@@ -90,7 +90,21 @@
       "preloadBindings": false
     },
     {
+      "url": "Contents/ManualControl/Motor1.content",
+      "preload": false,
+      "keepAlive": false,
+      "loadSync": false,
+      "preloadBindings": false
+    },
+    {
       "url": "Contents/Overview.content",
+      "preload": false,
+      "keepAlive": false,
+      "loadSync": false,
+      "preloadBindings": false
+    },
+    {
+      "url": "Contents/ManualControl.content",
       "preload": false,
       "keepAlive": false,
       "loadSync": false,

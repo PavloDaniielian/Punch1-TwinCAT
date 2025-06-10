@@ -832,7 +832,7 @@
               {
                 "objectType": "WriteToSymbol",
                 "active": true,
-                "symbolExpression": "%ctrl%txtAlarmTS1::Text%/ctrl%",
+                "symbolExpression": "%ctrl%txtAlarmPS1::Text%/ctrl%",
                 "value": {
                   "objectType": "StaticValue",
                   "valueType": "tchmi:general#/definitions/String",
@@ -843,7 +843,7 @@
               {
                 "objectType": "WriteToSymbol",
                 "active": true,
-                "symbolExpression": "%ctrl%txtAlarmTS1::ClassNames%/ctrl%",
+                "symbolExpression": "%ctrl%txtAlarmPS1::ClassNames%/ctrl%",
                 "value": {
                   "objectType": "StaticValue",
                   "valueType": "tchmi:framework#/definitions/ClassNameList",
@@ -865,7 +865,7 @@
               {
                 "objectType": "WriteToSymbol",
                 "active": true,
-                "symbolExpression": "%ctrl%txtAlarmTS1::Text%/ctrl%",
+                "symbolExpression": "%ctrl%txtAlarmPS1::Text%/ctrl%",
                 "value": {
                   "objectType": "StaticValue",
                   "valueType": "tchmi:general#/definitions/String",
@@ -898,7 +898,7 @@
               {
                 "objectType": "WriteToSymbol",
                 "active": true,
-                "symbolExpression": "%ctrl%txtAlarmTS1::Text%/ctrl%",
+                "symbolExpression": "%ctrl%txtAlarmPS1::Text%/ctrl%",
                 "value": {
                   "objectType": "StaticValue",
                   "valueType": "tchmi:general#/definitions/String",
@@ -909,7 +909,7 @@
               {
                 "objectType": "WriteToSymbol",
                 "active": true,
-                "symbolExpression": "%ctrl%txtAlarmTS1::ClassNames%/ctrl%",
+                "symbolExpression": "%ctrl%txtAlarmPS1::ClassNames%/ctrl%",
                 "value": {
                   "objectType": "StaticValue",
                   "valueType": "tchmi:framework#/definitions/ClassNameList",

@@ -21,6 +21,9 @@
     <Compile Include="DUTs\E_FT.TcTLEO">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="DUTs\E_MoveState.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="GVLs\constants\GVL_AlarmMessage.TcGVL">
       <SubType>Code</SubType>
       <LinkAlways>true</LinkAlways>
@@ -62,13 +65,13 @@
     <Compile Include="POUs\FB_CoreVibratoryBowl2.TcPOU">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="POUs\FB_Motor1.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="POUs\FB_OilPump.TcPOU">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="POUs\MAIN.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="POUs\FB_Motor.TcPOU">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
